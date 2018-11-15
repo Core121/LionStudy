@@ -8,6 +8,9 @@ public class Account{
     public String password;
     public String firstname;
     public String lastname;
+    public int online;
+
+  
     
     public Account(){
         username = null;
@@ -16,6 +19,7 @@ public class Account{
         firstname = null;
         lastname = null;
         ID = 0;
+        online = 0;
     }
     public Account(String username, String password, String firstname, String lastname, int badgetype, int ID){
         this.username = username;
@@ -24,6 +28,7 @@ public class Account{
         this.lastname = lastname;
         this.badgetype = badgetype;
         this.ID = ID;
+        online = 0;
     }
     
     public int getID(){
@@ -60,5 +65,28 @@ public class Account{
     }
     public String getPassword() {
         return password;
+    }
+      public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    public int getOnline() {
+        return online;
+    }
+
+    public void setOnline(int online) {
+        this.online = online;
     }
 }
