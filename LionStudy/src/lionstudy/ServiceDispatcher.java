@@ -67,6 +67,19 @@ public class ServiceDispatcher {
         }
         return login;
     }
+    
+    public void logout(){
+        try {
+            Connection myConn = DriverManager.getConnection(CONN_STRING, USERNAME, PASSWORD);
+            stmt = myConn.createStatement();
+            PreparedStatement pstmt = myConn.prepareStatement("UPDATE Users SET online = '0' WHERE ID = ?");
+            pstmt.setInt(1, CurrentUser.getID());
+            pstmt.executeUpdate();
+            myConn.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
 
     //Returns an ArrayList of All Users in the form of Accounts, note that passwords are set to nothing as we do not need them once the application has been logged into
     public ArrayList<Account> GetAllUsers() {
@@ -82,7 +95,9 @@ public class ServiceDispatcher {
                 String lastName = rs.getString("last");
                 int badgetype = rs.getInt("badge");
                 int ID = rs.getInt("ID");
+                int online = rs.getInt("online");
                 Account temp = new Account(username, password, firstName, lastName, badgetype, ID);
+                temp.setOnline(online);
                 AccountList.add(temp);
             }
             myConn.close();
