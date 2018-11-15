@@ -995,10 +995,15 @@ public class GUI extends javax.swing.JFrame {
     private void SignUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignUpActionPerformed
         int badgetemp=0;
         boolean login = false;
+        String psucheck = usernamefield.getText().substring(Math.max(usernamefield.getText().length() - 8, 0));
+        psucheck = psucheck.toLowerCase();
         //User left something null
         if (usernamefield.getText() == "" || passwordfield.getText() == "" || firstnamefield.getText() == "" || lastnamefield.getText() == "") {
             JOptionPane.showMessageDialog(null, "One or more fields were left empty, please try again", "Empty Field", JOptionPane.INFORMATION_MESSAGE);
-        } 
+        }
+        else if(psucheck == "@psu.edu"){
+            JOptionPane.showMessageDialog(null, "The username must be a penn state email, meaning an email @psu.edu", "Non-Penn State User", JOptionPane.INFORMATION_MESSAGE);
+        }
         //if everything checks out
         else {
             if(studentRB.isSelected()){
