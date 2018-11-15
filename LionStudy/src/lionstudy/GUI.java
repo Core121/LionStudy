@@ -999,7 +999,6 @@ public class GUI extends javax.swing.JFrame {
         //gets last 8 digits which is @psu.edu
         String psucheck = usernamefield1.getText().substring(Math.max(usernamefield1.getText().length() - 8, 0));
         psucheck = psucheck.toLowerCase();
-        System.out.println(psucheck);
         //User left something null
         if ("".equals(usernamefield1.getText()) || "".equals(passwordfield2.getText()) || "".equals(passwordfield1.getText()) || "".equals(firstnamefield.getText()) || "".equals(lastnamefield.getText())) {
             JOptionPane.showMessageDialog(null, "One or more fields were left empty, please try again", "Empty Field", JOptionPane.INFORMATION_MESSAGE);
