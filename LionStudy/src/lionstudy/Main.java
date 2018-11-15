@@ -40,9 +40,9 @@ public class Main {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 GUI LionGUI = new GUI();
+                LionGUI.SetUpLoginScenario();
                 LionGUI.setLocationRelativeTo(null);
                 LionGUI.setVisible(true);
-                
                 
             }
         });
