@@ -1,7 +1,7 @@
 package lionstudy;
-
-
+import lionstudy.Classes.*;
 import java.util.ArrayList;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /*
@@ -21,6 +21,35 @@ public class GUI extends javax.swing.JFrame {
      */
     public GUI() {
         initComponents();
+    }
+    
+    //only works at very beginning
+    protected void SetUpLoginScenario(){
+        this.jTabbedPane2.remove(ChatTab);
+        this.jTabbedPane2.remove(SearchTab);
+        this.jTabbedPane2.remove(ProfileTab);
+        this.jTabbedPane2.remove(ContactsTab);
+        this.jTabbedPane2.remove(ModOptions);
+        this.jTabbedPane2.remove(SuperImpTab);
+    }
+    protected void SetUpNormalUserScenario(){
+        this.jTabbedPane2.remove(LoginTab);
+        this.jTabbedPane2.remove(SignUpTab);
+        this.jTabbedPane2.addTab("Search",SearchTab);
+        this.jTabbedPane2.addTab("Profile",ProfileTab);
+        this.jTabbedPane2.addTab("Chat",ChatTab);
+        this.jTabbedPane2.addTab("Contacts",ContactsTab);
+        this.jTabbedPane2.addTab("Important Services", new ImageIcon(getClass().getResource("/Res/SuperImg.png")), SuperImpTab);
+    }
+    protected void SetUpModeratorScenario(){
+        this.jTabbedPane2.remove(LoginTab);
+        this.jTabbedPane2.remove(SignUpTab);
+        this.jTabbedPane2.addTab("Search",SearchTab);
+        this.jTabbedPane2.addTab("Profile",ProfileTab);
+        this.jTabbedPane2.addTab("Chat",ChatTab);
+        this.jTabbedPane2.addTab("Contacts",ContactsTab);
+        this.jTabbedPane2.addTab("Important Services", SuperImpTab);
+        this.jTabbedPane2.addTab("Moderator",ModOptions);
     }
     
     UserProfile clientUser = new UserProfile();
@@ -106,7 +135,7 @@ public class GUI extends javax.swing.JFrame {
         usernamefield = new javax.swing.JTextField();
         LoginButton = new javax.swing.JButton();
         LionStudyLoginText = new javax.swing.JLabel();
-        jPanel7 = new javax.swing.JPanel();
+        SignUpTab = new javax.swing.JPanel();
         LoginTab1 = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
@@ -762,28 +791,28 @@ public class GUI extends javax.swing.JFrame {
 
         jLabel19.getAccessibleContext().setAccessibleName("Re-EnterPassword:");
 
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout SignUpTabLayout = new javax.swing.GroupLayout(SignUpTab);
+        SignUpTab.setLayout(SignUpTabLayout);
+        SignUpTabLayout.setHorizontalGroup(
+            SignUpTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 736, Short.MAX_VALUE)
-            .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel7Layout.createSequentialGroup()
+            .addGroup(SignUpTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(SignUpTabLayout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
                     .addComponent(LoginTab1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        SignUpTabLayout.setVerticalGroup(
+            SignUpTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 556, Short.MAX_VALUE)
-            .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel7Layout.createSequentialGroup()
+            .addGroup(SignUpTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(SignUpTabLayout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
                     .addComponent(LoginTab1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
-        jTabbedPane2.addTab("Sign Up", jPanel7);
+        jTabbedPane2.addTab("Sign Up", SignUpTab);
 
         TopPanel.setBackground(new java.awt.Color(6, 6, 50));
 
@@ -899,15 +928,19 @@ public class GUI extends javax.swing.JFrame {
         if (usernamefield.getText() == "" || passwordfield.getText() == "") {
             JOptionPane.showMessageDialog(null, "One of your fields for Username or Password is Empty", "Empty Field", JOptionPane.INFORMATION_MESSAGE);
         } else {
-            try {
-                loginSuccess = sd.Login(usernamefield.getText(), passwordfield.getText());
-            } catch (Exception e) {
-                System.out.println("Exception " + e);
-            }
+            loginSuccess = sd.Login(usernamefield.getText(), passwordfield.getText());
             if (loginSuccess == true) {
-                System.out.println("test success");
+                //Student or Tutor
+                if(CurrentUser.getBadgetype() == 1 || CurrentUser.getBadgetype() == 2 || CurrentUser.getBadgetype() == 3){
+                    this.SetUpNormalUserScenario();
+                }
+                //Moderator
+                else if(CurrentUser.getBadgetype() == 4){
+                   this.SetUpModeratorScenario();
+                }
             } else {
                 JOptionPane.showMessageDialog(null, "The username or password was incorrect, please try again", "Incorrect Username/Password", JOptionPane.INFORMATION_MESSAGE);
+
             }
         }
     }//GEN-LAST:event_LoginButtonActionPerformed
@@ -940,6 +973,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JPanel ProfileTab;
     private javax.swing.JPanel SearchTab;
     private javax.swing.JButton SignUp;
+    private javax.swing.JPanel SignUpTab;
     private javax.swing.JPanel SuperImpTab;
     private javax.swing.JPanel TopPanel;
     private javax.swing.ButtonGroup buttonGroup1;
@@ -982,7 +1016,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
