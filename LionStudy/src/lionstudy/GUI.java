@@ -722,6 +722,7 @@ public class GUI extends javax.swing.JFrame {
         tutorRB.setText("Tutor");
 
         buttonGroup1.add(studentRB);
+        studentRB.setSelected(true);
         studentRB.setText("Student");
 
         buttonGroup1.add(professorRB);
@@ -993,37 +994,39 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_usernamefield1ActionPerformed
 
     private void SignUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignUpActionPerformed
-        int badgetemp=0;
+        int badgetemp = 0;
         boolean login = false;
-        String psucheck = usernamefield.getText().substring(Math.max(usernamefield.getText().length() - 8, 0));
+        //gets last 8 digits which is @psu.edu
+        String psucheck = usernamefield1.getText().substring(Math.max(usernamefield1.getText().length() - 8, 0));
         psucheck = psucheck.toLowerCase();
+        System.out.println(psucheck);
         //User left something null
-        if (usernamefield.getText() == "" || passwordfield.getText() == "" || firstnamefield.getText() == "" || lastnamefield.getText() == "") {
+        if ("".equals(usernamefield1.getText()) || "".equals(passwordfield2.getText()) || "".equals(passwordfield1.getText()) || "".equals(firstnamefield.getText()) || "".equals(lastnamefield.getText())) {
             JOptionPane.showMessageDialog(null, "One or more fields were left empty, please try again", "Empty Field", JOptionPane.INFORMATION_MESSAGE);
-        }
-        else if(psucheck == "@psu.edu"){
+        } else if (!"@psu.edu".equals(psucheck)) {
             JOptionPane.showMessageDialog(null, "The username must be a penn state email, meaning an email @psu.edu", "Non-Penn State User", JOptionPane.INFORMATION_MESSAGE);
-        }
-        //if everything checks out
+        } //if everything checks out
         else {
-            if(studentRB.isSelected()){
-                badgetemp = 1;
-            }
-            else if(tutorRB.isSelected()){
-                badgetemp = 2;
-            }
-            else if (professorRB.isSelected()){
-                badgetemp=3;
-            }
-            Account signup = new Account(usernamefield.getText(), passwordfield.getText(), firstnamefield.getText(), lastnamefield.getText(), badgetemp, 0);
-            ServiceDispatcher sd = new ServiceDispatcher();
-            sd.CreateUser(signup);
-            login = sd.Login(signup.getUsername(), signup.getPassword());
-            if(login == false){
-                JOptionPane.showMessageDialog(null, "Sign up was not successful, please try again", "Sign Up Failure", JOptionPane.INFORMATION_MESSAGE);
-            }
-            else{
-                JOptionPane.showMessageDialog(null, "Sign up was successful!", "Success!", JOptionPane.INFORMATION_MESSAGE);
+            if (passwordfield1.getText() == null ? passwordfield2.getText() != null : !passwordfield1.getText().equals(passwordfield2.getText())) {
+                JOptionPane.showMessageDialog(null, "Passwords do not match!", "Non-Matching Passwords", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                if (studentRB.isSelected()) {
+                    badgetemp = 1;
+                } else if (tutorRB.isSelected()) {
+                    badgetemp = 2;
+                } else if (professorRB.isSelected()) {
+                    badgetemp = 3;
+                }
+                Account signup = new Account(usernamefield1.getText(), passwordfield1.getText(), firstnamefield.getText(), lastnamefield.getText(), badgetemp, 0);
+                ServiceDispatcher sd = new ServiceDispatcher();
+                sd.CreateUser(signup);
+                login = sd.Login(signup.getUsername(), signup.getPassword());
+                if (login == false) {
+                    JOptionPane.showMessageDialog(null, "Sign up was not successful, please try again", "Sign Up Failure", JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Sign up was successful!", "Success!", JOptionPane.INFORMATION_MESSAGE);
+                    this.SetUpNormalUserScenario();
+                }
             }
         }
     }//GEN-LAST:event_SignUpActionPerformed
