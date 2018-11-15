@@ -25,6 +25,9 @@ public class GUI extends javax.swing.JFrame {
     
     //only works at very beginning
     protected void SetUpLoginScenario(){
+        this.jTabbedPane2.addTab("Login",LoginTab);
+        this.jTabbedPane2.addTab("Sign Up",SignUpTab);
+        this.LogoutButton.setVisible(false);
         this.jTabbedPane2.remove(ChatTab);
         this.jTabbedPane2.remove(SearchTab);
         this.jTabbedPane2.remove(ProfileTab);
@@ -33,6 +36,7 @@ public class GUI extends javax.swing.JFrame {
         this.jTabbedPane2.remove(SuperImpTab);
     }
     protected void SetUpNormalUserScenario(){
+        this.LogoutButton.setVisible(true);
         this.jTabbedPane2.remove(LoginTab);
         this.jTabbedPane2.remove(SignUpTab);
         this.jTabbedPane2.addTab("Search",SearchTab);
@@ -43,6 +47,7 @@ public class GUI extends javax.swing.JFrame {
         this.jTabbedPane2.addTab("Important Services", new ImageIcon(getClass().getResource("/Res/SuperImg.png")), SuperImpTab);
     }
     protected void SetUpModeratorScenario(){
+        this.LogoutButton.setVisible(true);
         this.jTabbedPane2.remove(LoginTab);
         this.jTabbedPane2.remove(SignUpTab);
         this.jTabbedPane2.addTab("Search",SearchTab);
@@ -158,6 +163,7 @@ public class GUI extends javax.swing.JFrame {
         LionStudyImage = new javax.swing.JLabel();
         LionStudyText = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
+        LogoutButton = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -868,12 +874,21 @@ public class GUI extends javax.swing.JFrame {
 
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Res/PennState.png"))); // NOI18N
 
+        LogoutButton.setText("Logout");
+        LogoutButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LogoutButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout TopPanelLayout = new javax.swing.GroupLayout(TopPanel);
         TopPanel.setLayout(TopPanelLayout);
         TopPanelLayout.setHorizontalGroup(
             TopPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TopPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(LogoutButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(LionStudyText, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(104, 104, 104)
                 .addComponent(LionStudyImage)
@@ -892,6 +907,10 @@ public class GUI extends javax.swing.JFrame {
                         .addGap(8, 8, 8)
                         .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(TopPanelLayout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(LogoutButton)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         LionStudyImage.getAccessibleContext().setAccessibleName("LionStudyImage");
@@ -1038,6 +1057,12 @@ public class GUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_lastnamefieldActionPerformed
 
+    private void LogoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogoutButtonActionPerformed
+        ServiceDispatcher sd = new ServiceDispatcher();
+        sd.logout();
+        this.SetUpLoginScenario();
+    }//GEN-LAST:event_LogoutButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1054,6 +1079,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton LoginButton;
     private javax.swing.JPanel LoginTab;
     private javax.swing.JPanel LoginTab1;
+    private javax.swing.JButton LogoutButton;
     private javax.swing.JPanel ModOptions;
     private javax.swing.JPanel ProfileTab;
     private javax.swing.JPanel SearchTab;
