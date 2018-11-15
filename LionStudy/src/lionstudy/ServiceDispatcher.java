@@ -36,7 +36,8 @@ public class ServiceDispatcher {
     //returns true if login is successful, takes username and password as parameters
     public boolean Login(String username, String password) {
         boolean login = false;
-        int ID = 0;
+        int ID = 0,  badge;      
+        String firstname, lastname;
         username = username.toLowerCase();
         try {
             Connection myConn = DriverManager.getConnection(CONN_STRING, USERNAME, PASSWORD);
@@ -47,13 +48,18 @@ public class ServiceDispatcher {
             rs = pstmt.executeQuery();
             if (rs.next()) {
                 ID = rs.getInt("ID");
+                firstname = rs.getString("first");
+                lastname = rs.getString("last");
+                badge = rs.getInt("badge");
                 login = true;
                 pstmt = myConn.prepareStatement("UPDATE Users SET online = '1' WHERE ID = ?");
                 pstmt.setInt(1, ID);
                 pstmt.executeUpdate();
-            }
-            if(login == true){
-                //fill in the tab inserts here
+                CurrentUser.setID(ID);
+                CurrentUser.setUsername(username);
+                CurrentUser.setFirstname(firstname);
+                CurrentUser.setLastname(lastname);
+                CurrentUser.setBadgetype(badge);
             }
             myConn.close();
         } catch (Exception e) {
