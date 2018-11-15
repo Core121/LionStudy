@@ -39,6 +39,7 @@ public class GUI extends javax.swing.JFrame {
         this.jTabbedPane2.addTab("Profile",ProfileTab);
         this.jTabbedPane2.addTab("Chat",ChatTab);
         this.jTabbedPane2.addTab("Contacts",ContactsTab);
+        //trying to get the icons in too but it's not working
         this.jTabbedPane2.addTab("Important Services", new ImageIcon(getClass().getResource("/Res/SuperImg.png")), SuperImpTab);
     }
     protected void SetUpModeratorScenario(){
@@ -149,6 +150,10 @@ public class GUI extends javax.swing.JFrame {
         studentRB = new javax.swing.JRadioButton();
         professorRB = new javax.swing.JRadioButton();
         jLabel3 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        firstnamefield = new javax.swing.JTextField();
+        lastnamefield = new javax.swing.JTextField();
         TopPanel = new javax.swing.JPanel();
         LionStudyImage = new javax.swing.JLabel();
         LionStudyText = new javax.swing.JLabel();
@@ -214,7 +219,7 @@ public class GUI extends javax.swing.JFrame {
                         .addComponent(coursesComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(325, Short.MAX_VALUE))
+                .addContainerGap(330, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -667,7 +672,7 @@ public class GUI extends javax.swing.JFrame {
                     .addGroup(LoginTabLayout.createSequentialGroup()
                         .addGap(295, 295, 295)
                         .addComponent(LoginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(272, Short.MAX_VALUE))
+                .addContainerGap(275, Short.MAX_VALUE))
         );
         LoginTabLayout.setVerticalGroup(
             LoginTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -725,6 +730,22 @@ public class GUI extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel3.setText("Who are you?");
 
+        jLabel20.setText("First Name:");
+
+        jLabel21.setText("Last Name:");
+
+        firstnamefield.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                firstnamefieldActionPerformed(evt);
+            }
+        });
+
+        lastnamefield.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lastnamefieldActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout LoginTab1Layout = new javax.swing.GroupLayout(LoginTab1);
         LoginTab1.setLayout(LoginTab1Layout);
         LoginTab1Layout.setHorizontalGroup(
@@ -741,23 +762,37 @@ public class GUI extends javax.swing.JFrame {
                             .addGroup(LoginTab1Layout.createSequentialGroup()
                                 .addGap(147, 147, 147)
                                 .addComponent(jLabel19)))
-                        .addGap(22, 22, 22)
                         .addGroup(LoginTab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(passwordfield2, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(passwordfield1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(usernamefield1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(SignUp, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(LoginTab1Layout.createSequentialGroup()
-                                .addGap(13, 13, 13)
+                                .addGap(41, 41, 41)
                                 .addGroup(LoginTab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(studentRB)
-                                    .addComponent(tutorRB)
+                                    .addComponent(passwordfield2, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(passwordfield1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(usernamefield1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(SignUp, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(LoginTab1Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(LoginTab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(professorRB)
-                                    .addComponent(jLabel3)))))
+                                    .addGroup(LoginTab1Layout.createSequentialGroup()
+                                        .addGroup(LoginTab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(studentRB)
+                                            .addComponent(tutorRB))
+                                        .addGap(44, 44, 44)
+                                        .addGroup(LoginTab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel21)
+                                            .addComponent(jLabel20))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(LoginTab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(firstnamefield, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lastnamefield, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(LoginTab1Layout.createSequentialGroup()
+                                .addGap(54, 54, 54)
+                                .addComponent(jLabel3))))
                     .addGroup(LoginTab1Layout.createSequentialGroup()
                         .addGap(240, 240, 240)
                         .addComponent(LionStudyLoginText1)))
-                .addContainerGap(247, Short.MAX_VALUE))
+                .addContainerGap(118, Short.MAX_VALUE))
         );
         LoginTab1Layout.setVerticalGroup(
             LoginTab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -776,15 +811,23 @@ public class GUI extends javax.swing.JFrame {
                 .addGroup(LoginTab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel19)
                     .addComponent(passwordfield2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(studentRB)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(tutorRB)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(professorRB)
-                .addGap(30, 30, 30)
+                .addGroup(LoginTab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(LoginTab1Layout.createSequentialGroup()
+                        .addGroup(LoginTab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(studentRB)
+                            .addComponent(jLabel20))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(LoginTab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(tutorRB)
+                            .addComponent(jLabel21)
+                            .addComponent(lastnamefield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(professorRB))
+                    .addComponent(firstnamefield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
                 .addComponent(SignUp, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(50, 50, 50))
         );
@@ -950,8 +993,43 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_usernamefield1ActionPerformed
 
     private void SignUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignUpActionPerformed
-        // TODO add your handling code here:
+        int badgetemp=0;
+        boolean login = false;
+        //User left something null
+        if (usernamefield.getText() == "" || passwordfield.getText() == "" || firstnamefield.getText() == "" || lastnamefield.getText() == "") {
+            JOptionPane.showMessageDialog(null, "One or more fields were left empty, please try again", "Empty Field", JOptionPane.INFORMATION_MESSAGE);
+        } 
+        //if everything checks out
+        else {
+            if(studentRB.isSelected()){
+                badgetemp = 1;
+            }
+            else if(tutorRB.isSelected()){
+                badgetemp = 2;
+            }
+            else if (professorRB.isSelected()){
+                badgetemp=3;
+            }
+            Account signup = new Account(usernamefield.getText(), passwordfield.getText(), firstnamefield.getText(), lastnamefield.getText(), badgetemp, 0);
+            ServiceDispatcher sd = new ServiceDispatcher();
+            sd.CreateUser(signup);
+            login = sd.Login(signup.getUsername(), signup.getPassword());
+            if(login == false){
+                JOptionPane.showMessageDialog(null, "Sign up was not successful, please try again", "Sign Up Failure", JOptionPane.INFORMATION_MESSAGE);
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Sign up was successful!", "Success!", JOptionPane.INFORMATION_MESSAGE);
+            }
+        }
     }//GEN-LAST:event_SignUpActionPerformed
+
+    private void firstnamefieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_firstnamefieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_firstnamefieldActionPerformed
+
+    private void lastnamefieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lastnamefieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lastnamefieldActionPerformed
 
     /**
      * @param args the command line arguments
@@ -980,6 +1058,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> coursesComboBox;
     private javax.swing.JComboBox<String> coursesComboBox1;
     private javax.swing.JTextField emailProfileField;
+    private javax.swing.JTextField firstnamefield;
     private javax.swing.JTextField fnameFilterTextField1;
     private javax.swing.JTextField fnameProfileField;
     private javax.swing.JButton jButton1;
@@ -1003,6 +1082,8 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1026,6 +1107,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextArea jTextArea3;
     private javax.swing.JTextArea jTextArea4;
     private java.awt.Label label1;
+    private javax.swing.JTextField lastnamefield;
     private javax.swing.JTextField lnameFilterTextField1;
     private javax.swing.JTextField lnameProfileField;
     private javax.swing.JTextField messageField;

@@ -123,7 +123,7 @@
                                   <Component id="searchButton" min="-2" pref="84" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace pref="325" max="32767" attributes="0"/>
+                          <EmptySpace pref="330" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -987,7 +987,7 @@
                               <Component id="LoginButton" min="-2" pref="98" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="272" max="32767" attributes="0"/>
+                      <EmptySpace pref="275" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1109,20 +1109,41 @@
                                           <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="passwordfield2" min="-2" pref="156" max="-2" attributes="0"/>
-                                      <Component id="passwordfield1" alignment="0" min="-2" pref="156" max="-2" attributes="0"/>
-                                      <Component id="usernamefield1" alignment="0" min="-2" pref="156" max="-2" attributes="0"/>
-                                      <Component id="SignUp" alignment="0" min="-2" pref="98" max="-2" attributes="0"/>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
+                                      <Group type="102" attributes="0">
+                                          <EmptySpace min="41" pref="41" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="studentRB" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="tutorRB" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="professorRB" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="passwordfield2" min="-2" pref="156" max="-2" attributes="0"/>
+                                              <Component id="passwordfield1" alignment="0" min="-2" pref="156" max="-2" attributes="0"/>
+                                              <Component id="usernamefield1" alignment="0" min="-2" pref="156" max="-2" attributes="0"/>
+                                              <Component id="SignUp" alignment="0" min="-2" pref="98" max="-2" attributes="0"/>
                                           </Group>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace min="-2" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="professorRB" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Group type="103" groupAlignment="0" attributes="0">
+                                                      <Component id="studentRB" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="tutorRB" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+                                                  <Group type="103" groupAlignment="0" attributes="0">
+                                                      <Component id="jLabel21" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="jLabel20" min="-2" max="-2" attributes="0"/>
+                                                  </Group>
+                                              </Group>
+                                          </Group>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="firstnamefield" min="-2" pref="156" max="-2" attributes="0"/>
+                                              <Component id="lastnamefield" alignment="0" min="-2" pref="156" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
+                                          <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -1131,7 +1152,7 @@
                                   <Component id="LionStudyLoginText1" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace pref="247" max="32767" attributes="0"/>
+                          <EmptySpace pref="118" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1155,15 +1176,27 @@
                               <Component id="jLabel19" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="passwordfield2" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="22" max="32767" attributes="0"/>
+                          <EmptySpace pref="17" max="32767" attributes="0"/>
                           <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="studentRB" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="tutorRB" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="professorRB" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="studentRB" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel20" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="tutorRB" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel21" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lastnamefield" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="professorRB" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="firstnamefield" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                           <Component id="SignUp" min="-2" pref="40" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
                       </Group>
@@ -1245,6 +1278,26 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Who are you?"/>
                   </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel20">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="First Name:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel21">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Last Name:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="firstnamefield">
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="firstnamefieldActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JTextField" name="lastnamefield">
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="lastnamefieldActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
