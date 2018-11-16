@@ -16,7 +16,7 @@ public class CurrentUser {
     public static String password;
     public static String firstname;
     public static String lastname;
-
+    
     public CurrentUser(String username, String password, String firstname, String lastname, int badgetype, int ID) {
         this.username = username;
         this.password = password;

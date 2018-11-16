@@ -1,4 +1,5 @@
 package lionstudy;
+import java.awt.Font;
 import lionstudy.Classes.*;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
@@ -22,6 +23,8 @@ public class GUI extends javax.swing.JFrame {
     public GUI() {
         initComponents();
     }
+    
+    CurrentUser CU;
     
     //only works at very beginning
     protected void SetUpLoginScenario(){
@@ -84,8 +87,11 @@ public class GUI extends javax.swing.JFrame {
         InteractionPanel = new javax.swing.JPanel();
         messageField = new javax.swing.JTextField();
         submitButton = new javax.swing.JButton();
+        chatPanel = new javax.swing.JPanel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        chatTextArea = new javax.swing.JTextArea();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
+        incomeChatArea = new javax.swing.JTextArea();
         ProfileTab = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
@@ -223,7 +229,7 @@ public class GUI extends javax.swing.JFrame {
                         .addComponent(coursesComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(330, Short.MAX_VALUE))
+                .addContainerGap(373, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -272,6 +278,11 @@ public class GUI extends javax.swing.JFrame {
                 submitButtonActionPerformed(evt);
             }
         });
+        submitButton.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                submitButtonKeyPressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout InteractionPanelLayout = new javax.swing.GroupLayout(InteractionPanel);
         InteractionPanel.setLayout(InteractionPanelLayout);
@@ -296,11 +307,21 @@ public class GUI extends javax.swing.JFrame {
 
         ChatTab.add(InteractionPanel, java.awt.BorderLayout.PAGE_END);
 
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jScrollPane2.setViewportView(jTextArea2);
+        chatPanel.setLayout(new java.awt.GridLayout());
 
-        ChatTab.add(jScrollPane2, java.awt.BorderLayout.CENTER);
+        chatTextArea.setColumns(20);
+        chatTextArea.setRows(5);
+        jScrollPane5.setViewportView(chatTextArea);
+
+        chatPanel.add(jScrollPane5);
+
+        incomeChatArea.setColumns(20);
+        incomeChatArea.setRows(5);
+        jScrollPane2.setViewportView(incomeChatArea);
+
+        chatPanel.add(jScrollPane2);
+
+        ChatTab.add(chatPanel, java.awt.BorderLayout.CENTER);
 
         jTabbedPane2.addTab("Chat", new javax.swing.ImageIcon(getClass().getResource("/Res/ChatImg.png")), ChatTab); // NOI18N
 
@@ -595,7 +616,7 @@ public class GUI extends javax.swing.JFrame {
                     .addGroup(SuperImpTabLayout.createSequentialGroup()
                         .addGap(272, 272, 272)
                         .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(214, Short.MAX_VALUE))
+                .addContainerGap(254, Short.MAX_VALUE))
         );
         SuperImpTabLayout.setVerticalGroup(
             SuperImpTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -626,7 +647,7 @@ public class GUI extends javax.swing.JFrame {
         ModOptions.setLayout(ModOptionsLayout);
         ModOptionsLayout.setHorizontalGroup(
             ModOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 736, Short.MAX_VALUE)
+            .addGap(0, 776, Short.MAX_VALUE)
         );
         ModOptionsLayout.setVerticalGroup(
             ModOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -676,7 +697,7 @@ public class GUI extends javax.swing.JFrame {
                     .addGroup(LoginTabLayout.createSequentialGroup()
                         .addGap(295, 295, 295)
                         .addComponent(LoginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(275, Short.MAX_VALUE))
+                .addContainerGap(315, Short.MAX_VALUE))
         );
         LoginTabLayout.setVerticalGroup(
             LoginTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -843,7 +864,7 @@ public class GUI extends javax.swing.JFrame {
         SignUpTab.setLayout(SignUpTabLayout);
         SignUpTabLayout.setHorizontalGroup(
             SignUpTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 736, Short.MAX_VALUE)
+            .addGap(0, 776, Short.MAX_VALUE)
             .addGroup(SignUpTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(SignUpTabLayout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -936,7 +957,35 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_messageFieldActionPerformed
 
     private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
-        // TODO add your handling code here:
+        // This button handles a chat message submission
+        
+        Font f = new Font(Font.SERIF, Font.BOLD, 14);
+        String message = "";
+        message = messageField.getText();
+        
+        /*
+        Displays given text to the outgoing message Text Area
+        */
+        chatTextArea.append("\n---");
+        chatTextArea.setFont(f);
+        chatTextArea.append(CU.getUsername());
+        chatTextArea.append("---\n");
+        chatTextArea.append(message);
+        chatTextArea.append("\n");
+        
+        /*
+        Formats incoming chat message field to fit the form of a chat dialog
+        */
+        incomeChatArea.setFont(f);
+        incomeChatArea.append("\n\n\n");
+        incomeChatArea.append("---" + CU.getUsername() + "---\n" + "Test Format");
+        
+        
+        messageField.setText("");
+        
+        /*
+        Call function to send message via dispatcher
+        */
     }//GEN-LAST:event_submitButtonActionPerformed
 
     private void coursesComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_coursesComboBoxActionPerformed
@@ -1059,7 +1108,15 @@ public class GUI extends javax.swing.JFrame {
         ServiceDispatcher sd = new ServiceDispatcher();
         sd.logout();
         this.SetUpLoginScenario();
+        chatTextArea.setText("");
     }//GEN-LAST:event_LogoutButtonActionPerformed
+
+    private void submitButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_submitButtonKeyPressed
+        // DO *NOT* IMPLEMENT THIS FUNCTION
+        // ITS BAD JUJU
+        // GARUNTEED WILL BRING TERROR AND MISFORTUNE TO YOUR FAMILY FOR GENERATIONS
+        // Seriously plez don't
+    }//GEN-LAST:event_submitButtonKeyPressed
 
     /**
      * @param args the command line arguments
@@ -1086,12 +1143,15 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JPanel SuperImpTab;
     private javax.swing.JPanel TopPanel;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JPanel chatPanel;
+    private javax.swing.JTextArea chatTextArea;
     private javax.swing.JComboBox<String> coursesComboBox;
     private javax.swing.JComboBox<String> coursesComboBox1;
     private javax.swing.JTextField emailProfileField;
     private javax.swing.JTextField firstnamefield;
     private javax.swing.JTextField fnameFilterTextField1;
     private javax.swing.JTextField fnameProfileField;
+    private javax.swing.JTextArea incomeChatArea;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -1132,9 +1192,10 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextArea jTextArea3;
     private javax.swing.JTextArea jTextArea4;
     private java.awt.Label label1;
