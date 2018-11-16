@@ -43,8 +43,6 @@ public class GUI extends javax.swing.JFrame {
         this.jTabbedPane2.addTab("Profile",ProfileTab);
         this.jTabbedPane2.addTab("Chat",ChatTab);
         this.jTabbedPane2.addTab("Contacts",ContactsTab);
-        //trying to get the icons in too but it's not working
-        this.jTabbedPane2.addTab("Important Services", new ImageIcon(getClass().getResource("/Res/SuperImg.png")), SuperImpTab);
     }
     protected void SetUpModeratorScenario(){
         this.LogoutButton.setVisible(true);
