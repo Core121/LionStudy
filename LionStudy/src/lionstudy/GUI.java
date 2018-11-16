@@ -1,4 +1,5 @@
 package lionstudy;
+import java.awt.Font;
 import lionstudy.Classes.*;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
@@ -22,6 +23,8 @@ public class GUI extends javax.swing.JFrame {
     public GUI() {
         initComponents();
     }
+    
+    CurrentUser CU;
     
     //only works at very beginning
     protected void SetUpLoginScenario(){
@@ -87,7 +90,7 @@ public class GUI extends javax.swing.JFrame {
         messageField = new javax.swing.JTextField();
         submitButton = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
+        chatTextArea = new javax.swing.JTextArea();
         ProfileTab = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
@@ -298,9 +301,9 @@ public class GUI extends javax.swing.JFrame {
 
         ChatTab.add(InteractionPanel, java.awt.BorderLayout.PAGE_END);
 
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jScrollPane2.setViewportView(jTextArea2);
+        chatTextArea.setColumns(20);
+        chatTextArea.setRows(5);
+        jScrollPane2.setViewportView(chatTextArea);
 
         ChatTab.add(jScrollPane2, java.awt.BorderLayout.CENTER);
 
@@ -938,7 +941,24 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_messageFieldActionPerformed
 
     private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
-        // TODO add your handling code here:
+        // This button handles a chat message submission
+        
+        Font f = new Font(Font.SERIF, Font.BOLD, 14);
+        String message = "";
+        message = messageField.getText();
+        
+        chatTextArea.append("\n---");
+        chatTextArea.setFont(f);
+        chatTextArea.append(CU.getUsername());
+        chatTextArea.append("---\n");
+        chatTextArea.append(message);
+        chatTextArea.append("\n");
+        
+        messageField.setText("");
+        
+        /*
+        Call function to send message via dispatcher
+        */
     }//GEN-LAST:event_submitButtonActionPerformed
 
     private void coursesComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_coursesComboBoxActionPerformed
@@ -1088,6 +1108,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JPanel SuperImpTab;
     private javax.swing.JPanel TopPanel;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JTextArea chatTextArea;
     private javax.swing.JComboBox<String> coursesComboBox;
     private javax.swing.JComboBox<String> coursesComboBox1;
     private javax.swing.JTextField emailProfileField;
@@ -1136,7 +1157,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextArea jTextArea3;
     private javax.swing.JTextArea jTextArea4;
     private java.awt.Label label1;
