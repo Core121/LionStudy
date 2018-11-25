@@ -158,5 +158,33 @@ public class ServiceDispatcher {
         }
         return classes;
     }
+    
+    //Adds a class to the current user, taking the classname as a parameter
+    public void AddClasstoUser(String classname) {
+        try {
+            Connection myConn = DriverManager.getConnection(CONN_STRING, USERNAME, PASSWORD);
+            stmt = myConn.createStatement();
+            PreparedStatement pstmt = myConn.prepareStatement("INSERT INTO `UserClasses`(Username,ClassName) VALUES (?, ?)");
+            pstmt.setString(1, CurrentUser.getUsername());
+            pstmt.setString(2, classname);
+            pstmt.executeUpdate();
+            myConn.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+    public void DeleteClassfromUser(String classname) {
+        try {
+            Connection myConn = DriverManager.getConnection(CONN_STRING, USERNAME, PASSWORD);
+            stmt = myConn.createStatement();
+            PreparedStatement pstmt = myConn.prepareStatement("DELETE FROM `UserClasses` WHERE Username = ? AND ClassName = ?");
+            pstmt.setString(1, CurrentUser.getUsername());
+            pstmt.setString(2, classname);
+            pstmt.executeUpdate();
+            myConn.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
 
 }
