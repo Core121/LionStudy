@@ -1005,19 +1005,8 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_submitButtonActionPerformed
 
     private void coursesComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_coursesComboBoxActionPerformed
-        // TODO add your handling code here:
-    ServiceDispatcher serviceDispatch = new ServiceDispatcher();
-    ArrayList<String> allClassesList = serviceDispatch.GetAllClasses();
-    
-    coursesComboBox.setModel(new DefaultComboBoxModel(allClassesList.toArray()));
-    
-//    for (int i = 0; i < allClassesList.size(); i++) 
-//    coursesComboBox.addItem(allClassesList.get(i));
-    
-//    coursesComboBox = new JComboBox(allClassesList.toArray());
-        
-        
-        
+
+                
         
     }//GEN-LAST:event_coursesComboBoxActionPerformed
 
@@ -1105,6 +1094,10 @@ public class GUI extends javax.swing.JFrame {
                for(int x = 0; x<Classes.size(); x++){
                    this.CourseListTextArea.append(Classes.get(x) + "\n");
                }*/
+                ;
+    ArrayList<String> allClassesList = sd.GetAllClasses();
+    
+    this.coursesComboBox.setModel(new DefaultComboBoxModel(allClassesList.toArray()));
                
                //Fills in all contacts
                ArrayList<Account> Contacts = sd.GetAllUsersContacts();
