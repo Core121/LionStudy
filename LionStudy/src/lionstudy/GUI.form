@@ -215,6 +215,7 @@
               <SubComponents>
                 <Component class="javax.swing.JTextArea" name="jTextArea1">
                   <Properties>
+                    <Property name="editable" type="boolean" value="false"/>
                     <Property name="columns" type="int" value="20"/>
                     <Property name="rows" type="int" value="5"/>
                   </Properties>
@@ -395,11 +396,6 @@
                     <Property name="text" type="java.lang.String" value="Username:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel11">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Email:"/>
-                  </Properties>
-                </Component>
                 <Component class="javax.swing.JLabel" name="jLabel12">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Account Type:"/>
@@ -452,6 +448,7 @@
                   <SubComponents>
                     <Component class="javax.swing.JTextArea" name="jTextArea4">
                       <Properties>
+                        <Property name="editable" type="boolean" value="false"/>
                         <Property name="columns" type="int" value="20"/>
                         <Property name="rows" type="int" value="5"/>
                       </Properties>
@@ -474,6 +471,7 @@
               <SubComponents>
                 <Component class="javax.swing.JTextField" name="fnameProfileField">
                   <Properties>
+                    <Property name="editable" type="boolean" value="false"/>
                     <Property name="text" type="java.lang.String" value="Johny"/>
                   </Properties>
                   <Events>
@@ -482,21 +480,19 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="lnameProfileField">
                   <Properties>
+                    <Property name="editable" type="boolean" value="false"/>
                     <Property name="text" type="java.lang.String" value="Appleseed"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="usernameProfileField">
                   <Properties>
+                    <Property name="editable" type="boolean" value="false"/>
                     <Property name="text" type="java.lang.String" value="jman2theA"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JTextField" name="emailProfileField">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="ja567@psu.edu"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="typeProfileField">
                   <Properties>
+                    <Property name="editable" type="boolean" value="false"/>
                     <Property name="text" type="java.lang.String" value="Pleb (Student)"/>
                   </Properties>
                 </Component>
@@ -667,25 +663,16 @@
                   </Events>
                 </Component>
                 <Component class="javax.swing.JTextField" name="fnameFilterTextField1">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Johny"/>
-                  </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="fnameFilterTextField1ActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JTextField" name="lnameFilterTextField1">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Appleseed"/>
-                  </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="lnameFilterTextField1ActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JTextField" name="usernameFilterTextField1">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Johny"/>
-                  </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="usernameFilterTextField1ActionPerformed"/>
                   </Events>
@@ -753,6 +740,7 @@
               <SubComponents>
                 <Component class="javax.swing.JTextArea" name="jTextArea3">
                   <Properties>
+                    <Property name="editable" type="boolean" value="false"/>
                     <Property name="columns" type="int" value="20"/>
                     <Property name="rows" type="int" value="5"/>
                   </Properties>

@@ -97,7 +97,6 @@ public class GUI extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
@@ -107,7 +106,6 @@ public class GUI extends javax.swing.JFrame {
         fnameProfileField = new javax.swing.JTextField();
         lnameProfileField = new javax.swing.JTextField();
         usernameProfileField = new javax.swing.JTextField();
-        emailProfileField = new javax.swing.JTextField();
         typeProfileField = new javax.swing.JTextField();
         ContactsTab = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
@@ -249,6 +247,7 @@ public class GUI extends javax.swing.JFrame {
 
         SearchTab.add(jPanel1, java.awt.BorderLayout.PAGE_START);
 
+        jTextArea1.setEditable(false);
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
@@ -307,7 +306,7 @@ public class GUI extends javax.swing.JFrame {
 
         ChatTab.add(InteractionPanel, java.awt.BorderLayout.PAGE_END);
 
-        chatPanel.setLayout(new java.awt.GridLayout());
+        chatPanel.setLayout(new java.awt.GridLayout(1, 0));
 
         chatTextArea.setColumns(20);
         chatTextArea.setRows(5);
@@ -338,9 +337,6 @@ public class GUI extends javax.swing.JFrame {
         jLabel2.setText("Username:");
         jPanel3.add(jLabel2);
 
-        jLabel11.setText("Email:");
-        jPanel3.add(jLabel11);
-
         jLabel12.setText("Account Type:");
         jPanel3.add(jLabel12);
 
@@ -350,6 +346,7 @@ public class GUI extends javax.swing.JFrame {
 
         jLabel13.setText("CourseList:");
 
+        jTextArea4.setEditable(false);
         jTextArea4.setColumns(20);
         jTextArea4.setRows(5);
         jScrollPane4.setViewportView(jTextArea4);
@@ -373,6 +370,7 @@ public class GUI extends javax.swing.JFrame {
 
         jPanel6.setLayout(new java.awt.GridLayout(0, 1));
 
+        fnameProfileField.setEditable(false);
         fnameProfileField.setText("Johny");
         fnameProfileField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -381,15 +379,15 @@ public class GUI extends javax.swing.JFrame {
         });
         jPanel6.add(fnameProfileField);
 
+        lnameProfileField.setEditable(false);
         lnameProfileField.setText("Appleseed");
         jPanel6.add(lnameProfileField);
 
+        usernameProfileField.setEditable(false);
         usernameProfileField.setText("jman2theA");
         jPanel6.add(usernameProfileField);
 
-        emailProfileField.setText("ja567@psu.edu");
-        jPanel6.add(emailProfileField);
-
+        typeProfileField.setEditable(false);
         typeProfileField.setText("Pleb (Student)");
         jPanel6.add(typeProfileField);
 
@@ -431,21 +429,18 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        fnameFilterTextField1.setText("Johny");
         fnameFilterTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 fnameFilterTextField1ActionPerformed(evt);
             }
         });
 
-        lnameFilterTextField1.setText("Appleseed");
         lnameFilterTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 lnameFilterTextField1ActionPerformed(evt);
             }
         });
 
-        usernameFilterTextField1.setText("Johny");
         usernameFilterTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 usernameFilterTextField1ActionPerformed(evt);
@@ -538,6 +533,7 @@ public class GUI extends javax.swing.JFrame {
 
         ContactsTab.add(jPanel2, java.awt.BorderLayout.PAGE_START);
 
+        jTextArea3.setEditable(false);
         jTextArea3.setColumns(20);
         jTextArea3.setRows(5);
         jScrollPane3.setViewportView(jTextArea3);
@@ -1043,11 +1039,45 @@ public class GUI extends javax.swing.JFrame {
                 //Student or Tutor
                 if(CurrentUser.getBadgetype() == 1 || CurrentUser.getBadgetype() == 2 || CurrentUser.getBadgetype() == 3){
                     this.SetUpNormalUserScenario();
+                    if(CurrentUser.getBadgetype() == 1){
+                        this.typeProfileField.setText("Student");
+                    }
+                    else if(CurrentUser.getBadgetype() == 1){
+                        this.typeProfileField.setText("Tutor");
+                    }
+                    else if(CurrentUser.getBadgetype() == 1){
+                        this.typeProfileField.setText("Teacher");
+                    }
                 }
                 //Moderator
                 else if(CurrentUser.getBadgetype() == 4){
                    this.SetUpModeratorScenario();
+                   this.typeProfileField.setText("Moderator");
                 }
+                
+                //Fills in the users classes on the profile tab
+               ArrayList<String> UsersClasses = sd.GetAllUsersClasses();
+               for(int x = 0; x<UsersClasses.size(); x++){
+                   this.jTextArea4.append(UsersClasses.get(x) + "\n");
+               }
+               
+               //Fills in the Profile Tab
+               this.fnameProfileField.setText(CurrentUser.getFirstname());
+               this.lnameProfileField.setText(CurrentUser.getLastname());
+               this.usernameProfileField.setText(CurrentUser.getUsername());
+ 
+               
+               //Fills in all classes
+               ArrayList<String> Classes = sd.GetAllClasses();
+               for(int x = 0; x<Classes.size(); x++){
+                   this.jTextArea1.append(Classes.get(x) + "\n");
+               }
+               
+               //Fills in all contacts
+               ArrayList<Account> Contacts = sd.GetAllUsersContacts();
+               for(int x = 0; x<Contacts.size(); x++){
+               this.jTextArea3.append(Contacts.get(x).toString()+"\n");
+               }
             } else {
                 JOptionPane.showMessageDialog(null, "The username or password was incorrect, please try again", "Incorrect Username/Password", JOptionPane.INFORMATION_MESSAGE);
             }
@@ -1146,7 +1176,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextArea chatTextArea;
     private javax.swing.JComboBox<String> coursesComboBox;
     private javax.swing.JComboBox<String> coursesComboBox1;
-    private javax.swing.JTextField emailProfileField;
     private javax.swing.JTextField firstnamefield;
     private javax.swing.JTextField fnameFilterTextField1;
     private javax.swing.JTextField fnameProfileField;
@@ -1162,7 +1191,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
@@ -1192,7 +1220,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea3;
