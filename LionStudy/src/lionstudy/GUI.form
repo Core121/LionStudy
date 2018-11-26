@@ -1331,7 +1331,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="LogoutButton" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
-                  <Component id="LionStudyText" min="-2" pref="181" max="-2" attributes="0"/>
+                  <Component id="LionStudyText" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="134" max="-2" attributes="0"/>
                   <Component id="LionStudyImage" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>

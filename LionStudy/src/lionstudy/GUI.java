@@ -908,7 +908,7 @@ public class GUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(LogoutButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(LionStudyText, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(LionStudyText)
                 .addGap(134, 134, 134)
                 .addComponent(LionStudyImage)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1101,10 +1101,10 @@ public class GUI extends javax.swing.JFrame {
  
                
                //Fills in all classes
-               ArrayList<String> Classes = sd.GetAllClasses();
+               /*ArrayList<String> Classes = sd.GetAllClasses();
                for(int x = 0; x<Classes.size(); x++){
                    this.CourseListTextArea.append(Classes.get(x) + "\n");
-               }
+               }*/
                
                //Fills in all contacts
                ArrayList<Account> Contacts = sd.GetAllUsersContacts();
