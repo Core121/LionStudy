@@ -18,7 +18,7 @@ public class CurrentUser {
     public static String lastname;
     
     public CurrentUser(String username, String password, String firstname, String lastname, int badgetype, int ID) {
-        this.username = username;
+        this.username = username.toLowerCase();
         this.password = password;
         this.firstname = firstname;
         this.lastname = lastname;
@@ -48,7 +48,7 @@ public class CurrentUser {
     }
 
     public static void setUsername(String username) {
-        CurrentUser.username = username;
+        CurrentUser.username = username.toLowerCase();
     }
 
     public static String getPassword() {
