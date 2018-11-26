@@ -1050,7 +1050,6 @@ public class GUI extends javax.swing.JFrame {
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "The username or password was incorrect, please try again", "Incorrect Username/Password", JOptionPane.INFORMATION_MESSAGE);
-
             }
         }
     }//GEN-LAST:event_LoginButtonActionPerformed
