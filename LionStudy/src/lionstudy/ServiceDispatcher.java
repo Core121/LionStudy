@@ -173,6 +173,7 @@ public class ServiceDispatcher {
             System.out.println(e);
         }
     }
+    
     public void DeleteClassfromUser(String classname) {
         try {
             Connection myConn = DriverManager.getConnection(CONN_STRING, USERNAME, PASSWORD);
@@ -187,4 +188,69 @@ public class ServiceDispatcher {
         }
     }
 
+    public void AddUserContact(String ContactUsername) {
+        try {
+            ContactUsername = ContactUsername.toLowerCase();
+            Connection myConn = DriverManager.getConnection(CONN_STRING, USERNAME, PASSWORD);
+            stmt = myConn.createStatement();
+            PreparedStatement pstmt = myConn.prepareStatement("INSERT INTO `Contacts`(username, ContactUsername) VALUES (?, ?)");
+            pstmt.setString(1, CurrentUser.getUsername());
+            pstmt.setString(2, ContactUsername);
+            pstmt.executeUpdate();
+            myConn.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+    
+    public void DeleteUserContact(String ContactUsername) {
+        try {
+            ContactUsername = ContactUsername.toLowerCase();
+            Connection myConn = DriverManager.getConnection(CONN_STRING, USERNAME, PASSWORD);
+            stmt = myConn.createStatement();
+            PreparedStatement pstmt = myConn.prepareStatement("DELETE FROM `Contacts` WHERE username = ? AND ContactUsername = ?");
+            pstmt.setString(1, CurrentUser.getUsername());
+            pstmt.setString(2, ContactUsername);
+            pstmt.executeUpdate();
+            myConn.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    public ArrayList<Account> GetAllUsersContacts() {
+        ArrayList<Account> Contacts = new ArrayList<Account>();
+        try {
+            String usernamec = "";
+            Connection myConn = DriverManager.getConnection(CONN_STRING, USERNAME, PASSWORD);
+            stmt = myConn.createStatement();
+            PreparedStatement pstmt = myConn.prepareStatement("SELECT * FROM Contacts WHERE username = ?");
+            pstmt.setString(1, CurrentUser.getUsername());
+            rs = pstmt.executeQuery();
+            while (rs.next()) {
+                usernamec = rs.getString("ContactUsername");
+                System.out.println(usernamec);
+                pstmt = myConn.prepareStatement("SELECT * FROM Users WHERE username = ?");
+                pstmt.setString(1, usernamec);
+                ResultSet rst = pstmt.executeQuery();
+                while (rst.next()) {
+                    String username = rst.getString("username");
+                    String password = "";
+                    String firstName = rst.getString("first");
+                    String lastName = rst.getString("last");
+                    int badgetype = rst.getInt("badge");
+                    int ID = rst.getInt("ID");
+                    int online = rst.getInt("online");
+                    Account temp = new Account(username, password, firstName, lastName, badgetype, ID);
+                    temp.setOnline(online);
+                    Contacts.add(temp);
+                }
+            }
+            myConn.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return Contacts;
+    }
+    
 }
