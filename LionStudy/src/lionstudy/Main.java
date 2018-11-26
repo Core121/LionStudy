@@ -48,9 +48,5 @@ public class Main {
         });
         ServiceDispatcher s_dispatch = new ServiceDispatcher();
         s_dispatch.TestConnect();
-        
-      
-        
-        
     }
 }
