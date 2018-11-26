@@ -84,7 +84,7 @@ public class GUI extends javax.swing.JFrame {
         searchButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        CourseListTextArea = new javax.swing.JTextArea();
         ChatTab = new javax.swing.JPanel();
         InteractionPanel = new javax.swing.JPanel();
         messageField = new javax.swing.JTextField();
@@ -96,14 +96,14 @@ public class GUI extends javax.swing.JFrame {
         incomeChatArea = new javax.swing.JTextArea();
         ProfileTab = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
+        firstnamelabel = new javax.swing.JLabel();
+        lastnamelabel = new javax.swing.JLabel();
+        usernamelabel = new javax.swing.JLabel();
+        accountlabel = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
-        jLabel13 = new javax.swing.JLabel();
+        CourseListText = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTextArea4 = new javax.swing.JTextArea();
+        usercourselistarea = new javax.swing.JTextArea();
         jPanel6 = new javax.swing.JPanel();
         fnameProfileField = new javax.swing.JTextField();
         lnameProfileField = new javax.swing.JTextField();
@@ -125,7 +125,7 @@ public class GUI extends javax.swing.JFrame {
         searchButton1 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTextArea3 = new javax.swing.JTextArea();
+        ContactsTextArea = new javax.swing.JTextArea();
         SuperImpTab = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -139,8 +139,8 @@ public class GUI extends javax.swing.JFrame {
         label1 = new java.awt.Label();
         ModOptions = new javax.swing.JPanel();
         LoginTab = new javax.swing.JPanel();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
+        PasswordText = new javax.swing.JLabel();
+        UsernameText = new javax.swing.JLabel();
         passwordfield = new javax.swing.JPasswordField();
         usernamefield = new javax.swing.JTextField();
         LoginButton = new javax.swing.JButton();
@@ -149,18 +149,18 @@ public class GUI extends javax.swing.JFrame {
         LoginTab1 = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
-        passwordfield1 = new javax.swing.JPasswordField();
-        usernamefield1 = new javax.swing.JTextField();
+        passwordfieldsignup = new javax.swing.JPasswordField();
+        usernamefieldsignup = new javax.swing.JTextField();
         SignUp = new javax.swing.JButton();
         jLabel19 = new javax.swing.JLabel();
-        passwordfield2 = new javax.swing.JPasswordField();
+        passwordfieldsignupreenter = new javax.swing.JPasswordField();
         LionStudyLoginText1 = new javax.swing.JLabel();
         tutorRB = new javax.swing.JRadioButton();
         studentRB = new javax.swing.JRadioButton();
         professorRB = new javax.swing.JRadioButton();
         jLabel3 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
-        jLabel21 = new javax.swing.JLabel();
+        Firstnametext = new javax.swing.JLabel();
+        lastnametext = new javax.swing.JLabel();
         firstnamefield = new javax.swing.JTextField();
         lastnamefield = new javax.swing.JTextField();
         TopPanel = new javax.swing.JPanel();
@@ -249,10 +249,10 @@ public class GUI extends javax.swing.JFrame {
 
         SearchTab.add(jPanel1, java.awt.BorderLayout.PAGE_START);
 
-        jTextArea1.setEditable(false);
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        CourseListTextArea.setEditable(false);
+        CourseListTextArea.setColumns(20);
+        CourseListTextArea.setRows(5);
+        jScrollPane1.setViewportView(CourseListTextArea);
 
         SearchTab.add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
@@ -330,40 +330,40 @@ public class GUI extends javax.swing.JFrame {
 
         jPanel3.setLayout(new java.awt.GridLayout(0, 1));
 
-        jLabel9.setText("First Name:");
-        jPanel3.add(jLabel9);
+        firstnamelabel.setText("First Name:");
+        jPanel3.add(firstnamelabel);
 
-        jLabel10.setText("Last Name:");
-        jPanel3.add(jLabel10);
+        lastnamelabel.setText("Last Name:");
+        jPanel3.add(lastnamelabel);
 
-        jLabel2.setText("Username:");
-        jPanel3.add(jLabel2);
+        usernamelabel.setText("Username:");
+        jPanel3.add(usernamelabel);
 
-        jLabel12.setText("Account Type:");
-        jPanel3.add(jLabel12);
+        accountlabel.setText("Account Type:");
+        jPanel3.add(accountlabel);
 
         ProfileTab.add(jPanel3, java.awt.BorderLayout.LINE_START);
 
         jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 102)));
 
-        jLabel13.setText("CourseList:");
+        CourseListText.setText("CourseList:");
 
-        jTextArea4.setEditable(false);
-        jTextArea4.setColumns(20);
-        jTextArea4.setRows(5);
-        jScrollPane4.setViewportView(jTextArea4);
+        usercourselistarea.setEditable(false);
+        usercourselistarea.setColumns(20);
+        usercourselistarea.setRows(5);
+        jScrollPane4.setViewportView(usercourselistarea);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(CourseListText, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(CourseListText, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 403, Short.MAX_VALUE))
         );
@@ -535,10 +535,10 @@ public class GUI extends javax.swing.JFrame {
 
         ContactsTab.add(jPanel2, java.awt.BorderLayout.PAGE_START);
 
-        jTextArea3.setEditable(false);
-        jTextArea3.setColumns(20);
-        jTextArea3.setRows(5);
-        jScrollPane3.setViewportView(jTextArea3);
+        ContactsTextArea.setEditable(false);
+        ContactsTextArea.setColumns(20);
+        ContactsTextArea.setRows(5);
+        jScrollPane3.setViewportView(ContactsTextArea);
 
         ContactsTab.add(jScrollPane3, java.awt.BorderLayout.CENTER);
 
@@ -654,9 +654,9 @@ public class GUI extends javax.swing.JFrame {
 
         jTabbedPane2.addTab("Moderator Options", ModOptions);
 
-        jLabel14.setText("Password:");
+        PasswordText.setText("Password:");
 
-        jLabel16.setText("Username:");
+        UsernameText.setText("Username:");
 
         usernamefield.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -686,8 +686,8 @@ public class GUI extends javax.swing.JFrame {
                     .addGroup(LoginTabLayout.createSequentialGroup()
                         .addGap(213, 213, 213)
                         .addGroup(LoginTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel16)
-                            .addComponent(jLabel14))
+                            .addComponent(UsernameText)
+                            .addComponent(PasswordText))
                         .addGap(18, 18, 18)
                         .addGroup(LoginTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(passwordfield, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -704,18 +704,18 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(LionStudyLoginText, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24)
                 .addGroup(LoginTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel16)
+                    .addComponent(UsernameText)
                     .addComponent(usernamefield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addGroup(LoginTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(passwordfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel14))
+                    .addComponent(PasswordText))
                 .addGap(42, 42, 42)
                 .addComponent(LoginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(153, Short.MAX_VALUE))
         );
 
-        jLabel14.getAccessibleContext().setAccessibleName("passwordtext");
+        PasswordText.getAccessibleContext().setAccessibleName("passwordtext");
 
         jTabbedPane2.addTab("Login", LoginTab);
 
@@ -723,9 +723,9 @@ public class GUI extends javax.swing.JFrame {
 
         jLabel18.setText("Username:");
 
-        usernamefield1.addActionListener(new java.awt.event.ActionListener() {
+        usernamefieldsignup.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                usernamefield1ActionPerformed(evt);
+                usernamefieldsignupActionPerformed(evt);
             }
         });
 
@@ -754,9 +754,9 @@ public class GUI extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel3.setText("Who are you?");
 
-        jLabel20.setText("First Name:");
+        Firstnametext.setText("First Name:");
 
-        jLabel21.setText("Last Name:");
+        lastnametext.setText("Last Name:");
 
         firstnamefield.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -790,9 +790,9 @@ public class GUI extends javax.swing.JFrame {
                             .addGroup(LoginTab1Layout.createSequentialGroup()
                                 .addGap(41, 41, 41)
                                 .addGroup(LoginTab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(passwordfield2, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(passwordfield1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(usernamefield1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(passwordfieldsignupreenter, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(passwordfieldsignup, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(usernamefieldsignup, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(SignUp, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(LoginTab1Layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -804,8 +804,8 @@ public class GUI extends javax.swing.JFrame {
                                             .addComponent(tutorRB))
                                         .addGap(44, 44, 44)
                                         .addGroup(LoginTab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel21)
-                                            .addComponent(jLabel20))))
+                                            .addComponent(lastnametext)
+                                            .addComponent(Firstnametext))))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(LoginTab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(firstnamefield, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -825,16 +825,16 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(LionStudyLoginText1, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
                 .addGroup(LoginTab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(usernamefield1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(usernamefieldsignup, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel18))
                 .addGap(27, 27, 27)
                 .addGroup(LoginTab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel17)
-                    .addComponent(passwordfield1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(passwordfieldsignup, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(36, 36, 36)
                 .addGroup(LoginTab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel19)
-                    .addComponent(passwordfield2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(passwordfieldsignupreenter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -842,11 +842,11 @@ public class GUI extends javax.swing.JFrame {
                     .addGroup(LoginTab1Layout.createSequentialGroup()
                         .addGroup(LoginTab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(studentRB)
-                            .addComponent(jLabel20))
+                            .addComponent(Firstnametext))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(LoginTab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(tutorRB)
-                            .addComponent(jLabel21)
+                            .addComponent(lastnametext)
                             .addComponent(lastnamefield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(professorRB))
@@ -1091,7 +1091,7 @@ public class GUI extends javax.swing.JFrame {
                 //Fills in the users classes on the profile tab
                ArrayList<String> UsersClasses = sd.GetAllUsersClasses();
                for(int x = 0; x<UsersClasses.size(); x++){
-                   this.jTextArea4.append(UsersClasses.get(x) + "\n");
+                   this.usercourselistarea.append(UsersClasses.get(x) + "\n");
                }
                
                //Fills in the Profile Tab
@@ -1103,13 +1103,13 @@ public class GUI extends javax.swing.JFrame {
                //Fills in all classes
                ArrayList<String> Classes = sd.GetAllClasses();
                for(int x = 0; x<Classes.size(); x++){
-                   this.jTextArea1.append(Classes.get(x) + "\n");
+                   this.CourseListTextArea.append(Classes.get(x) + "\n");
                }
                
                //Fills in all contacts
                ArrayList<Account> Contacts = sd.GetAllUsersContacts();
                for(int x = 0; x<Contacts.size(); x++){
-               this.jTextArea3.append(Contacts.get(x).toString()+"\n");
+               this.ContactsTextArea.append(Contacts.get(x).toString()+"\n");
                }
             } else {
                 JOptionPane.showMessageDialog(null, "The username or password was incorrect, please try again", "Incorrect Username/Password", JOptionPane.INFORMATION_MESSAGE);
@@ -1117,24 +1117,24 @@ public class GUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_LoginButtonActionPerformed
 
-    private void usernamefield1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernamefield1ActionPerformed
+    private void usernamefieldsignupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernamefieldsignupActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_usernamefield1ActionPerformed
+    }//GEN-LAST:event_usernamefieldsignupActionPerformed
 
     private void SignUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignUpActionPerformed
         int badgetemp = 0;
         boolean login = false;
         //gets last 8 digits which is @psu.edu
-        String psucheck = usernamefield1.getText().substring(Math.max(usernamefield1.getText().length() - 8, 0));
+        String psucheck = usernamefieldsignup.getText().substring(Math.max(usernamefieldsignup.getText().length() - 8, 0));
         psucheck = psucheck.toLowerCase();
         //User left something null
-        if ("".equals(usernamefield1.getText()) || "".equals(passwordfield2.getText()) || "".equals(passwordfield1.getText()) || "".equals(firstnamefield.getText()) || "".equals(lastnamefield.getText())) {
+        if ("".equals(usernamefieldsignup.getText()) || "".equals(passwordfieldsignupreenter.getText()) || "".equals(passwordfieldsignup.getText()) || "".equals(firstnamefield.getText()) || "".equals(lastnamefield.getText())) {
             JOptionPane.showMessageDialog(null, "One or more fields were left empty, please try again", "Empty Field", JOptionPane.INFORMATION_MESSAGE);
         } else if (!"@psu.edu".equals(psucheck)) {
             JOptionPane.showMessageDialog(null, "The username must be a penn state email, meaning an email @psu.edu", "Non-Penn State User", JOptionPane.INFORMATION_MESSAGE);
         } //if everything checks out
         else {
-            if (passwordfield1.getText() == null ? passwordfield2.getText() != null : !passwordfield1.getText().equals(passwordfield2.getText())) {
+            if (passwordfieldsignup.getText() == null ? passwordfieldsignupreenter.getText() != null : !passwordfieldsignup.getText().equals(passwordfieldsignupreenter.getText())) {
                 JOptionPane.showMessageDialog(null, "Passwords do not match!", "Non-Matching Passwords", JOptionPane.INFORMATION_MESSAGE);
             } else {
                 if (studentRB.isSelected()) {
@@ -1144,7 +1144,7 @@ public class GUI extends javax.swing.JFrame {
                 } else if (professorRB.isSelected()) {
                     badgetemp = 3;
                 }
-                Account signup = new Account(usernamefield1.getText(), passwordfield1.getText(), firstnamefield.getText(), lastnamefield.getText(), badgetemp, 0);
+                Account signup = new Account(usernamefieldsignup.getText(), passwordfieldsignup.getText(), firstnamefield.getText(), lastnamefield.getText(), badgetemp, 0);
                 ServiceDispatcher sd = new ServiceDispatcher();
                 sd.CreateUser(signup);
                 login = sd.Login(signup.getUsername(), signup.getPassword());
@@ -1188,6 +1188,10 @@ public class GUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel ChatTab;
     private javax.swing.JPanel ContactsTab;
+    private javax.swing.JTextArea ContactsTextArea;
+    private javax.swing.JLabel CourseListText;
+    private javax.swing.JTextArea CourseListTextArea;
+    private javax.swing.JLabel Firstnametext;
     private javax.swing.JPanel InteractionPanel;
     private javax.swing.JLabel LionStudyImage;
     private javax.swing.JLabel LionStudyLoginText;
@@ -1198,18 +1202,22 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JPanel LoginTab1;
     private javax.swing.JButton LogoutButton;
     private javax.swing.JPanel ModOptions;
+    private javax.swing.JLabel PasswordText;
     private javax.swing.JPanel ProfileTab;
     private javax.swing.JPanel SearchTab;
     private javax.swing.JButton SignUp;
     private javax.swing.JPanel SignUpTab;
     private javax.swing.JPanel SuperImpTab;
     private javax.swing.JPanel TopPanel;
+    private javax.swing.JLabel UsernameText;
+    private javax.swing.JLabel accountlabel;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JPanel chatPanel;
     private javax.swing.JTextArea chatTextArea;
     private javax.swing.JComboBox<String> coursesComboBox;
     private javax.swing.JComboBox<String> coursesComboBox1;
     private javax.swing.JTextField firstnamefield;
+    private javax.swing.JLabel firstnamelabel;
     private javax.swing.JTextField fnameFilterTextField1;
     private javax.swing.JTextField fnameProfileField;
     private javax.swing.JTextArea incomeChatArea;
@@ -1223,25 +1231,16 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -1255,18 +1254,17 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTabbedPane jTabbedPane2;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea3;
-    private javax.swing.JTextArea jTextArea4;
     private java.awt.Label label1;
     private javax.swing.JTextField lastnamefield;
+    private javax.swing.JLabel lastnamelabel;
+    private javax.swing.JLabel lastnametext;
     private javax.swing.JTextField lnameFilterTextField1;
     private javax.swing.JTextField lnameProfileField;
     private javax.swing.JTextField messageField;
     private javax.swing.JRadioButton moderatorFilterSelected1;
     private javax.swing.JPasswordField passwordfield;
-    private javax.swing.JPasswordField passwordfield1;
-    private javax.swing.JPasswordField passwordfield2;
+    private javax.swing.JPasswordField passwordfieldsignup;
+    private javax.swing.JPasswordField passwordfieldsignupreenter;
     private javax.swing.JRadioButton professorFilterSelected1;
     private javax.swing.JRadioButton professorRB;
     private javax.swing.JButton searchButton;
@@ -1277,9 +1275,11 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JRadioButton tutorFilterSelected1;
     private javax.swing.JRadioButton tutorRB;
     private javax.swing.JTextField typeProfileField;
+    private javax.swing.JTextArea usercourselistarea;
     private javax.swing.JTextField usernameFilterTextField1;
     private javax.swing.JTextField usernameProfileField;
     private javax.swing.JTextField usernamefield;
-    private javax.swing.JTextField usernamefield1;
+    private javax.swing.JTextField usernamefieldsignup;
+    private javax.swing.JLabel usernamelabel;
     // End of variables declaration//GEN-END:variables
 }
