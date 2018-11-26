@@ -203,6 +203,7 @@ public class ServiceDispatcher {
         }
     }
     
+    //Deletes a users contact
     public void DeleteUserContact(String ContactUsername) {
         try {
             ContactUsername = ContactUsername.toLowerCase();
@@ -218,6 +219,7 @@ public class ServiceDispatcher {
         }
     }
 
+    //Get all of users current contacts in the form of an arraylist of accounts
     public ArrayList<Account> GetAllUsersContacts() {
         ArrayList<Account> Contacts = new ArrayList<Account>();
         try {
@@ -251,6 +253,26 @@ public class ServiceDispatcher {
             System.out.println(e);
         }
         return Contacts;
+    }
+    
+    //Get all of users currently enrolled classes
+    public ArrayList<String> GetAllUsersClasses() {
+        ArrayList<String> Classes = new ArrayList<String>();
+        try {
+            Connection myConn = DriverManager.getConnection(CONN_STRING, USERNAME, PASSWORD);
+            stmt = myConn.createStatement();
+            PreparedStatement pstmt = myConn.prepareStatement("SELECT * FROM UserClasses WHERE Username = ?");
+            pstmt.setString(1, CurrentUser.getUsername());
+            rs = pstmt.executeQuery();
+            while (rs.next()) {
+                String classname = rs.getString("ClassName");
+                Classes.add(classname);
+                }
+            myConn.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return Classes;
     }
     
 }
