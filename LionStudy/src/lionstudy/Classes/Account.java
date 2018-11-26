@@ -89,4 +89,13 @@ public class Account{
     public void setOnline(int online) {
         this.online = online;
     }
+    @Override
+    public String toString() { 
+        if(online == 1){
+        return String.format(username + "\t" + firstname + "\t" +  lastname + "\t" + "Online"); 
+        }
+        else{
+          return String.format(username + "\t" + firstname + "\t" +  lastname + "\t" + "Offline");  
+        }
+    } 
 }
