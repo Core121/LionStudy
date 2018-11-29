@@ -122,7 +122,7 @@ public class ServiceDispatcher {
             pstmt.executeUpdate();
             myConn.close();
         } catch (Exception e) {
-            System.out.println(e);
+            JOptionPane.showMessageDialog(null, "That username already exists, please login", "Sign Up Failure", JOptionPane.INFORMATION_MESSAGE);
         }
     }
 
