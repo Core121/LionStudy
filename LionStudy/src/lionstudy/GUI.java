@@ -110,6 +110,8 @@ public class GUI extends javax.swing.JFrame {
         CourseListText = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         usercourselistarea = new javax.swing.JTextArea();
+        addCourseButton = new javax.swing.JButton();
+        removeCourseButton = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         fnameProfileField = new javax.swing.JTextField();
         lnameProfileField = new javax.swing.JTextField();
@@ -402,19 +404,45 @@ public class GUI extends javax.swing.JFrame {
         usercourselistarea.setRows(5);
         jScrollPane4.setViewportView(usercourselistarea);
 
+        addCourseButton.setText("Add Course");
+        addCourseButton.setToolTipText("");
+        addCourseButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addCourseButtonActionPerformed(evt);
+            }
+        });
+
+        removeCourseButton.setText("Remove Course");
+        removeCourseButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removeCourseButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(CourseListText, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(addCourseButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(removeCourseButton, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addComponent(CourseListText, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 424, Short.MAX_VALUE))
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(addCourseButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(removeCourseButton)
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         ProfileTab.add(jPanel4, java.awt.BorderLayout.LINE_END);
@@ -1237,6 +1265,19 @@ public class GUI extends javax.swing.JFrame {
         // Seriously plez don't
     }//GEN-LAST:event_submitButtonKeyPressed
 
+    private void addCourseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addCourseButtonActionPerformed
+        // create dialog box with drop down containing list of all courses
+        // user will select a course and click add button
+        // check if class is already in user's course list
+        // dialog box will close, new dialog box will pop-up indicating success/failure
+    }//GEN-LAST:event_addCourseButtonActionPerformed
+
+    private void removeCourseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeCourseButtonActionPerformed
+        // create dialog box with drop down containing list of user courses
+        // user will select a course and click remove
+        // dialog box will close, new dialog box will pop-up indicating success/failure
+    }//GEN-LAST:event_removeCourseButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1268,6 +1309,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JPanel TopPanel;
     private javax.swing.JLabel UsernameText;
     private javax.swing.JLabel accountlabel;
+    private javax.swing.JButton addCourseButton;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JPanel chatPanel;
     private javax.swing.JTextArea chatTextArea;
@@ -1329,6 +1371,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JPasswordField passwordfieldsignupreenter;
     private javax.swing.JRadioButton professorFilterSelected1;
     private javax.swing.JRadioButton professorRB;
+    private javax.swing.JButton removeCourseButton;
     private javax.swing.JButton searchButton;
     private javax.swing.JButton searchButton1;
     private javax.swing.JRadioButton studentFilterSelected1;
