@@ -45,20 +45,21 @@ public class GUI extends javax.swing.JFrame {
         this.LogoutButton.setVisible(true);
         this.jTabbedPane2.remove(LoginTab);
         this.jTabbedPane2.remove(SignUpTab);
-        this.jTabbedPane2.addTab("Search",SearchTab);
-        this.jTabbedPane2.addTab("Profile",ProfileTab);
-        this.jTabbedPane2.addTab("Chat",ChatTab);
-        this.jTabbedPane2.addTab("Contacts",ContactsTab);
+        this.jTabbedPane2.addTab("Search",new ImageIcon(this.getClass().getResource("/Res/SearchImg.png")),SearchTab);
+        this.jTabbedPane2.addTab("Profile",new ImageIcon(this.getClass().getResource("/Res/ProfileImg.png")),ProfileTab);
+        this.jTabbedPane2.addTab("Chat",new ImageIcon(this.getClass().getResource("/Res/ChatImg.png")),ChatTab);
+        this.jTabbedPane2.addTab("Contacts",new ImageIcon(this.getClass().getResource("/Res/ContactsImg.png")),ContactsTab);
+        this.jTabbedPane2.addTab("Services",new ImageIcon(this.getClass().getResource("/Res/SuperImg.png")), SuperImpTab);
     }
     protected void SetUpModeratorScenario(){
         this.LogoutButton.setVisible(true);
         this.jTabbedPane2.remove(LoginTab);
         this.jTabbedPane2.remove(SignUpTab);
-        this.jTabbedPane2.addTab("Search",SearchTab);
-        this.jTabbedPane2.addTab("Profile",ProfileTab);
-        this.jTabbedPane2.addTab("Chat",ChatTab);
-        this.jTabbedPane2.addTab("Contacts",ContactsTab);
-        this.jTabbedPane2.addTab("Important Services", SuperImpTab);
+        this.jTabbedPane2.addTab("Search",new ImageIcon(this.getClass().getResource("/Res/SearchImg.png")),SearchTab);
+        this.jTabbedPane2.addTab("Profile",new ImageIcon(this.getClass().getResource("/Res/ProfileImg.png")),ProfileTab);
+        this.jTabbedPane2.addTab("Chat",new ImageIcon(this.getClass().getResource("/Res/ChatImg.png")),ChatTab);
+        this.jTabbedPane2.addTab("Contacts",new ImageIcon(this.getClass().getResource("/Res/ContactsImg.png")),ContactsTab);
+        this.jTabbedPane2.addTab("Services",new ImageIcon(this.getClass().getResource("/Res/SuperImg.png")), SuperImpTab);
         this.jTabbedPane2.addTab("Moderator",ModOptions);
     }
     
