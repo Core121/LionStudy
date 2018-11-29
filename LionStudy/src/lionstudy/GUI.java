@@ -77,6 +77,8 @@ public class GUI extends javax.swing.JFrame {
 
         jPanel5 = new javax.swing.JPanel();
         buttonGroup1 = new javax.swing.ButtonGroup();
+        contactsMenu = new javax.swing.JPopupMenu();
+        jPanel8 = new javax.swing.JPanel();
         jTabbedPane2 = new javax.swing.JTabbedPane();
         SearchTab = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
@@ -133,7 +135,7 @@ public class GUI extends javax.swing.JFrame {
         searchButton1 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        ContactsTextArea = new javax.swing.JTextArea();
+        contactsList = new javax.swing.JList<>();
         SuperImpTab = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -186,6 +188,21 @@ public class GUI extends javax.swing.JFrame {
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
+        contactsMenu.setMaximumSize(new java.awt.Dimension(75, 25));
+        contactsMenu.setMinimumSize(new java.awt.Dimension(75, 25));
+        contactsMenu.setName("[75, 25]"); // NOI18N
+
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 100, Short.MAX_VALUE)
         );
 
@@ -330,11 +347,6 @@ public class GUI extends javax.swing.JFrame {
                 submitButtonActionPerformed(evt);
             }
         });
-        submitButton.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                submitButtonKeyPressed(evt);
-            }
-        });
 
         javax.swing.GroupLayout InteractionPanelLayout = new javax.swing.GroupLayout(InteractionPanel);
         InteractionPanel.setLayout(InteractionPanelLayout);
@@ -464,6 +476,11 @@ public class GUI extends javax.swing.JFrame {
 
         usernameProfileField.setEditable(false);
         usernameProfileField.setText("jman2theA");
+        usernameProfileField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                usernameProfileFieldActionPerformed(evt);
+            }
+        });
         jPanel6.add(usernameProfileField);
 
         typeProfileField.setEditable(false);
@@ -539,6 +556,11 @@ public class GUI extends javax.swing.JFrame {
         searchButton1.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
         searchButton1.setText("Search");
         searchButton1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 102), 2));
+        searchButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
         jLabel4.setText("Contacts");
@@ -612,10 +634,17 @@ public class GUI extends javax.swing.JFrame {
 
         ContactsTab.add(jPanel2, java.awt.BorderLayout.PAGE_START);
 
-        ContactsTextArea.setEditable(false);
-        ContactsTextArea.setColumns(20);
-        ContactsTextArea.setRows(5);
-        jScrollPane3.setViewportView(ContactsTextArea);
+        contactsList.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        contactsList.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                contactsListMousePressed(evt);
+            }
+        });
+        jScrollPane3.setViewportView(contactsList);
 
         ContactsTab.add(jScrollPane3, java.awt.BorderLayout.CENTER);
 
@@ -1169,33 +1198,35 @@ public class GUI extends javax.swing.JFrame {
                 }
                 
                 //Fills in the users classes on the profile tab
-               ArrayList<String> UsersClasses = sd.GetAllUsersClasses();
-               for(int x = 0; x<UsersClasses.size(); x++){
+                ArrayList<String> UsersClasses = sd.GetAllUsersClasses();
+                for(int x = 0; x<UsersClasses.size(); x++){
                    this.usercourselistarea.append(UsersClasses.get(x) + "\n");
-               }
+                }
                
-               //Fills in the Profile Tab
-               this.fnameProfileField.setText(CurrentUser.getFirstname());
-               this.lnameProfileField.setText(CurrentUser.getLastname());
-               this.usernameProfileField.setText(CurrentUser.getUsername());
+                //Fills in the Profile Tab
+                this.fnameProfileField.setText(CurrentUser.getFirstname());
+                this.lnameProfileField.setText(CurrentUser.getLastname());
+                this.usernameProfileField.setText(CurrentUser.getUsername());
  
                
-               //Fills in all classes
-               /*ArrayList<String> Classes = sd.GetAllClasses();
-               for(int x = 0; x<Classes.size(); x++){
+                //Fills in all classes
+                /*ArrayList<String> Classes = sd.GetAllClasses();
+                for(int x = 0; x<Classes.size(); x++){
                    this.CourseListTextArea.append(Classes.get(x) + "\n");
-               }*/
+                }*/
                 ;
                 
                 //fills the combo box for courses in Search tab
                 ArrayList<String> allClassesList = sd.GetAllClasses();
                 this.coursesComboBox.setModel(new DefaultComboBoxModel(allClassesList.toArray()));
                
-               //Fills in all contacts
-               ArrayList<Account> Contacts = sd.GetAllUsersContacts();
-               for(int x = 0; x<Contacts.size(); x++){
-               this.ContactsTextArea.append(Contacts.get(x).toString()+"\n");
-               }
+                //Fills in all contacts
+                ArrayList<Account> Contacts = sd.GetAllUsersContacts();
+                DefaultListModel listModel = new DefaultListModel();
+                for(int x = 0; x<Contacts.size(); x++){
+                    listModel.addElement(Contacts.get(x).toString()+"\n");
+                }
+                this.contactsList.setModel(listModel);
             } else {
                 JOptionPane.showMessageDialog(null, "The username or password was incorrect, please try again", "Incorrect Username/Password", JOptionPane.INFORMATION_MESSAGE);
             }
@@ -1258,13 +1289,6 @@ public class GUI extends javax.swing.JFrame {
         chatTextArea.setText("");
     }//GEN-LAST:event_LogoutButtonActionPerformed
 
-    private void submitButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_submitButtonKeyPressed
-        // DO *NOT* IMPLEMENT THIS FUNCTION
-        // ITS BAD JUJU
-        // GARUNTEED WILL BRING TERROR AND MISFORTUNE TO YOUR FAMILY FOR GENERATIONS
-        // Seriously plez don't
-    }//GEN-LAST:event_submitButtonKeyPressed
-
     private void addCourseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addCourseButtonActionPerformed
         // create dialog box with drop down containing list of all courses
         // user will select a course and click add button
@@ -1278,6 +1302,20 @@ public class GUI extends javax.swing.JFrame {
         // dialog box will close, new dialog box will pop-up indicating success/failure
     }//GEN-LAST:event_removeCourseButtonActionPerformed
 
+    private void searchButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_searchButton1ActionPerformed
+
+    private void usernameProfileFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameProfileFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_usernameProfileFieldActionPerformed
+
+    private void contactsListMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_contactsListMousePressed
+        
+        contactsMenu.setVisible(true);//???
+        
+    }//GEN-LAST:event_contactsListMousePressed
+
     /**
      * @param args the command line arguments
      */
@@ -1286,7 +1324,6 @@ public class GUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel ChatTab;
     private javax.swing.JPanel ContactsTab;
-    private javax.swing.JTextArea ContactsTextArea;
     private javax.swing.JLabel CourseListText;
     private javax.swing.JLabel Firstnametext;
     private javax.swing.JPanel InteractionPanel;
@@ -1313,6 +1350,8 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JPanel chatPanel;
     private javax.swing.JTextArea chatTextArea;
+    private javax.swing.JList<String> contactsList;
+    private javax.swing.JPopupMenu contactsMenu;
     private javax.swing.JComboBox<String> coursesComboBox;
     private javax.swing.JComboBox<String> coursesComboBox1;
     private javax.swing.JTextField firstnamefield;
@@ -1349,6 +1388,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
