@@ -3,6 +3,7 @@ import java.awt.Font;
 import lionstudy.Classes.*;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
@@ -83,8 +84,13 @@ public class GUI extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         searchButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        SearchResultListsPanel = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        CourseListTextArea = new javax.swing.JTextArea();
+        onlineList = new javax.swing.JList<>();
+        jLabel9 = new javax.swing.JLabel();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        offlineList = new javax.swing.JList<>();
         ChatTab = new javax.swing.JPanel();
         InteractionPanel = new javax.swing.JPanel();
         messageField = new javax.swing.JTextField();
@@ -249,12 +255,55 @@ public class GUI extends javax.swing.JFrame {
 
         SearchTab.add(jPanel1, java.awt.BorderLayout.PAGE_START);
 
-        CourseListTextArea.setEditable(false);
-        CourseListTextArea.setColumns(20);
-        CourseListTextArea.setRows(5);
-        jScrollPane1.setViewportView(CourseListTextArea);
+        jLabel2.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 24)); // NOI18N
+        jLabel2.setText("Online");
+        jLabel2.setMaximumSize(new java.awt.Dimension(50, 25));
+        jLabel2.setMinimumSize(new java.awt.Dimension(50, 25));
 
-        SearchTab.add(jScrollPane1, java.awt.BorderLayout.CENTER);
+        onlineList.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane1.setViewportView(onlineList);
+
+        jLabel9.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 24)); // NOI18N
+        jLabel9.setText("Offline");
+        jLabel9.setMaximumSize(new java.awt.Dimension(50, 25));
+        jLabel9.setMinimumSize(new java.awt.Dimension(50, 25));
+
+        offlineList.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane6.setViewportView(offlineList);
+
+        javax.swing.GroupLayout SearchResultListsPanelLayout = new javax.swing.GroupLayout(SearchResultListsPanel);
+        SearchResultListsPanel.setLayout(SearchResultListsPanelLayout);
+        SearchResultListsPanelLayout.setHorizontalGroup(
+            SearchResultListsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(jScrollPane6)
+            .addGroup(SearchResultListsPanelLayout.createSequentialGroup()
+                .addGroup(SearchResultListsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 687, Short.MAX_VALUE))
+        );
+        SearchResultListsPanelLayout.setVerticalGroup(
+            SearchResultListsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(SearchResultListsPanelLayout.createSequentialGroup()
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        SearchTab.add(SearchResultListsPanel, java.awt.BorderLayout.CENTER);
 
         jTabbedPane2.addTab("Search", new javax.swing.ImageIcon(getClass().getResource("/Res/SearchImg.png")), SearchTab); // NOI18N
 
@@ -365,7 +414,7 @@ public class GUI extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addComponent(CourseListText, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 403, Short.MAX_VALUE))
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 424, Short.MAX_VALUE))
         );
 
         ProfileTab.add(jPanel4, java.awt.BorderLayout.LINE_END);
@@ -649,7 +698,7 @@ public class GUI extends javax.swing.JFrame {
         );
         ModOptionsLayout.setVerticalGroup(
             ModOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 484, Short.MAX_VALUE)
+            .addGap(0, 505, Short.MAX_VALUE)
         );
 
         jTabbedPane2.addTab("Moderator Options", ModOptions);
@@ -712,7 +761,7 @@ public class GUI extends javax.swing.JFrame {
                     .addComponent(PasswordText))
                 .addGap(42, 42, 42)
                 .addComponent(LoginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(153, Short.MAX_VALUE))
+                .addContainerGap(174, Short.MAX_VALUE))
         );
 
         PasswordText.getAccessibleContext().setAccessibleName("passwordtext");
@@ -1005,9 +1054,23 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_submitButtonActionPerformed
 
     private void coursesComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_coursesComboBoxActionPerformed
-
-                
+        String selection = coursesComboBox.getSelectedItem().toString();
         
+        ServiceDispatcher dispatcher = new ServiceDispatcher();
+        ArrayList<Account> allUsers = dispatcher.GetAllUsers();
+        ArrayList<String> allUsersNames = new ArrayList<String>();
+        for (int i = 0; i < allUsers.size(); i++){
+            String fname = allUsers.get(i).firstname;
+            String lname = allUsers.get(i).lastname;
+            allUsersNames.add(fname + " " + lname);
+        }
+        
+        DefaultListModel listModel = new DefaultListModel();
+        for (int i = 0; i < allUsersNames.size(); i++){
+            listModel.addElement(allUsersNames.get(i));
+        }
+        offlineList.setModel(listModel);
+               
     }//GEN-LAST:event_coursesComboBoxActionPerformed
 
     private void coursesComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_coursesComboBox1ActionPerformed
@@ -1095,9 +1158,10 @@ public class GUI extends javax.swing.JFrame {
                    this.CourseListTextArea.append(Classes.get(x) + "\n");
                }*/
                 ;
-    ArrayList<String> allClassesList = sd.GetAllClasses();
-    
-    this.coursesComboBox.setModel(new DefaultComboBoxModel(allClassesList.toArray()));
+                
+                //fills the combo box for courses in Search tab
+                ArrayList<String> allClassesList = sd.GetAllClasses();
+                this.coursesComboBox.setModel(new DefaultComboBoxModel(allClassesList.toArray()));
                
                //Fills in all contacts
                ArrayList<Account> Contacts = sd.GetAllUsersContacts();
@@ -1183,7 +1247,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JPanel ContactsTab;
     private javax.swing.JTextArea ContactsTextArea;
     private javax.swing.JLabel CourseListText;
-    private javax.swing.JTextArea CourseListTextArea;
     private javax.swing.JLabel Firstnametext;
     private javax.swing.JPanel InteractionPanel;
     private javax.swing.JLabel LionStudyImage;
@@ -1197,6 +1260,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JPanel ModOptions;
     private javax.swing.JLabel PasswordText;
     private javax.swing.JPanel ProfileTab;
+    private javax.swing.JPanel SearchResultListsPanel;
     private javax.swing.JPanel SearchTab;
     private javax.swing.JButton SignUp;
     private javax.swing.JPanel SignUpTab;
@@ -1228,12 +1292,14 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -1246,6 +1312,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JTabbedPane jTabbedPane2;
     private java.awt.Label label1;
     private javax.swing.JTextField lastnamefield;
@@ -1255,6 +1322,8 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextField lnameProfileField;
     private javax.swing.JTextField messageField;
     private javax.swing.JRadioButton moderatorFilterSelected1;
+    private javax.swing.JList<String> offlineList;
+    private javax.swing.JList<String> onlineList;
     private javax.swing.JPasswordField passwordfield;
     private javax.swing.JPasswordField passwordfieldsignup;
     private javax.swing.JPasswordField passwordfieldsignupreenter;
