@@ -86,7 +86,6 @@ public class GUI extends javax.swing.JFrame {
         coursesComboBox = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        removeClassButton = new javax.swing.JButton();
         joinClassButton = new javax.swing.JButton();
         SearchResultListsPanel = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -231,14 +230,6 @@ public class GUI extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
         jLabel1.setText("Courses");
 
-        removeClassButton.setText("Remove Class");
-        removeClassButton.setToolTipText("");
-        removeClassButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                removeClassButtonActionPerformed(evt);
-            }
-        });
-
         joinClassButton.setText("Join Class");
         joinClassButton.setToolTipText("");
         joinClassButton.addActionListener(new java.awt.event.ActionListener() {
@@ -261,10 +252,8 @@ public class GUI extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(coursesComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(34, 34, 34)
-                        .addComponent(joinClassButton, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(removeClassButton, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(185, Short.MAX_VALUE))
+                        .addComponent(joinClassButton, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(324, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -277,7 +266,6 @@ public class GUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(coursesComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(removeClassButton, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(joinClassButton, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(25, 30, Short.MAX_VALUE))
         );
@@ -441,7 +429,7 @@ public class GUI extends javax.swing.JFrame {
                 .addGap(20, 20, 20)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(addCourseButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(removeCourseButton, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE))
+                    .addComponent(removeCourseButton, javax.swing.GroupLayout.PREFERRED_SIZE, 122, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
@@ -1134,14 +1122,12 @@ public class GUI extends javax.swing.JFrame {
         }
         onlineJList.setModel(OnlineModel);
         offlineJList.setModel(OfflineModel);
-//        if(CUinclass == true){
-//            removeClassButton.setVisible(true);
-//            joinClassButton.setVisible(false);
-//        }
-//        else{
-//            removeClassButton.setVisible(false);
-//            joinClassButton.setVisible(true);
-//        }
+         if(CUinclass == true){
+            joinClassButton.setVisible(false);
+        }
+        else{
+            joinClassButton.setVisible(true);
+        }
         
 
     }//GEN-LAST:event_coursesComboBoxActionPerformed
@@ -1328,12 +1314,6 @@ public class GUI extends javax.swing.JFrame {
         
     }//GEN-LAST:event_contactsListMousePressed
 
-    private void removeClassButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeClassButtonActionPerformed
-       String selection = coursesComboBox.getSelectedItem().toString();
-        ServiceDispatcher sd = new ServiceDispatcher();
-        sd.DeleteClassfromUser(selection);
-    }//GEN-LAST:event_removeClassButtonActionPerformed
-
     private void joinClassButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_joinClassButtonActionPerformed
         String selection = coursesComboBox.getSelectedItem().toString();
         ServiceDispatcher sd = new ServiceDispatcher();
@@ -1436,7 +1416,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JPasswordField passwordfieldsignupreenter;
     private javax.swing.JRadioButton professorFilterSelected1;
     private javax.swing.JRadioButton professorRB;
-    private javax.swing.JButton removeClassButton;
     private javax.swing.JButton removeCourseButton;
     private javax.swing.JButton searchButton1;
     private javax.swing.JRadioButton studentFilterSelected1;
