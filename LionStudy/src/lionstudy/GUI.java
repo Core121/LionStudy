@@ -281,6 +281,16 @@ public class GUI extends javax.swing.JFrame {
         jLabel2.setMaximumSize(new java.awt.Dimension(50, 25));
         jLabel2.setMinimumSize(new java.awt.Dimension(50, 25));
 
+        onlineJList.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                onlineJListMouseClicked(evt);
+            }
+        });
+        onlineJList.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                onlineJListValueChanged(evt);
+            }
+        });
         jScrollPane1.setViewportView(onlineJList);
 
         jLabel9.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 24)); // NOI18N
@@ -1406,6 +1416,16 @@ public class GUI extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Class Not Added", "Failure", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_jButton10ActionPerformed
+
+    private void onlineJListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_onlineJListValueChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_onlineJListValueChanged
+
+    private void onlineJListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_onlineJListMouseClicked
+        // TODO add your handling code here:
+        JOptionPane.showConfirmDialog(null, "Add user as contact?", "", JOptionPane.OK_CANCEL_OPTION);
+        JOptionPane.showConfirmDialog(null, "Chat with this user?", "", JOptionPane.OK_CANCEL_OPTION);
+    }//GEN-LAST:event_onlineJListMouseClicked
 
     /**
      * @param args the command line arguments
