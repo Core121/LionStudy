@@ -1250,13 +1250,13 @@ public class GUI extends javax.swing.JFrame {
                 }
                 Account signup = new Account(usernamefieldsignup.getText(), passwordfieldsignup.getText(), firstnamefield.getText(), lastnamefield.getText(), badgetemp, 0);
                 ServiceDispatcher sd = new ServiceDispatcher();
-                sd.CreateUser(signup);
-                login = sd.Login(signup.getUsername(), signup.getPassword());
-                if (login == false) {
-                    JOptionPane.showMessageDialog(null, "Sign up was not successful, please try again", "Sign Up Failure", JOptionPane.INFORMATION_MESSAGE);
-                } else {
-                    JOptionPane.showMessageDialog(null, "Sign up was successful!", "Success!", JOptionPane.INFORMATION_MESSAGE);
-                    this.SetUpNormalUserScenario();
+                boolean userexists = sd.CreateUser(signup);
+                if(userexists == true){
+                    JOptionPane.showMessageDialog(null, "Username already exists!", "Signup Failure", JOptionPane.INFORMATION_MESSAGE);
+                }
+                else{
+                  JOptionPane.showMessageDialog(null, "Account Created!", "Signup Success", JOptionPane.INFORMATION_MESSAGE);
+                  this.jTabbedPane2.setSelectedComponent(LoginTab);
                 }
             }
         }
