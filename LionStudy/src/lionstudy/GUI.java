@@ -454,7 +454,6 @@ public class GUI extends javax.swing.JFrame {
 
         ProfileTabInfoPanel.setLayout(new java.awt.BorderLayout());
 
-        badgeImg.setIcon(CurrentUser.getBadgeImage());
         badgeImg.setMaximumSize(new java.awt.Dimension(84, 84));
         badgeImg.setMinimumSize(new java.awt.Dimension(84, 84));
 

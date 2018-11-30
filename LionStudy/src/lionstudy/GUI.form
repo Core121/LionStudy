@@ -603,9 +603,6 @@
                   <SubComponents>
                     <Component class="javax.swing.JLabel" name="badgeImg">
                       <Properties>
-                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                          <Connection code="CurrentUser.getBadgeImage()" type="code"/>
-                        </Property>
                         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                           <Dimension value="[84, 84]"/>
                         </Property>
