@@ -112,7 +112,7 @@ public class GUI extends javax.swing.JFrame {
         courseListText = new javax.swing.JLabel();
         ProfileTabInfoPanel = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        jLabel10 = new javax.swing.JLabel();
+        badgeImg = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         firstNameLabel = new javax.swing.JLabel();
         firstNameField = new javax.swing.JTextField();
@@ -444,33 +444,36 @@ public class GUI extends javax.swing.JFrame {
 
         ProfileTabInfoPanel.setLayout(new java.awt.BorderLayout());
 
-        jLabel10.setText("jLabel10");
+        badgeImg.setIcon(CurrentUser.getBadgeImage());
+        badgeImg.setMaximumSize(new java.awt.Dimension(84, 84));
+        badgeImg.setMinimumSize(new java.awt.Dimension(84, 84));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(232, 232, 232)
-                .addComponent(jLabel10)
-                .addContainerGap(245, Short.MAX_VALUE))
+                .addGap(211, 211, 211)
+                .addComponent(badgeImg, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addComponent(jLabel10)
-                .addContainerGap(47, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(badgeImg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         ProfileTabInfoPanel.add(jPanel3, java.awt.BorderLayout.PAGE_START);
 
-        jPanel4.setLayout(new java.awt.GridLayout(6, 2, 0, 30));
+        jPanel4.setLayout(new java.awt.GridLayout(6, 2, -100, 30));
 
         firstNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         firstNameLabel.setText("First Name:");
         jPanel4.add(firstNameLabel);
 
+        firstNameField.setEditable(false);
         firstNameField.setText(CurrentUser.getFirstname());
         jPanel4.add(firstNameField);
 
@@ -478,6 +481,7 @@ public class GUI extends javax.swing.JFrame {
         lastNameLabel.setText("Last Name:");
         jPanel4.add(lastNameLabel);
 
+        lastNameField.setEditable(false);
         lastNameField.setText("jTextField2");
         jPanel4.add(lastNameField);
 
@@ -485,6 +489,7 @@ public class GUI extends javax.swing.JFrame {
         usernameLabel.setText("Username:");
         jPanel4.add(usernameLabel);
 
+        usernameField.setEditable(false);
         usernameField.setText("usernameField");
         jPanel4.add(usernameField);
 
@@ -492,6 +497,7 @@ public class GUI extends javax.swing.JFrame {
         accountTypeLabel.setText("Account Type:");
         jPanel4.add(accountTypeLabel);
 
+        accountTypeField.setEditable(false);
         accountTypeField.setText("jTextField4");
         jPanel4.add(accountTypeField);
 
@@ -1260,18 +1266,22 @@ public class GUI extends javax.swing.JFrame {
                     this.SetUpNormalUserScenario();
                     if(CurrentUser.getBadgetype() == 1){
                         this.accountTypeField.setText("Student");
+                        this.badgeImg.setIcon(new ImageIcon("StudentBadge24.png"));
                     }
                     else if(CurrentUser.getBadgetype() == 2){
                         this.accountTypeField.setText("Tutor");
+                        this.badgeImg.setIcon(new ImageIcon("TutorBadge24.png"));
                     }
                     else if(CurrentUser.getBadgetype() == 3){
+                        this.badgeImg.setIcon(new ImageIcon("TeacherBadge24.png"));
                         this.accountTypeField.setText("Teacher");
                     }
                 }
                 //Moderator
                 else if(CurrentUser.getBadgetype() == 4){
                    this.SetUpModeratorScenario();
-                   //this.typeProfileField.setText("Moderator");
+                   this.accountTypeField.setText("Moderator");
+                   this.badgeImg.setIcon(new ImageIcon("ModeratorBadge24.png"));
                 }
                 
                 //Fills in the users classes on the profile tab
@@ -1457,6 +1467,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel UsernameText;
     private javax.swing.JTextField accountTypeField;
     private javax.swing.JLabel accountTypeLabel;
+    private javax.swing.JLabel badgeImg;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JPanel chatPanel;
     private javax.swing.JTextArea chatTextArea;
@@ -1483,7 +1494,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;

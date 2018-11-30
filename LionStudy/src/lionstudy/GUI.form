@@ -580,26 +580,34 @@
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="232" max="-2" attributes="0"/>
-                              <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="245" max="32767" attributes="0"/>
+                              <EmptySpace min="-2" pref="211" max="-2" attributes="0"/>
+                              <Component id="badgeImg" min="-2" pref="86" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-                              <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="47" max="32767" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="badgeImg" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Component class="javax.swing.JLabel" name="jLabel10">
+                    <Component class="javax.swing.JLabel" name="badgeImg">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="jLabel10"/>
+                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                          <Connection code="CurrentUser.getBadgeImage()" type="code"/>
+                        </Property>
+                        <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                          <Dimension value="[84, 84]"/>
+                        </Property>
+                        <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                          <Dimension value="[84, 84]"/>
+                        </Property>
                       </Properties>
                     </Component>
                   </SubComponents>
@@ -613,6 +621,7 @@
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
                     <Property name="columns" type="int" value="2"/>
+                    <Property name="horizontalGap" type="int" value="-100"/>
                     <Property name="rows" type="int" value="6"/>
                     <Property name="verticalGap" type="int" value="30"/>
                   </Layout>
@@ -625,6 +634,7 @@
                     </Component>
                     <Component class="javax.swing.JTextField" name="firstNameField">
                       <Properties>
+                        <Property name="editable" type="boolean" value="false"/>
                         <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                           <Connection code="CurrentUser.getFirstname()" type="code"/>
                         </Property>
@@ -638,6 +648,7 @@
                     </Component>
                     <Component class="javax.swing.JTextField" name="lastNameField">
                       <Properties>
+                        <Property name="editable" type="boolean" value="false"/>
                         <Property name="text" type="java.lang.String" value="jTextField2"/>
                       </Properties>
                     </Component>
@@ -649,6 +660,7 @@
                     </Component>
                     <Component class="javax.swing.JTextField" name="usernameField">
                       <Properties>
+                        <Property name="editable" type="boolean" value="false"/>
                         <Property name="text" type="java.lang.String" value="usernameField"/>
                       </Properties>
                     </Component>
@@ -660,6 +672,7 @@
                     </Component>
                     <Component class="javax.swing.JTextField" name="accountTypeField">
                       <Properties>
+                        <Property name="editable" type="boolean" value="false"/>
                         <Property name="text" type="java.lang.String" value="jTextField4"/>
                       </Properties>
                     </Component>
