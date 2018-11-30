@@ -129,7 +129,8 @@ public class ServiceDispatcher {
     }
 
     //Creates a class on the class database, takes a classname in string form as a parameter. Database auto-generates ID for it.
-    public void CreateClass(String className) {
+    public boolean CreateClass(String className) {
+        boolean success = false;
         className = className.toUpperCase();
         try {
             Connection myConn = DriverManager.getConnection(CONN_STRING, USERNAME, PASSWORD);
@@ -139,9 +140,11 @@ public class ServiceDispatcher {
             pstmt.executeUpdate();
             myConn.close();
         } catch (Exception e) {
-            System.out.println(e);
+            success = true;
         }
+        return success;
     }
+
 
     //Returns an ArrayList of All class names in the form of Strings
     public ArrayList<String> GetAllClasses() {
