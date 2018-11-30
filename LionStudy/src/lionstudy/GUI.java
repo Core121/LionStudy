@@ -85,7 +85,6 @@ public class GUI extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         coursesComboBox = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
-        searchButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         SearchResultListsPanel = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -227,16 +226,6 @@ public class GUI extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
 
-        searchButton.setBackground(new java.awt.Color(255, 255, 255));
-        searchButton.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
-        searchButton.setText("Search");
-        searchButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 102), 2));
-        searchButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchButtonActionPerformed(evt);
-            }
-        });
-
         jLabel1.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
         jLabel1.setText("Courses");
 
@@ -251,21 +240,15 @@ public class GUI extends javax.swing.JFrame {
                         .addComponent(jLabel1)
                         .addGap(195, 195, 195)
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(coursesComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(373, Short.MAX_VALUE))
+                    .addComponent(coursesComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(430, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -280,11 +263,6 @@ public class GUI extends javax.swing.JFrame {
         jLabel2.setMaximumSize(new java.awt.Dimension(50, 25));
         jLabel2.setMinimumSize(new java.awt.Dimension(50, 25));
 
-        onlineList.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         jScrollPane1.setViewportView(onlineList);
 
         jLabel9.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 24)); // NOI18N
@@ -292,11 +270,6 @@ public class GUI extends javax.swing.JFrame {
         jLabel9.setMaximumSize(new java.awt.Dimension(50, 25));
         jLabel9.setMinimumSize(new java.awt.Dimension(50, 25));
 
-        offlineList.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         jScrollPane6.setViewportView(offlineList);
 
         javax.swing.GroupLayout SearchResultListsPanelLayout = new javax.swing.GroupLayout(SearchResultListsPanel);
@@ -442,7 +415,7 @@ public class GUI extends javax.swing.JFrame {
                 .addGap(20, 20, 20)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(addCourseButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(removeCourseButton, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE))
+                    .addComponent(removeCourseButton, javax.swing.GroupLayout.PREFERRED_SIZE, 122, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
@@ -1115,19 +1088,19 @@ public class GUI extends javax.swing.JFrame {
         String selection = coursesComboBox.getSelectedItem().toString();
         
         ServiceDispatcher dispatcher = new ServiceDispatcher();
-        ArrayList<Account> allUsers = dispatcher.GetAllUsers();
-        ArrayList<String> allUsersNames = new ArrayList<String>();
+        ArrayList<Account> allUsers = dispatcher.GetUsersFromClass(selection);
+        DefaultListModel OfflineModel = new DefaultListModel();
+        DefaultListModel OnlineModel = new DefaultListModel();
         for (int i = 0; i < allUsers.size(); i++){
-            String fname = allUsers.get(i).firstname;
-            String lname = allUsers.get(i).lastname;
-            allUsersNames.add(fname + " " + lname);
+            if(allUsers.get(i).getOnline() == 1){
+                OnlineModel.addElement(allUsers.get(i).getUsername());
+            }
+            else{
+                OfflineModel.addElement(allUsers.get(i).getUsername());
+            }
         }
-        
-        DefaultListModel listModel = new DefaultListModel();
-        for (int i = 0; i < allUsersNames.size(); i++){
-            listModel.addElement(allUsersNames.get(i));
-        }
-        offlineList.setModel(listModel);
+        onlineList.setModel(OnlineModel);
+        offlineList.setModel(OfflineModel);
                
     }//GEN-LAST:event_coursesComboBoxActionPerformed
 
@@ -1162,10 +1135,6 @@ public class GUI extends javax.swing.JFrame {
     private void fnameProfileFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fnameProfileFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_fnameProfileFieldActionPerformed
-
-    private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_searchButtonActionPerformed
 
     private void usernamefieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernamefieldActionPerformed
         // TODO add your handling code here:
@@ -1413,7 +1382,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JRadioButton professorFilterSelected1;
     private javax.swing.JRadioButton professorRB;
     private javax.swing.JButton removeCourseButton;
-    private javax.swing.JButton searchButton;
     private javax.swing.JButton searchButton1;
     private javax.swing.JRadioButton studentFilterSelected1;
     private javax.swing.JRadioButton studentRB;
