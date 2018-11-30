@@ -7,4 +7,15 @@ public class RecievedMessage
     public String command;
     public String target;
     public String content;
+    public int line;
+    
+    RecievedMessage()
+    {
+        source ="NULL";
+        nick="NULL";
+        command="NULL";
+        target="NULL";
+        content="NULL";
+        line=0;
+    }
 }
