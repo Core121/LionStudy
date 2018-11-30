@@ -1090,7 +1090,7 @@ public class GUI extends javax.swing.JFrame {
     private void coursesComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_coursesComboBoxActionPerformed
         String selection = coursesComboBox.getSelectedItem().toString();
         boolean CUinclass = false;
-        boolean JoinButton = false;
+        boolean Joined = false;
         ServiceDispatcher dispatcher = new ServiceDispatcher();
         ArrayList<Account> allUsers = dispatcher.GetUsersFromClass(selection);
         DefaultListModel OfflineModel = new DefaultListModel();
@@ -1101,7 +1101,7 @@ public class GUI extends javax.swing.JFrame {
             String user = allUsers.get(i).firstname + " " + allUsers.get(i).lastname;
             if(CurrentUser.getUsername().equals(allUsers.get(i).getUsername())){        //checking to make you current user isnt displayed
                CUinclass = true;
-               JoinButton = true;
+               Joined = true;
             }
             if(allUsers.get(i).getOnline() == 1 && CUinclass == false){
                 OnlineModel.addElement(user);
@@ -1113,10 +1113,12 @@ public class GUI extends javax.swing.JFrame {
         }
         onlineJList.setModel(OnlineModel);
         offlineJList.setModel(OfflineModel);
-         if(JoinButton == true){
+        
+        
+         if(Joined == true){
             joinClassButton.setVisible(false);
         }
-        else{
+         else{
             joinClassButton.setVisible(true);
         }
         
@@ -1207,9 +1209,11 @@ public class GUI extends javax.swing.JFrame {
                 ;
                 
                 //fills the combo box for courses in Search tab
+                joinClassButton.setVisible(false);
                 ArrayList<String> allClassesList = sd.GetAllClasses();
                 this.coursesComboBox.setModel(new DefaultComboBoxModel(allClassesList.toArray()));
-               
+                
+                
                 //Fills in all contacts
                 ArrayList<Account> Contacts = sd.GetAllUsersContacts();
                 DefaultListModel listModel = new DefaultListModel();
@@ -1303,6 +1307,12 @@ public class GUI extends javax.swing.JFrame {
         String selection = coursesComboBox.getSelectedItem().toString();
         ServiceDispatcher sd = new ServiceDispatcher();
         sd.AddClasstoUser(selection);
+        
+        JOptionPane.showMessageDialog(null, "Course added.");
+        joinClassButton.setVisible(false);
+        jPanel1.repaint();
+         
+        
     }//GEN-LAST:event_joinClassButtonActionPerformed
 
     /**
