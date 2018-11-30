@@ -112,21 +112,24 @@ public class GUI extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         incomeChatArea = new javax.swing.JTextArea();
         ProfileTab = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
-        firstnamelabel = new javax.swing.JLabel();
-        lastnamelabel = new javax.swing.JLabel();
-        usernamelabel = new javax.swing.JLabel();
-        accountlabel = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
-        CourseListText = new javax.swing.JLabel();
+        ProfileTabCoursePanel = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         courseListProfile = new javax.swing.JList<>();
         removeCourseButton = new javax.swing.JButton();
-        jPanel6 = new javax.swing.JPanel();
-        fnameProfileField = new javax.swing.JTextField();
-        lnameProfileField = new javax.swing.JTextField();
-        usernameProfileField = new javax.swing.JTextField();
-        typeProfileField = new javax.swing.JTextField();
+        courseListPanel = new javax.swing.JPanel();
+        courseListText = new javax.swing.JLabel();
+        ProfileTabInfoPanel = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        badgeImg = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        firstNameLabel = new javax.swing.JLabel();
+        firstNameField = new javax.swing.JTextField();
+        lastNameLabel = new javax.swing.JLabel();
+        lastNameField = new javax.swing.JTextField();
+        usernameLabel = new javax.swing.JLabel();
+        usernameField = new javax.swing.JTextField();
+        accountTypeLabel = new javax.swing.JLabel();
+        accountTypeField = new javax.swing.JTextField();
         ContactsTab = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         coursesComboBox1 = new javax.swing.JComboBox<>();
@@ -289,6 +292,16 @@ public class GUI extends javax.swing.JFrame {
         jLabel2.setMaximumSize(new java.awt.Dimension(50, 25));
         jLabel2.setMinimumSize(new java.awt.Dimension(50, 25));
 
+        onlineJList.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                onlineJListMouseClicked(evt);
+            }
+        });
+        onlineJList.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                onlineJListValueChanged(evt);
+            }
+        });
         jScrollPane1.setViewportView(onlineJList);
 
         jLabel9.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 24)); // NOI18N
@@ -391,25 +404,7 @@ public class GUI extends javax.swing.JFrame {
 
         ProfileTab.setLayout(new java.awt.BorderLayout());
 
-        jPanel3.setLayout(new java.awt.GridLayout(0, 1));
-
-        firstnamelabel.setText("First Name:");
-        jPanel3.add(firstnamelabel);
-
-        lastnamelabel.setText("Last Name:");
-        jPanel3.add(lastnamelabel);
-
-        usernamelabel.setText("Username:");
-        jPanel3.add(usernamelabel);
-
-        accountlabel.setText("Account Type:");
-        jPanel3.add(accountlabel);
-
-        ProfileTab.add(jPanel3, java.awt.BorderLayout.LINE_START);
-
-        jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 102)));
-
-        CourseListText.setText("CourseList:");
+        ProfileTabCoursePanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 102)));
 
         jScrollPane4.setViewportView(courseListProfile);
 
@@ -420,59 +415,113 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(CourseListText, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        courseListText.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        courseListText.setForeground(new java.awt.Color(0, 0, 51));
+        courseListText.setText("Course List");
+
+        javax.swing.GroupLayout courseListPanelLayout = new javax.swing.GroupLayout(courseListPanel);
+        courseListPanel.setLayout(courseListPanelLayout);
+        courseListPanelLayout.setHorizontalGroup(
+            courseListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(courseListPanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(courseListText)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        courseListPanelLayout.setVerticalGroup(
+            courseListPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(courseListPanelLayout.createSequentialGroup()
+                .addContainerGap(18, Short.MAX_VALUE)
+                .addComponent(courseListText)
+                .addContainerGap(32, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout ProfileTabCoursePanelLayout = new javax.swing.GroupLayout(ProfileTabCoursePanel);
+        ProfileTabCoursePanel.setLayout(ProfileTabCoursePanelLayout);
+        ProfileTabCoursePanelLayout.setHorizontalGroup(
+            ProfileTabCoursePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(courseListPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.TRAILING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+            .addGroup(ProfileTabCoursePanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(removeCourseButton, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addComponent(CourseListText, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+        ProfileTabCoursePanelLayout.setVerticalGroup(
+            ProfileTabCoursePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ProfileTabCoursePanelLayout.createSequentialGroup()
+                .addComponent(courseListPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(removeCourseButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        ProfileTab.add(jPanel4, java.awt.BorderLayout.LINE_END);
+        ProfileTab.add(ProfileTabCoursePanel, java.awt.BorderLayout.LINE_END);
 
-        jPanel6.setLayout(new java.awt.GridLayout(0, 1));
+        ProfileTabInfoPanel.setLayout(new java.awt.BorderLayout());
 
-        fnameProfileField.setEditable(false);
-        fnameProfileField.setText(CurrentUser.getFirstname());
-        fnameProfileField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fnameProfileFieldActionPerformed(evt);
-            }
-        });
-        jPanel6.add(fnameProfileField);
+        badgeImg.setIcon(CurrentUser.getBadgeImage());
+        badgeImg.setMaximumSize(new java.awt.Dimension(84, 84));
+        badgeImg.setMinimumSize(new java.awt.Dimension(84, 84));
 
-        lnameProfileField.setEditable(false);
-        lnameProfileField.setText(CurrentUser.getLastname());
-        jPanel6.add(lnameProfileField);
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(211, 211, 211)
+                .addComponent(badgeImg, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(badgeImg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
 
-        usernameProfileField.setEditable(false);
-        usernameProfileField.setText(CurrentUser.getUsername());
-        usernameProfileField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                usernameProfileFieldActionPerformed(evt);
-            }
-        });
-        jPanel6.add(usernameProfileField);
+        ProfileTabInfoPanel.add(jPanel3, java.awt.BorderLayout.PAGE_START);
 
-        typeProfileField.setEditable(false);
-        typeProfileField.setText("Pleb (Student)");
-        jPanel6.add(typeProfileField);
+        jPanel4.setLayout(new java.awt.GridLayout(6, 2, -100, 30));
 
-        ProfileTab.add(jPanel6, java.awt.BorderLayout.CENTER);
+        firstNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        firstNameLabel.setText("First Name:");
+        jPanel4.add(firstNameLabel);
+
+        firstNameField.setEditable(false);
+        firstNameField.setText(CurrentUser.getFirstname());
+        jPanel4.add(firstNameField);
+
+        lastNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lastNameLabel.setText("Last Name:");
+        jPanel4.add(lastNameLabel);
+
+        lastNameField.setEditable(false);
+        lastNameField.setText("jTextField2");
+        jPanel4.add(lastNameField);
+
+        usernameLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        usernameLabel.setText("Username:");
+        jPanel4.add(usernameLabel);
+
+        usernameField.setEditable(false);
+        usernameField.setText("usernameField");
+        jPanel4.add(usernameField);
+
+        accountTypeLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        accountTypeLabel.setText("Account Type:");
+        jPanel4.add(accountTypeLabel);
+
+        accountTypeField.setEditable(false);
+        accountTypeField.setText("jTextField4");
+        jPanel4.add(accountTypeField);
+
+        ProfileTabInfoPanel.add(jPanel4, java.awt.BorderLayout.CENTER);
+
+        ProfileTab.add(ProfileTabInfoPanel, java.awt.BorderLayout.CENTER);
 
         jTabbedPane2.addTab("Profile", new javax.swing.ImageIcon(getClass().getResource("/Res/ProfileImg.png")), ProfileTab); // NOI18N
 
@@ -1222,10 +1271,6 @@ public class GUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_usernameFilterTextField1ActionPerformed
 
-    private void fnameProfileFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fnameProfileFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_fnameProfileFieldActionPerformed
-
     private void usernamefieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernamefieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_usernamefieldActionPerformed
@@ -1242,19 +1287,23 @@ public class GUI extends javax.swing.JFrame {
                 if(CurrentUser.getBadgetype() == 1 || CurrentUser.getBadgetype() == 2 || CurrentUser.getBadgetype() == 3){
                     this.SetUpNormalUserScenario();
                     if(CurrentUser.getBadgetype() == 1){
-                        this.typeProfileField.setText("Student");
+                        this.accountTypeField.setText("Student");
+                        this.badgeImg.setIcon(new ImageIcon("StudentBadge24.png"));
                     }
-                    else if(CurrentUser.getBadgetype() == 1){
-                        this.typeProfileField.setText("Tutor");
+                    else if(CurrentUser.getBadgetype() == 2){
+                        this.accountTypeField.setText("Tutor");
+                        this.badgeImg.setIcon(new ImageIcon("TutorBadge24.png"));
                     }
-                    else if(CurrentUser.getBadgetype() == 1){
-                        this.typeProfileField.setText("Teacher");
+                    else if(CurrentUser.getBadgetype() == 3){
+                        this.badgeImg.setIcon(new ImageIcon("TeacherBadge24.png"));
+                        this.accountTypeField.setText("Teacher");
                     }
                 }
                 //Moderator
                 else if(CurrentUser.getBadgetype() == 4){
                    this.SetUpModeratorScenario();
-                   this.typeProfileField.setText("Moderator");
+                   this.accountTypeField.setText("Moderator");
+                   this.badgeImg.setIcon(new ImageIcon("ModeratorBadge24.png"));
                 }
                 
                 //Fills in the users classes on the profile tab
@@ -1266,9 +1315,9 @@ public class GUI extends javax.swing.JFrame {
                 this.courseListProfile.setModel(classListProfile);
                
                 //Fills in the Profile Tab
-                this.fnameProfileField.setText(CurrentUser.getFirstname());
-                this.lnameProfileField.setText(CurrentUser.getLastname());
-                this.usernameProfileField.setText(CurrentUser.getUsername());
+                this.firstNameField.setText(CurrentUser.getFirstname());
+                this.lastNameField.setText(CurrentUser.getLastname());
+                this.usernameField.setText(CurrentUser.getUsername());
  
                 
                 
@@ -1372,10 +1421,6 @@ public class GUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_searchButton1ActionPerformed
 
-    private void usernameProfileFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameProfileFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_usernameProfileFieldActionPerformed
-
     private void contactsListMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_contactsListMousePressed
         
         contactsMenu.setVisible(true);//???
@@ -1414,6 +1459,16 @@ public class GUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton10ActionPerformed
 
+    private void onlineJListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_onlineJListValueChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_onlineJListValueChanged
+
+    private void onlineJListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_onlineJListMouseClicked
+        // TODO add your handling code here:
+        JOptionPane.showConfirmDialog(null, "Add user as contact?", "", JOptionPane.OK_CANCEL_OPTION);
+        JOptionPane.showConfirmDialog(null, "Chat with this user?", "", JOptionPane.OK_CANCEL_OPTION);
+    }//GEN-LAST:event_onlineJListMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -1424,7 +1479,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextField AddClassName;
     private javax.swing.JPanel ChatTab;
     private javax.swing.JPanel ContactsTab;
-    private javax.swing.JLabel CourseListText;
     private javax.swing.JLabel Firstnametext;
     private javax.swing.JPanel InteractionPanel;
     private javax.swing.JLabel LionStudyImage;
@@ -1440,6 +1494,8 @@ public class GUI extends javax.swing.JFrame {
     private java.awt.Label ModOptionsLabel;
     private javax.swing.JLabel PasswordText;
     private javax.swing.JPanel ProfileTab;
+    private javax.swing.JPanel ProfileTabCoursePanel;
+    private javax.swing.JPanel ProfileTabInfoPanel;
     private javax.swing.JPanel SearchResultListsPanel;
     private javax.swing.JPanel SearchTab;
     private javax.swing.JButton SignUp;
@@ -1447,19 +1503,23 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JPanel SuperImpTab;
     private javax.swing.JPanel TopPanel;
     private javax.swing.JLabel UsernameText;
-    private javax.swing.JLabel accountlabel;
+    private javax.swing.JTextField accountTypeField;
+    private javax.swing.JLabel accountTypeLabel;
+    private javax.swing.JLabel badgeImg;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JPanel chatPanel;
     private javax.swing.JTextArea chatTextArea;
     private javax.swing.JList<String> contactsList;
     private javax.swing.JPopupMenu contactsMenu;
+    private javax.swing.JPanel courseListPanel;
     private javax.swing.JList<String> courseListProfile;
+    private javax.swing.JLabel courseListText;
     private javax.swing.JComboBox<String> coursesComboBox;
     private javax.swing.JComboBox<String> coursesComboBox1;
+    private javax.swing.JTextField firstNameField;
+    private javax.swing.JLabel firstNameLabel;
     private javax.swing.JTextField firstnamefield;
-    private javax.swing.JLabel firstnamelabel;
     private javax.swing.JTextField fnameFilterTextField1;
-    private javax.swing.JTextField fnameProfileField;
     private javax.swing.JTextArea incomeChatArea;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
@@ -1489,7 +1549,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
@@ -1501,11 +1560,11 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JButton joinClassButton;
     private java.awt.Label label1;
+    private javax.swing.JTextField lastNameField;
+    private javax.swing.JLabel lastNameLabel;
     private javax.swing.JTextField lastnamefield;
-    private javax.swing.JLabel lastnamelabel;
     private javax.swing.JLabel lastnametext;
     private javax.swing.JTextField lnameFilterTextField1;
-    private javax.swing.JTextField lnameProfileField;
     private javax.swing.JTextField messageField;
     private javax.swing.JRadioButton moderatorFilterSelected1;
     private javax.swing.JList<String> offlineJList;
@@ -1522,11 +1581,10 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton submitButton;
     private javax.swing.JRadioButton tutorFilterSelected1;
     private javax.swing.JRadioButton tutorRB;
-    private javax.swing.JTextField typeProfileField;
+    private javax.swing.JTextField usernameField;
     private javax.swing.JTextField usernameFilterTextField1;
-    private javax.swing.JTextField usernameProfileField;
+    private javax.swing.JLabel usernameLabel;
     private javax.swing.JTextField usernamefield;
     private javax.swing.JTextField usernamefieldsignup;
-    private javax.swing.JLabel usernamelabel;
     // End of variables declaration//GEN-END:variables
 }
