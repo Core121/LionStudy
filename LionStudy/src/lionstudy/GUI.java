@@ -148,6 +148,11 @@ public class GUI extends javax.swing.JFrame {
         jButton9 = new javax.swing.JButton();
         label1 = new java.awt.Label();
         ModOptions = new javax.swing.JPanel();
+        ModOptions1 = new javax.swing.JPanel();
+        AddClassName = new javax.swing.JTextField();
+        ModOptionsLabel = new java.awt.Label();
+        AddClassLabel = new java.awt.Label();
+        jButton10 = new javax.swing.JButton();
         LoginTab = new javax.swing.JPanel();
         PasswordText = new javax.swing.JLabel();
         UsernameText = new javax.swing.JLabel();
@@ -719,15 +724,72 @@ public class GUI extends javax.swing.JFrame {
 
         jTabbedPane2.addTab("Important Services", new javax.swing.ImageIcon(getClass().getResource("/Res/SuperImg.png")), SuperImpTab); // NOI18N
 
+        ModOptionsLabel.setFont(new java.awt.Font("Bell MT", 0, 36)); // NOI18N
+        ModOptionsLabel.setText("Moderator Options");
+
+        AddClassLabel.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        AddClassLabel.setText("Course Name:");
+
+        jButton10.setText("Add Course");
+        jButton10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton10ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout ModOptions1Layout = new javax.swing.GroupLayout(ModOptions1);
+        ModOptions1.setLayout(ModOptions1Layout);
+        ModOptions1Layout.setHorizontalGroup(
+            ModOptions1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ModOptions1Layout.createSequentialGroup()
+                .addGroup(ModOptions1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(ModOptions1Layout.createSequentialGroup()
+                        .addGap(231, 231, 231)
+                        .addComponent(ModOptionsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(ModOptions1Layout.createSequentialGroup()
+                        .addGap(179, 179, 179)
+                        .addComponent(AddClassLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(AddClassName, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(219, Short.MAX_VALUE))
+        );
+        ModOptions1Layout.setVerticalGroup(
+            ModOptions1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ModOptions1Layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(ModOptionsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
+                .addGroup(ModOptions1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(ModOptions1Layout.createSequentialGroup()
+                        .addGap(9, 9, 9)
+                        .addComponent(AddClassLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(ModOptions1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(AddClassName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(335, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout ModOptionsLayout = new javax.swing.GroupLayout(ModOptions);
         ModOptions.setLayout(ModOptionsLayout);
         ModOptionsLayout.setHorizontalGroup(
             ModOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 776, Short.MAX_VALUE)
+            .addGroup(ModOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(ModOptionsLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(ModOptions1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         ModOptionsLayout.setVerticalGroup(
             ModOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 523, Short.MAX_VALUE)
+            .addGroup(ModOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(ModOptionsLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(ModOptions1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         jTabbedPane2.addTab("Moderator Options", ModOptions);
@@ -1311,12 +1373,27 @@ public class GUI extends javax.swing.JFrame {
         sd.AddClasstoUser(selection);
     }//GEN-LAST:event_joinClassButtonActionPerformed
 
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+        ServiceDispatcher sd = new ServiceDispatcher();
+        String classname = this.AddClassName.getText();
+        boolean success = sd.CreateClass(classname);
+        if(success){
+            JOptionPane.showMessageDialog(null, "Class Added", "Success", JOptionPane.INFORMATION_MESSAGE);
+            this.AddClassName.setText("");
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Class Not Added", "Failure", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_jButton10ActionPerformed
+
     /**
      * @param args the command line arguments
      */
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private java.awt.Label AddClassLabel;
+    private javax.swing.JTextField AddClassName;
     private javax.swing.JPanel ChatTab;
     private javax.swing.JPanel ContactsTab;
     private javax.swing.JLabel CourseListText;
@@ -1331,6 +1408,8 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JPanel LoginTab1;
     private javax.swing.JButton LogoutButton;
     private javax.swing.JPanel ModOptions;
+    private javax.swing.JPanel ModOptions1;
+    private java.awt.Label ModOptionsLabel;
     private javax.swing.JLabel PasswordText;
     private javax.swing.JPanel ProfileTab;
     private javax.swing.JPanel SearchResultListsPanel;
@@ -1355,6 +1434,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextField fnameProfileField;
     private javax.swing.JTextArea incomeChatArea;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
