@@ -1,10 +1,10 @@
 package lionstudy;
 
-class MessageParser
+class IRC_MessageParser
 {
-    static RecievedMessage recieved(String ircMessage)
+    static IRC_RecievedMessage recieved(String ircMessage)
     {
-        RecievedMessage msg = new RecievedMessage();
+        IRC_RecievedMessage msg = new IRC_RecievedMessage();
         int spaceIndex;
         
         

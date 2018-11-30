@@ -9,7 +9,7 @@ package lionstudy;
  *
  * @author jjh5954
  */
-public class MessageBuffer
+public class IRC_MessageBuffer
 {
     String buffer ="";
     String message="";

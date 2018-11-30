@@ -4,7 +4,7 @@ import java.io.*;
 import java.net.*;
 import java.util.*;
 
-final class BasicIRC_Socket implements Runnable
+final class IRC_LiveSocket implements Runnable
 {
     Socket lionstudy;
     OutputStream outStream;
@@ -15,7 +15,7 @@ final class BasicIRC_Socket implements Runnable
     //Message to be sent to output stream
     String msg;
     
-    BasicIRC_Socket(String server, int port)
+    IRC_LiveSocket(String server, int port)
     {
         try
         {
@@ -93,7 +93,7 @@ final class BasicIRC_Socket implements Runnable
     
     boolean IRC_processMessage(String ircMessage)
     {
-        RecievedMessage RcvMsg = MessageParser.recieved(ircMessage);
+        IRC_RecievedMessage RcvMsg = IRC_MessageParser.recieved(ircMessage);
         if(RcvMsg.command.equals("PRIVMSG")||RcvMsg.command.equals("LOGMSG"))
         {
             System.out.println(RcvMsg.source+": "+RcvMsg.content);
@@ -112,7 +112,7 @@ final class BasicIRC_Socket implements Runnable
             try
             {
                 InputStream inStream = lionstudy.getInputStream();
-                MessageBuffer msgBuf = new MessageBuffer();
+                IRC_MessageBuffer msgBuf = new IRC_MessageBuffer();
 
                 byte[] buffer = new byte[1024];
                 int bytes;
@@ -147,7 +147,7 @@ final class BasicIRC_Socket implements Runnable
             try
             {
                 InputStream inStream = lionstudy.getInputStream();
-                MessageBuffer msgBuf = new MessageBuffer();
+                IRC_MessageBuffer msgBuf = new IRC_MessageBuffer();
 
                 byte[] buffer = new byte[1024];
                 int bytes;

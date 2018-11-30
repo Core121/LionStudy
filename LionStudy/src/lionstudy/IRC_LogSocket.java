@@ -5,7 +5,7 @@ import java.net.*;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 
-final class BasicIRC_Log implements Runnable
+final class IRC_LogSocket implements Runnable
 {
     Socket lionstudy;
     OutputStream outStream;
@@ -18,7 +18,7 @@ final class BasicIRC_Log implements Runnable
     String serv;
     int prt;
     
-    BasicIRC_Log(String server, int port, String log)
+    IRC_LogSocket(String server, int port, String log)
     {
         serv=server;
         prt=port;
@@ -87,9 +87,10 @@ final class BasicIRC_Log implements Runnable
         send(msg);
     }
     
+    //NOTE, we need to edit this to probably send message to output
     boolean IRC_processMessage(String ircMessage)
     {
-        RecievedMessage RcvMsg = MessageParser.recieved(ircMessage);
+        IRC_RecievedMessage RcvMsg = IRC_MessageParser.recieved(ircMessage);
         if(RcvMsg.command.equals("LOGMSG"))
         {
             System.out.println(RcvMsg.source+": "+RcvMsg.content);
@@ -116,7 +117,7 @@ final class BasicIRC_Log implements Runnable
             try
             {
                 InputStream inStream = lionstudy.getInputStream();
-                MessageBuffer msgBuf = new MessageBuffer();
+                IRC_MessageBuffer msgBuf = new IRC_MessageBuffer();
 
                 byte[] buffer = new byte[1024];
                 int bytes;
