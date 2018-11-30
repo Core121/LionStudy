@@ -25,6 +25,14 @@ public class GUI extends javax.swing.JFrame {
      */
     public GUI() {
         initComponents();
+        ServiceDispatcher sd = new ServiceDispatcher();
+        ArrayList<Account> contacts = sd.GetAllUsersContacts();
+        DefaultListModel contactsModel = new DefaultListModel();
+        for (int i = 0; i < contacts.size(); i++){
+            String user = contacts.get(i).firstname + " " + contacts.get(i).lastname;
+            contactsModel.addElement(user);
+        }
+        contactsList.setModel(contactsModel);
     }
     
     CurrentUser CU;
