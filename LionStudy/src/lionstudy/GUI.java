@@ -284,6 +284,16 @@ public class GUI extends javax.swing.JFrame {
         jLabel2.setMaximumSize(new java.awt.Dimension(50, 25));
         jLabel2.setMinimumSize(new java.awt.Dimension(50, 25));
 
+        onlineJList.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                onlineJListMouseClicked(evt);
+            }
+        });
+        onlineJList.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                onlineJListValueChanged(evt);
+            }
+        });
         jScrollPane1.setViewportView(onlineJList);
 
         jLabel9.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 24)); // NOI18N
@@ -1184,6 +1194,7 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_submitButtonActionPerformed
 
     private void coursesComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_coursesComboBoxActionPerformed
+        try{
         String selection = coursesComboBox.getSelectedItem().toString();
         boolean CUinclass = false;
         boolean Joined = false;
@@ -1217,7 +1228,10 @@ public class GUI extends javax.swing.JFrame {
          else{
             joinClassButton.setVisible(true);
         }
-        
+        }
+        catch(NullPointerException e){
+            
+        }
 
     }//GEN-LAST:event_coursesComboBoxActionPerformed
 
@@ -1297,18 +1311,17 @@ public class GUI extends javax.swing.JFrame {
                 this.lastNameField.setText(CurrentUser.getLastname());
                 this.usernameField.setText(CurrentUser.getUsername());
  
-               
-                //Fills in all classes
-                /*ArrayList<String> Classes = sd.GetAllClasses();
-                for(int x = 0; x<Classes.size(); x++){
-                   this.CourseListTextArea.append(Classes.get(x) + "\n");
-                }*/
-                ;
+                
                 
                 //fills the combo box for courses in Search tab
-                joinClassButton.setVisible(false);
                 ArrayList<String> allClassesList = sd.GetAllClasses();
                 this.coursesComboBox.setModel(new DefaultComboBoxModel(allClassesList.toArray()));
+                ArrayList<String> cl = sd.GetAllUsersClasses();
+                joinClassButton.setVisible(false);
+                this.coursesComboBox.setSelectedIndex(-1);
+                DefaultListModel NoModel = new DefaultListModel();
+                this.onlineJList.setModel(NoModel);
+                
                 
                 
                 //Fills in all contacts
@@ -1414,6 +1427,13 @@ public class GUI extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "Course added.");
         joinClassButton.setVisible(false);
         jPanel1.repaint();
+        
+        ArrayList<String> userCoursesProfile = sd.GetAllUsersClasses();
+        DefaultListModel classListProfile = new DefaultListModel();
+        for(int x = 0; x<userCoursesProfile.size(); x++){
+            classListProfile.addElement(userCoursesProfile.get(x)+"\n");
+        }
+        this.courseListProfile.setModel(classListProfile);
          
         
     }//GEN-LAST:event_joinClassButtonActionPerformed
@@ -1430,6 +1450,16 @@ public class GUI extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Class Not Added", "Failure", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_jButton10ActionPerformed
+
+    private void onlineJListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_onlineJListValueChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_onlineJListValueChanged
+
+    private void onlineJListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_onlineJListMouseClicked
+        // TODO add your handling code here:
+        JOptionPane.showConfirmDialog(null, "Add user as contact?", "", JOptionPane.OK_CANCEL_OPTION);
+        JOptionPane.showConfirmDialog(null, "Chat with this user?", "", JOptionPane.OK_CANCEL_OPTION);
+    }//GEN-LAST:event_onlineJListMouseClicked
 
     /**
      * @param args the command line arguments
