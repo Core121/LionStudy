@@ -91,10 +91,10 @@ public class GUI extends javax.swing.JFrame {
         SearchResultListsPanel = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        onlineList = new javax.swing.JList<>();
+        onlineJList = new javax.swing.JList<>();
         jLabel9 = new javax.swing.JLabel();
         jScrollPane6 = new javax.swing.JScrollPane();
-        offlineList = new javax.swing.JList<>();
+        offlineJList = new javax.swing.JList<>();
         ChatTab = new javax.swing.JPanel();
         InteractionPanel = new javax.swing.JPanel();
         messageField = new javax.swing.JTextField();
@@ -289,14 +289,14 @@ public class GUI extends javax.swing.JFrame {
         jLabel2.setMaximumSize(new java.awt.Dimension(50, 25));
         jLabel2.setMinimumSize(new java.awt.Dimension(50, 25));
 
-        jScrollPane1.setViewportView(onlineList);
+        jScrollPane1.setViewportView(onlineJList);
 
         jLabel9.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 24)); // NOI18N
         jLabel9.setText("Offline");
         jLabel9.setMaximumSize(new java.awt.Dimension(50, 25));
         jLabel9.setMinimumSize(new java.awt.Dimension(50, 25));
 
-        jScrollPane6.setViewportView(offlineList);
+        jScrollPane6.setViewportView(offlineJList);
 
         javax.swing.GroupLayout SearchResultListsPanelLayout = new javax.swing.GroupLayout(SearchResultListsPanel);
         SearchResultListsPanel.setLayout(SearchResultListsPanelLayout);
@@ -441,7 +441,7 @@ public class GUI extends javax.swing.JFrame {
                 .addGap(20, 20, 20)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(addCourseButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(removeCourseButton, javax.swing.GroupLayout.PREFERRED_SIZE, 122, Short.MAX_VALUE))
+                    .addComponent(removeCourseButton, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
@@ -454,7 +454,7 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(addCourseButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(removeCourseButton)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
 
         ProfileTab.add(jPanel4, java.awt.BorderLayout.LINE_END);
@@ -755,7 +755,7 @@ public class GUI extends javax.swing.JFrame {
         );
         ModOptionsLayout.setVerticalGroup(
             ModOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 505, Short.MAX_VALUE)
+            .addGap(0, 523, Short.MAX_VALUE)
         );
 
         jTabbedPane2.addTab("Moderator Options", ModOptions);
@@ -818,7 +818,7 @@ public class GUI extends javax.swing.JFrame {
                     .addComponent(PasswordText))
                 .addGap(42, 42, 42)
                 .addComponent(LoginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(174, Short.MAX_VALUE))
+                .addContainerGap(188, Short.MAX_VALUE))
         );
 
         PasswordText.getAccessibleContext().setAccessibleName("passwordtext");
@@ -1117,29 +1117,33 @@ public class GUI extends javax.swing.JFrame {
         ArrayList<Account> allUsers = dispatcher.GetUsersFromClass(selection);
         DefaultListModel OfflineModel = new DefaultListModel();
         DefaultListModel OnlineModel = new DefaultListModel();
+        
+        //obtains all the online  and offline users that have selected class in their courseList
         for (int i = 0; i < allUsers.size(); i++){
-            if(CurrentUser.getUsername().equals(allUsers.get(i).getUsername())){
+            String user = allUsers.get(i).firstname + " " + allUsers.get(i).lastname;
+            if(CurrentUser.getUsername().equals(allUsers.get(i).getUsername())){        //checking to make you current user isnt displayed
                 CUinclass = true;
             }
-            if(allUsers.get(i).getOnline() == 1){
-                OnlineModel.addElement(allUsers.get(i).getUsername());
+            if(allUsers.get(i).getOnline() == 1 && CUinclass == false){
+                OnlineModel.addElement(user);
             }
-            else{
-                OfflineModel.addElement(allUsers.get(i).getUsername());
+            else if (allUsers.get(i).getOnline() == 0 && CUinclass == false){
+                OfflineModel.addElement(user);
             }
+            CUinclass = false;
         }
+        onlineJList.setModel(OnlineModel);
+        offlineJList.setModel(OfflineModel);
+//        if(CUinclass == true){
+//            removeClassButton.setVisible(true);
+//            joinClassButton.setVisible(false);
+//        }
+//        else{
+//            removeClassButton.setVisible(false);
+//            joinClassButton.setVisible(true);
+//        }
         
-        if(CUinclass == true){
-            removeClassButton.setVisible(true);
-            joinClassButton.setVisible(false);
-        }
-        else{
-            removeClassButton.setVisible(false);
-            joinClassButton.setVisible(true);
-        }
-        onlineList.setModel(OnlineModel);
-        offlineList.setModel(OfflineModel);
-    
+
     }//GEN-LAST:event_coursesComboBoxActionPerformed
 
     private void coursesComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_coursesComboBox1ActionPerformed
@@ -1425,8 +1429,8 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextField lnameProfileField;
     private javax.swing.JTextField messageField;
     private javax.swing.JRadioButton moderatorFilterSelected1;
-    private javax.swing.JList<String> offlineList;
-    private javax.swing.JList<String> onlineList;
+    private javax.swing.JList<String> offlineJList;
+    private javax.swing.JList<String> onlineJList;
     private javax.swing.JPasswordField passwordfield;
     private javax.swing.JPasswordField passwordfieldsignup;
     private javax.swing.JPasswordField passwordfieldsignupreenter;
