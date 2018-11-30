@@ -1264,12 +1264,16 @@ public class GUI extends javax.swing.JFrame {
                 for(int x = 0; x<Classes.size(); x++){
                    this.CourseListTextArea.append(Classes.get(x) + "\n");
                 }*/
-                ;
+                
                 
                 //fills the combo box for courses in Search tab
-                joinClassButton.setVisible(false);
                 ArrayList<String> allClassesList = sd.GetAllClasses();
                 this.coursesComboBox.setModel(new DefaultComboBoxModel(allClassesList.toArray()));
+                ArrayList<String> cl = sd.GetAllUsersClasses();
+                joinClassButton.setVisible(false);
+                
+                
+                
                 
                 
                 //Fills in all contacts
@@ -1379,6 +1383,13 @@ public class GUI extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "Course added.");
         joinClassButton.setVisible(false);
         jPanel1.repaint();
+        
+        ArrayList<String> userCoursesProfile = sd.GetAllUsersClasses();
+        DefaultListModel classListProfile = new DefaultListModel();
+        for(int x = 0; x<userCoursesProfile.size(); x++){
+            classListProfile.addElement(userCoursesProfile.get(x)+"\n");
+        }
+        this.courseListProfile.setModel(classListProfile);
          
         
     }//GEN-LAST:event_joinClassButtonActionPerformed
