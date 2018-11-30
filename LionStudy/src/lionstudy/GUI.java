@@ -112,8 +112,7 @@ public class GUI extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         CourseListText = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        usercourselistarea = new javax.swing.JTextArea();
-        addCourseButton = new javax.swing.JButton();
+        courseListProfile = new javax.swing.JList<>();
         removeCourseButton = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         fnameProfileField = new javax.swing.JTextField();
@@ -399,18 +398,12 @@ public class GUI extends javax.swing.JFrame {
 
         CourseListText.setText("CourseList:");
 
-        usercourselistarea.setEditable(false);
-        usercourselistarea.setColumns(20);
-        usercourselistarea.setRows(5);
-        jScrollPane4.setViewportView(usercourselistarea);
-
-        addCourseButton.setText("Add Course");
-        addCourseButton.setToolTipText("");
-        addCourseButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addCourseButtonActionPerformed(evt);
-            }
+        courseListProfile.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
         });
+        jScrollPane4.setViewportView(courseListProfile);
 
         removeCourseButton.setText("Remove Course");
         removeCourseButton.addActionListener(new java.awt.event.ActionListener() {
@@ -427,9 +420,7 @@ public class GUI extends javax.swing.JFrame {
             .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(addCourseButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(removeCourseButton, javax.swing.GroupLayout.PREFERRED_SIZE, 122, Short.MAX_VALUE))
+                .addComponent(removeCourseButton, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
@@ -438,11 +429,9 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(CourseListText, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(addCourseButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(52, 52, 52)
                 .addComponent(removeCourseButton)
-                .addContainerGap(54, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         ProfileTab.add(jPanel4, java.awt.BorderLayout.LINE_END);
@@ -450,7 +439,7 @@ public class GUI extends javax.swing.JFrame {
         jPanel6.setLayout(new java.awt.GridLayout(0, 1));
 
         fnameProfileField.setEditable(false);
-        fnameProfileField.setText("Johny");
+        fnameProfileField.setText(CurrentUser.getFirstname());
         fnameProfileField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 fnameProfileFieldActionPerformed(evt);
@@ -459,11 +448,11 @@ public class GUI extends javax.swing.JFrame {
         jPanel6.add(fnameProfileField);
 
         lnameProfileField.setEditable(false);
-        lnameProfileField.setText("Appleseed");
+        lnameProfileField.setText(CurrentUser.getLastname());
         jPanel6.add(lnameProfileField);
 
         usernameProfileField.setEditable(false);
-        usernameProfileField.setText("jman2theA");
+        usernameProfileField.setText(CurrentUser.getUsername());
         usernameProfileField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 usernameProfileFieldActionPerformed(evt);
@@ -1196,9 +1185,10 @@ public class GUI extends javax.swing.JFrame {
                 }
                 
                 //Fills in the users classes on the profile tab
-                ArrayList<String> UsersClasses = sd.GetAllUsersClasses();
-                for(int x = 0; x<UsersClasses.size(); x++){
-                   this.usercourselistarea.append(UsersClasses.get(x) + "\n");
+                ArrayList<String> userCoursesProfile = sd.GetAllUsersClasses();
+                DefaultListModel classListProfile = new DefaultListModel();
+                for(int x = 0; x<userCoursesProfile.size(); x++){
+                   classListProfile.addElement(userCoursesProfile.get(x).toString()+"\n");
                 }
                
                 //Fills in the Profile Tab
@@ -1287,13 +1277,6 @@ public class GUI extends javax.swing.JFrame {
         chatTextArea.setText("");
     }//GEN-LAST:event_LogoutButtonActionPerformed
 
-    private void addCourseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addCourseButtonActionPerformed
-        // create dialog box with drop down containing list of all courses
-        // user will select a course and click add button
-        // check if class is already in user's course list
-        // dialog box will close, new dialog box will pop-up indicating success/failure
-    }//GEN-LAST:event_addCourseButtonActionPerformed
-
     private void removeCourseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeCourseButtonActionPerformed
         // create dialog box with drop down containing list of user courses
         // user will select a course and click remove
@@ -1350,12 +1333,12 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JPanel TopPanel;
     private javax.swing.JLabel UsernameText;
     private javax.swing.JLabel accountlabel;
-    private javax.swing.JButton addCourseButton;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JPanel chatPanel;
     private javax.swing.JTextArea chatTextArea;
     private javax.swing.JList<String> contactsList;
     private javax.swing.JPopupMenu contactsMenu;
+    private javax.swing.JList<String> courseListProfile;
     private javax.swing.JComboBox<String> coursesComboBox;
     private javax.swing.JComboBox<String> coursesComboBox1;
     private javax.swing.JTextField firstnamefield;
@@ -1424,7 +1407,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JRadioButton tutorFilterSelected1;
     private javax.swing.JRadioButton tutorRB;
     private javax.swing.JTextField typeProfileField;
-    private javax.swing.JTextArea usercourselistarea;
     private javax.swing.JTextField usernameFilterTextField1;
     private javax.swing.JTextField usernameProfileField;
     private javax.swing.JTextField usernamefield;
