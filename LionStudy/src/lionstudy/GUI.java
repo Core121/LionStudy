@@ -1090,6 +1090,7 @@ public class GUI extends javax.swing.JFrame {
     private void coursesComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_coursesComboBoxActionPerformed
         String selection = coursesComboBox.getSelectedItem().toString();
         boolean CUinclass = false;
+        boolean JoinButton = false;
         ServiceDispatcher dispatcher = new ServiceDispatcher();
         ArrayList<Account> allUsers = dispatcher.GetUsersFromClass(selection);
         DefaultListModel OfflineModel = new DefaultListModel();
@@ -1099,7 +1100,8 @@ public class GUI extends javax.swing.JFrame {
         for (int i = 0; i < allUsers.size(); i++){
             String user = allUsers.get(i).firstname + " " + allUsers.get(i).lastname;
             if(CurrentUser.getUsername().equals(allUsers.get(i).getUsername())){        //checking to make you current user isnt displayed
-                CUinclass = true;
+               CUinclass = true;
+               JoinButton = true;
             }
             if(allUsers.get(i).getOnline() == 1 && CUinclass == false){
                 OnlineModel.addElement(user);
@@ -1111,7 +1113,7 @@ public class GUI extends javax.swing.JFrame {
         }
         onlineJList.setModel(OnlineModel);
         offlineJList.setModel(OfflineModel);
-         if(CUinclass == true){
+         if(JoinButton == true){
             joinClassButton.setVisible(false);
         }
         else{
