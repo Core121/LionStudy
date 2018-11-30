@@ -150,9 +150,15 @@
                                   <EmptySpace min="-2" pref="195" max="-2" attributes="0"/>
                                   <Component id="jLabel5" min="-2" pref="74" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="coursesComboBox" alignment="0" min="-2" pref="301" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="coursesComboBox" min="-2" pref="301" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                                  <Component id="joinClassButton" min="-2" pref="106" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="removeClassButton" min="-2" pref="127" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
-                          <EmptySpace pref="430" max="32767" attributes="0"/>
+                          <EmptySpace pref="185" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -165,10 +171,14 @@
                               <Group type="102" attributes="0">
                                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="coursesComboBox" min="-2" pref="32" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="coursesComboBox" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                                      <Component id="removeClassButton" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
+                                      <Component id="joinClassButton" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
                           </Group>
-                          <EmptySpace min="25" pref="41" max="32767" attributes="0"/>
+                          <EmptySpace min="25" pref="30" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -197,6 +207,24 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Courses"/>
                   </Properties>
+                </Component>
+                <Component class="javax.swing.JButton" name="removeClassButton">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Remove Class"/>
+                    <Property name="toolTipText" type="java.lang.String" value=""/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="removeClassButtonActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JButton" name="joinClassButton">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Join Class"/>
+                    <Property name="toolTipText" type="java.lang.String" value=""/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="joinClassButtonActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -515,7 +543,7 @@
                           <Component id="addCourseButton" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="removeCourseButton" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="22" max="32767" attributes="0"/>
+                          <EmptySpace pref="54" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1076,7 +1104,7 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="505" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="523" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
@@ -1137,7 +1165,7 @@
                       </Group>
                       <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
                       <Component id="LoginButton" min="-2" pref="40" max="-2" attributes="0"/>
-                      <EmptySpace pref="174" max="32767" attributes="0"/>
+                      <EmptySpace pref="188" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>

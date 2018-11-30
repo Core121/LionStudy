@@ -86,6 +86,8 @@ public class GUI extends javax.swing.JFrame {
         coursesComboBox = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        removeClassButton = new javax.swing.JButton();
+        joinClassButton = new javax.swing.JButton();
         SearchResultListsPanel = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -229,6 +231,22 @@ public class GUI extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
         jLabel1.setText("Courses");
 
+        removeClassButton.setText("Remove Class");
+        removeClassButton.setToolTipText("");
+        removeClassButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removeClassButtonActionPerformed(evt);
+            }
+        });
+
+        joinClassButton.setText("Join Class");
+        joinClassButton.setToolTipText("");
+        joinClassButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                joinClassButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -240,8 +258,13 @@ public class GUI extends javax.swing.JFrame {
                         .addComponent(jLabel1)
                         .addGap(195, 195, 195)
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(coursesComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(430, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(coursesComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(34, 34, 34)
+                        .addComponent(joinClassButton, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(removeClassButton, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(185, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -252,8 +275,11 @@ public class GUI extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(coursesComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(25, 41, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(coursesComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(removeClassButton, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(joinClassButton, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(25, 30, Short.MAX_VALUE))
         );
 
         SearchTab.add(jPanel1, java.awt.BorderLayout.PAGE_START);
@@ -1086,12 +1112,15 @@ public class GUI extends javax.swing.JFrame {
 
     private void coursesComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_coursesComboBoxActionPerformed
         String selection = coursesComboBox.getSelectedItem().toString();
-        
+        boolean CUinclass = false;
         ServiceDispatcher dispatcher = new ServiceDispatcher();
         ArrayList<Account> allUsers = dispatcher.GetUsersFromClass(selection);
         DefaultListModel OfflineModel = new DefaultListModel();
         DefaultListModel OnlineModel = new DefaultListModel();
         for (int i = 0; i < allUsers.size(); i++){
+            if(CurrentUser.getUsername().equals(allUsers.get(i).getUsername())){
+                CUinclass = true;
+            }
             if(allUsers.get(i).getOnline() == 1){
                 OnlineModel.addElement(allUsers.get(i).getUsername());
             }
@@ -1099,9 +1128,18 @@ public class GUI extends javax.swing.JFrame {
                 OfflineModel.addElement(allUsers.get(i).getUsername());
             }
         }
+        
+        if(CUinclass == true){
+            removeClassButton.setVisible(true);
+            joinClassButton.setVisible(false);
+        }
+        else{
+            removeClassButton.setVisible(false);
+            joinClassButton.setVisible(true);
+        }
         onlineList.setModel(OnlineModel);
         offlineList.setModel(OfflineModel);
-               
+    
     }//GEN-LAST:event_coursesComboBoxActionPerformed
 
     private void coursesComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_coursesComboBox1ActionPerformed
@@ -1286,6 +1324,18 @@ public class GUI extends javax.swing.JFrame {
         
     }//GEN-LAST:event_contactsListMousePressed
 
+    private void removeClassButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeClassButtonActionPerformed
+       String selection = coursesComboBox.getSelectedItem().toString();
+        ServiceDispatcher sd = new ServiceDispatcher();
+        sd.DeleteClassfromUser(selection);
+    }//GEN-LAST:event_removeClassButtonActionPerformed
+
+    private void joinClassButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_joinClassButtonActionPerformed
+        String selection = coursesComboBox.getSelectedItem().toString();
+        ServiceDispatcher sd = new ServiceDispatcher();
+        sd.AddClasstoUser(selection);
+    }//GEN-LAST:event_joinClassButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1366,6 +1416,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JTabbedPane jTabbedPane2;
+    private javax.swing.JButton joinClassButton;
     private java.awt.Label label1;
     private javax.swing.JTextField lastnamefield;
     private javax.swing.JLabel lastnamelabel;
@@ -1381,6 +1432,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JPasswordField passwordfieldsignupreenter;
     private javax.swing.JRadioButton professorFilterSelected1;
     private javax.swing.JRadioButton professorRB;
+    private javax.swing.JButton removeClassButton;
     private javax.swing.JButton removeCourseButton;
     private javax.swing.JButton searchButton1;
     private javax.swing.JRadioButton studentFilterSelected1;
