@@ -159,12 +159,45 @@ public class ServiceDispatcher {
         return classes;
     }
     
-    //Adds a class to the current user, taking the classname as a parameter
-    public void AddClasstoUser(String classname) {
+ 
+    public ArrayList<Account> GetUsersFromClass(String classname) {
+        ArrayList<Account> Users = new ArrayList<Account>();
         try {
             Connection myConn = DriverManager.getConnection(CONN_STRING, USERNAME, PASSWORD);
             stmt = myConn.createStatement();
-            PreparedStatement pstmt = myConn.prepareStatement("INSERT INTO `UserClasses`(Username,ClassName) VALUES (?, ?)");
+            PreparedStatement pstmt = myConn.prepareStatement("SELECT Username FROM UserClasses WHERE ClassName = ?");
+            pstmt.setString(1, classname);
+            rs = pstmt.executeQuery();
+            while (rs.next()) {
+                String usernamec = rs.getString("Username");
+                pstmt = myConn.prepareStatement("SELECT * FROM Users WHERE username = ?");
+                pstmt.setString(1, usernamec);
+                ResultSet rst = pstmt.executeQuery();
+                while (rst.next()) {
+                    String username = rst.getString("username");
+                    String password = "";
+                    String firstName = rst.getString("first");
+                    String lastName = rst.getString("last");
+                    int badgetype = rst.getInt("badge");
+                    int ID = rst.getInt("ID");
+                    int online = rst.getInt("online");
+                    Account temp = new Account(username, password, firstName, lastName, badgetype, ID);
+                    temp.setOnline(online);
+                    Users.add(temp);
+                }
+            }
+            myConn.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return Users;
+    }
+    
+    public void DeleteClassfromUser(String classname) {
+        try {
+            Connection myConn = DriverManager.getConnection(CONN_STRING, USERNAME, PASSWORD);
+            stmt = myConn.createStatement();
+            PreparedStatement pstmt = myConn.prepareStatement("DELETE FROM `UserClasses` WHERE Username = ? AND ClassName = ?");
             pstmt.setString(1, CurrentUser.getUsername());
             pstmt.setString(2, classname);
             pstmt.executeUpdate();
@@ -174,11 +207,11 @@ public class ServiceDispatcher {
         }
     }
     
-    public void DeleteClassfromUser(String classname) {
+    public void AddClasstoUser(String classname) {
         try {
             Connection myConn = DriverManager.getConnection(CONN_STRING, USERNAME, PASSWORD);
             stmt = myConn.createStatement();
-            PreparedStatement pstmt = myConn.prepareStatement("DELETE FROM `UserClasses` WHERE Username = ? AND ClassName = ?");
+            PreparedStatement pstmt = myConn.prepareStatement("INSERT INTO `UserClasses` (Username, ClassName) VALUES (?,?)");
             pstmt.setString(1, CurrentUser.getUsername());
             pstmt.setString(2, classname);
             pstmt.executeUpdate();
@@ -203,8 +236,8 @@ public class ServiceDispatcher {
         }
     }
     
-    //Deletes a users contact
-    public void DeleteUserContact(String ContactUsername) {
+    //Removes a users contact
+    public void RemoveUserContact(String ContactUsername) {
         try {
             ContactUsername = ContactUsername.toLowerCase();
             Connection myConn = DriverManager.getConnection(CONN_STRING, USERNAME, PASSWORD);
@@ -231,7 +264,6 @@ public class ServiceDispatcher {
             rs = pstmt.executeQuery();
             while (rs.next()) {
                 usernamec = rs.getString("ContactUsername");
-                System.out.println(usernamec);
                 pstmt = myConn.prepareStatement("SELECT * FROM Users WHERE username = ?");
                 pstmt.setString(1, usernamec);
                 ResultSet rst = pstmt.executeQuery();
