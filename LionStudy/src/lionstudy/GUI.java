@@ -1155,6 +1155,7 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_submitButtonActionPerformed
 
     private void coursesComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_coursesComboBoxActionPerformed
+        try{
         String selection = coursesComboBox.getSelectedItem().toString();
         boolean CUinclass = false;
         boolean Joined = false;
@@ -1188,7 +1189,10 @@ public class GUI extends javax.swing.JFrame {
          else{
             joinClassButton.setVisible(true);
         }
-        
+        }
+        catch(NullPointerException e){
+            
+        }
 
     }//GEN-LAST:event_coursesComboBoxActionPerformed
 
@@ -1268,12 +1272,6 @@ public class GUI extends javax.swing.JFrame {
                 this.lnameProfileField.setText(CurrentUser.getLastname());
                 this.usernameProfileField.setText(CurrentUser.getUsername());
  
-               
-                //Fills in all classes
-                /*ArrayList<String> Classes = sd.GetAllClasses();
-                for(int x = 0; x<Classes.size(); x++){
-                   this.CourseListTextArea.append(Classes.get(x) + "\n");
-                }*/
                 
                 
                 //fills the combo box for courses in Search tab
@@ -1281,8 +1279,9 @@ public class GUI extends javax.swing.JFrame {
                 this.coursesComboBox.setModel(new DefaultComboBoxModel(allClassesList.toArray()));
                 ArrayList<String> cl = sd.GetAllUsersClasses();
                 joinClassButton.setVisible(false);
-                
-                
+                this.coursesComboBox.setSelectedIndex(-1);
+                DefaultListModel NoModel = new DefaultListModel();
+                this.onlineJList.setModel(NoModel);
                 
                 
                 
