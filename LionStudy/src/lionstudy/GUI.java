@@ -398,11 +398,6 @@ public class GUI extends javax.swing.JFrame {
 
         CourseListText.setText("CourseList:");
 
-        courseListProfile.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         jScrollPane4.setViewportView(courseListProfile);
 
         removeCourseButton.setText("Remove Course");
@@ -418,10 +413,10 @@ public class GUI extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(CourseListText, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.TRAILING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(removeCourseButton, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(67, 67, 67))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -429,9 +424,9 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(CourseListText, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(52, 52, 52)
+                .addGap(36, 36, 36)
                 .addComponent(removeCourseButton)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
 
         ProfileTab.add(jPanel4, java.awt.BorderLayout.LINE_END);
@@ -1190,6 +1185,7 @@ public class GUI extends javax.swing.JFrame {
                 for(int x = 0; x<userCoursesProfile.size(); x++){
                    classListProfile.addElement(userCoursesProfile.get(x).toString()+"\n");
                 }
+                this.courseListProfile.setModel(classListProfile);
                
                 //Fills in the Profile Tab
                 this.fnameProfileField.setText(CurrentUser.getFirstname());
