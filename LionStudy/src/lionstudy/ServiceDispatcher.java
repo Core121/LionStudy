@@ -108,8 +108,9 @@ public class ServiceDispatcher {
     }
 
     //Creates a user on the User database, must pass an Account as Parameter
-    public void CreateUser(Account account) {
+    public boolean CreateUser(Account account) {
         account.username = account.username.toLowerCase();
+        boolean userexists = false;
         try {
             Connection myConn = DriverManager.getConnection(CONN_STRING, USERNAME, PASSWORD);
             stmt = myConn.createStatement();
@@ -122,8 +123,9 @@ public class ServiceDispatcher {
             pstmt.executeUpdate();
             myConn.close();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "That username already exists, please login", "Sign Up Failure", JOptionPane.INFORMATION_MESSAGE);
+           userexists = true;
         }
+        return userexists;
     }
 
     //Creates a class on the class database, takes a classname in string form as a parameter. Database auto-generates ID for it.
