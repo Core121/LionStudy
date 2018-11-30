@@ -1185,7 +1185,7 @@ public class GUI extends javax.swing.JFrame {
                 ArrayList<String> userCoursesProfile = sd.GetAllUsersClasses();
                 DefaultListModel classListProfile = new DefaultListModel();
                 for(int x = 0; x<userCoursesProfile.size(); x++){
-                   classListProfile.addElement(userCoursesProfile.get(x).toString()+"\n");
+                   classListProfile.addElement(userCoursesProfile.get(x)+"\n");
                 }
                 this.courseListProfile.setModel(classListProfile);
                
@@ -1276,9 +1276,17 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_LogoutButtonActionPerformed
 
     private void removeCourseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeCourseButtonActionPerformed
-        // create dialog box with drop down containing list of user courses
-        // user will select a course and click remove
-        // dialog box will close, new dialog box will pop-up indicating success/failure
+        ServiceDispatcher sd = new ServiceDispatcher();
+        String courseToRemove = courseListProfile.getSelectedValue().toString();
+        String dialogMsg = courseToRemove + " Removed!";
+        sd.DeleteClassfromUser(courseToRemove);
+        JOptionPane.showMessageDialog(null, dialogMsg, "Success", JOptionPane.INFORMATION_MESSAGE);
+        ArrayList<String> userCoursesProfile = sd.GetAllUsersClasses();
+        DefaultListModel classListProfile = new DefaultListModel();
+        for(int x = 0; x<userCoursesProfile.size(); x++){
+            classListProfile.addElement(userCoursesProfile.get(x)+"\n");
+        }
+        this.courseListProfile.setModel(classListProfile);
     }//GEN-LAST:event_removeCourseButtonActionPerformed
 
     private void searchButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButton1ActionPerformed
