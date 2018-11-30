@@ -413,10 +413,10 @@ public class GUI extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(CourseListText, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.TRAILING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+            .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(removeCourseButton, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(67, 67, 67))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -424,9 +424,9 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(CourseListText, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
+                .addGap(30, 30, 30)
                 .addComponent(removeCourseButton)
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         ProfileTab.add(jPanel4, java.awt.BorderLayout.LINE_END);
@@ -1277,9 +1277,11 @@ public class GUI extends javax.swing.JFrame {
 
     private void removeCourseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeCourseButtonActionPerformed
         ServiceDispatcher sd = new ServiceDispatcher();
-        String courseToRemove = courseListProfile.getSelectedValue().toString();
-        String dialogMsg = courseToRemove + " Removed!";
-        sd.DeleteClassfromUser(courseToRemove);
+        String course = courseListProfile.getSelectedValue();
+        String[] courseToRemove = course.split("\n", 0);
+        course = courseToRemove[0];
+        String dialogMsg = course + " Removed Successfully!";        
+        sd.DeleteClassfromUser(course);
         JOptionPane.showMessageDialog(null, dialogMsg, "Success", JOptionPane.INFORMATION_MESSAGE);
         ArrayList<String> userCoursesProfile = sd.GetAllUsersClasses();
         DefaultListModel classListProfile = new DefaultListModel();
