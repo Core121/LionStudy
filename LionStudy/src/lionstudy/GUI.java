@@ -1,7 +1,11 @@
 package lionstudy;
 import java.awt.Font;
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.io.File;
 import lionstudy.Classes.*;
 import java.util.ArrayList;
+import javax.imageio.ImageIO;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
@@ -25,6 +29,7 @@ public class GUI extends javax.swing.JFrame {
      */
     public GUI() {
         initComponents();
+        this.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Res/LSIcon.png")));
         ServiceDispatcher sd = new ServiceDispatcher();
         ArrayList<Account> contacts = sd.GetAllUsersContacts();
         DefaultListModel contactsModel = new DefaultListModel();
