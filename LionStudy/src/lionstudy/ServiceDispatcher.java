@@ -109,7 +109,7 @@ public class ServiceDispatcher {
 
     //Creates a user on the User database, must pass an Account as Parameter
     public boolean CreateUser(Account account) {
-        account.username = account.username.toLowerCase();
+        account.setUsername(account.getUsername().toLowerCase());
         boolean userexists = false;
         try {
             Connection myConn = DriverManager.getConnection(CONN_STRING, USERNAME, PASSWORD);
