@@ -2,13 +2,13 @@ package lionstudy.Classes;
 
 
 public class Account{
-    public int ID;
-    public int badgetype;
-    public String username;
-    public String password;
-    public String firstname;
-    public String lastname;
-    public int online;
+    private int ID;
+    private int badgetype;
+    private String username;
+    private String password;
+    private String firstname;
+    private String lastname;
+    private int online;
 
   
     
