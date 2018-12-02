@@ -34,7 +34,7 @@ public class GUI extends javax.swing.JFrame {
         ArrayList<Account> contacts = sd.GetAllUsersContacts();
         DefaultListModel contactsModel = new DefaultListModel();
         for (int i = 0; i < contacts.size(); i++){
-            String user = contacts.get(i).firstname + " " + contacts.get(i).lastname;
+            String user = contacts.get(i).getFirstName()+ " " + contacts.get(i).getLastName();
             contactsModel.addElement(user);
         }
         contactsList.setModel(contactsModel);
@@ -1219,7 +1219,7 @@ public class GUI extends javax.swing.JFrame {
         
         //obtains all the online  and offline users that have selected class in their courseList
         for (int i = 0; i < allUsers.size(); i++){
-            String user = allUsers.get(i).firstname + " " + allUsers.get(i).lastname;
+            String user = allUsers.get(i).getFirstName() + " " + allUsers.get(i).getLastName();
             if(CurrentUser.getUsername().equals(allUsers.get(i).getUsername())){        //checking to make you current user isnt displayed
                CUinclass = true;
                Joined = true;
