@@ -30,14 +30,6 @@ public class GUI extends javax.swing.JFrame {
     public GUI() {
         initComponents();
         this.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Res/LSIcon.png")));
-        ServiceDispatcher sd = new ServiceDispatcher();
-        ArrayList<Account> contacts = sd.GetAllUsersContacts();
-        DefaultListModel contactsModel = new DefaultListModel();
-        for (int i = 0; i < contacts.size(); i++){
-            String user = contacts.get(i).getFirstName()+ " " + contacts.get(i).getLastName();
-            contactsModel.addElement(user);
-        }
-        contactsList.setModel(contactsModel);
     }
     
     CurrentUser CU;
@@ -92,7 +84,13 @@ public class GUI extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         buttonGroup1 = new javax.swing.ButtonGroup();
         contactsMenu = new javax.swing.JPopupMenu();
-        jPanel8 = new javax.swing.JPanel();
+        ConnectMenuItem = new javax.swing.JMenuItem();
+        RemoveMenuItem = new javax.swing.JMenuItem();
+        onlineUserMenu = new javax.swing.JPopupMenu();
+        ChatMenuItem = new javax.swing.JMenuItem();
+        AddMenuItem = new javax.swing.JMenuItem();
+        offlineUserMenu = new javax.swing.JPopupMenu();
+        AddOfflineMenuItem = new javax.swing.JMenuItem();
         jTabbedPane2 = new javax.swing.JTabbedPane();
         SearchTab = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
@@ -216,16 +214,41 @@ public class GUI extends javax.swing.JFrame {
         contactsMenu.setMinimumSize(new java.awt.Dimension(75, 25));
         contactsMenu.setName("[75, 25]"); // NOI18N
 
-        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
-        jPanel8.setLayout(jPanel8Layout);
-        jPanel8Layout.setHorizontalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        jPanel8Layout.setVerticalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
+        ConnectMenuItem.setText("Connect");
+        contactsMenu.add(ConnectMenuItem);
+
+        RemoveMenuItem.setText("Remove from Contacts");
+        RemoveMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RemoveMenuItemActionPerformed(evt);
+            }
+        });
+        contactsMenu.add(RemoveMenuItem);
+
+        onlineUserMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                onlineUserMenuMouseClicked(evt);
+            }
+        });
+
+        ChatMenuItem.setText("Chat with user");
+        onlineUserMenu.add(ChatMenuItem);
+
+        AddMenuItem.setText("Add to Contacts");
+        AddMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddMenuItemActionPerformed(evt);
+            }
+        });
+        onlineUserMenu.add(AddMenuItem);
+
+        AddOfflineMenuItem.setText("Add to Contacts");
+        AddOfflineMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddOfflineMenuItemActionPerformed(evt);
+            }
+        });
+        offlineUserMenu.add(AddOfflineMenuItem);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("LionStudy");
@@ -302,6 +325,9 @@ public class GUI extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 onlineJListMouseClicked(evt);
             }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                onlineJListMouseReleased(evt);
+            }
         });
         onlineJList.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
@@ -315,6 +341,11 @@ public class GUI extends javax.swing.JFrame {
         jLabel9.setMaximumSize(new java.awt.Dimension(50, 25));
         jLabel9.setMinimumSize(new java.awt.Dimension(50, 25));
 
+        offlineJList.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                offlineJListMouseReleased(evt);
+            }
+        });
         jScrollPane6.setViewportView(offlineJList);
 
         javax.swing.GroupLayout SearchResultListsPanelLayout = new javax.swing.GroupLayout(SearchResultListsPanel);
@@ -534,7 +565,6 @@ public class GUI extends javax.swing.JFrame {
 
         jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 51, 102), 1, true));
 
-        coursesComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Contact 1", "Contact 2", "Contact 3" }));
         coursesComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 coursesComboBox1ActionPerformed(evt);
@@ -679,8 +709,8 @@ public class GUI extends javax.swing.JFrame {
             public String getElementAt(int i) { return strings[i]; }
         });
         contactsList.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                contactsListMousePressed(evt);
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                contactsListMouseReleased(evt);
             }
         });
         jScrollPane3.setViewportView(contactsList);
@@ -1219,7 +1249,7 @@ public class GUI extends javax.swing.JFrame {
         
         //obtains all the online  and offline users that have selected class in their courseList
         for (int i = 0; i < allUsers.size(); i++){
-            String user = allUsers.get(i).getFirstName() + " " + allUsers.get(i).getLastName();
+            String user = allUsers.get(i).getUsername();
             if(CurrentUser.getUsername().equals(allUsers.get(i).getUsername())){        //checking to make you current user isnt displayed
                CUinclass = true;
                Joined = true;
@@ -1250,7 +1280,9 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_coursesComboBoxActionPerformed
 
     private void coursesComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_coursesComboBox1ActionPerformed
-        // TODO add your handling code here:
+        
+        
+        
     }//GEN-LAST:event_coursesComboBox1ActionPerformed
 
     private void studentFilterSelected1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_studentFilterSelected1ActionPerformed
@@ -1349,6 +1381,15 @@ public class GUI extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "The username or password was incorrect, please try again", "Incorrect Username/Password", JOptionPane.INFORMATION_MESSAGE);
             }
         }
+        
+        ArrayList<Account> contacts = sd.GetAllUsersContacts();
+        DefaultListModel contactsModel = new DefaultListModel();
+        for (int i = 0; i < contacts.size(); i++){
+            String user = contacts.get(i).getUsername();
+            contactsModel.addElement(user);
+            coursesComboBox1.addItem(user);
+        }
+        contactsList.setModel(contactsModel);
     }//GEN-LAST:event_LoginButtonActionPerformed
 
     private void usernamefieldsignupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernamefieldsignupActionPerformed
@@ -1427,12 +1468,6 @@ public class GUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_searchButton1ActionPerformed
 
-    private void contactsListMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_contactsListMousePressed
-        
-        contactsMenu.setVisible(true);//???
-        
-    }//GEN-LAST:event_contactsListMousePressed
-
     private void joinClassButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_joinClassButtonActionPerformed
         String selection = coursesComboBox.getSelectedItem().toString();
         ServiceDispatcher sd = new ServiceDispatcher();
@@ -1471,9 +1506,80 @@ public class GUI extends javax.swing.JFrame {
 
     private void onlineJListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_onlineJListMouseClicked
         // TODO add your handling code here:
-        JOptionPane.showConfirmDialog(null, "Add user as contact?", "", JOptionPane.OK_CANCEL_OPTION);
-        JOptionPane.showConfirmDialog(null, "Chat with this user?", "", JOptionPane.OK_CANCEL_OPTION);
+        //JOptionPane.showConfirmDialog(null, "Add user as contact?", "", JOptionPane.OK_CANCEL_OPTION);
+        //JOptionPane.showConfirmDialog(null, "Chat with this user?", "", JOptionPane.OK_CANCEL_OPTION);
     }//GEN-LAST:event_onlineJListMouseClicked
+
+    private void contactsListMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_contactsListMouseReleased
+        if(evt.isPopupTrigger()){
+            contactsMenu.show(this,evt.getX(), evt.getY() + 260);
+        }
+    }//GEN-LAST:event_contactsListMouseReleased
+
+    private void onlineJListMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_onlineJListMouseReleased
+        
+        if(evt.isPopupTrigger()){
+            onlineUserMenu.show(this,evt.getX(), evt.getY() + 300);
+        }
+        
+    }//GEN-LAST:event_onlineJListMouseReleased
+
+    private void offlineJListMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_offlineJListMouseReleased
+        
+        if(evt.isPopupTrigger()){
+            offlineUserMenu.show(this,evt.getX(), evt.getY() + 520);
+        }
+        
+    }//GEN-LAST:event_offlineJListMouseReleased
+
+    private void onlineUserMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_onlineUserMenuMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_onlineUserMenuMouseClicked
+
+    private void AddOfflineMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddOfflineMenuItemActionPerformed
+        
+        ServiceDispatcher sd = new ServiceDispatcher();
+        sd.AddUserContact(offlineJList.getSelectedValue());
+        
+        ArrayList<Account> contacts = sd.GetAllUsersContacts();
+        DefaultListModel contactsModel = new DefaultListModel();
+        for (int i = 0; i < contacts.size(); i++){
+            String user = contacts.get(i).getUsername();
+            contactsModel.addElement(user);
+        }
+        contactsList.setModel(contactsModel);
+        
+    }//GEN-LAST:event_AddOfflineMenuItemActionPerformed
+
+    private void AddMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddMenuItemActionPerformed
+        
+        ServiceDispatcher sd = new ServiceDispatcher();
+        sd.AddUserContact(onlineJList.getSelectedValue());
+        
+        ArrayList<Account> contacts = sd.GetAllUsersContacts();
+        DefaultListModel contactsModel = new DefaultListModel();
+        for (int i = 0; i < contacts.size(); i++){
+            String user = contacts.get(i).getUsername();
+            contactsModel.addElement(user);
+        }
+        contactsList.setModel(contactsModel);
+        
+    }//GEN-LAST:event_AddMenuItemActionPerformed
+
+    private void RemoveMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RemoveMenuItemActionPerformed
+        
+        ServiceDispatcher sd = new ServiceDispatcher();
+        sd.RemoveUserContact(contactsList.getSelectedValue());
+        
+        ArrayList<Account> contacts = sd.GetAllUsersContacts();
+        DefaultListModel contactsModel = new DefaultListModel();
+        for (int i = 0; i < contacts.size(); i++){
+            String user = contacts.get(i).getUsername();
+            contactsModel.addElement(user);
+        }
+        contactsList.setModel(contactsModel);
+        
+    }//GEN-LAST:event_RemoveMenuItemActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1483,7 +1589,11 @@ public class GUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Label AddClassLabel;
     private javax.swing.JTextField AddClassName;
+    private javax.swing.JMenuItem AddMenuItem;
+    private javax.swing.JMenuItem AddOfflineMenuItem;
+    private javax.swing.JMenuItem ChatMenuItem;
     private javax.swing.JPanel ChatTab;
+    private javax.swing.JMenuItem ConnectMenuItem;
     private javax.swing.JPanel ContactsTab;
     private javax.swing.JLabel Firstnametext;
     private javax.swing.JPanel InteractionPanel;
@@ -1502,6 +1612,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JPanel ProfileTab;
     private javax.swing.JPanel ProfileTabCoursePanel;
     private javax.swing.JPanel ProfileTabInfoPanel;
+    private javax.swing.JMenuItem RemoveMenuItem;
     private javax.swing.JPanel SearchResultListsPanel;
     private javax.swing.JPanel SearchTab;
     private javax.swing.JButton SignUp;
@@ -1556,7 +1667,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -1574,7 +1684,9 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextField messageField;
     private javax.swing.JRadioButton moderatorFilterSelected1;
     private javax.swing.JList<String> offlineJList;
+    private javax.swing.JPopupMenu offlineUserMenu;
     private javax.swing.JList<String> onlineJList;
+    private javax.swing.JPopupMenu onlineUserMenu;
     private javax.swing.JPasswordField passwordfield;
     private javax.swing.JPasswordField passwordfieldsignup;
     private javax.swing.JPasswordField passwordfieldsignupreenter;
