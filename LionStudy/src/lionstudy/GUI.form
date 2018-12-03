@@ -1362,10 +1362,14 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JPasswordField" name="passwordfield">
+              <Events>
+                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="passwordfieldKeyPressed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="usernamefield">
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="usernamefieldActionPerformed"/>
+                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="usernamefieldKeyPressed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="LoginButton">

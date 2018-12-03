@@ -93,6 +93,77 @@ public class GUI extends javax.swing.JFrame {
         this.contactsList.setModel(contactsModel);
    }
     
+    protected void Login(){
+         ServiceDispatcher sd = new ServiceDispatcher();
+        boolean loginSuccess = false;
+        if (usernamefield.getText() == "" || passwordfield.getText() == "") {
+            JOptionPane.showMessageDialog(null, "One of your fields for Username or Password is Empty", "Empty Field", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            loginSuccess = sd.Login(usernamefield.getText(), passwordfield.getText());
+            if (loginSuccess == true) {
+                //Student or Tutor
+                if(CurrentUser.getBadgetype() == 1 || CurrentUser.getBadgetype() == 2 || CurrentUser.getBadgetype() == 3){
+                    this.SetUpNormalUserScenario();
+                    if(CurrentUser.getBadgetype() == 1){
+                        this.accountTypeField.setText("Student");
+                        this.badgeImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Res/StudentBadge24.png")));
+
+                    }
+                    else if(CurrentUser.getBadgetype() == 2){
+                        this.accountTypeField.setText("Tutor");
+                        this.badgeImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Res/TutorBadge24.png")));
+                    }
+                    else if(CurrentUser.getBadgetype() == 3){
+                        this.badgeImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Res/TeacherBadge24.png")));
+                        this.accountTypeField.setText("Teacher");
+                    }
+                }
+                //Moderator
+                else if(CurrentUser.getBadgetype() == 4){
+                   this.SetUpModeratorScenario();
+                   this.accountTypeField.setText("Moderator");
+                   this.badgeImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Res/ModeratorBadge24.png")));
+                }
+                
+                //Fills in the users classes on the profile tab
+                ArrayList<String> userCoursesProfile = sd.GetAllUsersClasses();
+                DefaultListModel classListProfile = new DefaultListModel();
+                for(int x = 0; x<userCoursesProfile.size(); x++){
+                   classListProfile.addElement(userCoursesProfile.get(x)+"\n");
+                }
+                this.courseListProfile.setModel(classListProfile);
+               
+                //Fills in the Profile Tab
+                this.firstNameField.setText(CurrentUser.getFirstname());
+                this.lastNameField.setText(CurrentUser.getLastname());
+                this.usernameField.setText(CurrentUser.getUsername());
+ 
+                
+                
+                //fills the combo box for courses in Search tab
+                ArrayList<String> allClassesList = sd.GetAllClasses();
+                this.coursesComboBox.setModel(new DefaultComboBoxModel(allClassesList.toArray()));
+                ArrayList<String> cl = sd.GetAllUsersClasses();
+                joinClassButton.setVisible(false);
+                this.coursesComboBox.setSelectedIndex(-1);
+                DefaultListModel NoModel = new DefaultListModel();
+                this.onlineJList.setModel(NoModel);
+                DefaultListModel ModModel = new DefaultListModel();
+                ArrayList<Account> mods = sd.GetAllMods();
+                for(int x = 0; x<mods.size(); x++){
+                    ModModel.addElement(mods.get(x).getUsername() + ": " + mods.get(x).getFirstName() + " " + mods.get(x).getLastName());
+                }
+                this.modsJList.setModel(ModModel);
+                
+                
+                //Fills in all contacts
+                this.RefreshContactsList();
+            } else {
+                JOptionPane.showMessageDialog(null, "The username or password was incorrect, please try again", "Incorrect Username/Password", JOptionPane.INFORMATION_MESSAGE);
+            }
+        }
+    }
+    
     UserProfile clientUser = new UserProfile();
     ArrayList<UserProfile> nameList = new ArrayList();
     String sentMessagesBuffer;
@@ -901,9 +972,20 @@ public class GUI extends javax.swing.JFrame {
 
         UsernameText.setText("Username:");
 
+        passwordfield.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                passwordfieldKeyPressed(evt);
+            }
+        });
+
         usernamefield.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 usernamefieldActionPerformed(evt);
+            }
+        });
+        usernamefield.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                usernamefieldKeyPressed(evt);
             }
         });
 
@@ -1302,76 +1384,7 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_usernamefieldActionPerformed
 
     private void LoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginButtonActionPerformed
-        ServiceDispatcher sd = new ServiceDispatcher();
-        boolean loginSuccess = false;
-        if (usernamefield.getText() == "" || passwordfield.getText() == "") {
-            JOptionPane.showMessageDialog(null, "One of your fields for Username or Password is Empty", "Empty Field", JOptionPane.INFORMATION_MESSAGE);
-        } else {
-            loginSuccess = sd.Login(usernamefield.getText(), passwordfield.getText());
-            if (loginSuccess == true) {
-                //Student or Tutor
-                if(CurrentUser.getBadgetype() == 1 || CurrentUser.getBadgetype() == 2 || CurrentUser.getBadgetype() == 3){
-                    this.SetUpNormalUserScenario();
-                    if(CurrentUser.getBadgetype() == 1){
-                        this.accountTypeField.setText("Student");
-                        this.badgeImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Res/StudentBadge24.png")));
-
-                    }
-                    else if(CurrentUser.getBadgetype() == 2){
-                        this.accountTypeField.setText("Tutor");
-                        this.badgeImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Res/TutorBadge24.png")));
-                    }
-                    else if(CurrentUser.getBadgetype() == 3){
-                        this.badgeImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Res/TeacherBadge24.png")));
-                        this.accountTypeField.setText("Teacher");
-                    }
-                }
-                //Moderator
-                else if(CurrentUser.getBadgetype() == 4){
-                   this.SetUpModeratorScenario();
-                   this.accountTypeField.setText("Moderator");
-                   this.badgeImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Res/ModeratorBadge24.png")));
-                }
-                
-                //Fills in the users classes on the profile tab
-                ArrayList<String> userCoursesProfile = sd.GetAllUsersClasses();
-                DefaultListModel classListProfile = new DefaultListModel();
-                for(int x = 0; x<userCoursesProfile.size(); x++){
-                   classListProfile.addElement(userCoursesProfile.get(x)+"\n");
-                }
-                this.courseListProfile.setModel(classListProfile);
-               
-                //Fills in the Profile Tab
-                this.firstNameField.setText(CurrentUser.getFirstname());
-                this.lastNameField.setText(CurrentUser.getLastname());
-                this.usernameField.setText(CurrentUser.getUsername());
- 
-                
-                
-                //fills the combo box for courses in Search tab
-                ArrayList<String> allClassesList = sd.GetAllClasses();
-                this.coursesComboBox.setModel(new DefaultComboBoxModel(allClassesList.toArray()));
-                ArrayList<String> cl = sd.GetAllUsersClasses();
-                joinClassButton.setVisible(false);
-                this.coursesComboBox.setSelectedIndex(-1);
-                DefaultListModel NoModel = new DefaultListModel();
-                this.onlineJList.setModel(NoModel);
-                DefaultListModel ModModel = new DefaultListModel();
-                ArrayList<Account> mods = sd.GetAllMods();
-                for(int x = 0; x<mods.size(); x++){
-                    ModModel.addElement(mods.get(x).getUsername() + ": " + mods.get(x).getFirstName() + " " + mods.get(x).getLastName());
-                }
-                this.modsJList.setModel(ModModel);
-                
-                
-                //Fills in all contacts
-                this.RefreshContactsList();
-            } else {
-                JOptionPane.showMessageDialog(null, "The username or password was incorrect, please try again", "Incorrect Username/Password", JOptionPane.INFORMATION_MESSAGE);
-            }
-        }
-        
-        
+        this.Login();
     }//GEN-LAST:event_LoginButtonActionPerformed
 
     private void usernamefieldsignupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernamefieldsignupActionPerformed
@@ -1612,6 +1625,18 @@ public class GUI extends javax.swing.JFrame {
         ServiceDispatcher sd = new ServiceDispatcher();
         sd.logout();
     }//GEN-LAST:event_WindowClosing
+
+    private void usernamefieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_usernamefieldKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            this.Login();
+        }        
+    }//GEN-LAST:event_usernamefieldKeyPressed
+
+    private void passwordfieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passwordfieldKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            this.Login();
+        }        
+    }//GEN-LAST:event_passwordfieldKeyPressed
 
     /**
      * @param args the command line arguments
