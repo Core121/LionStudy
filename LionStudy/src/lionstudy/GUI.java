@@ -1,23 +1,16 @@
 package lionstudy;
 import java.awt.Font;
-import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.*;
-import java.io.File;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.Socket;
 import lionstudy.Classes.*;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.imageio.ImageIO;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
-import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
 /*
@@ -48,7 +41,7 @@ public class GUI extends javax.swing.JFrame {
     
     CurrentUser CU;
     
-    //only works at very beginning
+    //only run at very beginning
     protected void SetUpLoginScenario(){
         this.LionStudyTabs.addTab("Login",LoginTab);
         this.LionStudyTabs.addTab("Sign Up",SignUpTab);
@@ -60,6 +53,7 @@ public class GUI extends javax.swing.JFrame {
         this.LionStudyTabs.remove(ModOptions);
         this.LionStudyTabs.remove(SuperImpTab);
     }
+    //sets up the tabs for a normal user
     protected void SetUpNormalUserScenario(){
         this.LogoutButton.setVisible(true);
         this.LionStudyTabs.remove(LoginTab);
@@ -70,6 +64,7 @@ public class GUI extends javax.swing.JFrame {
         this.LionStudyTabs.addTab("Contacts",new ImageIcon(this.getClass().getResource("/Res/ContactsImg.png")),ContactsTab);
         this.LionStudyTabs.addTab("Services",new ImageIcon(this.getClass().getResource("/Res/SuperImg.png")), SuperImpTab);
     }
+    //sets up the tabs for a moderator user
     protected void SetUpModeratorScenario(){
         this.LogoutButton.setVisible(true);
         this.LionStudyTabs.remove(LoginTab);
@@ -81,7 +76,7 @@ public class GUI extends javax.swing.JFrame {
         this.LionStudyTabs.addTab("Services",new ImageIcon(this.getClass().getResource("/Res/SuperImg.png")), SuperImpTab);
         this.LionStudyTabs.addTab("Moderator",ModOptions);
     }
-    
+    //refreshes the contacts list in the gui
     protected void RefreshContactsList(){
        ServiceDispatcher sd = new ServiceDispatcher();
        ArrayList<Account> contacts = sd.GetAllUsersContacts();
@@ -93,6 +88,7 @@ public class GUI extends javax.swing.JFrame {
         this.contactsList.setModel(contactsModel);
    }
     
+    //Logs the user in and fills all appropriate fields
     protected void Login(){
          ServiceDispatcher sd = new ServiceDispatcher();
         boolean loginSuccess = false;
