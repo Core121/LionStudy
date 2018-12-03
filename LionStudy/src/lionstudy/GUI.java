@@ -4,8 +4,12 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.Socket;
 import lionstudy.Classes.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
@@ -26,7 +30,7 @@ import javax.swing.JOptionPane;
  * @author Corey
  */
 public class GUI extends javax.swing.JFrame {
-
+    IRC_LiveSocket listen;
     /**
      * Creates new form GUI
      */
@@ -220,6 +224,11 @@ public class GUI extends javax.swing.JFrame {
         contactsMenu.setName("[75, 25]"); // NOI18N
 
         ConnectMenuItem.setText("Connect");
+        ConnectMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ConnectMenuItemActionPerformed(evt);
+            }
+        });
         contactsMenu.add(ConnectMenuItem);
 
         RemoveMenuItem.setText("Remove from Contacts");
@@ -237,6 +246,11 @@ public class GUI extends javax.swing.JFrame {
         });
 
         ChatMenuItem.setText("Chat with user");
+        ChatMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ChatMenuItemActionPerformed(evt);
+            }
+        });
         onlineUserMenu.add(ChatMenuItem);
 
         AddMenuItem.setText("Add to Contacts");
@@ -261,6 +275,11 @@ public class GUI extends javax.swing.JFrame {
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setIconImages(null);
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                WindowClosing(evt);
+            }
+        });
 
         jTabbedPane2.setBackground(new java.awt.Color(0, 0, 0));
 
@@ -1165,9 +1184,7 @@ public class GUI extends javax.swing.JFrame {
         
         messageField.setText("");
         
-        /*
-        Call function to send message via dispatcher
-        */
+        listen.IRC_privMSG(message);
     }//GEN-LAST:event_submitButtonActionPerformed
 
     private void coursesComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_coursesComboBoxActionPerformed
@@ -1496,9 +1513,173 @@ public class GUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_contactsSearchButtonActionPerformed
 
+    private void ConnectMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConnectMenuItemActionPerformed
+        
+        
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_ConnectMenuItemActionPerformed
+
+    private void ChatMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChatMenuItemActionPerformed
+        listen = new IRC_LiveSocket("#LionStudy",CurrentUser.firstname+"BOOP",CurrentUser.username);
+        Thread chatListen = new Thread(listen);
+        chatListen.start();
+        
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_ChatMenuItemActionPerformed
+
+    private void WindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_WindowClosing
+        ServiceDispatcher sd = new ServiceDispatcher();
+        sd.logout();
+    }//GEN-LAST:event_WindowClosing
+
     /**
      * @param args the command line arguments
      */
+    
+    
+    public class IRC_LiveSocket implements Runnable
+    {
+
+
+
+
+        Socket lionsocket;
+        OutputStream outStream;
+        //Replace this with private message?
+        String channelJoined;
+        //Used to clear field
+        final static String CRLF = "\r\n";
+        //Message to be sent to output stream
+        String msg;
+
+        String server="halcyon.il.us.dal.net";
+        int port=6666;
+
+
+        public IRC_LiveSocket(String channel, String fName, String uName)
+        {
+
+            try
+            {
+            //Connects to Lionstudy Server
+                lionsocket = new Socket(server, port);
+            //Sets output stream to out
+                outStream = lionsocket.getOutputStream();
+            }
+            catch(Exception e)
+            {
+                e.printStackTrace();
+            }
+
+            IRC_nick(fName);
+            IRC_user(uName, "null","null","real name");
+            IRC_channelJoin(channel);
+
+
+
+        }
+
+        private void send(String text)
+        {
+            byte[] bytes = (text + CRLF).getBytes();
+
+            try
+            {
+                outStream.write(bytes);
+            }
+            catch(Exception e)
+            {
+                e.printStackTrace();
+            }
+        }
+
+        public void IRC_nick(String nick)
+        {
+            msg="NICK "+nick;
+            send(msg);
+        }
+
+        public void IRC_user(String username, String host, String server, String realname)
+        {
+            msg="USER "+username+" "+host+" "+server+" :"+realname;
+            send(msg);
+        }
+
+        public void IRC_channelJoin(String channel)
+        {
+            channelJoined=channel;
+            msg="JOIN "+channelJoined;
+            send(msg);
+        }
+
+        public void IRC_channelLeave(String channel)
+        {
+            msg="PART "+channel;
+        }
+
+        public void IRC_privMSG(String text)
+        {
+            msg="PRIVMSG "+channelJoined+" :"+text;
+            send(msg);
+        }
+
+        void IRC_processMessage(String ircMessage)
+        {
+            IRC_RecievedMessage RcvMsg = IRC_MessageParser.recieved(ircMessage);
+            if(RcvMsg.command.equals("PRIVMSG"))
+            {
+                receiveMSG(RcvMsg.source,RcvMsg.content);
+            }
+            else if(RcvMsg.command.equals("CLOSE"))
+            {
+
+            }
+
+        }
+
+        public void run()
+        {
+            do{
+            //LOOP TO RECIEVE MESSAGES
+                try
+                {
+                    InputStream inStream = lionsocket.getInputStream();
+                    IRC_MessageBuffer msgBuf = new IRC_MessageBuffer();
+
+                    byte[] buffer = new byte[1024];
+                    int bytes;
+
+                    do
+                    {
+                        bytes=inStream.read(buffer);
+                        if(bytes!=-1)
+                        {
+                            msgBuf.addToBuffer(Arrays.copyOfRange(buffer,0, bytes));
+                            while(msgBuf.hasMessage())
+                            {
+                                msg = msgBuf.getMessage();
+                            }
+                            IRC_processMessage(msg);
+                        }
+                    }while(bytes!=-1);
+
+                }
+                catch(Exception e)
+                {
+                    System.out.print(e);
+                }
+            }while(true);
+
+        }
+    }
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

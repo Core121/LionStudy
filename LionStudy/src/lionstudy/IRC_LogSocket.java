@@ -37,7 +37,7 @@ final class IRC_LogSocket implements Runnable
         }
     }
     
-    private void IRC_reset()
+    private void IRC_Log_reset()
     {
         try
         {
@@ -53,7 +53,7 @@ final class IRC_LogSocket implements Runnable
         }
     }
     
-    private void send(String text)
+    private void Log_send(String text)
     {
         byte[] bytes = (text + CRLF).getBytes();
         
@@ -67,28 +67,28 @@ final class IRC_LogSocket implements Runnable
         }
     }
     
-    public void IRC_getLog(String logName)
+    public void IRC_Log_getLog(String logName)
     {
         boolean close=false;
         for(int i=1;!close;i++)
         {
-            IRC_getLogMessage(logName, i);
-            listen();
-            close=IRC_processMessage(msg);
-            IRC_reset();
+            IRC_Log_getLogMessage(logName, i);
+            Log_listen();
+            close=IRC_Log_processMessage(msg);
+            IRC_Log_reset();
             if(i>10)
                 close=true;
         }
     }
     
-    private void IRC_getLogMessage(String logName, int line)
+    private void IRC_Log_getLogMessage(String logName, int line)
     {
         msg="LOG "+logName+" "+line;
-        send(msg);
+        Log_send(msg);
     }
     
     //NOTE, we need to edit this to probably send message to output
-    boolean IRC_processMessage(String ircMessage)
+    boolean IRC_Log_processMessage(String ircMessage)
     {
         IRC_RecievedMessage RcvMsg = IRC_MessageParser.recieved(ircMessage);
         if(RcvMsg.command.equals("LOGMSG"))
@@ -106,10 +106,10 @@ final class IRC_LogSocket implements Runnable
     
     public void run()
     {
-        IRC_getLog(channelJoined);
+        IRC_Log_getLog(channelJoined);
     }
     
-    private void listen()
+    private void Log_listen()
     {
         boolean msgReceived=false;
         do{

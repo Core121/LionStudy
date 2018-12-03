@@ -44,7 +44,7 @@ public class Main {
                 LionGUI.setLocationRelativeTo(null);
                 LionGUI.setVisible(true);
                 
-                IRC_LiveSocket liveListen = new IRC_LiveSocket("localhost",6666,LionGUI);
+                //IRC_LiveSocket liveListen = new IRC_LiveSocket("localhost",6666,LionGUI);
                 
             }
         });

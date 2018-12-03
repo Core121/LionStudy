@@ -28,7 +28,7 @@ public class ChatDispatcher
     public void getLog()
     {
         IRC_LogSocket logListen = new IRC_LogSocket(IP,logPort,channel);
-        logListen.IRC_getLog(channel);
+        //logListen.IRC_getLog(channel);
     }
     
     public void getLive()
