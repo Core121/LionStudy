@@ -1425,21 +1425,41 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_onlineUserMenuMouseClicked
 
     private void AddOfflineMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddOfflineMenuItemActionPerformed
-        
+        boolean flag = false;
+        this.RefreshContactsList();
+        for(int x = 0; x < contactsList.getModel().getSize(); x++){
+            if(this.contactsList.getModel().getElementAt(x).equals(offlineJList.getSelectedValue())){
+                flag = true;
+                break;
+            }
+        }
+        if(flag){
+            JOptionPane.showMessageDialog(null, "Already a contact", "Info", JOptionPane.INFORMATION_MESSAGE);
+        }
+        else{
         ServiceDispatcher sd = new ServiceDispatcher();
         sd.AddUserContact(offlineJList.getSelectedValue());
-        
         this.RefreshContactsList();
-        
+        }
     }//GEN-LAST:event_AddOfflineMenuItemActionPerformed
 
     private void AddMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddMenuItemActionPerformed
-        
+        boolean flag = false;
+        this.RefreshContactsList();
+        for(int x = 0; x < contactsList.getModel().getSize(); x++){
+            if(this.contactsList.getModel().getElementAt(x).equals(onlineJList.getSelectedValue())){
+                flag = true;
+                break;
+            }
+        }
+        if(flag){
+            JOptionPane.showMessageDialog(null, "Already a contact", "Info", JOptionPane.INFORMATION_MESSAGE);
+        }
+        else{
         ServiceDispatcher sd = new ServiceDispatcher();
         sd.AddUserContact(onlineJList.getSelectedValue());
-        
         this.RefreshContactsList();
-        
+        }
     }//GEN-LAST:event_AddMenuItemActionPerformed
 
     private void RemoveMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RemoveMenuItemActionPerformed
