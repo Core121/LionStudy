@@ -261,16 +261,20 @@ public class ServiceDispatcher {
     public ArrayList<Account> GetAllUsersContacts() {
         ArrayList<Account> Contacts = new ArrayList<Account>();
         try {
-            String usernamec = "";
+            String firstname = "", overall = "";
+            String lastname= "";
             Connection myConn = DriverManager.getConnection(CONN_STRING, USERNAME, PASSWORD);
             stmt = myConn.createStatement();
             PreparedStatement pstmt = myConn.prepareStatement("SELECT * FROM Contacts WHERE username = ?");
             pstmt.setString(1, CurrentUser.getUsername());
             rs = pstmt.executeQuery();
             while (rs.next()) {
-                usernamec = rs.getString("ContactUsername");
-                pstmt = myConn.prepareStatement("SELECT * FROM Users WHERE username = ?");
-                pstmt.setString(1, usernamec);
+                overall = rs.getString("ContactUsername");
+                firstname = overall.substring(0, overall.indexOf(" "));
+                lastname = overall.substring(overall.indexOf(" ")+1, overall.length()); 
+                pstmt = myConn.prepareStatement("SELECT * FROM Users WHERE first = ? AND last = ?");
+                pstmt.setString(1, firstname);
+                pstmt.setString(2, lastname);
                 ResultSet rst = pstmt.executeQuery();
                 while (rst.next()) {
                     String username = rst.getString("username");
