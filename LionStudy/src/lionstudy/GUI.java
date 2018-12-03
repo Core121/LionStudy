@@ -2,6 +2,7 @@ package lionstudy;
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.awt.event.*;
 import java.io.File;
 import java.io.IOException;
 import lionstudy.Classes.*;
@@ -33,6 +34,12 @@ public class GUI extends javax.swing.JFrame {
     public GUI() {
         initComponents();
         this.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Res/LSIcon.png")));
+    }
+    
+    public int logoutOnExit() {
+        ServiceDispatcher sd = new ServiceDispatcher();
+        sd.logout();
+        return EXIT_ON_CLOSE;
     }
     
     CurrentUser CU;
@@ -257,7 +264,7 @@ public class GUI extends javax.swing.JFrame {
         });
         offlineUserMenu.add(AddOfflineMenuItem);
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(logoutOnExit());
         setTitle("LionStudy");
         setBackground(new java.awt.Color(0, 0, 51));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
