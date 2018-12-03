@@ -50,36 +50,36 @@ public class GUI extends javax.swing.JFrame {
     
     //only works at very beginning
     protected void SetUpLoginScenario(){
-        this.jTabbedPane2.addTab("Login",LoginTab);
-        this.jTabbedPane2.addTab("Sign Up",SignUpTab);
+        this.LionStudyTabs.addTab("Login",LoginTab);
+        this.LionStudyTabs.addTab("Sign Up",SignUpTab);
         this.LogoutButton.setVisible(false);
-        this.jTabbedPane2.remove(ChatTab);
-        this.jTabbedPane2.remove(SearchTab);
-        this.jTabbedPane2.remove(ProfileTab);
-        this.jTabbedPane2.remove(ContactsTab);
-        this.jTabbedPane2.remove(ModOptions);
-        this.jTabbedPane2.remove(SuperImpTab);
+        this.LionStudyTabs.remove(ChatTab);
+        this.LionStudyTabs.remove(SearchTab);
+        this.LionStudyTabs.remove(ProfileTab);
+        this.LionStudyTabs.remove(ContactsTab);
+        this.LionStudyTabs.remove(ModOptions);
+        this.LionStudyTabs.remove(SuperImpTab);
     }
     protected void SetUpNormalUserScenario(){
         this.LogoutButton.setVisible(true);
-        this.jTabbedPane2.remove(LoginTab);
-        this.jTabbedPane2.remove(SignUpTab);
-        this.jTabbedPane2.addTab("Search",new ImageIcon(this.getClass().getResource("/Res/SearchImg.png")),SearchTab);
-        this.jTabbedPane2.addTab("Profile",new ImageIcon(this.getClass().getResource("/Res/ProfileImg.png")),ProfileTab);
-        this.jTabbedPane2.addTab("Chat",new ImageIcon(this.getClass().getResource("/Res/ChatImg.png")),ChatTab);
-        this.jTabbedPane2.addTab("Contacts",new ImageIcon(this.getClass().getResource("/Res/ContactsImg.png")),ContactsTab);
-        this.jTabbedPane2.addTab("Services",new ImageIcon(this.getClass().getResource("/Res/SuperImg.png")), SuperImpTab);
+        this.LionStudyTabs.remove(LoginTab);
+        this.LionStudyTabs.remove(SignUpTab);
+        this.LionStudyTabs.addTab("Search",new ImageIcon(this.getClass().getResource("/Res/SearchImg.png")),SearchTab);
+        this.LionStudyTabs.addTab("Profile",new ImageIcon(this.getClass().getResource("/Res/ProfileImg.png")),ProfileTab);
+        this.LionStudyTabs.addTab("Chat",new ImageIcon(this.getClass().getResource("/Res/ChatImg.png")),ChatTab);
+        this.LionStudyTabs.addTab("Contacts",new ImageIcon(this.getClass().getResource("/Res/ContactsImg.png")),ContactsTab);
+        this.LionStudyTabs.addTab("Services",new ImageIcon(this.getClass().getResource("/Res/SuperImg.png")), SuperImpTab);
     }
     protected void SetUpModeratorScenario(){
         this.LogoutButton.setVisible(true);
-        this.jTabbedPane2.remove(LoginTab);
-        this.jTabbedPane2.remove(SignUpTab);
-        this.jTabbedPane2.addTab("Search",new ImageIcon(this.getClass().getResource("/Res/SearchImg.png")),SearchTab);
-        this.jTabbedPane2.addTab("Profile",new ImageIcon(this.getClass().getResource("/Res/ProfileImg.png")),ProfileTab);
-        this.jTabbedPane2.addTab("Chat",new ImageIcon(this.getClass().getResource("/Res/ChatImg.png")),ChatTab);
-        this.jTabbedPane2.addTab("Contacts",new ImageIcon(this.getClass().getResource("/Res/ContactsImg.png")),ContactsTab);
-        this.jTabbedPane2.addTab("Services",new ImageIcon(this.getClass().getResource("/Res/SuperImg.png")), SuperImpTab);
-        this.jTabbedPane2.addTab("Moderator",ModOptions);
+        this.LionStudyTabs.remove(LoginTab);
+        this.LionStudyTabs.remove(SignUpTab);
+        this.LionStudyTabs.addTab("Search",new ImageIcon(this.getClass().getResource("/Res/SearchImg.png")),SearchTab);
+        this.LionStudyTabs.addTab("Profile",new ImageIcon(this.getClass().getResource("/Res/ProfileImg.png")),ProfileTab);
+        this.LionStudyTabs.addTab("Chat",new ImageIcon(this.getClass().getResource("/Res/ChatImg.png")),ChatTab);
+        this.LionStudyTabs.addTab("Contacts",new ImageIcon(this.getClass().getResource("/Res/ContactsImg.png")),ContactsTab);
+        this.LionStudyTabs.addTab("Services",new ImageIcon(this.getClass().getResource("/Res/SuperImg.png")), SuperImpTab);
+        this.LionStudyTabs.addTab("Moderator",ModOptions);
     }
     
     protected void RefreshContactsList(){
@@ -187,18 +187,18 @@ public class GUI extends javax.swing.JFrame {
         AddMenuItem = new javax.swing.JMenuItem();
         offlineUserMenu = new javax.swing.JPopupMenu();
         AddOfflineMenuItem = new javax.swing.JMenuItem();
-        jTabbedPane2 = new javax.swing.JTabbedPane();
+        LionStudyTabs = new javax.swing.JTabbedPane();
         SearchTab = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
+        coursespanel = new javax.swing.JPanel();
         coursesComboBox = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         joinClassButton = new javax.swing.JButton();
         SearchResultListsPanel = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        onlinelabel = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         onlineJList = new javax.swing.JList<>();
-        jLabel9 = new javax.swing.JLabel();
+        offlinelabel = new javax.swing.JLabel();
         jScrollPane6 = new javax.swing.JScrollPane();
         offlineJList = new javax.swing.JList<>();
         ChatTab = new javax.swing.JPanel();
@@ -218,9 +218,9 @@ public class GUI extends javax.swing.JFrame {
         courseListPanel = new javax.swing.JPanel();
         courseListText = new javax.swing.JLabel();
         ProfileTabInfoPanel = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
+        badgepanel = new javax.swing.JPanel();
         badgeImg = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
+        profilepanel = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
         firstNameLabel = new javax.swing.JLabel();
@@ -234,7 +234,7 @@ public class GUI extends javax.swing.JFrame {
         ContactsTab = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         contactsList = new javax.swing.JList<>();
-        jPanel2 = new javax.swing.JPanel();
+        contactspanel = new javax.swing.JPanel();
         lnameFilterField = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         contactsSearchButton = new javax.swing.JButton();
@@ -252,9 +252,9 @@ public class GUI extends javax.swing.JFrame {
         ContactModLabel = new java.awt.Label();
         jScrollPane7 = new javax.swing.JScrollPane();
         modsJList = new javax.swing.JList<>();
-        label2 = new java.awt.Label();
+        quicklinkslabel = new java.awt.Label();
         ModOptions = new javax.swing.JPanel();
-        ModOptions1 = new javax.swing.JPanel();
+        ModOptionsTab = new javax.swing.JPanel();
         AddClassName = new javax.swing.JTextField();
         ModOptionsLabel = new java.awt.Label();
         AddClassLabel = new java.awt.Label();
@@ -267,7 +267,7 @@ public class GUI extends javax.swing.JFrame {
         LoginButton = new javax.swing.JButton();
         LionStudyLoginText = new javax.swing.JLabel();
         SignUpTab = new javax.swing.JPanel();
-        LoginTab1 = new javax.swing.JPanel();
+        SignUpPanel = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         passwordfieldsignup = new javax.swing.JPasswordField();
@@ -275,11 +275,11 @@ public class GUI extends javax.swing.JFrame {
         SignUp = new javax.swing.JButton();
         jLabel19 = new javax.swing.JLabel();
         passwordfieldsignupreenter = new javax.swing.JPasswordField();
-        LionStudyLoginText1 = new javax.swing.JLabel();
+        LionStudySignUpLabel = new javax.swing.JLabel();
         tutorRB = new javax.swing.JRadioButton();
         studentRB = new javax.swing.JRadioButton();
         professorRB = new javax.swing.JRadioButton();
-        jLabel3 = new javax.swing.JLabel();
+        whoareyoulabel = new javax.swing.JLabel();
         Firstnametext = new javax.swing.JLabel();
         lastnametext = new javax.swing.JLabel();
         firstnamefield = new javax.swing.JTextField();
@@ -287,9 +287,9 @@ public class GUI extends javax.swing.JFrame {
         TopPanel = new javax.swing.JPanel();
         LionStudyImage = new javax.swing.JLabel();
         LionStudyText = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
+        pennstatelogolabel = new javax.swing.JLabel();
         LogoutButton = new javax.swing.JButton();
-        jPanel7 = new javax.swing.JPanel();
+        lowerpanel = new javax.swing.JPanel();
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -364,11 +364,11 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        jTabbedPane2.setBackground(new java.awt.Color(0, 0, 0));
+        LionStudyTabs.setBackground(new java.awt.Color(0, 0, 0));
 
         SearchTab.setLayout(new java.awt.BorderLayout());
 
-        jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 51, 102), 1, true));
+        coursespanel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 51, 102), 1, true));
 
         coursesComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -389,44 +389,44 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout coursespanelLayout = new javax.swing.GroupLayout(coursespanel);
+        coursespanel.setLayout(coursespanelLayout);
+        coursespanelLayout.setHorizontalGroup(
+            coursespanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(coursespanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(coursespanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(coursespanelLayout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(195, 195, 195)
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(coursespanelLayout.createSequentialGroup()
                         .addComponent(coursesComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(34, 34, 34)
                         .addComponent(joinClassButton, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(324, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        coursespanelLayout.setVerticalGroup(
+            coursespanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(coursespanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(coursespanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(coursespanelLayout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(coursespanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(coursesComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(joinClassButton, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(25, 30, Short.MAX_VALUE))
         );
 
-        SearchTab.add(jPanel1, java.awt.BorderLayout.PAGE_START);
+        SearchTab.add(coursespanel, java.awt.BorderLayout.PAGE_START);
 
-        jLabel2.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 24)); // NOI18N
-        jLabel2.setText("Online");
-        jLabel2.setMaximumSize(new java.awt.Dimension(50, 25));
-        jLabel2.setMinimumSize(new java.awt.Dimension(50, 25));
+        onlinelabel.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 24)); // NOI18N
+        onlinelabel.setText("Online");
+        onlinelabel.setMaximumSize(new java.awt.Dimension(50, 25));
+        onlinelabel.setMinimumSize(new java.awt.Dimension(50, 25));
 
         onlineJList.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -443,10 +443,10 @@ public class GUI extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(onlineJList);
 
-        jLabel9.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 24)); // NOI18N
-        jLabel9.setText("Offline");
-        jLabel9.setMaximumSize(new java.awt.Dimension(50, 25));
-        jLabel9.setMinimumSize(new java.awt.Dimension(50, 25));
+        offlinelabel.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 24)); // NOI18N
+        offlinelabel.setText("Offline");
+        offlinelabel.setMaximumSize(new java.awt.Dimension(50, 25));
+        offlinelabel.setMinimumSize(new java.awt.Dimension(50, 25));
 
         offlineJList.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
@@ -463,25 +463,25 @@ public class GUI extends javax.swing.JFrame {
             .addComponent(jScrollPane6)
             .addGroup(SearchResultListsPanelLayout.createSequentialGroup()
                 .addGroup(SearchResultListsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(onlinelabel, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(offlinelabel, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 687, Short.MAX_VALUE))
         );
         SearchResultListsPanelLayout.setVerticalGroup(
             SearchResultListsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(SearchResultListsPanelLayout.createSequentialGroup()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(onlinelabel, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(offlinelabel, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         SearchTab.add(SearchResultListsPanel, java.awt.BorderLayout.CENTER);
 
-        jTabbedPane2.addTab("Search", new javax.swing.ImageIcon(getClass().getResource("/Res/SearchImg.png")), SearchTab); // NOI18N
+        LionStudyTabs.addTab("Search", new javax.swing.ImageIcon(getClass().getResource("/Res/SearchImg.png")), SearchTab); // NOI18N
 
         ChatTab.setLayout(new java.awt.BorderLayout());
 
@@ -544,7 +544,7 @@ public class GUI extends javax.swing.JFrame {
 
         ChatTab.add(chatPanel, java.awt.BorderLayout.CENTER);
 
-        jTabbedPane2.addTab("Chat", new javax.swing.ImageIcon(getClass().getResource("/Res/ChatImg.png")), ChatTab); // NOI18N
+        LionStudyTabs.addTab("Chat", new javax.swing.ImageIcon(getClass().getResource("/Res/ChatImg.png")), ChatTab); // NOI18N
 
         ProfileTab.setLayout(new java.awt.BorderLayout());
 
@@ -609,26 +609,26 @@ public class GUI extends javax.swing.JFrame {
         badgeImg.setMaximumSize(new java.awt.Dimension(84, 84));
         badgeImg.setMinimumSize(new java.awt.Dimension(84, 84));
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        javax.swing.GroupLayout badgepanelLayout = new javax.swing.GroupLayout(badgepanel);
+        badgepanel.setLayout(badgepanelLayout);
+        badgepanelLayout.setHorizontalGroup(
+            badgepanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(badgepanelLayout.createSequentialGroup()
                 .addGap(195, 195, 195)
                 .addComponent(badgeImg, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(238, Short.MAX_VALUE))
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+        badgepanelLayout.setVerticalGroup(
+            badgepanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, badgepanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(badgeImg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
-        ProfileTabInfoPanel.add(jPanel3, java.awt.BorderLayout.PAGE_START);
+        ProfileTabInfoPanel.add(badgepanel, java.awt.BorderLayout.PAGE_START);
 
-        jPanel4.setLayout(new java.awt.GridLayout(8, 3, 0, 20));
+        profilepanel.setLayout(new java.awt.GridLayout(8, 3, 0, 20));
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -641,7 +641,7 @@ public class GUI extends javax.swing.JFrame {
             .addGap(0, 29, Short.MAX_VALUE)
         );
 
-        jPanel4.add(jPanel9);
+        profilepanel.add(jPanel9);
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
@@ -654,61 +654,56 @@ public class GUI extends javax.swing.JFrame {
             .addGap(0, 29, Short.MAX_VALUE)
         );
 
-        jPanel4.add(jPanel10);
+        profilepanel.add(jPanel10);
 
         firstNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         firstNameLabel.setText("First Name:          ");
         firstNameLabel.setToolTipText("");
-        jPanel4.add(firstNameLabel);
+        profilepanel.add(firstNameLabel);
 
         firstNameField.setEditable(false);
         firstNameField.setText(CurrentUser.getFirstname());
         firstNameField.setToolTipText("");
         firstNameField.setBorder(null);
-        jPanel4.add(firstNameField);
+        profilepanel.add(firstNameField);
 
         lastNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lastNameLabel.setText("Last Name:          ");
         lastNameLabel.setToolTipText("");
-        jPanel4.add(lastNameLabel);
+        profilepanel.add(lastNameLabel);
 
         lastNameField.setEditable(false);
         lastNameField.setText("jTextField2");
         lastNameField.setBorder(null);
-        jPanel4.add(lastNameField);
+        profilepanel.add(lastNameField);
 
         usernameLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         usernameLabel.setText("Username:          ");
-        jPanel4.add(usernameLabel);
+        profilepanel.add(usernameLabel);
 
         usernameField.setEditable(false);
         usernameField.setText("usernameField");
         usernameField.setBorder(null);
-        jPanel4.add(usernameField);
+        profilepanel.add(usernameField);
 
         accountTypeLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         accountTypeLabel.setText("Account Type:          ");
         accountTypeLabel.setToolTipText("");
-        jPanel4.add(accountTypeLabel);
+        profilepanel.add(accountTypeLabel);
 
         accountTypeField.setEditable(false);
         accountTypeField.setText("jTextField4");
         accountTypeField.setBorder(null);
-        jPanel4.add(accountTypeField);
+        profilepanel.add(accountTypeField);
 
-        ProfileTabInfoPanel.add(jPanel4, java.awt.BorderLayout.CENTER);
+        ProfileTabInfoPanel.add(profilepanel, java.awt.BorderLayout.CENTER);
 
         ProfileTab.add(ProfileTabInfoPanel, java.awt.BorderLayout.CENTER);
 
-        jTabbedPane2.addTab("Profile", new javax.swing.ImageIcon(getClass().getResource("/Res/ProfileImg.png")), ProfileTab); // NOI18N
+        LionStudyTabs.addTab("Profile", new javax.swing.ImageIcon(getClass().getResource("/Res/ProfileImg.png")), ProfileTab); // NOI18N
 
         ContactsTab.setLayout(new java.awt.BorderLayout());
 
-        contactsList.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         contactsList.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 contactsListMouseReleased(evt);
@@ -718,7 +713,7 @@ public class GUI extends javax.swing.JFrame {
 
         ContactsTab.add(jScrollPane3, java.awt.BorderLayout.CENTER);
 
-        jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 51, 102), 1, true));
+        contactspanel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 51, 102), 1, true));
 
         lnameFilterField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -742,15 +737,15 @@ public class GUI extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
         jLabel4.setText("Contacts");
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout contactspanelLayout = new javax.swing.GroupLayout(contactspanel);
+        contactspanel.setLayout(contactspanelLayout);
+        contactspanelLayout.setHorizontalGroup(
+            contactspanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(contactspanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(contactspanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGroup(contactspanelLayout.createSequentialGroup()
                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lnameFilterField, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -758,26 +753,26 @@ public class GUI extends javax.swing.JFrame {
                         .addComponent(contactsSearchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(392, Short.MAX_VALUE))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        contactspanelLayout.setVerticalGroup(
+            contactspanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(contactspanelLayout.createSequentialGroup()
                 .addGap(1, 1, 1)
                 .addComponent(jLabel4)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(contactspanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(contactspanelLayout.createSequentialGroup()
                         .addGap(11, 11, 11)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(contactspanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(contactsSearchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel6)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGroup(contactspanelLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(lnameFilterField, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(35, Short.MAX_VALUE))
         );
 
-        ContactsTab.add(jPanel2, java.awt.BorderLayout.PAGE_START);
+        ContactsTab.add(contactspanel, java.awt.BorderLayout.PAGE_START);
 
-        jTabbedPane2.addTab("Contacts", new javax.swing.ImageIcon(getClass().getResource("/Res/ContactsImg.png")), ContactsTab); // NOI18N
+        LionStudyTabs.addTab("Contacts", new javax.swing.ImageIcon(getClass().getResource("/Res/ContactsImg.png")), ContactsTab); // NOI18N
 
         jButton1.setBackground(new java.awt.Color(0, 0, 0));
         jButton1.setForeground(new java.awt.Color(0, 0, 204));
@@ -821,9 +816,9 @@ public class GUI extends javax.swing.JFrame {
 
         jScrollPane7.setViewportView(modsJList);
 
-        label2.setFont(new java.awt.Font("Cambria Math", 0, 24)); // NOI18N
-        label2.setName(""); // NOI18N
-        label2.setText("Quick Links");
+        quicklinkslabel.setFont(new java.awt.Font("Cambria Math", 0, 24)); // NOI18N
+        quicklinkslabel.setName(""); // NOI18N
+        quicklinkslabel.setText("Quick Links");
 
         javax.swing.GroupLayout SuperImpTabLayout = new javax.swing.GroupLayout(SuperImpTab);
         SuperImpTab.setLayout(SuperImpTabLayout);
@@ -860,7 +855,7 @@ public class GUI extends javax.swing.JFrame {
             .addGroup(SuperImpTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(SuperImpTabLayout.createSequentialGroup()
                     .addGap(156, 156, 156)
-                    .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(quicklinkslabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(498, Short.MAX_VALUE)))
         );
         SuperImpTabLayout.setVerticalGroup(
@@ -892,11 +887,11 @@ public class GUI extends javax.swing.JFrame {
             .addGroup(SuperImpTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(SuperImpTabLayout.createSequentialGroup()
                     .addGap(78, 78, 78)
-                    .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(quicklinkslabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(373, Short.MAX_VALUE)))
         );
 
-        jTabbedPane2.addTab("Important Services", new javax.swing.ImageIcon(getClass().getResource("/Res/SuperImg.png")), SuperImpTab); // NOI18N
+        LionStudyTabs.addTab("Important Services", new javax.swing.ImageIcon(getClass().getResource("/Res/SuperImg.png")), SuperImpTab); // NOI18N
 
         ModOptionsLabel.setFont(new java.awt.Font("Bell MT", 0, 36)); // NOI18N
         ModOptionsLabel.setText("Moderator Options");
@@ -911,16 +906,16 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout ModOptions1Layout = new javax.swing.GroupLayout(ModOptions1);
-        ModOptions1.setLayout(ModOptions1Layout);
-        ModOptions1Layout.setHorizontalGroup(
-            ModOptions1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ModOptions1Layout.createSequentialGroup()
-                .addGroup(ModOptions1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(ModOptions1Layout.createSequentialGroup()
+        javax.swing.GroupLayout ModOptionsTabLayout = new javax.swing.GroupLayout(ModOptionsTab);
+        ModOptionsTab.setLayout(ModOptionsTabLayout);
+        ModOptionsTabLayout.setHorizontalGroup(
+            ModOptionsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ModOptionsTabLayout.createSequentialGroup()
+                .addGroup(ModOptionsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(ModOptionsTabLayout.createSequentialGroup()
                         .addGap(231, 231, 231)
                         .addComponent(ModOptionsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(ModOptions1Layout.createSequentialGroup()
+                    .addGroup(ModOptionsTabLayout.createSequentialGroup()
                         .addGap(179, 179, 179)
                         .addComponent(AddClassLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -929,17 +924,17 @@ public class GUI extends javax.swing.JFrame {
                         .addComponent(addCourseModButton, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(219, Short.MAX_VALUE))
         );
-        ModOptions1Layout.setVerticalGroup(
-            ModOptions1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ModOptions1Layout.createSequentialGroup()
+        ModOptionsTabLayout.setVerticalGroup(
+            ModOptionsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ModOptionsTabLayout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addComponent(ModOptionsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
-                .addGroup(ModOptions1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(ModOptions1Layout.createSequentialGroup()
+                .addGroup(ModOptionsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(ModOptionsTabLayout.createSequentialGroup()
                         .addGap(9, 9, 9)
                         .addComponent(AddClassLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(ModOptions1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addGroup(ModOptionsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(addCourseModButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(AddClassName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(335, Short.MAX_VALUE))
@@ -953,7 +948,7 @@ public class GUI extends javax.swing.JFrame {
             .addGroup(ModOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(ModOptionsLayout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(ModOptions1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ModOptionsTab, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
         ModOptionsLayout.setVerticalGroup(
@@ -962,11 +957,11 @@ public class GUI extends javax.swing.JFrame {
             .addGroup(ModOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(ModOptionsLayout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(ModOptions1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ModOptionsTab, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
-        jTabbedPane2.addTab("Moderator Options", ModOptions);
+        LionStudyTabs.addTab("Moderator Options", ModOptions);
 
         PasswordText.setText("Password:");
 
@@ -1042,7 +1037,7 @@ public class GUI extends javax.swing.JFrame {
 
         PasswordText.getAccessibleContext().setAccessibleName("passwordtext");
 
-        jTabbedPane2.addTab("Login", LoginTab);
+        LionStudyTabs.addTab("Login", LoginTab);
 
         jLabel17.setText("Password:");
 
@@ -1063,8 +1058,8 @@ public class GUI extends javax.swing.JFrame {
 
         jLabel19.setText("Re-Enter Password:");
 
-        LionStudyLoginText1.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
-        LionStudyLoginText1.setText("LionStudy Sign-Up");
+        LionStudySignUpLabel.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
+        LionStudySignUpLabel.setText("LionStudy Sign-Up");
 
         buttonGroup1.add(tutorRB);
         tutorRB.setText("Tutor");
@@ -1076,8 +1071,8 @@ public class GUI extends javax.swing.JFrame {
         buttonGroup1.add(professorRB);
         professorRB.setText("Professor");
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel3.setText("Who are you?");
+        whoareyoulabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        whoareyoulabel.setText("Who are you?");
 
         Firstnametext.setText("First Name:");
 
@@ -1095,81 +1090,81 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout LoginTab1Layout = new javax.swing.GroupLayout(LoginTab1);
-        LoginTab1.setLayout(LoginTab1Layout);
-        LoginTab1Layout.setHorizontalGroup(
-            LoginTab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(LoginTab1Layout.createSequentialGroup()
-                .addGroup(LoginTab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(LoginTab1Layout.createSequentialGroup()
-                        .addGroup(LoginTab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(LoginTab1Layout.createSequentialGroup()
+        javax.swing.GroupLayout SignUpPanelLayout = new javax.swing.GroupLayout(SignUpPanel);
+        SignUpPanel.setLayout(SignUpPanelLayout);
+        SignUpPanelLayout.setHorizontalGroup(
+            SignUpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(SignUpPanelLayout.createSequentialGroup()
+                .addGroup(SignUpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(SignUpPanelLayout.createSequentialGroup()
+                        .addGroup(SignUpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(SignUpPanelLayout.createSequentialGroup()
                                 .addGap(209, 209, 209)
-                                .addGroup(LoginTab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(SignUpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jLabel17)
                                     .addComponent(jLabel18)))
-                            .addGroup(LoginTab1Layout.createSequentialGroup()
+                            .addGroup(SignUpPanelLayout.createSequentialGroup()
                                 .addGap(147, 147, 147)
                                 .addComponent(jLabel19)))
-                        .addGroup(LoginTab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(LoginTab1Layout.createSequentialGroup()
+                        .addGroup(SignUpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(SignUpPanelLayout.createSequentialGroup()
                                 .addGap(41, 41, 41)
-                                .addGroup(LoginTab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(SignUpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(passwordfieldsignupreenter, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(passwordfieldsignup, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(usernamefieldsignup, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(SignUp, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(LoginTab1Layout.createSequentialGroup()
+                            .addGroup(SignUpPanelLayout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(LoginTab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(SignUpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(professorRB)
-                                    .addGroup(LoginTab1Layout.createSequentialGroup()
-                                        .addGroup(LoginTab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(SignUpPanelLayout.createSequentialGroup()
+                                        .addGroup(SignUpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(studentRB)
                                             .addComponent(tutorRB))
                                         .addGap(44, 44, 44)
-                                        .addGroup(LoginTab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(SignUpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(lastnametext)
                                             .addComponent(Firstnametext))))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(LoginTab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(SignUpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(firstnamefield, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(lastnamefield, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(LoginTab1Layout.createSequentialGroup()
+                            .addGroup(SignUpPanelLayout.createSequentialGroup()
                                 .addGap(54, 54, 54)
-                                .addComponent(jLabel3))))
-                    .addGroup(LoginTab1Layout.createSequentialGroup()
+                                .addComponent(whoareyoulabel))))
+                    .addGroup(SignUpPanelLayout.createSequentialGroup()
                         .addGap(240, 240, 240)
-                        .addComponent(LionStudyLoginText1)))
+                        .addComponent(LionStudySignUpLabel)))
                 .addContainerGap(118, Short.MAX_VALUE))
         );
-        LoginTab1Layout.setVerticalGroup(
-            LoginTab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(LoginTab1Layout.createSequentialGroup()
+        SignUpPanelLayout.setVerticalGroup(
+            SignUpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(SignUpPanelLayout.createSequentialGroup()
                 .addGap(48, 48, 48)
-                .addComponent(LionStudyLoginText1, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(LionStudySignUpLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
-                .addGroup(LoginTab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(SignUpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(usernamefieldsignup, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel18))
                 .addGap(27, 27, 27)
-                .addGroup(LoginTab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(SignUpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel17)
                     .addComponent(passwordfieldsignup, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(36, 36, 36)
-                .addGroup(LoginTab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(SignUpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel19)
                     .addComponent(passwordfieldsignupreenter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
-                .addComponent(jLabel3)
+                .addComponent(whoareyoulabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(LoginTab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(LoginTab1Layout.createSequentialGroup()
-                        .addGroup(LoginTab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(SignUpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(SignUpPanelLayout.createSequentialGroup()
+                        .addGroup(SignUpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(studentRB)
                             .addComponent(Firstnametext))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(LoginTab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(SignUpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(tutorRB)
                             .addComponent(lastnametext)
                             .addComponent(lastnamefield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1191,7 +1186,7 @@ public class GUI extends javax.swing.JFrame {
             .addGroup(SignUpTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(SignUpTabLayout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(LoginTab1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(SignUpPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
         SignUpTabLayout.setVerticalGroup(
@@ -1200,11 +1195,11 @@ public class GUI extends javax.swing.JFrame {
             .addGroup(SignUpTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(SignUpTabLayout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(LoginTab1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(SignUpPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
-        jTabbedPane2.addTab("Sign Up", SignUpTab);
+        LionStudyTabs.addTab("Sign Up", SignUpTab);
 
         TopPanel.setBackground(new java.awt.Color(6, 6, 50));
         TopPanel.setForeground(new java.awt.Color(255, 255, 255));
@@ -1215,8 +1210,8 @@ public class GUI extends javax.swing.JFrame {
         LionStudyText.setForeground(new java.awt.Color(244, 244, 238));
         LionStudyText.setText("LionStudy");
 
-        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Res/PennState.png"))); // NOI18N
+        pennstatelogolabel.setForeground(new java.awt.Color(255, 255, 255));
+        pennstatelogolabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Res/PennState.png"))); // NOI18N
 
         LogoutButton.setText("Logout");
         LogoutButton.addActionListener(new java.awt.event.ActionListener() {
@@ -1237,7 +1232,7 @@ public class GUI extends javax.swing.JFrame {
                 .addGap(134, 134, 134)
                 .addComponent(LionStudyImage)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel15))
+                .addComponent(pennstatelogolabel))
         );
         TopPanelLayout.setVerticalGroup(
             TopPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1250,7 +1245,7 @@ public class GUI extends javax.swing.JFrame {
                 .addGroup(TopPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(TopPanelLayout.createSequentialGroup()
                         .addGap(8, 8, 8)
-                        .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE))
+                        .addComponent(pennstatelogolabel, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE))
                     .addGroup(TopPanelLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(LionStudyText, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
@@ -1259,16 +1254,16 @@ public class GUI extends javax.swing.JFrame {
 
         LionStudyImage.getAccessibleContext().setAccessibleName("LionStudyImage");
 
-        jPanel7.setBackground(new java.awt.Color(6, 6, 50));
+        lowerpanel.setBackground(new java.awt.Color(6, 6, 50));
 
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout lowerpanelLayout = new javax.swing.GroupLayout(lowerpanel);
+        lowerpanel.setLayout(lowerpanelLayout);
+        lowerpanelLayout.setHorizontalGroup(
+            lowerpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        lowerpanelLayout.setVerticalGroup(
+            lowerpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 91, Short.MAX_VALUE)
         );
 
@@ -1276,9 +1271,9 @@ public class GUI extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane2)
+            .addComponent(LionStudyTabs)
             .addComponent(TopPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lowerpanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1286,9 +1281,9 @@ public class GUI extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(TopPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 514, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(LionStudyTabs, javax.swing.GroupLayout.PREFERRED_SIZE, 514, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(lowerpanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -1422,7 +1417,7 @@ public class GUI extends javax.swing.JFrame {
                 }
                 else{
                   JOptionPane.showMessageDialog(null, "Account Created!", "Signup Success", JOptionPane.INFORMATION_MESSAGE);
-                  this.jTabbedPane2.setSelectedComponent(LoginTab);
+                  this.LionStudyTabs.setSelectedComponent(LoginTab);
                 }
             }
         }
@@ -1466,7 +1461,7 @@ public class GUI extends javax.swing.JFrame {
         
         JOptionPane.showMessageDialog(null, "Course added.");
         joinClassButton.setVisible(false);
-        jPanel1.repaint();
+        coursespanel.repaint();
         
         ArrayList<String> userCoursesProfile = sd.GetAllUsersClasses();
         DefaultListModel classListProfile = new DefaultListModel();
@@ -1794,15 +1789,15 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JPanel InteractionPanel;
     private javax.swing.JLabel LionStudyImage;
     private javax.swing.JLabel LionStudyLoginText;
-    private javax.swing.JLabel LionStudyLoginText1;
+    private javax.swing.JLabel LionStudySignUpLabel;
+    private javax.swing.JTabbedPane LionStudyTabs;
     private javax.swing.JLabel LionStudyText;
     private javax.swing.JButton LoginButton;
     private javax.swing.JPanel LoginTab;
-    private javax.swing.JPanel LoginTab1;
     private javax.swing.JButton LogoutButton;
     private javax.swing.JPanel ModOptions;
-    private javax.swing.JPanel ModOptions1;
     private java.awt.Label ModOptionsLabel;
+    private javax.swing.JPanel ModOptionsTab;
     private javax.swing.JLabel PasswordText;
     private javax.swing.JPanel ProfileTab;
     private javax.swing.JPanel ProfileTabCoursePanel;
@@ -1811,6 +1806,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JPanel SearchResultListsPanel;
     private javax.swing.JPanel SearchTab;
     private javax.swing.JButton SignUp;
+    private javax.swing.JPanel SignUpPanel;
     private javax.swing.JPanel SignUpTab;
     private javax.swing.JPanel SuperImpTab;
     private javax.swing.JPanel TopPanel;
@@ -1819,16 +1815,19 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel accountTypeLabel;
     private javax.swing.JButton addCourseModButton;
     private javax.swing.JLabel badgeImg;
+    private javax.swing.JPanel badgepanel;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JPanel chatPanel;
     private javax.swing.JTextArea chatTextArea;
     private javax.swing.JList<String> contactsList;
     private javax.swing.JPopupMenu contactsMenu;
     private javax.swing.JButton contactsSearchButton;
+    private javax.swing.JPanel contactspanel;
     private javax.swing.JPanel courseListPanel;
     private javax.swing.JList<String> courseListProfile;
     private javax.swing.JLabel courseListText;
     private javax.swing.JComboBox<String> coursesComboBox;
+    private javax.swing.JPanel coursespanel;
     private javax.swing.JTextField firstNameField;
     private javax.swing.JLabel firstNameLabel;
     private javax.swing.JTextField firstnamefield;
@@ -1843,23 +1842,14 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -1868,24 +1858,28 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
-    private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JButton joinClassButton;
-    private java.awt.Label label2;
     private javax.swing.JTextField lastNameField;
     private javax.swing.JLabel lastNameLabel;
     private javax.swing.JTextField lastnamefield;
     private javax.swing.JLabel lastnametext;
     private javax.swing.JTextField lnameFilterField;
+    private javax.swing.JPanel lowerpanel;
     private javax.swing.JTextField messageField;
     private javax.swing.JList<String> modsJList;
     private javax.swing.JList<String> offlineJList;
     private javax.swing.JPopupMenu offlineUserMenu;
+    private javax.swing.JLabel offlinelabel;
     private javax.swing.JList<String> onlineJList;
     private javax.swing.JPopupMenu onlineUserMenu;
+    private javax.swing.JLabel onlinelabel;
     private javax.swing.JPasswordField passwordfield;
     private javax.swing.JPasswordField passwordfieldsignup;
     private javax.swing.JPasswordField passwordfieldsignupreenter;
+    private javax.swing.JLabel pennstatelogolabel;
     private javax.swing.JRadioButton professorRB;
+    private javax.swing.JPanel profilepanel;
+    private java.awt.Label quicklinkslabel;
     private javax.swing.JButton removeCourseButton;
     private javax.swing.JRadioButton studentRB;
     private javax.swing.JButton submitButton;
@@ -1894,5 +1888,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel usernameLabel;
     private javax.swing.JTextField usernamefield;
     private javax.swing.JTextField usernamefieldsignup;
+    private javax.swing.JLabel whoareyoulabel;
     // End of variables declaration//GEN-END:variables
 }
