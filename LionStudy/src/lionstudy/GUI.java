@@ -1204,6 +1204,16 @@ public class GUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public void receiveMSG(String message, String username){
+        
+        Font f = new Font(Font.SERIF, Font.BOLD, 14);
+        incomeChatArea.append("---" + username + "---\n" + message);
+        
+        chatTextArea.setFont(f);
+        chatTextArea.append("\n\n\n");
+        
+    }
+    
     private void messageFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_messageFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_messageFieldActionPerformed
@@ -1230,7 +1240,6 @@ public class GUI extends javax.swing.JFrame {
         */
         incomeChatArea.setFont(f);
         incomeChatArea.append("\n\n\n");
-        incomeChatArea.append("---" + CU.getUsername() + "---\n" + "Test Format");
         
         
         messageField.setText("");
@@ -1283,8 +1292,6 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_coursesComboBoxActionPerformed
 
     private void contactscomboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contactscomboBoxActionPerformed
-        
-        
         
     }//GEN-LAST:event_contactscomboBoxActionPerformed
 
