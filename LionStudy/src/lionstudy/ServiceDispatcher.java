@@ -81,6 +81,33 @@ public class ServiceDispatcher {
         }
     }
 
+    public ArrayList<Account> GetAllMods(){
+        ArrayList<Account> AccountList = new ArrayList<Account>();
+        try {
+            Connection myConn = DriverManager.getConnection(CONN_STRING, USERNAME, PASSWORD);
+            stmt = myConn.createStatement();
+            PreparedStatement pstmt = myConn.prepareStatement("SELECT * FROM Users WHERE Badge = ?");
+            pstmt.setInt(1, 4);
+            rs = pstmt.executeQuery();
+            while (rs.next()) {
+                String username = rs.getString("username");
+                String password = "";
+                String firstName = rs.getString("first");
+                String lastName = rs.getString("last");
+                int badgetype = rs.getInt("badge");
+                int ID = rs.getInt("ID");
+                int online = rs.getInt("online");
+                Account temp = new Account(username, password, firstName, lastName, badgetype, ID);
+                temp.setOnline(online);
+                AccountList.add(temp);
+            }
+            myConn.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return AccountList;
+    }
+    
     //Returns an ArrayList of All Users in the form of Accounts, note that passwords are set to nothing as we do not need them once the application has been logged into
     public ArrayList<Account> GetAllUsers() {
         ArrayList<Account> AccountList = new ArrayList<Account>();
