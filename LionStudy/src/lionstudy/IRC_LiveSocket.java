@@ -14,9 +14,11 @@ final class IRC_LiveSocket implements Runnable
     final static String CRLF = "\r\n";
     //Message to be sent to output stream
     String msg;
+    //GUI receiver;
     
-    IRC_LiveSocket(String server, int port)
+    IRC_LiveSocket(String server, int port /*, GUI receiver*/)
     {
+        //this.receiver = receiver;
         try
         {
         //Connects to Lionstudy Server
@@ -97,6 +99,7 @@ final class IRC_LiveSocket implements Runnable
         if(RcvMsg.command.equals("PRIVMSG")||RcvMsg.command.equals("LOGMSG"))
         {
             System.out.println(RcvMsg.source+": "+RcvMsg.content);
+            //receiver.receiveMSG(RcvMsg.source, RcvMsg.content);//Calls GUI's receive message function. (MIGHT BE IN WRONG PLACE. HEP)
         }
         else if(RcvMsg.command.equals("CLOSE"))
         {
