@@ -71,6 +71,17 @@ public class GUI extends javax.swing.JFrame {
         this.jTabbedPane2.addTab("Moderator",ModOptions);
     }
     
+    protected void RefreshContactsList(){
+       ServiceDispatcher sd = new ServiceDispatcher();
+       ArrayList<Account> contacts = sd.GetAllUsersContacts();
+        DefaultListModel contactsModel = new DefaultListModel();
+        for (int i = 0; i < contacts.size(); i++){
+            String user = contacts.get(i).getFirstName() + " " + contacts.get(i).getLastName();
+            contactsModel.addElement(user);
+        }
+        this.contactsList.setModel(contactsModel);
+   }
+    
     UserProfile clientUser = new UserProfile();
     ArrayList<UserProfile> nameList = new ArrayList();
     String sentMessagesBuffer;
@@ -137,22 +148,13 @@ public class GUI extends javax.swing.JFrame {
         accountTypeLabel = new javax.swing.JLabel();
         accountTypeField = new javax.swing.JTextField();
         ContactsTab = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        contactscomboBox = new javax.swing.JComboBox<>();
-        tutorFilterSelected1 = new javax.swing.JRadioButton();
-        studentFilterSelected1 = new javax.swing.JRadioButton();
-        professorFilterSelected1 = new javax.swing.JRadioButton();
-        moderatorFilterSelected1 = new javax.swing.JRadioButton();
-        fnameFilterTextField1 = new javax.swing.JTextField();
-        lnameFilterTextField1 = new javax.swing.JTextField();
-        usernameFilterTextField1 = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        searchButton1 = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         contactsList = new javax.swing.JList<>();
+        jPanel2 = new javax.swing.JPanel();
+        lnameFilterField = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        contactsSearchButton = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
         SuperImpTab = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -566,146 +568,6 @@ public class GUI extends javax.swing.JFrame {
 
         ContactsTab.setLayout(new java.awt.BorderLayout());
 
-        jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 51, 102), 1, true));
-
-        contactscomboBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                contactscomboBoxActionPerformed(evt);
-            }
-        });
-
-        tutorFilterSelected1.setText("Tutors");
-
-        studentFilterSelected1.setText("Students");
-        studentFilterSelected1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                studentFilterSelected1ActionPerformed(evt);
-            }
-        });
-
-        professorFilterSelected1.setText("Professor");
-        professorFilterSelected1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                professorFilterSelected1ActionPerformed(evt);
-            }
-        });
-
-        moderatorFilterSelected1.setText("Moderator");
-        moderatorFilterSelected1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                moderatorFilterSelected1ActionPerformed(evt);
-            }
-        });
-
-        fnameFilterTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fnameFilterTextField1ActionPerformed(evt);
-            }
-        });
-
-        lnameFilterTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                lnameFilterTextField1ActionPerformed(evt);
-            }
-        });
-
-        usernameFilterTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                usernameFilterTextField1ActionPerformed(evt);
-            }
-        });
-
-        jLabel6.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
-        jLabel6.setText("Last Name:");
-
-        jLabel7.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
-        jLabel7.setText("Username:");
-
-        jLabel8.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
-        jLabel8.setText("First Name:");
-
-        searchButton1.setBackground(new java.awt.Color(255, 255, 255));
-        searchButton1.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
-        searchButton1.setText("Search");
-        searchButton1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 102), 2));
-        searchButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchButton1ActionPerformed(evt);
-            }
-        });
-
-        jLabel4.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
-        jLabel4.setText("Contacts");
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(contactscomboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addComponent(tutorFilterSelected1)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(moderatorFilterSelected1)
-                            .addGap(2, 2, 2)
-                            .addComponent(studentFilterSelected1)
-                            .addGap(18, 18, 18)
-                            .addComponent(professorFilterSelected1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel4)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(usernameFilterTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(fnameFilterTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lnameFilterTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(searchButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(1, 1, 1)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(contactscomboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tutorFilterSelected1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(studentFilterSelected1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(professorFilterSelected1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(moderatorFilterSelected1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(fnameFilterTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lnameFilterTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel8)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(usernameFilterTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7)))
-            .addComponent(searchButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-
-        ContactsTab.add(jPanel2, java.awt.BorderLayout.PAGE_START);
-
         contactsList.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
@@ -719,6 +581,65 @@ public class GUI extends javax.swing.JFrame {
         jScrollPane3.setViewportView(contactsList);
 
         ContactsTab.add(jScrollPane3, java.awt.BorderLayout.CENTER);
+
+        jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 51, 102), 1, true));
+
+        lnameFilterField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lnameFilterFieldActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
+        jLabel6.setText("Last Name:");
+
+        contactsSearchButton.setBackground(new java.awt.Color(255, 255, 255));
+        contactsSearchButton.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
+        contactsSearchButton.setText("Search");
+        contactsSearchButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 102), 2));
+        contactsSearchButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                contactsSearchButtonActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
+        jLabel4.setText("Contacts");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lnameFilterField, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(contactsSearchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(392, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(1, 1, 1)
+                .addComponent(jLabel4)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(11, 11, 11)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(contactsSearchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(lnameFilterField, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(35, Short.MAX_VALUE))
+        );
+
+        ContactsTab.add(jPanel2, java.awt.BorderLayout.PAGE_START);
 
         jTabbedPane2.addTab("Contacts", new javax.swing.ImageIcon(getClass().getResource("/Res/ContactsImg.png")), ContactsTab); // NOI18N
 
@@ -1291,34 +1212,6 @@ public class GUI extends javax.swing.JFrame {
 
     }//GEN-LAST:event_coursesComboBoxActionPerformed
 
-    private void contactscomboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contactscomboBoxActionPerformed
-        
-    }//GEN-LAST:event_contactscomboBoxActionPerformed
-
-    private void studentFilterSelected1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_studentFilterSelected1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_studentFilterSelected1ActionPerformed
-
-    private void professorFilterSelected1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_professorFilterSelected1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_professorFilterSelected1ActionPerformed
-
-    private void moderatorFilterSelected1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_moderatorFilterSelected1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_moderatorFilterSelected1ActionPerformed
-
-    private void fnameFilterTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fnameFilterTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_fnameFilterTextField1ActionPerformed
-
-    private void lnameFilterTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lnameFilterTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lnameFilterTextField1ActionPerformed
-
-    private void usernameFilterTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameFilterTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_usernameFilterTextField1ActionPerformed
-
     private void usernamefieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernamefieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_usernamefieldActionPerformed
@@ -1382,25 +1275,13 @@ public class GUI extends javax.swing.JFrame {
                 
                 
                 //Fills in all contacts
-                ArrayList<Account> Contacts = sd.GetAllUsersContacts();
-                DefaultListModel listModel = new DefaultListModel();
-                for(int x = 0; x<Contacts.size(); x++){
-                    listModel.addElement(Contacts.get(x).getFirstName() + " "+Contacts.get(x).getLastName() +"\n");
-                }
-                this.contactsList.setModel(listModel);
+                this.RefreshContactsList();
             } else {
                 JOptionPane.showMessageDialog(null, "The username or password was incorrect, please try again", "Incorrect Username/Password", JOptionPane.INFORMATION_MESSAGE);
             }
         }
         
-        ArrayList<Account> contacts = sd.GetAllUsersContacts();
-        DefaultListModel contactsModel = new DefaultListModel();
-        for (int i = 0; i < contacts.size(); i++){
-            String user = contacts.get(i).getFirstname() + " " +contacts.get(i).getLastName();
-            contactsModel.addElement(user);
-            contactscomboBox.addItem(user);
-        }
-        contactsList.setModel(contactsModel);
+        
     }//GEN-LAST:event_LoginButtonActionPerformed
 
     private void usernamefieldsignupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernamefieldsignupActionPerformed
@@ -1475,10 +1356,6 @@ public class GUI extends javax.swing.JFrame {
         this.courseListProfile.setModel(classListProfile);
     }//GEN-LAST:event_removeCourseButtonActionPerformed
 
-    private void searchButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_searchButton1ActionPerformed
-
     private void joinClassButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_joinClassButtonActionPerformed
         String selection = coursesComboBox.getSelectedItem().toString();
         ServiceDispatcher sd = new ServiceDispatcher();
@@ -1548,33 +1425,41 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_onlineUserMenuMouseClicked
 
     private void AddOfflineMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddOfflineMenuItemActionPerformed
-        
+        boolean flag = false;
+        this.RefreshContactsList();
+        for(int x = 0; x < contactsList.getModel().getSize(); x++){
+            if(this.contactsList.getModel().getElementAt(x).equals(offlineJList.getSelectedValue())){
+                flag = true;
+                break;
+            }
+        }
+        if(flag){
+            JOptionPane.showMessageDialog(null, "Already a contact", "Info", JOptionPane.INFORMATION_MESSAGE);
+        }
+        else{
         ServiceDispatcher sd = new ServiceDispatcher();
         sd.AddUserContact(offlineJList.getSelectedValue());
-        
-        ArrayList<Account> contacts = sd.GetAllUsersContacts();
-        DefaultListModel contactsModel = new DefaultListModel();
-        for (int i = 0; i < contacts.size(); i++){
-            String user = contacts.get(i).getFirstName() + " " + contacts.get(i).getLastName();
-            contactsModel.addElement(user);
+        this.RefreshContactsList();
         }
-        contactsList.setModel(contactsModel);
-        
     }//GEN-LAST:event_AddOfflineMenuItemActionPerformed
 
     private void AddMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddMenuItemActionPerformed
-        
+        boolean flag = false;
+        this.RefreshContactsList();
+        for(int x = 0; x < contactsList.getModel().getSize(); x++){
+            if(this.contactsList.getModel().getElementAt(x).equals(onlineJList.getSelectedValue())){
+                flag = true;
+                break;
+            }
+        }
+        if(flag){
+            JOptionPane.showMessageDialog(null, "Already a contact", "Info", JOptionPane.INFORMATION_MESSAGE);
+        }
+        else{
         ServiceDispatcher sd = new ServiceDispatcher();
         sd.AddUserContact(onlineJList.getSelectedValue());
-        
-        ArrayList<Account> contacts = sd.GetAllUsersContacts();
-        DefaultListModel contactsModel = new DefaultListModel();
-        for (int i = 0; i < contacts.size(); i++){
-            String user = contacts.get(i).getFirstName() + " " + contacts.get(i).getLastName();
-            contactsModel.addElement(user);
+        this.RefreshContactsList();
         }
-        contactsList.setModel(contactsModel);
-        
     }//GEN-LAST:event_AddMenuItemActionPerformed
 
     private void RemoveMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RemoveMenuItemActionPerformed
@@ -1582,15 +1467,34 @@ public class GUI extends javax.swing.JFrame {
         ServiceDispatcher sd = new ServiceDispatcher();
         sd.RemoveUserContact(contactsList.getSelectedValue());
         
-        ArrayList<Account> contacts = sd.GetAllUsersContacts();
-        DefaultListModel contactsModel = new DefaultListModel();
-        for (int i = 0; i < contacts.size(); i++){
-            String user = contacts.get(i).getFirstName() + " " + contacts.get(i).getLastName();
-            contactsModel.addElement(user);
-        }
-        contactsList.setModel(contactsModel);
+        this.RefreshContactsList();
         
     }//GEN-LAST:event_RemoveMenuItemActionPerformed
+
+    private void lnameFilterFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lnameFilterFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lnameFilterFieldActionPerformed
+
+    private void contactsSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contactsSearchButtonActionPerformed
+        ServiceDispatcher sd = new ServiceDispatcher();
+        ArrayList<Account> contacts = sd.GetAllUsersContacts();
+        DefaultListModel contactsModel = new DefaultListModel();
+        String SLname = lnameFilterField.getText().toLowerCase();
+        if (SLname.equals("")) {
+            this.RefreshContactsList();
+        }
+        else {
+            contactsModel.removeAllElements();
+            for (int x = 0; x < contacts.size(); x++) {
+                String lname = contacts.get(x).getLastName().toLowerCase();
+                if (lname.contains(SLname.trim())) {
+                    String fullname = contacts.get(x).getFirstName() + " " + contacts.get(x).getLastName();
+                    contactsModel.addElement(fullname);
+                }
+            }
+            this.contactsList.setModel(contactsModel);
+        }
+    }//GEN-LAST:event_contactsSearchButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1639,7 +1543,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextArea chatTextArea;
     private javax.swing.JList<String> contactsList;
     private javax.swing.JPopupMenu contactsMenu;
-    private javax.swing.JComboBox<String> contactscomboBox;
+    private javax.swing.JButton contactsSearchButton;
     private javax.swing.JPanel courseListPanel;
     private javax.swing.JList<String> courseListProfile;
     private javax.swing.JLabel courseListText;
@@ -1647,7 +1551,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextField firstNameField;
     private javax.swing.JLabel firstNameLabel;
     private javax.swing.JTextField firstnamefield;
-    private javax.swing.JTextField fnameFilterTextField1;
     private javax.swing.JTextArea incomeChatArea;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
@@ -1669,8 +1572,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -1691,9 +1592,8 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel lastNameLabel;
     private javax.swing.JTextField lastnamefield;
     private javax.swing.JLabel lastnametext;
-    private javax.swing.JTextField lnameFilterTextField1;
+    private javax.swing.JTextField lnameFilterField;
     private javax.swing.JTextField messageField;
-    private javax.swing.JRadioButton moderatorFilterSelected1;
     private javax.swing.JList<String> offlineJList;
     private javax.swing.JPopupMenu offlineUserMenu;
     private javax.swing.JList<String> onlineJList;
@@ -1701,17 +1601,12 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JPasswordField passwordfield;
     private javax.swing.JPasswordField passwordfieldsignup;
     private javax.swing.JPasswordField passwordfieldsignupreenter;
-    private javax.swing.JRadioButton professorFilterSelected1;
     private javax.swing.JRadioButton professorRB;
     private javax.swing.JButton removeCourseButton;
-    private javax.swing.JButton searchButton1;
-    private javax.swing.JRadioButton studentFilterSelected1;
     private javax.swing.JRadioButton studentRB;
     private javax.swing.JButton submitButton;
-    private javax.swing.JRadioButton tutorFilterSelected1;
     private javax.swing.JRadioButton tutorRB;
     private javax.swing.JTextField usernameField;
-    private javax.swing.JTextField usernameFilterTextField1;
     private javax.swing.JLabel usernameLabel;
     private javax.swing.JTextField usernamefield;
     private javax.swing.JTextField usernamefieldsignup;
