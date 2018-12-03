@@ -2,6 +2,7 @@ package lionstudy;
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.awt.event.*;
 import java.io.File;
 import java.io.IOException;
 import lionstudy.Classes.*;
@@ -33,6 +34,12 @@ public class GUI extends javax.swing.JFrame {
     public GUI() {
         initComponents();
         this.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Res/LSIcon.png")));
+    }
+    
+    public int logoutOnExit() {
+        ServiceDispatcher sd = new ServiceDispatcher();
+        sd.logout();
+        return EXIT_ON_CLOSE;
     }
     
     CurrentUser CU;
@@ -139,6 +146,8 @@ public class GUI extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         badgeImg = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
+        jPanel9 = new javax.swing.JPanel();
+        jPanel10 = new javax.swing.JPanel();
         firstNameLabel = new javax.swing.JLabel();
         firstNameField = new javax.swing.JTextField();
         lastNameLabel = new javax.swing.JLabel();
@@ -258,7 +267,7 @@ public class GUI extends javax.swing.JFrame {
         });
         offlineUserMenu.add(AddOfflineMenuItem);
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(logoutOnExit());
         setTitle("LionStudy");
         setBackground(new java.awt.Color(0, 0, 51));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -529,38 +538,72 @@ public class GUI extends javax.swing.JFrame {
 
         ProfileTabInfoPanel.add(jPanel3, java.awt.BorderLayout.PAGE_START);
 
-        jPanel4.setLayout(new java.awt.GridLayout(6, 2, -100, 30));
+        jPanel4.setLayout(new java.awt.GridLayout(8, 3, 0, 20));
 
-        firstNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        firstNameLabel.setText("First Name:");
+        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
+        jPanel9.setLayout(jPanel9Layout);
+        jPanel9Layout.setHorizontalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 258, Short.MAX_VALUE)
+        );
+        jPanel9Layout.setVerticalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 29, Short.MAX_VALUE)
+        );
+
+        jPanel4.add(jPanel9);
+
+        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
+        jPanel10.setLayout(jPanel10Layout);
+        jPanel10Layout.setHorizontalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 258, Short.MAX_VALUE)
+        );
+        jPanel10Layout.setVerticalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 29, Short.MAX_VALUE)
+        );
+
+        jPanel4.add(jPanel10);
+
+        firstNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        firstNameLabel.setText("First Name:          ");
+        firstNameLabel.setToolTipText("");
         jPanel4.add(firstNameLabel);
 
         firstNameField.setEditable(false);
         firstNameField.setText(CurrentUser.getFirstname());
+        firstNameField.setToolTipText("");
+        firstNameField.setBorder(null);
         jPanel4.add(firstNameField);
 
-        lastNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lastNameLabel.setText("Last Name:");
+        lastNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lastNameLabel.setText("Last Name:          ");
+        lastNameLabel.setToolTipText("");
         jPanel4.add(lastNameLabel);
 
         lastNameField.setEditable(false);
         lastNameField.setText("jTextField2");
+        lastNameField.setBorder(null);
         jPanel4.add(lastNameField);
 
-        usernameLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        usernameLabel.setText("Username:");
+        usernameLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        usernameLabel.setText("Username:          ");
         jPanel4.add(usernameLabel);
 
         usernameField.setEditable(false);
         usernameField.setText("usernameField");
+        usernameField.setBorder(null);
         jPanel4.add(usernameField);
 
-        accountTypeLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        accountTypeLabel.setText("Account Type:");
+        accountTypeLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        accountTypeLabel.setText("Account Type:          ");
+        accountTypeLabel.setToolTipText("");
         jPanel4.add(accountTypeLabel);
 
         accountTypeField.setEditable(false);
         accountTypeField.setText("jTextField4");
+        accountTypeField.setBorder(null);
         jPanel4.add(accountTypeField);
 
         ProfileTabInfoPanel.add(jPanel4, java.awt.BorderLayout.CENTER);
@@ -1605,11 +1648,13 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
