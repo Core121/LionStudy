@@ -765,7 +765,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="coursesComboBox1" alignment="0" min="-2" pref="301" max="-2" attributes="0"/>
+                                  <Component id="contactscomboBox" alignment="0" min="-2" pref="301" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="tutorFilterSelected1" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="32767" attributes="0"/>
@@ -810,7 +810,7 @@
                           <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
                           <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="coursesComboBox1" min="-2" pref="46" max="-2" attributes="0"/>
+                          <Component id="contactscomboBox" min="-2" pref="46" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="tutorFilterSelected1" alignment="3" max="32767" attributes="0"/>
@@ -845,14 +845,14 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JComboBox" name="coursesComboBox1">
+                <Component class="javax.swing.JComboBox" name="contactscomboBox">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="0"/>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="coursesComboBox1ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="contactscomboBoxActionPerformed"/>
                   </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>

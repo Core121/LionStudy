@@ -3,8 +3,11 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.io.File;
+import java.io.IOException;
 import lionstudy.Classes.*;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
@@ -135,7 +138,7 @@ public class GUI extends javax.swing.JFrame {
         accountTypeField = new javax.swing.JTextField();
         ContactsTab = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        coursesComboBox1 = new javax.swing.JComboBox<>();
+        contactscomboBox = new javax.swing.JComboBox<>();
         tutorFilterSelected1 = new javax.swing.JRadioButton();
         studentFilterSelected1 = new javax.swing.JRadioButton();
         professorFilterSelected1 = new javax.swing.JRadioButton();
@@ -565,9 +568,9 @@ public class GUI extends javax.swing.JFrame {
 
         jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 51, 102), 1, true));
 
-        coursesComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        contactscomboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                coursesComboBox1ActionPerformed(evt);
+                contactscomboBoxActionPerformed(evt);
             }
         });
 
@@ -641,7 +644,7 @@ public class GUI extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(coursesComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(contactscomboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel2Layout.createSequentialGroup()
                             .addComponent(tutorFilterSelected1)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -676,7 +679,7 @@ public class GUI extends javax.swing.JFrame {
                 .addGap(1, 1, 1)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(coursesComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(contactscomboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tutorFilterSelected1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -1249,7 +1252,7 @@ public class GUI extends javax.swing.JFrame {
         
         //obtains all the online  and offline users that have selected class in their courseList
         for (int i = 0; i < allUsers.size(); i++){
-            String user = allUsers.get(i).getUsername();
+            String user = allUsers.get(i).getFirstName() + " " + allUsers.get(i).getLastName();
             if(CurrentUser.getUsername().equals(allUsers.get(i).getUsername())){        //checking to make you current user isnt displayed
                CUinclass = true;
                Joined = true;
@@ -1279,11 +1282,11 @@ public class GUI extends javax.swing.JFrame {
 
     }//GEN-LAST:event_coursesComboBoxActionPerformed
 
-    private void coursesComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_coursesComboBox1ActionPerformed
+    private void contactscomboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contactscomboBoxActionPerformed
         
         
         
-    }//GEN-LAST:event_coursesComboBox1ActionPerformed
+    }//GEN-LAST:event_contactscomboBoxActionPerformed
 
     private void studentFilterSelected1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_studentFilterSelected1ActionPerformed
         // TODO add your handling code here:
@@ -1326,14 +1329,15 @@ public class GUI extends javax.swing.JFrame {
                     this.SetUpNormalUserScenario();
                     if(CurrentUser.getBadgetype() == 1){
                         this.accountTypeField.setText("Student");
-                        this.badgeImg.setIcon(new ImageIcon("StudentBadge24.png"));
+                        this.badgeImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Res/StudentBadge24.png")));
+
                     }
                     else if(CurrentUser.getBadgetype() == 2){
                         this.accountTypeField.setText("Tutor");
-                        this.badgeImg.setIcon(new ImageIcon("TutorBadge24.png"));
+                        this.badgeImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Res/TutorBadge24.png")));
                     }
                     else if(CurrentUser.getBadgetype() == 3){
-                        this.badgeImg.setIcon(new ImageIcon("TeacherBadge24.png"));
+                        this.badgeImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Res/TeacherBadge24.png")));
                         this.accountTypeField.setText("Teacher");
                     }
                 }
@@ -1341,7 +1345,7 @@ public class GUI extends javax.swing.JFrame {
                 else if(CurrentUser.getBadgetype() == 4){
                    this.SetUpModeratorScenario();
                    this.accountTypeField.setText("Moderator");
-                   this.badgeImg.setIcon(new ImageIcon("ModeratorBadge24.png"));
+                   this.badgeImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Res/ModeratorBadge24.png")));
                 }
                 
                 //Fills in the users classes on the profile tab
@@ -1374,7 +1378,7 @@ public class GUI extends javax.swing.JFrame {
                 ArrayList<Account> Contacts = sd.GetAllUsersContacts();
                 DefaultListModel listModel = new DefaultListModel();
                 for(int x = 0; x<Contacts.size(); x++){
-                    listModel.addElement(Contacts.get(x).toString()+"\n");
+                    listModel.addElement(Contacts.get(x).getFirstName() + " "+Contacts.get(x).getLastName() +"\n");
                 }
                 this.contactsList.setModel(listModel);
             } else {
@@ -1385,9 +1389,9 @@ public class GUI extends javax.swing.JFrame {
         ArrayList<Account> contacts = sd.GetAllUsersContacts();
         DefaultListModel contactsModel = new DefaultListModel();
         for (int i = 0; i < contacts.size(); i++){
-            String user = contacts.get(i).getUsername();
+            String user = contacts.get(i).getFirstname() + " " +contacts.get(i).getLastName();
             contactsModel.addElement(user);
-            coursesComboBox1.addItem(user);
+            contactscomboBox.addItem(user);
         }
         contactsList.setModel(contactsModel);
     }//GEN-LAST:event_LoginButtonActionPerformed
@@ -1544,7 +1548,7 @@ public class GUI extends javax.swing.JFrame {
         ArrayList<Account> contacts = sd.GetAllUsersContacts();
         DefaultListModel contactsModel = new DefaultListModel();
         for (int i = 0; i < contacts.size(); i++){
-            String user = contacts.get(i).getUsername();
+            String user = contacts.get(i).getFirstName() + " " + contacts.get(i).getLastName();
             contactsModel.addElement(user);
         }
         contactsList.setModel(contactsModel);
@@ -1559,7 +1563,7 @@ public class GUI extends javax.swing.JFrame {
         ArrayList<Account> contacts = sd.GetAllUsersContacts();
         DefaultListModel contactsModel = new DefaultListModel();
         for (int i = 0; i < contacts.size(); i++){
-            String user = contacts.get(i).getUsername();
+            String user = contacts.get(i).getFirstName() + " " + contacts.get(i).getLastName();
             contactsModel.addElement(user);
         }
         contactsList.setModel(contactsModel);
@@ -1574,7 +1578,7 @@ public class GUI extends javax.swing.JFrame {
         ArrayList<Account> contacts = sd.GetAllUsersContacts();
         DefaultListModel contactsModel = new DefaultListModel();
         for (int i = 0; i < contacts.size(); i++){
-            String user = contacts.get(i).getUsername();
+            String user = contacts.get(i).getFirstName() + " " + contacts.get(i).getLastName();
             contactsModel.addElement(user);
         }
         contactsList.setModel(contactsModel);
@@ -1628,11 +1632,11 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextArea chatTextArea;
     private javax.swing.JList<String> contactsList;
     private javax.swing.JPopupMenu contactsMenu;
+    private javax.swing.JComboBox<String> contactscomboBox;
     private javax.swing.JPanel courseListPanel;
     private javax.swing.JList<String> courseListProfile;
     private javax.swing.JLabel courseListText;
     private javax.swing.JComboBox<String> coursesComboBox;
-    private javax.swing.JComboBox<String> coursesComboBox1;
     private javax.swing.JTextField firstNameField;
     private javax.swing.JLabel firstNameLabel;
     private javax.swing.JTextField firstnamefield;
