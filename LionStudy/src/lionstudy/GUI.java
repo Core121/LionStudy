@@ -1302,7 +1302,7 @@ public class GUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public void receiveMSG(String message, String username){
+    public void receiveMSG(String username, String message){
         
         Font f = new Font(Font.SERIF, Font.BOLD, 14);
         incomeChatArea.append("---" + username + "---\n" + message);
@@ -1742,7 +1742,7 @@ public class GUI extends javax.swing.JFrame {
             IRC_RecievedMessage RcvMsg = IRC_MessageParser.recieved(ircMessage);
             if(RcvMsg.command.equals("PRIVMSG"))
             {
-                receiveMSG(RcvMsg.source,RcvMsg.content);
+                receiveMSG(RcvMsg.nick,RcvMsg.content);
             }
             else if(RcvMsg.command.equals("CLOSE"))
             {
