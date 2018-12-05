@@ -21,7 +21,7 @@ class IRC_MessageParser
                 int nickIndex = msg.source.indexOf('!');
                 if(nickIndex>-1)
                 {
-                    msg.nick = msg.source.substring(1,nickIndex);
+                    msg.nick = msg.source.substring(0,nickIndex);
                 }
             }
         }
