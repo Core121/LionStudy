@@ -1,10 +1,14 @@
 package lionstudy;
+import java.awt.Desktop;
 import java.awt.Font;
 import java.awt.Toolkit;
 import java.awt.event.*;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.Socket;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
 import lionstudy.Classes.*;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -237,15 +241,15 @@ public class GUI extends javax.swing.JFrame {
         contactsSearchButton = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         SuperImpTab = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
+        lionpathLink = new javax.swing.JButton();
+        behrendLink = new javax.swing.JButton();
+        healthLink = new javax.swing.JButton();
+        footballLink = new javax.swing.JButton();
+        canvasLink = new javax.swing.JButton();
+        junkerLink = new javax.swing.JButton();
+        newsLink = new javax.swing.JButton();
+        weatherLink = new javax.swing.JButton();
+        rapLink = new javax.swing.JButton();
         ContactModLabel = new java.awt.Label();
         jScrollPane7 = new javax.swing.JScrollPane();
         modsJList = new javax.swing.JList<>();
@@ -643,7 +647,7 @@ public class GUI extends javax.swing.JFrame {
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 29, Short.MAX_VALUE)
+            .addGap(0, 32, Short.MAX_VALUE)
         );
 
         profilepanel.add(jPanel9);
@@ -656,7 +660,7 @@ public class GUI extends javax.swing.JFrame {
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 29, Short.MAX_VALUE)
+            .addGap(0, 32, Short.MAX_VALUE)
         );
 
         profilepanel.add(jPanel10);
@@ -788,41 +792,86 @@ public class GUI extends javax.swing.JFrame {
 
         LionStudyTabs.addTab("Contacts", new javax.swing.ImageIcon(getClass().getResource("/Res/ContactsImg.png")), ContactsTab); // NOI18N
 
-        jButton1.setBackground(new java.awt.Color(0, 0, 0));
-        jButton1.setForeground(new java.awt.Color(0, 0, 204));
-        jButton1.setText("LionPath");
+        lionpathLink.setBackground(new java.awt.Color(0, 0, 0));
+        lionpathLink.setForeground(new java.awt.Color(0, 0, 204));
+        lionpathLink.setText("LionPath");
+        lionpathLink.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lionpathLinkActionPerformed(evt);
+            }
+        });
 
-        jButton2.setBackground(new java.awt.Color(0, 0, 0));
-        jButton2.setForeground(new java.awt.Color(0, 0, 204));
-        jButton2.setText("Behrend");
+        behrendLink.setBackground(new java.awt.Color(0, 0, 0));
+        behrendLink.setForeground(new java.awt.Color(0, 0, 204));
+        behrendLink.setText("Behrend");
+        behrendLink.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                behrendLinkActionPerformed(evt);
+            }
+        });
 
-        jButton3.setBackground(new java.awt.Color(0, 0, 0));
-        jButton3.setForeground(new java.awt.Color(0, 0, 204));
-        jButton3.setText("Health");
+        healthLink.setBackground(new java.awt.Color(0, 0, 0));
+        healthLink.setForeground(new java.awt.Color(0, 0, 204));
+        healthLink.setText("Health");
+        healthLink.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                healthLinkActionPerformed(evt);
+            }
+        });
 
-        jButton4.setBackground(new java.awt.Color(0, 0, 0));
-        jButton4.setForeground(new java.awt.Color(0, 0, 204));
-        jButton4.setText("Football");
+        footballLink.setBackground(new java.awt.Color(0, 0, 0));
+        footballLink.setForeground(new java.awt.Color(0, 0, 204));
+        footballLink.setText("Football");
+        footballLink.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                footballLinkActionPerformed(evt);
+            }
+        });
 
-        jButton5.setBackground(new java.awt.Color(0, 0, 0));
-        jButton5.setForeground(new java.awt.Color(0, 0, 204));
-        jButton5.setText("Canvas");
+        canvasLink.setBackground(new java.awt.Color(0, 0, 0));
+        canvasLink.setForeground(new java.awt.Color(0, 0, 204));
+        canvasLink.setText("Canvas");
+        canvasLink.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                canvasLinkActionPerformed(evt);
+            }
+        });
 
-        jButton6.setBackground(new java.awt.Color(0, 0, 0));
-        jButton6.setForeground(new java.awt.Color(0, 0, 204));
-        jButton6.setText("Junker");
+        junkerLink.setBackground(new java.awt.Color(0, 0, 0));
+        junkerLink.setForeground(new java.awt.Color(0, 0, 204));
+        junkerLink.setText("Junker");
+        junkerLink.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                junkerLinkActionPerformed(evt);
+            }
+        });
 
-        jButton7.setBackground(new java.awt.Color(0, 0, 0));
-        jButton7.setForeground(new java.awt.Color(0, 0, 204));
-        jButton7.setText("News");
+        newsLink.setBackground(new java.awt.Color(0, 0, 0));
+        newsLink.setForeground(new java.awt.Color(0, 0, 204));
+        newsLink.setText("News");
+        newsLink.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newsLinkActionPerformed(evt);
+            }
+        });
 
-        jButton8.setBackground(new java.awt.Color(0, 0, 0));
-        jButton8.setForeground(new java.awt.Color(0, 0, 204));
-        jButton8.setText("Weather");
+        weatherLink.setBackground(new java.awt.Color(0, 0, 0));
+        weatherLink.setForeground(new java.awt.Color(0, 0, 204));
+        weatherLink.setText("Weather");
+        weatherLink.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                weatherLinkActionPerformed(evt);
+            }
+        });
 
-        jButton9.setBackground(new java.awt.Color(0, 0, 0));
-        jButton9.setForeground(new java.awt.Color(0, 0, 204));
-        jButton9.setText("RAP's");
+        rapLink.setBackground(new java.awt.Color(0, 0, 0));
+        rapLink.setForeground(new java.awt.Color(0, 0, 204));
+        rapLink.setText("RAP's");
+        rapLink.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rapLinkActionPerformed(evt);
+            }
+        });
 
         ContactModLabel.setFont(new java.awt.Font("Cambria Math", 0, 24)); // NOI18N
         ContactModLabel.setName(""); // NOI18N
@@ -845,23 +894,23 @@ public class GUI extends javax.swing.JFrame {
             .addGroup(SuperImpTabLayout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addGroup(SuperImpTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(rapLink, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(healthLink, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(canvasLink, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(SuperImpTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(newsLink, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(footballLink, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lionpathLink, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(SuperImpTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(SuperImpTabLayout.createSequentialGroup()
                         .addGap(20, 20, 20)
                         .addGroup(SuperImpTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(junkerLink, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(behrendLink, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(SuperImpTabLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(weatherLink, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
                 .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(56, 56, 56))
@@ -883,25 +932,25 @@ public class GUI extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, SuperImpTabLayout.createSequentialGroup()
                         .addGap(124, 124, 124)
                         .addGroup(SuperImpTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lionpathLink, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(behrendLink, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(canvasLink, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(SuperImpTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(healthLink, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(footballLink, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(junkerLink, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(27, 27, 27)
                         .addGroup(SuperImpTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(121, Short.MAX_VALUE))
+                            .addComponent(newsLink, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(weatherLink, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(rapLink, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(144, Short.MAX_VALUE))
             .addGroup(SuperImpTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(SuperImpTabLayout.createSequentialGroup()
                     .addGap(78, 78, 78)
                     .addComponent(quicklinkslabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(373, Short.MAX_VALUE)))
+                    .addContainerGap(396, Short.MAX_VALUE)))
         );
 
         LionStudyTabs.addTab("Important Services", new javax.swing.ImageIcon(getClass().getResource("/Res/SuperImg.png")), SuperImpTab); // NOI18N
@@ -966,7 +1015,7 @@ public class GUI extends javax.swing.JFrame {
         );
         ModOptionsLayout.setVerticalGroup(
             ModOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 523, Short.MAX_VALUE)
+            .addGap(0, 507, Short.MAX_VALUE)
             .addGroup(ModOptionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(ModOptionsLayout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -1045,7 +1094,7 @@ public class GUI extends javax.swing.JFrame {
                     .addComponent(PasswordText))
                 .addGap(42, 42, 42)
                 .addComponent(LoginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(188, Short.MAX_VALUE))
+                .addContainerGap(176, Short.MAX_VALUE))
         );
 
         PasswordText.getAccessibleContext().setAccessibleName("passwordtext");
@@ -1204,7 +1253,7 @@ public class GUI extends javax.swing.JFrame {
         );
         SignUpTabLayout.setVerticalGroup(
             SignUpTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 505, Short.MAX_VALUE)
+            .addGap(0, 507, Short.MAX_VALUE)
             .addGroup(SignUpTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(SignUpTabLayout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -1646,11 +1695,132 @@ public class GUI extends javax.swing.JFrame {
         }        
     }//GEN-LAST:event_passwordfieldKeyPressed
 
+    private void canvasLinkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_canvasLinkActionPerformed
+        try{
+            URL url = new URL("http://canvas.psu.edu");
+            openWebpage(url);
+        } catch(Exception e) {
+            System.out.println(e);
+        }
+        
+    }//GEN-LAST:event_canvasLinkActionPerformed
+
+    private void lionpathLinkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lionpathLinkActionPerformed
+        
+        try{
+            URL url = new URL("http://lionpath.psu.edu");
+            openWebpage(url);
+        } catch(Exception e) {
+            System.out.println(e);
+        }
+        
+    }//GEN-LAST:event_lionpathLinkActionPerformed
+
+    private void behrendLinkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_behrendLinkActionPerformed
+        // 
+        
+        try{
+            URL url = new URL("https://behrend.psu.edu");
+            openWebpage(url);
+        } catch(Exception e) {
+            System.out.println(e);
+        }
+        
+    }//GEN-LAST:event_behrendLinkActionPerformed
+
+    private void healthLinkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_healthLinkActionPerformed
+        
+        try{
+            URL url = new URL("https://behrend.psu.edu/student-life/student-services/health");
+            openWebpage(url);
+        } catch(Exception e) {
+            System.out.println(e);
+        }
+        
+    }//GEN-LAST:event_healthLinkActionPerformed
+
+    private void footballLinkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_footballLinkActionPerformed
+        
+        try{
+            URL url = new URL("https://gopsusports.com/index.aspx?path=football");
+            openWebpage(url);
+        } catch(Exception e) {
+            System.out.println(e);
+        }
+        
+    }//GEN-LAST:event_footballLinkActionPerformed
+
+    private void junkerLinkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_junkerLinkActionPerformed
+        
+        try{
+            URL url = new URL("http://www.psblions.com/information/intramurals-facilities/Junker_Center");
+            openWebpage(url);
+        } catch(Exception e) {
+            System.out.println(e);
+        }
+        
+        
+    }//GEN-LAST:event_junkerLinkActionPerformed
+
+    private void rapLinkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rapLinkActionPerformed
+        
+        try{
+            URL url = new URL("https://behrend.psu.edu/academics/academic-services/acpc/acpc-services/academic-advising-and-planning/recommended-academic-plans");
+            openWebpage(url);
+        } catch(Exception e) {
+            System.out.println(e);
+        }
+        
+    }//GEN-LAST:event_rapLinkActionPerformed
+
+    private void newsLinkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newsLinkActionPerformed
+        
+        try{
+            URL url = new URL("https://behrend.psu.edu/news");
+            openWebpage(url);
+        } catch(Exception e) {
+            System.out.println(e);
+        }
+        
+        
+    }//GEN-LAST:event_newsLinkActionPerformed
+
+    private void weatherLinkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_weatherLinkActionPerformed
+        
+        try{
+            URL url = new URL("https://behrend.psu.edu/school-of-science/weather");
+            openWebpage(url);
+        } catch(Exception e) {
+            System.out.println(e);
+        }
+        
+    }//GEN-LAST:event_weatherLinkActionPerformed
+
     /**
      * @param args the command line arguments
      */
     
-    
+    public static boolean openWebpage(URI uri) {
+    Desktop desktop = Desktop.isDesktopSupported() ? Desktop.getDesktop() : null;
+    if (desktop != null && desktop.isSupported(Desktop.Action.BROWSE)) {
+        try {
+            desktop.browse(uri);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    return false;
+}
+
+public static boolean openWebpage(URL url) {
+    try {
+        return openWebpage(url.toURI());
+    } catch (URISyntaxException e) {
+        e.printStackTrace();
+    }
+    return false;
+}
     public class IRC_LiveSocket implements Runnable
     {
 
@@ -1829,7 +1999,9 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton addCourseModButton;
     private javax.swing.JLabel badgeImg;
     private javax.swing.JPanel badgepanel;
+    private javax.swing.JButton behrendLink;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JButton canvasLink;
     private javax.swing.JPanel chatPanel;
     private javax.swing.JTextArea chatTextArea;
     private javax.swing.JList<String> contactsList;
@@ -1844,16 +2016,9 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextField firstNameField;
     private javax.swing.JLabel firstNameLabel;
     private javax.swing.JTextField firstnamefield;
+    private javax.swing.JButton footballLink;
+    private javax.swing.JButton healthLink;
     private javax.swing.JTextArea incomeChatArea;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
@@ -1873,14 +2038,17 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JButton joinClassButton;
+    private javax.swing.JButton junkerLink;
     private javax.swing.JTextField lastNameField;
     private javax.swing.JLabel lastNameLabel;
     private javax.swing.JTextField lastnamefield;
     private javax.swing.JLabel lastnametext;
+    private javax.swing.JButton lionpathLink;
     private javax.swing.JTextField lnameFilterField;
     private javax.swing.JPanel lowerpanel;
     private javax.swing.JTextField messageField;
     private javax.swing.JList<String> modsJList;
+    private javax.swing.JButton newsLink;
     private javax.swing.JList<String> offlineJList;
     private javax.swing.JPopupMenu offlineUserMenu;
     private javax.swing.JLabel offlinelabel;
@@ -1894,6 +2062,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JRadioButton professorRB;
     private javax.swing.JPanel profilepanel;
     private java.awt.Label quicklinkslabel;
+    private javax.swing.JButton rapLink;
     private javax.swing.JButton removeCourseButton;
     private javax.swing.JRadioButton studentRB;
     private javax.swing.JButton submitButton;
@@ -1902,6 +2071,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel usernameLabel;
     private javax.swing.JTextField usernamefield;
     private javax.swing.JTextField usernamefieldsignup;
+    private javax.swing.JButton weatherLink;
     private javax.swing.JLabel whoareyoulabel;
     // End of variables declaration//GEN-END:variables
 }

@@ -707,7 +707,7 @@
                         </DimensionLayout>
                         <DimensionLayout dim="1">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <EmptySpace min="0" pref="29" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="32" max="32767" attributes="0"/>
                           </Group>
                         </DimensionLayout>
                       </Layout>
@@ -722,7 +722,7 @@
                         </DimensionLayout>
                         <DimensionLayout dim="1">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <EmptySpace min="0" pref="29" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="32" max="32767" attributes="0"/>
                           </Group>
                         </DimensionLayout>
                       </Layout>
@@ -991,27 +991,27 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jButton9" alignment="0" min="-2" pref="111" max="-2" attributes="0"/>
-                          <Component id="jButton3" alignment="0" min="-2" pref="111" max="-2" attributes="0"/>
-                          <Component id="jButton5" alignment="0" min="-2" pref="111" max="-2" attributes="0"/>
+                          <Component id="rapLink" alignment="0" min="-2" pref="111" max="-2" attributes="0"/>
+                          <Component id="healthLink" alignment="0" min="-2" pref="111" max="-2" attributes="0"/>
+                          <Component id="canvasLink" alignment="0" min="-2" pref="111" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jButton7" alignment="0" min="-2" pref="111" max="-2" attributes="0"/>
-                          <Component id="jButton4" alignment="0" min="-2" pref="111" max="-2" attributes="0"/>
-                          <Component id="jButton1" alignment="0" min="-2" pref="111" max="-2" attributes="0"/>
+                          <Component id="newsLink" alignment="0" min="-2" pref="111" max="-2" attributes="0"/>
+                          <Component id="footballLink" alignment="0" min="-2" pref="111" max="-2" attributes="0"/>
+                          <Component id="lionpathLink" alignment="0" min="-2" pref="111" max="-2" attributes="0"/>
                       </Group>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jButton6" alignment="0" min="-2" pref="111" max="-2" attributes="0"/>
-                                  <Component id="jButton2" alignment="0" min="-2" pref="111" max="-2" attributes="0"/>
+                                  <Component id="junkerLink" alignment="0" min="-2" pref="111" max="-2" attributes="0"/>
+                                  <Component id="behrendLink" alignment="0" min="-2" pref="111" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jButton8" min="-2" pref="111" max="-2" attributes="0"/>
+                              <Component id="weatherLink" min="-2" pref="111" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace pref="86" max="32767" attributes="0"/>
@@ -1040,38 +1040,38 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="124" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jButton1" alignment="3" min="-2" pref="67" max="-2" attributes="0"/>
-                                  <Component id="jButton2" alignment="3" min="-2" pref="67" max="-2" attributes="0"/>
-                                  <Component id="jButton5" alignment="3" min="-2" pref="67" max="-2" attributes="0"/>
+                                  <Component id="lionpathLink" alignment="3" min="-2" pref="67" max="-2" attributes="0"/>
+                                  <Component id="behrendLink" alignment="3" min="-2" pref="67" max="-2" attributes="0"/>
+                                  <Component id="canvasLink" alignment="3" min="-2" pref="67" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jButton3" alignment="3" min="-2" pref="67" max="-2" attributes="0"/>
-                                  <Component id="jButton4" alignment="3" min="-2" pref="67" max="-2" attributes="0"/>
-                                  <Component id="jButton6" alignment="3" min="-2" pref="67" max="-2" attributes="0"/>
+                                  <Component id="healthLink" alignment="3" min="-2" pref="67" max="-2" attributes="0"/>
+                                  <Component id="footballLink" alignment="3" min="-2" pref="67" max="-2" attributes="0"/>
+                                  <Component id="junkerLink" alignment="3" min="-2" pref="67" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jButton7" alignment="3" min="-2" pref="67" max="-2" attributes="0"/>
-                                  <Component id="jButton8" alignment="3" min="-2" pref="67" max="-2" attributes="0"/>
-                                  <Component id="jButton9" alignment="3" min="-2" pref="67" max="-2" attributes="0"/>
+                                  <Component id="newsLink" alignment="3" min="-2" pref="67" max="-2" attributes="0"/>
+                                  <Component id="weatherLink" alignment="3" min="-2" pref="67" max="-2" attributes="0"/>
+                                  <Component id="rapLink" alignment="3" min="-2" pref="67" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace pref="121" max="32767" attributes="0"/>
+                      <EmptySpace pref="144" max="32767" attributes="0"/>
                   </Group>
                   <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
                           <Component id="quicklinkslabel" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="373" max="32767" attributes="0"/>
+                          <EmptySpace pref="396" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JButton" name="jButton1">
+            <Component class="javax.swing.JButton" name="lionpathLink">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="0" type="rgb"/>
@@ -1081,8 +1081,11 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="LionPath"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="lionpathLinkActionPerformed"/>
+              </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton2">
+            <Component class="javax.swing.JButton" name="behrendLink">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="0" type="rgb"/>
@@ -1092,8 +1095,11 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Behrend"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="behrendLinkActionPerformed"/>
+              </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton3">
+            <Component class="javax.swing.JButton" name="healthLink">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="0" type="rgb"/>
@@ -1103,8 +1109,11 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Health"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="healthLinkActionPerformed"/>
+              </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton4">
+            <Component class="javax.swing.JButton" name="footballLink">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="0" type="rgb"/>
@@ -1114,8 +1123,11 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Football"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="footballLinkActionPerformed"/>
+              </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton5">
+            <Component class="javax.swing.JButton" name="canvasLink">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="0" type="rgb"/>
@@ -1125,8 +1137,11 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Canvas"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="canvasLinkActionPerformed"/>
+              </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton6">
+            <Component class="javax.swing.JButton" name="junkerLink">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="0" type="rgb"/>
@@ -1136,8 +1151,11 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Junker"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="junkerLinkActionPerformed"/>
+              </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton7">
+            <Component class="javax.swing.JButton" name="newsLink">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="0" type="rgb"/>
@@ -1147,8 +1165,11 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="News"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="newsLinkActionPerformed"/>
+              </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton8">
+            <Component class="javax.swing.JButton" name="weatherLink">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="0" type="rgb"/>
@@ -1158,8 +1179,11 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Weather"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="weatherLinkActionPerformed"/>
+              </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton9">
+            <Component class="javax.swing.JButton" name="rapLink">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="0" type="rgb"/>
@@ -1169,6 +1193,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="RAP&apos;s"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rapLinkActionPerformed"/>
+              </Events>
             </Component>
             <Component class="java.awt.Label" name="ContactModLabel">
               <Properties>
@@ -1233,7 +1260,7 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="523" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="507" max="32767" attributes="0"/>
                   <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -1377,7 +1404,7 @@
                       </Group>
                       <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
                       <Component id="LoginButton" min="-2" pref="40" max="-2" attributes="0"/>
-                      <EmptySpace pref="188" max="32767" attributes="0"/>
+                      <EmptySpace pref="176" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1449,7 +1476,7 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="505" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="507" max="32767" attributes="0"/>
                   <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
