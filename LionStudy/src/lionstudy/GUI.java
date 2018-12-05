@@ -652,42 +652,50 @@ public class GUI extends javax.swing.JFrame {
 
         profilepanel.add(jPanel10);
 
+        firstNameLabel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         firstNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         firstNameLabel.setText("First Name:          ");
         firstNameLabel.setToolTipText("");
         profilepanel.add(firstNameLabel);
 
         firstNameField.setEditable(false);
+        firstNameField.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         firstNameField.setText(CurrentUser.getFirstname());
         firstNameField.setToolTipText("");
         firstNameField.setBorder(null);
         profilepanel.add(firstNameField);
 
+        lastNameLabel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lastNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lastNameLabel.setText("Last Name:          ");
         lastNameLabel.setToolTipText("");
         profilepanel.add(lastNameLabel);
 
         lastNameField.setEditable(false);
+        lastNameField.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lastNameField.setText("jTextField2");
         lastNameField.setBorder(null);
         profilepanel.add(lastNameField);
 
+        usernameLabel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         usernameLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         usernameLabel.setText("Username:          ");
         profilepanel.add(usernameLabel);
 
         usernameField.setEditable(false);
+        usernameField.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         usernameField.setText("usernameField");
         usernameField.setBorder(null);
         profilepanel.add(usernameField);
 
+        accountTypeLabel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         accountTypeLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         accountTypeLabel.setText("Account Type:          ");
         accountTypeLabel.setToolTipText("");
         profilepanel.add(accountTypeLabel);
 
         accountTypeField.setEditable(false);
+        accountTypeField.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         accountTypeField.setText("jTextField4");
         accountTypeField.setBorder(null);
         profilepanel.add(accountTypeField);
@@ -721,7 +729,7 @@ public class GUI extends javax.swing.JFrame {
         jLabel6.setText("Last Name:");
 
         contactsSearchButton.setBackground(new java.awt.Color(255, 255, 255));
-        contactsSearchButton.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
+        contactsSearchButton.setFont(new java.awt.Font("Segoe UI Semibold", 1, 12)); // NOI18N
         contactsSearchButton.setText("Search");
         contactsSearchButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 102), 2));
         contactsSearchButton.addActionListener(new java.awt.event.ActionListener() {
@@ -745,25 +753,26 @@ public class GUI extends javax.swing.JFrame {
                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lnameFilterField, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(contactsSearchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(392, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(contactsSearchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(443, Short.MAX_VALUE))
         );
         contactspanelLayout.setVerticalGroup(
             contactspanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(contactspanelLayout.createSequentialGroup()
                 .addGap(1, 1, 1)
-                .addComponent(jLabel4)
-                .addGroup(contactspanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(contactspanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(contactsSearchButton)
                     .addGroup(contactspanelLayout.createSequentialGroup()
-                        .addGap(11, 11, 11)
-                        .addGroup(contactspanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(contactsSearchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6)))
-                    .addGroup(contactspanelLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(lnameFilterField, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(35, Short.MAX_VALUE))
+                        .addComponent(jLabel4)
+                        .addGroup(contactspanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(contactspanelLayout.createSequentialGroup()
+                                .addGap(17, 17, 17)
+                                .addComponent(jLabel6))
+                            .addGroup(contactspanelLayout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(lnameFilterField, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
 
         ContactsTab.add(contactspanel, java.awt.BorderLayout.PAGE_START);
@@ -827,25 +836,24 @@ public class GUI extends javax.swing.JFrame {
             .addGroup(SuperImpTabLayout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addGroup(SuperImpTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(SuperImpTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(SuperImpTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(SuperImpTabLayout.createSequentialGroup()
-                        .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(15, 15, 15)
-                        .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(20, 20, 20)
+                        .addGroup(SuperImpTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(SuperImpTabLayout.createSequentialGroup()
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(SuperImpTabLayout.createSequentialGroup()
-                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
+                        .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
                 .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(56, 56, 56))
             .addGroup(SuperImpTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -879,7 +887,7 @@ public class GUI extends javax.swing.JFrame {
                             .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(119, Short.MAX_VALUE))
+                .addContainerGap(121, Short.MAX_VALUE))
             .addGroup(SuperImpTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(SuperImpTabLayout.createSequentialGroup()
                     .addGap(78, 78, 78)
