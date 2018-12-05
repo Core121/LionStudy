@@ -10,6 +10,8 @@ package lionstudy;
  *
  * @author Corey
  */
+
+//WILL NOT RUN WITHOUT MySQL Server
 public class Main {
 
     public static void main(String args[]) {
@@ -35,7 +37,7 @@ public class Main {
             java.util.logging.Logger.getLogger(GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-//hi people
+
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
