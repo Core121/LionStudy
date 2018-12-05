@@ -387,7 +387,7 @@ public class GUI extends javax.swing.JFrame {
         });
 
         jLabel2.setFont(new java.awt.Font("Georgia", 1, 11)); // NOI18N
-        jLabel2.setText("*If course is unlist, please contact a Moderator from Services*");
+        jLabel2.setText("*If course is unlisted, please contact a Moderator from Services*");
 
         javax.swing.GroupLayout coursespanelLayout = new javax.swing.GroupLayout(coursespanel);
         coursespanel.setLayout(coursespanelLayout);
@@ -1618,7 +1618,7 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_ConnectMenuItemActionPerformed
 
     private void ChatMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChatMenuItemActionPerformed
-        listen = new IRC_LiveSocket("#LionStudy",CurrentUser.firstname+"BOOP",CurrentUser.username);
+        listen = new IRC_LiveSocket("#LionStudy",CurrentUser.getFirstname(),CurrentUser.getUsername());
         Thread chatListen = new Thread(listen);
         chatListen.start();
         

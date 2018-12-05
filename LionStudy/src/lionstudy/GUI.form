@@ -278,7 +278,7 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Georgia" size="11" style="1"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="*If course is unlist, please contact a Moderator from Services*"/>
+                    <Property name="text" type="java.lang.String" value="*If course is unlisted, please contact a Moderator from Services*"/>
                   </Properties>
                 </Component>
               </SubComponents>
