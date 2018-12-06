@@ -1714,7 +1714,7 @@ public class GUI extends javax.swing.JFrame {
             URL url = new URL("http://canvas.psu.edu");
             openWebpage(url);
         } catch (Exception e) {
-            System.out.println(e);
+            JOptionPane.showMessageDialog(null, "Cops! Unexpected Error Occured with User Interface " + e, "Unexpected Error", JOptionPane.ERROR_MESSAGE);
         }
 
     }//GEN-LAST:event_canvasLinkActionPerformed
@@ -1725,7 +1725,7 @@ public class GUI extends javax.swing.JFrame {
             URL url = new URL("http://lionpath.psu.edu");
             openWebpage(url);
         } catch (Exception e) {
-            System.out.println(e);
+            JOptionPane.showMessageDialog(null, "Cops! Unexpected Error Occured with User Interface " + e, "Unexpected Error", JOptionPane.ERROR_MESSAGE);
         }
 
     }//GEN-LAST:event_lionpathLinkActionPerformed
@@ -1737,7 +1737,7 @@ public class GUI extends javax.swing.JFrame {
             URL url = new URL("https://behrend.psu.edu");
             openWebpage(url);
         } catch (Exception e) {
-            System.out.println(e);
+            JOptionPane.showMessageDialog(null, "Cops! Unexpected Error Occured with User Interface " + e, "Unexpected Error", JOptionPane.ERROR_MESSAGE);
         }
 
     }//GEN-LAST:event_behrendLinkActionPerformed
@@ -1748,7 +1748,7 @@ public class GUI extends javax.swing.JFrame {
             URL url = new URL("https://behrend.psu.edu/student-life/student-services/health");
             openWebpage(url);
         } catch (Exception e) {
-            System.out.println(e);
+            JOptionPane.showMessageDialog(null, "Cops! Unexpected Error Occured with User Interface " + e, "Unexpected Error", JOptionPane.ERROR_MESSAGE);
         }
 
     }//GEN-LAST:event_healthLinkActionPerformed
@@ -1759,7 +1759,7 @@ public class GUI extends javax.swing.JFrame {
             URL url = new URL("https://gopsusports.com/index.aspx?path=football");
             openWebpage(url);
         } catch (Exception e) {
-            System.out.println(e);
+            JOptionPane.showMessageDialog(null, "Cops! Unexpected Error Occured with User Interface " + e, "Unexpected Error", JOptionPane.ERROR_MESSAGE);
         }
 
     }//GEN-LAST:event_footballLinkActionPerformed
@@ -1770,7 +1770,7 @@ public class GUI extends javax.swing.JFrame {
             URL url = new URL("http://www.psblions.com/information/intramurals-facilities/Junker_Center");
             openWebpage(url);
         } catch (Exception e) {
-            System.out.println(e);
+            JOptionPane.showMessageDialog(null, "Cops! Unexpected Error Occured with User Interface " + e, "Unexpected Error", JOptionPane.ERROR_MESSAGE);
         }
 
 
@@ -1782,7 +1782,7 @@ public class GUI extends javax.swing.JFrame {
             URL url = new URL("https://behrend.psu.edu/academics/academic-services/acpc/acpc-services/academic-advising-and-planning/recommended-academic-plans");
             openWebpage(url);
         } catch (Exception e) {
-            System.out.println(e);
+            JOptionPane.showMessageDialog(null, "Cops! Unexpected Error Occured with User Interface " + e, "Unexpected Error", JOptionPane.ERROR_MESSAGE);
         }
 
     }//GEN-LAST:event_rapLinkActionPerformed
@@ -1793,7 +1793,7 @@ public class GUI extends javax.swing.JFrame {
             URL url = new URL("https://behrend.psu.edu/news");
             openWebpage(url);
         } catch (Exception e) {
-            System.out.println(e);
+            JOptionPane.showMessageDialog(null, "Cops! Unexpected Error Occured with User Interface " + e, "Unexpected Error", JOptionPane.ERROR_MESSAGE);
         }
 
 
@@ -1805,7 +1805,7 @@ public class GUI extends javax.swing.JFrame {
             URL url = new URL("https://behrend.psu.edu/school-of-science/weather");
             openWebpage(url);
         } catch (Exception e) {
-            System.out.println(e);
+            JOptionPane.showMessageDialog(null, "Cops! Unexpected Error Occured with User Interface " + e, "Unexpected Error", JOptionPane.ERROR_MESSAGE);
         }
 
     }//GEN-LAST:event_weatherLinkActionPerformed
@@ -1855,7 +1855,7 @@ public class GUI extends javax.swing.JFrame {
                 desktop.browse(uri);
                 return true;
             } catch (Exception e) {
-                e.printStackTrace();
+                JOptionPane.showMessageDialog(null, "Cops! Unexpected Error Occured with User Interface " + e, "Unexpected Error", JOptionPane.ERROR_MESSAGE);
             }
         }
         return false;
@@ -1865,7 +1865,7 @@ public class GUI extends javax.swing.JFrame {
         try {
             return openWebpage(url.toURI());
         } catch (URISyntaxException e) {
-            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Cops! Unexpected Error Occured with User Interface " + e, "Unexpected Error", JOptionPane.ERROR_MESSAGE);
         }
         return false;
     }
@@ -1892,7 +1892,7 @@ public class GUI extends javax.swing.JFrame {
                 //Sets output stream to out
                 outStream = lionsocket.getOutputStream();
             } catch (Exception e) {
-                e.printStackTrace();
+                JOptionPane.showMessageDialog(null, "Cops! Unexpected Error Occured with the Chat Server " + e, "Unexpected Error", JOptionPane.ERROR_MESSAGE);
             }
 
             IRC_nick(fName);
@@ -1907,7 +1907,7 @@ public class GUI extends javax.swing.JFrame {
             try {
                 outStream.write(bytes);
             } catch (Exception e) {
-                e.printStackTrace();
+                JOptionPane.showMessageDialog(null, "Cops! Unexpected Error Occured with the Chat Server " + e, "Unexpected Error", JOptionPane.ERROR_MESSAGE);
             }
         }
 
@@ -1968,7 +1968,7 @@ public class GUI extends javax.swing.JFrame {
                     } while (bytes != -1);
 
                 } catch (Exception e) {
-                    System.out.print(e);
+                    JOptionPane.showMessageDialog(null, "Cops! Unexpected Error Occured with the Chat Server " + e, "Unexpected Error", JOptionPane.ERROR_MESSAGE);
                 }
             } while (true);
 

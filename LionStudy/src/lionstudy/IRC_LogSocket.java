@@ -3,6 +3,7 @@ package lionstudy;
 import java.io.*;
 import java.net.*;
 import java.util.*;
+import javax.swing.JOptionPane;
 
 final class IRC_LogSocket implements Runnable {
 
@@ -28,7 +29,7 @@ final class IRC_LogSocket implements Runnable {
             //Sets channelJoined to log
             channelJoined = log;
         } catch (Exception e) {
-            System.out.print(e);
+            JOptionPane.showMessageDialog(null, "Cops! Unexpected Error Occured with the Chat Server " + e, "Unexpected Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -40,7 +41,7 @@ final class IRC_LogSocket implements Runnable {
             lionstudy = new Socket(serv, prt);
             outStream = lionstudy.getOutputStream();
         } catch (Exception e) {
-            System.out.println(e);
+            JOptionPane.showMessageDialog(null, "Cops! Unexpected Error Occured with the Chat Server " + e, "Unexpected Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -50,7 +51,7 @@ final class IRC_LogSocket implements Runnable {
         try {
             outStream.write(bytes);
         } catch (Exception e) {
-            System.out.println(e);
+            JOptionPane.showMessageDialog(null, "Cops! Unexpected Error Occured with the Chat Server " + e, "Unexpected Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -110,7 +111,7 @@ final class IRC_LogSocket implements Runnable {
                     break;
                 } while (bytes != -1);
             } catch (Exception e) {
-                System.out.print(e);
+                JOptionPane.showMessageDialog(null, "Cops! Unexpected Error Occured with the Chat Server " + e, "Unexpected Error", JOptionPane.ERROR_MESSAGE);
             }
         } while (!msgReceived);
     }

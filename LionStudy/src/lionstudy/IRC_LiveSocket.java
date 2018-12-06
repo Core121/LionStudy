@@ -3,6 +3,7 @@ package lionstudy;
 import java.io.*;
 import java.net.*;
 import java.util.*;
+import javax.swing.JOptionPane;
 
 final class IRC_LiveSocket {
 
@@ -26,7 +27,7 @@ final class IRC_LiveSocket {
             //Sets output stream to out
             outStream = lionsocket.getOutputStream();
         } catch (Exception e) {
-            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Cops! Unexpected Error Occured with the Chat Server " + e, "Unexpected Error", JOptionPane.ERROR_MESSAGE);
         }
 
         IRC_nick(fName);
@@ -102,7 +103,7 @@ final class IRC_LiveSocket {
                 } while (bytes != -1);
 
             } catch (Exception e) {
-                System.out.print(e);
+                JOptionPane.showMessageDialog(null, "Cops! Unexpected Error Occured with the Chat Server " + e, "Unexpected Error", JOptionPane.ERROR_MESSAGE);
             }
         } while (true);
 
