@@ -13,6 +13,7 @@ import lionstudy.Classes.*;
 //Before Using database please ask Corey to turn on portforwarding!!
 public class ServiceDispatcher {
 //Credentials for logging into the database
+
     private static final String USERNAME = "Lion";
     private static final String PASSWORD = "LionStudy!?";
     private static final String CONN_STRING = "jdbc:mysql://76.180.26.194:3306/LionStudy";
@@ -35,7 +36,7 @@ public class ServiceDispatcher {
     //returns true if login is successful, takes username and password as parameters
     public boolean Login(String username, String password) {
         boolean login = false;
-        int ID = 0,  badge;      
+        int ID = 0, badge;
         String firstname, lastname;
         username = username.toLowerCase();
         try {
@@ -66,9 +67,9 @@ public class ServiceDispatcher {
         }
         return login;
     }
-    
+
     //sets the online integer to 0 for the current user
-    public void logout(){
+    public void logout() {
         try {
             Connection myConn = DriverManager.getConnection(CONN_STRING, USERNAME, PASSWORD);
             stmt = myConn.createStatement();
@@ -82,7 +83,7 @@ public class ServiceDispatcher {
     }
 
     //Returns an array of accounts that contains all of the lionstudy moderators
-    public ArrayList<Account> GetAllMods(){
+    public ArrayList<Account> GetAllMods() {
         ArrayList<Account> AccountList = new ArrayList<Account>();
         try {
             Connection myConn = DriverManager.getConnection(CONN_STRING, USERNAME, PASSWORD);
@@ -108,7 +109,7 @@ public class ServiceDispatcher {
         }
         return AccountList;
     }
-    
+
     //Returns an ArrayList of All Users in the form of Accounts, note that passwords are set to nothing as we do not need them once the application has been logged into
     public ArrayList<Account> GetAllUsers() {
         ArrayList<Account> AccountList = new ArrayList<Account>();
@@ -151,7 +152,7 @@ public class ServiceDispatcher {
             pstmt.executeUpdate();
             myConn.close();
         } catch (Exception e) {
-           userexists = true;
+            userexists = true;
         }
         return userexists;
     }
@@ -173,7 +174,6 @@ public class ServiceDispatcher {
         return success;
     }
 
-
     //Returns an ArrayList of All class names in the form of Strings
     public ArrayList<String> GetAllClasses() {
         ArrayList<String> classes = new ArrayList<String>();
@@ -191,8 +191,8 @@ public class ServiceDispatcher {
         }
         return classes;
     }
-    
- //Get's all the users from a certain class
+
+    //Get's all the users from a certain class
     public ArrayList<Account> GetUsersFromClass(String classname) {
         ArrayList<Account> Users = new ArrayList<Account>();
         try {
@@ -226,7 +226,7 @@ public class ServiceDispatcher {
         }
         return Users;
     }
-    
+
     //Remove a class from the user's class list
     public void DeleteClassfromUser(String classname) {
         try {
@@ -241,7 +241,7 @@ public class ServiceDispatcher {
             System.out.println(e);
         }
     }
-    
+
     //Add a class to the user's class list
     public void AddClasstoUser(String classname) {
         try {
@@ -272,7 +272,7 @@ public class ServiceDispatcher {
             System.out.println(e);
         }
     }
-    
+
     //Removes a users contact
     public void RemoveUserContact(String ContactUsername) {
         try {
@@ -294,7 +294,7 @@ public class ServiceDispatcher {
         ArrayList<Account> Contacts = new ArrayList<Account>();
         try {
             String firstname = "", overall = "";
-            String lastname= "";
+            String lastname = "";
             Connection myConn = DriverManager.getConnection(CONN_STRING, USERNAME, PASSWORD);
             stmt = myConn.createStatement();
             PreparedStatement pstmt = myConn.prepareStatement("SELECT * FROM Contacts WHERE username = ?");
@@ -303,7 +303,7 @@ public class ServiceDispatcher {
             while (rs.next()) {
                 overall = rs.getString("ContactUsername");
                 firstname = overall.substring(0, overall.indexOf(" "));
-                lastname = overall.substring(overall.indexOf(" ")+1, overall.length()); 
+                lastname = overall.substring(overall.indexOf(" ") + 1, overall.length());
                 pstmt = myConn.prepareStatement("SELECT * FROM Users WHERE first = ? AND last = ?");
                 pstmt.setString(1, firstname);
                 pstmt.setString(2, lastname);
@@ -327,7 +327,7 @@ public class ServiceDispatcher {
         }
         return Contacts;
     }
-    
+
     //Get all of users currently enrolled classes
     public ArrayList<String> GetAllUsersClasses() {
         ArrayList<String> Classes = new ArrayList<String>();
@@ -340,12 +340,12 @@ public class ServiceDispatcher {
             while (rs.next()) {
                 String classname = rs.getString("ClassName");
                 Classes.add(classname);
-                }
+            }
             myConn.close();
         } catch (Exception e) {
             System.out.println(e);
         }
         return Classes;
     }
-    
+
 }

@@ -9,40 +9,29 @@ package lionstudy;
  *
  * @author jjh5954
  */
-public class IRC_MessageBuffer
-{
-    String buffer ="";
-    String message="";
-    
-    public void addToBuffer (byte[] bytes)
-    {
-        buffer+=new String(bytes);
+public class IRC_MessageBuffer {
+
+    String buffer = "";
+    String message = "";
+
+    public void addToBuffer(byte[] bytes) {
+        buffer += new String(bytes);
     }
-    
-    public boolean hasMessage()
-    {
-        if (buffer.contains("\r\n"))
-        {
+
+    public boolean hasMessage() {
+        if (buffer.contains("\r\n")) {
             return true;
-        }
-        else
-        {
+        } else {
             return false;
         }
     }
-    
-    public String getMessage()
-    {
-        if(buffer.indexOf("\r\n")>-1)
-        {
-            message = buffer.substring(0,buffer.indexOf("\r\n"));
-            buffer = buffer.substring(buffer.indexOf("\r\n")+2);
+
+    public String getMessage() {
+        if (buffer.indexOf("\r\n") > -1) {
+            message = buffer.substring(0, buffer.indexOf("\r\n"));
+            buffer = buffer.substring(buffer.indexOf("\r\n") + 2);
         }
         return message;
     }
-    
-    
-    
-    
-    
+
 }

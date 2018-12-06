@@ -5,12 +5,10 @@
  */
 package lionstudy;
 
-
 /**
  *
  * @author Corey
  */
-
 //WILL NOT RUN WITHOUT MySQL Server
 public class Main {
 
@@ -45,9 +43,8 @@ public class Main {
                 LionGUI.SetUpLoginScenario();
                 LionGUI.setLocationRelativeTo(null);
                 LionGUI.setVisible(true);
-                
+
                 //IRC_LiveSocket liveListen = new IRC_LiveSocket("localhost",6666,LionGUI);
-                
             }
         });
         ServiceDispatcher s_dispatch = new ServiceDispatcher();

@@ -1,4 +1,5 @@
 package lionstudy;
+
 import java.awt.Desktop;
 import java.awt.Font;
 import java.awt.Toolkit;
@@ -22,13 +23,14 @@ import javax.swing.JOptionPane;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author Corey
  */
 public class GUI extends javax.swing.JFrame {
+
     IRC_LiveSocket listen;
+
     /**
      * Creates new form GUI
      */
@@ -36,19 +38,20 @@ public class GUI extends javax.swing.JFrame {
         initComponents();
         this.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Res/LSIcon.png")));
     }
+
     //Logs the user out upon exit
     public int logoutOnExit() {
         ServiceDispatcher sd = new ServiceDispatcher();
         sd.logout();
         return EXIT_ON_CLOSE;
     }
-    
+
     CurrentUser CU;
-    
+
     //only run at very beginning
-    protected void SetUpLoginScenario(){
-        this.LionStudyTabs.addTab("Login",LoginTab);
-        this.LionStudyTabs.addTab("Sign Up",SignUpTab);
+    protected void SetUpLoginScenario() {
+        this.LionStudyTabs.addTab("Login", LoginTab);
+        this.LionStudyTabs.addTab("Sign Up", SignUpTab);
         this.LogoutButton.setVisible(false);
         this.LionStudyTabs.remove(ChatTab);
         this.LionStudyTabs.remove(SearchTab);
@@ -57,42 +60,46 @@ public class GUI extends javax.swing.JFrame {
         this.LionStudyTabs.remove(ModOptions);
         this.LionStudyTabs.remove(SuperImpTab);
     }
+
     //sets up the tabs for a normal user
-    protected void SetUpNormalUserScenario(){
+    protected void SetUpNormalUserScenario() {
         this.LogoutButton.setVisible(true);
         this.LionStudyTabs.remove(LoginTab);
         this.LionStudyTabs.remove(SignUpTab);
-        this.LionStudyTabs.addTab("Search",new ImageIcon(this.getClass().getResource("/Res/SearchImg.png")),SearchTab);
-        this.LionStudyTabs.addTab("Profile",new ImageIcon(this.getClass().getResource("/Res/ProfileImg.png")),ProfileTab);
-        this.LionStudyTabs.addTab("Chat",new ImageIcon(this.getClass().getResource("/Res/ChatImg.png")),ChatTab);
-        this.LionStudyTabs.addTab("Contacts",new ImageIcon(this.getClass().getResource("/Res/ContactsImg.png")),ContactsTab);
-        this.LionStudyTabs.addTab("Services",new ImageIcon(this.getClass().getResource("/Res/SuperImg.png")), SuperImpTab);
+        this.LionStudyTabs.addTab("Search", new ImageIcon(this.getClass().getResource("/Res/SearchImg.png")), SearchTab);
+        this.LionStudyTabs.addTab("Profile", new ImageIcon(this.getClass().getResource("/Res/ProfileImg.png")), ProfileTab);
+        this.LionStudyTabs.addTab("Chat", new ImageIcon(this.getClass().getResource("/Res/ChatImg.png")), ChatTab);
+        this.LionStudyTabs.addTab("Contacts", new ImageIcon(this.getClass().getResource("/Res/ContactsImg.png")), ContactsTab);
+        this.LionStudyTabs.addTab("Services", new ImageIcon(this.getClass().getResource("/Res/SuperImg.png")), SuperImpTab);
     }
+
     //sets up the tabs for a moderator user
-    protected void SetUpModeratorScenario(){
+    protected void SetUpModeratorScenario() {
         this.LogoutButton.setVisible(true);
         this.LionStudyTabs.remove(LoginTab);
         this.LionStudyTabs.remove(SignUpTab);
-        this.LionStudyTabs.addTab("Search",new ImageIcon(this.getClass().getResource("/Res/SearchImg.png")),SearchTab);
-        this.LionStudyTabs.addTab("Profile",new ImageIcon(this.getClass().getResource("/Res/ProfileImg.png")),ProfileTab);
-        this.LionStudyTabs.addTab("Chat",new ImageIcon(this.getClass().getResource("/Res/ChatImg.png")),ChatTab);
-        this.LionStudyTabs.addTab("Contacts",new ImageIcon(this.getClass().getResource("/Res/ContactsImg.png")),ContactsTab);
-        this.LionStudyTabs.addTab("Services",new ImageIcon(this.getClass().getResource("/Res/SuperImg.png")), SuperImpTab);
-        this.LionStudyTabs.addTab("Moderator",ModOptions);
+        this.LionStudyTabs.addTab("Search", new ImageIcon(this.getClass().getResource("/Res/SearchImg.png")), SearchTab);
+        this.LionStudyTabs.addTab("Profile", new ImageIcon(this.getClass().getResource("/Res/ProfileImg.png")), ProfileTab);
+        this.LionStudyTabs.addTab("Chat", new ImageIcon(this.getClass().getResource("/Res/ChatImg.png")), ChatTab);
+        this.LionStudyTabs.addTab("Contacts", new ImageIcon(this.getClass().getResource("/Res/ContactsImg.png")), ContactsTab);
+        this.LionStudyTabs.addTab("Services", new ImageIcon(this.getClass().getResource("/Res/SuperImg.png")), SuperImpTab);
+        this.LionStudyTabs.addTab("Moderator", ModOptions);
     }
+
     //refreshes the contacts list in the gui
-    protected void RefreshContactsList(){
-       ServiceDispatcher sd = new ServiceDispatcher();
-       ArrayList<Account> contacts = sd.GetAllUsersContacts();
+    protected void RefreshContactsList() {
+        ServiceDispatcher sd = new ServiceDispatcher();
+        ArrayList<Account> contacts = sd.GetAllUsersContacts();
         DefaultListModel contactsModel = new DefaultListModel();
-        for (int i = 0; i < contacts.size(); i++){
+        for (int i = 0; i < contacts.size(); i++) {
             String user = contacts.get(i).getFirstName() + " " + contacts.get(i).getLastName();
             contactsModel.addElement(user);
         }
         this.contactsList.setModel(contactsModel);
-   }
+    }
+
     //clears all fields, useful in the event of a logout, that the next user does see persistent data from last session
-    protected void clearAllFields(){
+    protected void clearAllFields() {
         DefaultListModel ClearModel = new DefaultListModel();
         this.onlineJList.setModel(ClearModel);
         this.offlineJList.setModel(ClearModel);
@@ -105,8 +112,9 @@ public class GUI extends javax.swing.JFrame {
         this.modsJList.setModel(ClearModel);
         this.AddClassName.setText("");
     }
+
     //Logs the user in and fills all appropriate fields
-    protected void Login(){
+    protected void Login() {
         ServiceDispatcher sd = new ServiceDispatcher();
         boolean loginSuccess = false;
         if (usernamefield.getText() == "" || passwordfield.getText() == "") {
@@ -116,44 +124,39 @@ public class GUI extends javax.swing.JFrame {
             loginSuccess = sd.Login(usernamefield.getText(), passwordfield.getText());
             if (loginSuccess == true) {
                 //Student, Tutor, or Professor
-                if(CurrentUser.getBadgetype() == 1 || CurrentUser.getBadgetype() == 2 || CurrentUser.getBadgetype() == 3){
+                if (CurrentUser.getBadgetype() == 1 || CurrentUser.getBadgetype() == 2 || CurrentUser.getBadgetype() == 3) {
                     this.SetUpNormalUserScenario();
                     //Sets the correct icon for the user
-                    if(CurrentUser.getBadgetype() == 1){
+                    if (CurrentUser.getBadgetype() == 1) {
                         this.accountTypeField.setText("Student");
                         this.badgeImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Res/StudentBadge24.png")));
-                    }
-                    else if(CurrentUser.getBadgetype() == 2){
+                    } else if (CurrentUser.getBadgetype() == 2) {
                         this.accountTypeField.setText("Tutor");
                         this.badgeImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Res/TutorBadge24.png")));
-                    }
-                    else if(CurrentUser.getBadgetype() == 3){
+                    } else if (CurrentUser.getBadgetype() == 3) {
                         this.badgeImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Res/TeacherBadge24.png")));
                         this.accountTypeField.setText("Teacher");
                     }
+                } //Moderator
+                else if (CurrentUser.getBadgetype() == 4) {
+                    this.SetUpModeratorScenario();
+                    this.accountTypeField.setText("Moderator");
+                    this.badgeImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Res/ModeratorBadge24.png")));
                 }
-                //Moderator
-                else if(CurrentUser.getBadgetype() == 4){
-                   this.SetUpModeratorScenario();
-                   this.accountTypeField.setText("Moderator");
-                   this.badgeImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Res/ModeratorBadge24.png")));
-                }
-                
+
                 //Fills in the users classes on the profile tab
                 ArrayList<String> userCoursesProfile = sd.GetAllUsersClasses();
                 DefaultListModel classListProfile = new DefaultListModel();
-                for(int x = 0; x<userCoursesProfile.size(); x++){
-                   classListProfile.addElement(userCoursesProfile.get(x)+"\n");
+                for (int x = 0; x < userCoursesProfile.size(); x++) {
+                    classListProfile.addElement(userCoursesProfile.get(x) + "\n");
                 }
                 this.courseListProfile.setModel(classListProfile);
-               
+
                 //Fills in the Profile Tab
                 this.firstNameField.setText(CurrentUser.getFirstname());
                 this.lastNameField.setText(CurrentUser.getLastname());
                 this.usernameField.setText(CurrentUser.getUsername());
- 
-                
-                
+
                 //fills the combo box for courses in Search tab
                 ArrayList<String> allClassesList = sd.GetAllClasses();
                 this.coursesComboBox.setModel(new DefaultComboBoxModel(allClassesList.toArray()));
@@ -164,12 +167,11 @@ public class GUI extends javax.swing.JFrame {
                 this.onlineJList.setModel(NoModel);
                 DefaultListModel ModModel = new DefaultListModel();
                 ArrayList<Account> mods = sd.GetAllMods();
-                for(int x = 0; x<mods.size(); x++){
+                for (int x = 0; x < mods.size(); x++) {
                     ModModel.addElement(mods.get(x).getUsername() + ": " + mods.get(x).getFirstName() + " " + mods.get(x).getLastName());
                 }
                 this.modsJList.setModel(ModModel);
-                
-                
+
                 //Fills in all contacts
                 this.RefreshContactsList();
             } else {
@@ -177,11 +179,11 @@ public class GUI extends javax.swing.JFrame {
             }
         }
     }
-    
+
     UserProfile clientUser = new UserProfile();
     ArrayList<UserProfile> nameList = new ArrayList();
     String sentMessagesBuffer;
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -516,6 +518,11 @@ public class GUI extends javax.swing.JFrame {
         messageField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 messageFieldActionPerformed(evt);
+            }
+        });
+        messageField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                messageFieldKeyPressed(evt);
             }
         });
 
@@ -1372,87 +1379,82 @@ public class GUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public void receiveMSG(String username, String message){
-        
+    public void receiveMSG(String username, String message) {
+
         Font f = new Font(Font.SERIF, Font.BOLD, 14);
         incomeChatArea.append("---" + username + "---\n" + message);
-        
+
         chatTextArea.setFont(f);
         chatTextArea.append("\n\n\n");
-        
+
     }
-    
+
     private void messageFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_messageFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_messageFieldActionPerformed
 
     private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
         // This button handles a chat message submission
-        
+
         Font f = new Font(Font.SERIF, Font.BOLD, 14);
         String message = "";
         message = messageField.getText();
-        
+
         /*
         Displays given text to the outgoing message Text Area
-        */
+         */
         chatTextArea.append("\n---");
         chatTextArea.setFont(f);
         chatTextArea.append(CU.getUsername());
         chatTextArea.append("---\n");
         chatTextArea.append(message);
         chatTextArea.append("\n");
-        
+
         /*
         Formats incoming chat message field to fit the form of a chat dialog
-        */
+         */
         incomeChatArea.setFont(f);
         incomeChatArea.append("\n\n\n");
-        
-        
+
         messageField.setText("");
-        
+
         listen.IRC_privMSG(message);
     }//GEN-LAST:event_submitButtonActionPerformed
 
     private void coursesComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_coursesComboBoxActionPerformed
-        try{
-        String selection = coursesComboBox.getSelectedItem().toString();
-        boolean CUinclass = false;
-        boolean Joined = false;
-        ServiceDispatcher dispatcher = new ServiceDispatcher();
-        ArrayList<Account> allUsers = dispatcher.GetUsersFromClass(selection);
-        DefaultListModel OfflineModel = new DefaultListModel();
-        DefaultListModel OnlineModel = new DefaultListModel();
-        
-        //obtains all the online  and offline users that have selected class in their courseList
-        for (int i = 0; i < allUsers.size(); i++){
-            String user = allUsers.get(i).getFirstName() + " " + allUsers.get(i).getLastName();
-            if(CurrentUser.getUsername().equals(allUsers.get(i).getUsername())){        //checking to make you current user isnt displayed
-               CUinclass = true;
-               Joined = true;
+        try {
+            String selection = coursesComboBox.getSelectedItem().toString();
+            boolean CUinclass = false;
+            boolean Joined = false;
+            ServiceDispatcher dispatcher = new ServiceDispatcher();
+            ArrayList<Account> allUsers = dispatcher.GetUsersFromClass(selection);
+            DefaultListModel OfflineModel = new DefaultListModel();
+            DefaultListModel OnlineModel = new DefaultListModel();
+
+            //obtains all the online  and offline users that have selected class in their courseList
+            for (int i = 0; i < allUsers.size(); i++) {
+                String user = allUsers.get(i).getFirstName() + " " + allUsers.get(i).getLastName();
+                if (CurrentUser.getUsername().equals(allUsers.get(i).getUsername())) {        //checking to make you current user isnt displayed
+                    CUinclass = true;
+                    Joined = true;
+                }
+                if (allUsers.get(i).getOnline() == 1 && CUinclass == false) {
+                    OnlineModel.addElement(user);
+                } else if (allUsers.get(i).getOnline() == 0 && CUinclass == false) {
+                    OfflineModel.addElement(user);
+                }
+                CUinclass = false;
             }
-            if(allUsers.get(i).getOnline() == 1 && CUinclass == false){
-                OnlineModel.addElement(user);
+            onlineJList.setModel(OnlineModel);
+            offlineJList.setModel(OfflineModel);
+
+            if (Joined == true) {
+                joinClassButton.setVisible(false);
+            } else {
+                joinClassButton.setVisible(true);
             }
-            else if (allUsers.get(i).getOnline() == 0 && CUinclass == false){
-                OfflineModel.addElement(user);
-            }
-            CUinclass = false;
-        }
-        onlineJList.setModel(OnlineModel);
-        offlineJList.setModel(OfflineModel);
-        
-        
-         if(Joined == true){
-            joinClassButton.setVisible(false);
-        }
-         else{
-            joinClassButton.setVisible(true);
-        }
-        }
-        catch(NullPointerException e){
-            
+        } catch (NullPointerException e) {
+
         }
 
     }//GEN-LAST:event_coursesComboBoxActionPerformed
@@ -1495,12 +1497,11 @@ public class GUI extends javax.swing.JFrame {
                 Account signup = new Account(usernamefieldsignup.getText(), passwordfieldsignup.getText(), firstnamefield.getText(), lastnamefield.getText(), badgetemp, 0);
                 ServiceDispatcher sd = new ServiceDispatcher();
                 boolean userexists = sd.CreateUser(signup);
-                if(userexists == true){
+                if (userexists == true) {
                     JOptionPane.showMessageDialog(null, "Username already exists!", "Signup Failure", JOptionPane.INFORMATION_MESSAGE);
-                }
-                else{
-                  JOptionPane.showMessageDialog(null, "Account Created!", "Signup Success", JOptionPane.INFORMATION_MESSAGE);
-                  this.LionStudyTabs.setSelectedComponent(LoginTab);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Account Created!", "Signup Success", JOptionPane.INFORMATION_MESSAGE);
+                    this.LionStudyTabs.setSelectedComponent(LoginTab);
                 }
             }
         }
@@ -1527,13 +1528,13 @@ public class GUI extends javax.swing.JFrame {
         String course = courseListProfile.getSelectedValue();
         String[] courseToRemove = course.split("\n", 0);
         course = courseToRemove[0];
-        String dialogMsg = course + " Removed Successfully!";        
+        String dialogMsg = course + " Removed Successfully!";
         sd.DeleteClassfromUser(course);
         JOptionPane.showMessageDialog(null, dialogMsg, "Success", JOptionPane.INFORMATION_MESSAGE);
         ArrayList<String> userCoursesProfile = sd.GetAllUsersClasses();
         DefaultListModel classListProfile = new DefaultListModel();
-        for(int x = 0; x<userCoursesProfile.size(); x++){
-            classListProfile.addElement(userCoursesProfile.get(x)+"\n");
+        for (int x = 0; x < userCoursesProfile.size(); x++) {
+            classListProfile.addElement(userCoursesProfile.get(x) + "\n");
         }
         this.courseListProfile.setModel(classListProfile);
     }//GEN-LAST:event_removeCourseButtonActionPerformed
@@ -1543,19 +1544,19 @@ public class GUI extends javax.swing.JFrame {
         String selection = coursesComboBox.getSelectedItem().toString();
         ServiceDispatcher sd = new ServiceDispatcher();
         sd.AddClasstoUser(selection);
-        
+
         JOptionPane.showMessageDialog(null, "Course added.");
         joinClassButton.setVisible(false);
         coursespanel.repaint();
-        
+
         ArrayList<String> userCoursesProfile = sd.GetAllUsersClasses();
         DefaultListModel classListProfile = new DefaultListModel();
-        for(int x = 0; x<userCoursesProfile.size(); x++){
-            classListProfile.addElement(userCoursesProfile.get(x)+"\n");
+        for (int x = 0; x < userCoursesProfile.size(); x++) {
+            classListProfile.addElement(userCoursesProfile.get(x) + "\n");
         }
         this.courseListProfile.setModel(classListProfile);
-         
-        
+
+
     }//GEN-LAST:event_joinClassButtonActionPerformed
 
     private void addCourseModButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addCourseModButtonActionPerformed
@@ -1563,11 +1564,10 @@ public class GUI extends javax.swing.JFrame {
         ServiceDispatcher sd = new ServiceDispatcher();
         String classname = this.AddClassName.getText();
         boolean success = sd.CreateClass(classname);
-        if(success){
+        if (success) {
             JOptionPane.showMessageDialog(null, "Class Added", "Success", JOptionPane.INFORMATION_MESSAGE);
             this.AddClassName.setText("");
-        }
-        else{
+        } else {
             JOptionPane.showMessageDialog(null, "Class Not Added", "Failure", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_addCourseModButtonActionPerformed
@@ -1581,25 +1581,25 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_onlineJListMouseClicked
 
     private void contactsListMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_contactsListMouseReleased
-        if(evt.isPopupTrigger()){
-            contactsMenu.show(this,evt.getX(), evt.getY() + 260);
+        if (evt.isPopupTrigger()) {
+            contactsMenu.show(this, evt.getX(), evt.getY() + 260);
         }
     }//GEN-LAST:event_contactsListMouseReleased
 
     private void onlineJListMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_onlineJListMouseReleased
         //If there is a right click on an online user
-        if(evt.isPopupTrigger()){
-            onlineUserMenu.show(this,evt.getX(), evt.getY() + 300);
+        if (evt.isPopupTrigger()) {
+            onlineUserMenu.show(this, evt.getX(), evt.getY() + 300);
         }
-        
+
     }//GEN-LAST:event_onlineJListMouseReleased
 
     private void offlineJListMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_offlineJListMouseReleased
         //if there is a right click on an offline user
-        if(evt.isPopupTrigger()){
-            offlineUserMenu.show(this,evt.getX(), evt.getY() + 520);
+        if (evt.isPopupTrigger()) {
+            offlineUserMenu.show(this, evt.getX(), evt.getY() + 520);
         }
-        
+
     }//GEN-LAST:event_offlineJListMouseReleased
 
     private void onlineUserMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_onlineUserMenuMouseClicked
@@ -1610,19 +1610,18 @@ public class GUI extends javax.swing.JFrame {
         //Adds the contact from the offline users menu
         boolean flag = false;
         this.RefreshContactsList();
-        for(int x = 0; x < contactsList.getModel().getSize(); x++){
-            if(this.contactsList.getModel().getElementAt(x).equals(offlineJList.getSelectedValue())){
+        for (int x = 0; x < contactsList.getModel().getSize(); x++) {
+            if (this.contactsList.getModel().getElementAt(x).equals(offlineJList.getSelectedValue())) {
                 flag = true;
                 break;
             }
         }
-        if(flag){
+        if (flag) {
             JOptionPane.showMessageDialog(null, "Already a contact", "Info", JOptionPane.INFORMATION_MESSAGE);
-        }
-        else{
-        ServiceDispatcher sd = new ServiceDispatcher();
-        sd.AddUserContact(offlineJList.getSelectedValue());
-        this.RefreshContactsList();
+        } else {
+            ServiceDispatcher sd = new ServiceDispatcher();
+            sd.AddUserContact(offlineJList.getSelectedValue());
+            this.RefreshContactsList();
         }
     }//GEN-LAST:event_AddOfflineMenuItemActionPerformed
 
@@ -1630,19 +1629,18 @@ public class GUI extends javax.swing.JFrame {
         //adds a contact from the online users menu
         boolean flag = false;
         this.RefreshContactsList();
-        for(int x = 0; x < contactsList.getModel().getSize(); x++){
-            if(this.contactsList.getModel().getElementAt(x).equals(onlineJList.getSelectedValue())){
+        for (int x = 0; x < contactsList.getModel().getSize(); x++) {
+            if (this.contactsList.getModel().getElementAt(x).equals(onlineJList.getSelectedValue())) {
                 flag = true;
                 break;
             }
         }
-        if(flag){
+        if (flag) {
             JOptionPane.showMessageDialog(null, "Already a contact", "Info", JOptionPane.INFORMATION_MESSAGE);
-        }
-        else{
-        ServiceDispatcher sd = new ServiceDispatcher();
-        sd.AddUserContact(onlineJList.getSelectedValue());
-        this.RefreshContactsList();
+        } else {
+            ServiceDispatcher sd = new ServiceDispatcher();
+            sd.AddUserContact(onlineJList.getSelectedValue());
+            this.RefreshContactsList();
         }
     }//GEN-LAST:event_AddMenuItemActionPerformed
 
@@ -1650,9 +1648,9 @@ public class GUI extends javax.swing.JFrame {
         //Removes a user's contaact
         ServiceDispatcher sd = new ServiceDispatcher();
         sd.RemoveUserContact(contactsList.getSelectedValue());
-        
+
         this.RefreshContactsList();
-        
+
     }//GEN-LAST:event_RemoveMenuItemActionPerformed
 
     private void lnameFilterFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lnameFilterFieldActionPerformed
@@ -1667,8 +1665,7 @@ public class GUI extends javax.swing.JFrame {
         String SLname = lnameFilterField.getText().toLowerCase();
         if (SLname.equals("")) {
             this.RefreshContactsList();
-        }
-        else {
+        } else {
             contactsModel.removeAllElements();
             for (int x = 0; x < contacts.size(); x++) {
                 String lname = contacts.get(x).getLastName().toLowerCase();
@@ -1686,7 +1683,7 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_ConnectMenuItemActionPerformed
 
     private void ChatMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChatMenuItemActionPerformed
-        listen = new IRC_LiveSocket("#LionStudy",CurrentUser.getFirstname(),CurrentUser.getUsername());
+        listen = new IRC_LiveSocket("#LionStudy", CurrentUser.getFirstname(), CurrentUser.getUsername());
         Thread chatListen = new Thread(listen);
         chatListen.start();
     }//GEN-LAST:event_ChatMenuItemActionPerformed
@@ -1699,154 +1696,181 @@ public class GUI extends javax.swing.JFrame {
 
     private void usernamefieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_usernamefieldKeyPressed
         //if enter button is pressed while user is in the usernamefield, hit the enter button
-        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             this.Login();
-        }        
+        }
     }//GEN-LAST:event_usernamefieldKeyPressed
 
     private void passwordfieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passwordfieldKeyPressed
         //if enter button is pressed while user is in the passwordfield, hit the enter button
-        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             this.Login();
-        }        
+        }
     }//GEN-LAST:event_passwordfieldKeyPressed
 
     private void canvasLinkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_canvasLinkActionPerformed
         //Hyperlink for the services tab
-        try{
+        try {
             URL url = new URL("http://canvas.psu.edu");
             openWebpage(url);
-        } catch(Exception e) {
+        } catch (Exception e) {
             System.out.println(e);
         }
-        
+
     }//GEN-LAST:event_canvasLinkActionPerformed
 
     private void lionpathLinkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lionpathLinkActionPerformed
-                //Hyperlink for the services tab
-        try{
+        //Hyperlink for the services tab
+        try {
             URL url = new URL("http://lionpath.psu.edu");
             openWebpage(url);
-        } catch(Exception e) {
+        } catch (Exception e) {
             System.out.println(e);
         }
-        
+
     }//GEN-LAST:event_lionpathLinkActionPerformed
 
     private void behrendLinkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_behrendLinkActionPerformed
 
-                //Hyperlink for the services tab
-        try{
+        //Hyperlink for the services tab
+        try {
             URL url = new URL("https://behrend.psu.edu");
             openWebpage(url);
-        } catch(Exception e) {
+        } catch (Exception e) {
             System.out.println(e);
         }
-        
+
     }//GEN-LAST:event_behrendLinkActionPerformed
 
     private void healthLinkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_healthLinkActionPerformed
-                //Hyperlink for the services tab
-        try{
+        //Hyperlink for the services tab
+        try {
             URL url = new URL("https://behrend.psu.edu/student-life/student-services/health");
             openWebpage(url);
-        } catch(Exception e) {
+        } catch (Exception e) {
             System.out.println(e);
         }
-        
+
     }//GEN-LAST:event_healthLinkActionPerformed
 
     private void footballLinkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_footballLinkActionPerformed
-                //Hyperlink for the services tab
-        try{
+        //Hyperlink for the services tab
+        try {
             URL url = new URL("https://gopsusports.com/index.aspx?path=football");
             openWebpage(url);
-        } catch(Exception e) {
+        } catch (Exception e) {
             System.out.println(e);
         }
-        
+
     }//GEN-LAST:event_footballLinkActionPerformed
 
     private void junkerLinkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_junkerLinkActionPerformed
-                //Hyperlink for the services tab
-        try{
+        //Hyperlink for the services tab
+        try {
             URL url = new URL("http://www.psblions.com/information/intramurals-facilities/Junker_Center");
             openWebpage(url);
-        } catch(Exception e) {
+        } catch (Exception e) {
             System.out.println(e);
         }
-        
-        
+
+
     }//GEN-LAST:event_junkerLinkActionPerformed
 
     private void rapLinkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rapLinkActionPerformed
-                //Hyperlink for the services tab
-        try{
+        //Hyperlink for the services tab
+        try {
             URL url = new URL("https://behrend.psu.edu/academics/academic-services/acpc/acpc-services/academic-advising-and-planning/recommended-academic-plans");
             openWebpage(url);
-        } catch(Exception e) {
+        } catch (Exception e) {
             System.out.println(e);
         }
-        
+
     }//GEN-LAST:event_rapLinkActionPerformed
 
     private void newsLinkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newsLinkActionPerformed
-                //Hyperlink for the services tab
-        try{
+        //Hyperlink for the services tab
+        try {
             URL url = new URL("https://behrend.psu.edu/news");
             openWebpage(url);
-        } catch(Exception e) {
+        } catch (Exception e) {
             System.out.println(e);
         }
-        
-        
+
+
     }//GEN-LAST:event_newsLinkActionPerformed
 
     private void weatherLinkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_weatherLinkActionPerformed
-                //Hyperlink for the services tab
-        try{
+        //Hyperlink for the services tab
+        try {
             URL url = new URL("https://behrend.psu.edu/school-of-science/weather");
             openWebpage(url);
-        } catch(Exception e) {
+        } catch (Exception e) {
             System.out.println(e);
         }
-        
+
     }//GEN-LAST:event_weatherLinkActionPerformed
 
     private void LoginButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LoginButtonKeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_LoginButtonKeyPressed
 
+    private void messageFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_messageFieldKeyPressed
+        //if enter button is pressed while user is in the usernamefield, hit the enter button
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            // This button handles a chat message submission
+
+            Font f = new Font(Font.SERIF, Font.BOLD, 14);
+            String message = "";
+            message = messageField.getText();
+
+            /*
+        Displays given text to the outgoing message Text Area
+             */
+            chatTextArea.append("\n---");
+            chatTextArea.setFont(f);
+            chatTextArea.append(CU.getUsername());
+            chatTextArea.append("---\n");
+            chatTextArea.append(message);
+            chatTextArea.append("\n");
+
+            /*
+        Formats incoming chat message field to fit the form of a chat dialog
+             */
+            incomeChatArea.setFont(f);
+            incomeChatArea.append("\n\n\n");
+
+            messageField.setText("");
+
+            listen.IRC_privMSG(message);
+        }                // TODO add your handling code here:
+    }//GEN-LAST:event_messageFieldKeyPressed
+
     /**
      * @param args the command line arguments
      */
-    
     public static boolean openWebpage(URI uri) {
-    Desktop desktop = Desktop.isDesktopSupported() ? Desktop.getDesktop() : null;
-    if (desktop != null && desktop.isSupported(Desktop.Action.BROWSE)) {
+        Desktop desktop = Desktop.isDesktopSupported() ? Desktop.getDesktop() : null;
+        if (desktop != null && desktop.isSupported(Desktop.Action.BROWSE)) {
+            try {
+                desktop.browse(uri);
+                return true;
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return false;
+    }
+
+    public static boolean openWebpage(URL url) {
         try {
-            desktop.browse(uri);
-            return true;
-        } catch (Exception e) {
+            return openWebpage(url.toURI());
+        } catch (URISyntaxException e) {
             e.printStackTrace();
         }
+        return false;
     }
-    return false;
-}
 
-public static boolean openWebpage(URL url) {
-    try {
-        return openWebpage(url.toURI());
-    } catch (URISyntaxException e) {
-        e.printStackTrace();
-    }
-    return false;
-}
-    public class IRC_LiveSocket implements Runnable
-    {
-
-
-
+    public class IRC_LiveSocket implements Runnable {
 
         Socket lionsocket;
         OutputStream outStream;
@@ -1857,127 +1881,100 @@ public static boolean openWebpage(URL url) {
         //Message to be sent to output stream
         String msg;
 
-        String server="halcyon.il.us.dal.net";
-        int port=6666;
+        String server = "halcyon.il.us.dal.net";
+        int port = 6666;
 
+        public IRC_LiveSocket(String channel, String fName, String uName) {
 
-        public IRC_LiveSocket(String channel, String fName, String uName)
-        {
-
-            try
-            {
-            //Connects to Lionstudy Server
+            try {
+                //Connects to Lionstudy Server
                 lionsocket = new Socket(server, port);
-            //Sets output stream to out
+                //Sets output stream to out
                 outStream = lionsocket.getOutputStream();
-            }
-            catch(Exception e)
-            {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
 
             IRC_nick(fName);
-            IRC_user(uName, "null","null","real name");
+            IRC_user(uName, "null", "null", "real name");
             IRC_channelJoin(channel);
-
-
 
         }
 
-        private void send(String text)
-        {
+        private void send(String text) {
             byte[] bytes = (text + CRLF).getBytes();
 
-            try
-            {
+            try {
                 outStream.write(bytes);
-            }
-            catch(Exception e)
-            {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
 
-        public void IRC_nick(String nick)
-        {
-            msg="NICK "+nick;
+        public void IRC_nick(String nick) {
+            msg = "NICK " + nick;
             send(msg);
         }
 
-        public void IRC_user(String username, String host, String server, String realname)
-        {
-            msg="USER "+username+" "+host+" "+server+" :"+realname;
+        public void IRC_user(String username, String host, String server, String realname) {
+            msg = "USER " + username + " " + host + " " + server + " :" + realname;
             send(msg);
         }
 
-        public void IRC_channelJoin(String channel)
-        {
-            channelJoined=channel;
-            msg="JOIN "+channelJoined;
+        public void IRC_channelJoin(String channel) {
+            channelJoined = channel;
+            msg = "JOIN " + channelJoined;
             send(msg);
         }
 
-        public void IRC_channelLeave(String channel)
-        {
-            msg="PART "+channel;
+        public void IRC_channelLeave(String channel) {
+            msg = "PART " + channel;
         }
 
-        public void IRC_privMSG(String text)
-        {
-            msg="PRIVMSG "+channelJoined+" :"+text;
+        public void IRC_privMSG(String text) {
+            msg = "PRIVMSG " + channelJoined + " :" + text;
             send(msg);
         }
 
-        void IRC_processMessage(String ircMessage)
-        {
+        void IRC_processMessage(String ircMessage) {
             IRC_RecievedMessage RcvMsg = IRC_MessageParser.recieved(ircMessage);
-            if(RcvMsg.command.equals("PRIVMSG"))
-            {
-                receiveMSG(RcvMsg.nick,RcvMsg.content);
-            }
-            else if(RcvMsg.command.equals("CLOSE"))
-            {
+            if (RcvMsg.command.equals("PRIVMSG")) {
+                receiveMSG(RcvMsg.nick, RcvMsg.content);
+            } else if (RcvMsg.command.equals("CLOSE")) {
 
             }
 
         }
 
-        public void run()
-        {
-            do{
-            //LOOP TO RECIEVE MESSAGES
-                try
-                {
+        public void run() {
+            do {
+                //LOOP TO RECIEVE MESSAGES
+                try {
                     InputStream inStream = lionsocket.getInputStream();
                     IRC_MessageBuffer msgBuf = new IRC_MessageBuffer();
 
                     byte[] buffer = new byte[1024];
                     int bytes;
 
-                    do
-                    {
-                        bytes=inStream.read(buffer);
-                        if(bytes!=-1)
-                        {
-                            msgBuf.addToBuffer(Arrays.copyOfRange(buffer,0, bytes));
-                            while(msgBuf.hasMessage())
-                            {
+                    do {
+                        bytes = inStream.read(buffer);
+                        if (bytes != -1) {
+                            msgBuf.addToBuffer(Arrays.copyOfRange(buffer, 0, bytes));
+                            while (msgBuf.hasMessage()) {
                                 msg = msgBuf.getMessage();
                             }
                             IRC_processMessage(msg);
                         }
-                    }while(bytes!=-1);
+                    } while (bytes != -1);
 
-                }
-                catch(Exception e)
-                {
+                } catch (Exception e) {
                     System.out.print(e);
                 }
-            }while(true);
+            } while (true);
 
         }
     }
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Label AddClassLabel;
