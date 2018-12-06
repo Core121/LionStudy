@@ -12,16 +12,15 @@ import lionstudy.Classes.*;
 // Pi port: 3306
 //Before Using database please ask Corey to turn on portforwarding!!
 public class ServiceDispatcher {
-
+//Credentials for logging into the database
     private static final String USERNAME = "Lion";
     private static final String PASSWORD = "LionStudy!?";
     private static final String CONN_STRING = "jdbc:mysql://76.180.26.194:3306/LionStudy";
     ResultSet rs = null;
     Statement stmt = null;
 
-    //Note that this function should be run at the beginning of the application for TESTING purposes, not actually needed to run the application but should be used to test the database is responding
+    //tests to make sure the server is responding, good for testing purposes
     public void TestConnect() {
-
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection myConn = DriverManager.getConnection(CONN_STRING, USERNAME, PASSWORD);
@@ -63,11 +62,12 @@ public class ServiceDispatcher {
             }
             myConn.close();
         } catch (Exception e) {
-            System.out.println(e);
+            JOptionPane.showMessageDialog(null, "Cops! Unexpected Error Occured with Server " + e, "Unexpected Error", JOptionPane.ERROR_MESSAGE);
         }
         return login;
     }
     
+    //sets the online integer to 0 for the current user
     public void logout(){
         try {
             Connection myConn = DriverManager.getConnection(CONN_STRING, USERNAME, PASSWORD);
@@ -77,10 +77,11 @@ public class ServiceDispatcher {
             pstmt.executeUpdate();
             myConn.close();
         } catch (Exception e) {
-            System.out.println(e);
+            JOptionPane.showMessageDialog(null, "Cops! Unexpected Error Occured with Server " + e, "Unexpected Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 
+    //Returns an array of accounts that contains all of the lionstudy moderators
     public ArrayList<Account> GetAllMods(){
         ArrayList<Account> AccountList = new ArrayList<Account>();
         try {
@@ -103,7 +104,7 @@ public class ServiceDispatcher {
             }
             myConn.close();
         } catch (Exception e) {
-            System.out.println(e);
+            JOptionPane.showMessageDialog(null, "Cops! Unexpected Error Occured with Server " + e, "Unexpected Error", JOptionPane.ERROR_MESSAGE);
         }
         return AccountList;
     }
@@ -129,7 +130,7 @@ public class ServiceDispatcher {
             }
             myConn.close();
         } catch (Exception e) {
-            System.out.println(e);
+            JOptionPane.showMessageDialog(null, "Cops! Unexpected Error Occured with Server " + e, "Unexpected Error", JOptionPane.ERROR_MESSAGE);
         }
         return AccountList;
     }
@@ -157,7 +158,7 @@ public class ServiceDispatcher {
 
     //Creates a class on the class database, takes a classname in string form as a parameter. Database auto-generates ID for it.
     public boolean CreateClass(String className) {
-        boolean success = false;
+        boolean success = true;
         className = className.toUpperCase();
         try {
             Connection myConn = DriverManager.getConnection(CONN_STRING, USERNAME, PASSWORD);
@@ -167,7 +168,7 @@ public class ServiceDispatcher {
             pstmt.executeUpdate();
             myConn.close();
         } catch (Exception e) {
-            success = true;
+            success = false;
         }
         return success;
     }
@@ -191,7 +192,7 @@ public class ServiceDispatcher {
         return classes;
     }
     
- 
+ //Get's all the users from a certain class
     public ArrayList<Account> GetUsersFromClass(String classname) {
         ArrayList<Account> Users = new ArrayList<Account>();
         try {
@@ -201,6 +202,7 @@ public class ServiceDispatcher {
             pstmt.setString(1, classname);
             rs = pstmt.executeQuery();
             while (rs.next()) {
+                //subquery to grab info about each user within the class
                 String usernamec = rs.getString("Username");
                 pstmt = myConn.prepareStatement("SELECT * FROM Users WHERE username = ?");
                 pstmt.setString(1, usernamec);
@@ -225,6 +227,7 @@ public class ServiceDispatcher {
         return Users;
     }
     
+    //Remove a class from the user's class list
     public void DeleteClassfromUser(String classname) {
         try {
             Connection myConn = DriverManager.getConnection(CONN_STRING, USERNAME, PASSWORD);
@@ -239,6 +242,7 @@ public class ServiceDispatcher {
         }
     }
     
+    //Add a class to the user's class list
     public void AddClasstoUser(String classname) {
         try {
             Connection myConn = DriverManager.getConnection(CONN_STRING, USERNAME, PASSWORD);
@@ -253,6 +257,7 @@ public class ServiceDispatcher {
         }
     }
 
+    //Add a contact to the users contact list
     public void AddUserContact(String ContactUsername) {
         try {
             ContactUsername = ContactUsername.toLowerCase();
