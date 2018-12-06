@@ -107,20 +107,21 @@ public class GUI extends javax.swing.JFrame {
     }
     //Logs the user in and fills all appropriate fields
     protected void Login(){
-         ServiceDispatcher sd = new ServiceDispatcher();
+        ServiceDispatcher sd = new ServiceDispatcher();
         boolean loginSuccess = false;
         if (usernamefield.getText() == "" || passwordfield.getText() == "") {
             JOptionPane.showMessageDialog(null, "One of your fields for Username or Password is Empty", "Empty Field", JOptionPane.INFORMATION_MESSAGE);
         } else {
+            //Login returns a bool that shows whether the login was successful or not
             loginSuccess = sd.Login(usernamefield.getText(), passwordfield.getText());
             if (loginSuccess == true) {
-                //Student or Tutor
+                //Student, Tutor, or Professor
                 if(CurrentUser.getBadgetype() == 1 || CurrentUser.getBadgetype() == 2 || CurrentUser.getBadgetype() == 3){
                     this.SetUpNormalUserScenario();
+                    //Sets the correct icon for the user
                     if(CurrentUser.getBadgetype() == 1){
                         this.accountTypeField.setText("Student");
                         this.badgeImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Res/StudentBadge24.png")));
-
                     }
                     else if(CurrentUser.getBadgetype() == 2){
                         this.accountTypeField.setText("Tutor");
@@ -1521,6 +1522,7 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_LogoutButtonActionPerformed
 
     private void removeCourseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeCourseButtonActionPerformed
+        //Removes course from the user's profile (User withdraws from class)
         ServiceDispatcher sd = new ServiceDispatcher();
         String course = courseListProfile.getSelectedValue();
         String[] courseToRemove = course.split("\n", 0);
@@ -1537,6 +1539,7 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_removeCourseButtonActionPerformed
 
     private void joinClassButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_joinClassButtonActionPerformed
+        //User joins a course
         String selection = coursesComboBox.getSelectedItem().toString();
         ServiceDispatcher sd = new ServiceDispatcher();
         sd.AddClasstoUser(selection);
@@ -1556,6 +1559,7 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_joinClassButtonActionPerformed
 
     private void addCourseModButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addCourseModButtonActionPerformed
+        //Moderator can add a class to LionStudy for regular users to join
         ServiceDispatcher sd = new ServiceDispatcher();
         String classname = this.AddClassName.getText();
         boolean success = sd.CreateClass(classname);
@@ -1573,9 +1577,7 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_onlineJListValueChanged
 
     private void onlineJListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_onlineJListMouseClicked
-        // TODO add your handling code here:
-        //JOptionPane.showConfirmDialog(null, "Add user as contact?", "", JOptionPane.OK_CANCEL_OPTION);
-        //JOptionPane.showConfirmDialog(null, "Chat with this user?", "", JOptionPane.OK_CANCEL_OPTION);
+
     }//GEN-LAST:event_onlineJListMouseClicked
 
     private void contactsListMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_contactsListMouseReleased
@@ -1585,7 +1587,7 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_contactsListMouseReleased
 
     private void onlineJListMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_onlineJListMouseReleased
-        
+        //If there is a right click on an online user
         if(evt.isPopupTrigger()){
             onlineUserMenu.show(this,evt.getX(), evt.getY() + 300);
         }
@@ -1593,7 +1595,7 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_onlineJListMouseReleased
 
     private void offlineJListMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_offlineJListMouseReleased
-        
+        //if there is a right click on an offline user
         if(evt.isPopupTrigger()){
             offlineUserMenu.show(this,evt.getX(), evt.getY() + 520);
         }
@@ -1605,6 +1607,7 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_onlineUserMenuMouseClicked
 
     private void AddOfflineMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddOfflineMenuItemActionPerformed
+        //Adds the contact from the offline users menu
         boolean flag = false;
         this.RefreshContactsList();
         for(int x = 0; x < contactsList.getModel().getSize(); x++){
@@ -1624,6 +1627,7 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_AddOfflineMenuItemActionPerformed
 
     private void AddMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddMenuItemActionPerformed
+        //adds a contact from the online users menu
         boolean flag = false;
         this.RefreshContactsList();
         for(int x = 0; x < contactsList.getModel().getSize(); x++){
@@ -1643,7 +1647,7 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_AddMenuItemActionPerformed
 
     private void RemoveMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RemoveMenuItemActionPerformed
-        
+        //Removes a user's contaact
         ServiceDispatcher sd = new ServiceDispatcher();
         sd.RemoveUserContact(contactsList.getSelectedValue());
         
@@ -1656,6 +1660,7 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_lnameFilterFieldActionPerformed
 
     private void contactsSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contactsSearchButtonActionPerformed
+        //Searches by a contacts last name
         ServiceDispatcher sd = new ServiceDispatcher();
         ArrayList<Account> contacts = sd.GetAllUsersContacts();
         DefaultListModel contactsModel = new DefaultListModel();
@@ -1677,45 +1682,37 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_contactsSearchButtonActionPerformed
 
     private void ConnectMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConnectMenuItemActionPerformed
-        
-        
-        
-        
-        
-        
-        
+
     }//GEN-LAST:event_ConnectMenuItemActionPerformed
 
     private void ChatMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChatMenuItemActionPerformed
         listen = new IRC_LiveSocket("#LionStudy",CurrentUser.getFirstname(),CurrentUser.getUsername());
         Thread chatListen = new Thread(listen);
         chatListen.start();
-        
-        
-        
-        
-        
-        
     }//GEN-LAST:event_ChatMenuItemActionPerformed
 
     private void WindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_WindowClosing
+        //On the window closing, logout
         ServiceDispatcher sd = new ServiceDispatcher();
         sd.logout();
     }//GEN-LAST:event_WindowClosing
 
     private void usernamefieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_usernamefieldKeyPressed
+        //if enter button is pressed while user is in the usernamefield, hit the enter button
         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
             this.Login();
         }        
     }//GEN-LAST:event_usernamefieldKeyPressed
 
     private void passwordfieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passwordfieldKeyPressed
+        //if enter button is pressed while user is in the passwordfield, hit the enter button
         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
             this.Login();
         }        
     }//GEN-LAST:event_passwordfieldKeyPressed
 
     private void canvasLinkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_canvasLinkActionPerformed
+        //Hyperlink for the services tab
         try{
             URL url = new URL("http://canvas.psu.edu");
             openWebpage(url);
@@ -1726,7 +1723,7 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_canvasLinkActionPerformed
 
     private void lionpathLinkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lionpathLinkActionPerformed
-        
+                //Hyperlink for the services tab
         try{
             URL url = new URL("http://lionpath.psu.edu");
             openWebpage(url);
@@ -1737,8 +1734,8 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_lionpathLinkActionPerformed
 
     private void behrendLinkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_behrendLinkActionPerformed
-        // 
-        
+
+                //Hyperlink for the services tab
         try{
             URL url = new URL("https://behrend.psu.edu");
             openWebpage(url);
@@ -1749,7 +1746,7 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_behrendLinkActionPerformed
 
     private void healthLinkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_healthLinkActionPerformed
-        
+                //Hyperlink for the services tab
         try{
             URL url = new URL("https://behrend.psu.edu/student-life/student-services/health");
             openWebpage(url);
@@ -1760,7 +1757,7 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_healthLinkActionPerformed
 
     private void footballLinkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_footballLinkActionPerformed
-        
+                //Hyperlink for the services tab
         try{
             URL url = new URL("https://gopsusports.com/index.aspx?path=football");
             openWebpage(url);
@@ -1771,7 +1768,7 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_footballLinkActionPerformed
 
     private void junkerLinkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_junkerLinkActionPerformed
-        
+                //Hyperlink for the services tab
         try{
             URL url = new URL("http://www.psblions.com/information/intramurals-facilities/Junker_Center");
             openWebpage(url);
@@ -1783,7 +1780,7 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_junkerLinkActionPerformed
 
     private void rapLinkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rapLinkActionPerformed
-        
+                //Hyperlink for the services tab
         try{
             URL url = new URL("https://behrend.psu.edu/academics/academic-services/acpc/acpc-services/academic-advising-and-planning/recommended-academic-plans");
             openWebpage(url);
@@ -1794,7 +1791,7 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_rapLinkActionPerformed
 
     private void newsLinkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newsLinkActionPerformed
-        
+                //Hyperlink for the services tab
         try{
             URL url = new URL("https://behrend.psu.edu/news");
             openWebpage(url);
@@ -1806,7 +1803,7 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_newsLinkActionPerformed
 
     private void weatherLinkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_weatherLinkActionPerformed
-        
+                //Hyperlink for the services tab
         try{
             URL url = new URL("https://behrend.psu.edu/school-of-science/weather");
             openWebpage(url);
