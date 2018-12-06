@@ -36,7 +36,7 @@ public class GUI extends javax.swing.JFrame {
         initComponents();
         this.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Res/LSIcon.png")));
     }
-    
+    //Logs the user out upon exit
     public int logoutOnExit() {
         ServiceDispatcher sd = new ServiceDispatcher();
         sd.logout();
@@ -91,7 +91,20 @@ public class GUI extends javax.swing.JFrame {
         }
         this.contactsList.setModel(contactsModel);
    }
-    
+    //clears all fields, useful in the event of a logout, that the next user does see persistent data from last session
+    protected void clearAllFields(){
+        DefaultListModel ClearModel = new DefaultListModel();
+        this.onlineJList.setModel(ClearModel);
+        this.offlineJList.setModel(ClearModel);
+        this.chatTextArea.setText("");
+        this.incomeChatArea.setText("");
+        this.messageField.setText("");
+        this.courseListProfile.setModel(ClearModel);
+        this.contactsList.setModel(ClearModel);
+        this.lnameFilterField.setText("");
+        this.modsJList.setModel(ClearModel);
+        this.AddClassName.setText("");
+    }
     //Logs the user in and fills all appropriate fields
     protected void Login(){
          ServiceDispatcher sd = new ServiceDispatcher();
@@ -539,12 +552,14 @@ public class GUI extends javax.swing.JFrame {
 
         chatPanel.setLayout(new java.awt.GridLayout(1, 0));
 
+        chatTextArea.setEditable(false);
         chatTextArea.setColumns(20);
         chatTextArea.setRows(5);
         jScrollPane5.setViewportView(chatTextArea);
 
         chatPanel.add(jScrollPane5);
 
+        incomeChatArea.setEditable(false);
         incomeChatArea.setColumns(20);
         incomeChatArea.setRows(5);
         jScrollPane2.setViewportView(incomeChatArea);
@@ -1052,6 +1067,11 @@ public class GUI extends javax.swing.JFrame {
                 LoginButtonActionPerformed(evt);
             }
         });
+        LoginButton.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                LoginButtonKeyPressed(evt);
+            }
+        });
 
         LionStudyLoginText.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
         LionStudyLoginText.setText("LionStudy Login");
@@ -1496,8 +1516,8 @@ public class GUI extends javax.swing.JFrame {
     private void LogoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogoutButtonActionPerformed
         ServiceDispatcher sd = new ServiceDispatcher();
         sd.logout();
+        this.clearAllFields();
         this.SetUpLoginScenario();
-        chatTextArea.setText("");
     }//GEN-LAST:event_LogoutButtonActionPerformed
 
     private void removeCourseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeCourseButtonActionPerformed
@@ -1795,6 +1815,10 @@ public class GUI extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_weatherLinkActionPerformed
+
+    private void LoginButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_LoginButtonKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_LoginButtonKeyPressed
 
     /**
      * @param args the command line arguments
