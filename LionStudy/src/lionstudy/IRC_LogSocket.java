@@ -3,7 +3,6 @@ package lionstudy;
 import java.io.*;
 import java.net.*;
 import java.util.*;
-import java.util.concurrent.TimeUnit;
 
 final class IRC_LogSocket implements Runnable
 {
