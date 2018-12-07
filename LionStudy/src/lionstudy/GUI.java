@@ -51,6 +51,9 @@ public class GUI extends javax.swing.JFrame {
 
     //only run at very beginning
     protected void SetUpLoginScenario() {
+        this.hiddenButton.setOpaque(false);
+        this.hiddenButton.setContentAreaFilled(false);
+        this.hiddenButton.setBorderPainted(false);
         this.LionStudyTabs.addTab("Login", LoginTab);
         this.LionStudyTabs.addTab("Sign Up", SignUpTab);
         this.LogoutButton.setVisible(false);
@@ -116,6 +119,7 @@ public class GUI extends javax.swing.JFrame {
 
     //Logs the user in and fills all appropriate fields
     protected void Login() {
+        
         ServiceDispatcher sd = new ServiceDispatcher();
         boolean loginSuccess = false;
         if (usernamefield.getText() == "" || passwordfield.getText() == "") {
@@ -308,6 +312,7 @@ public class GUI extends javax.swing.JFrame {
         pennstatelogolabel = new javax.swing.JLabel();
         LogoutButton = new javax.swing.JButton();
         lowerpanel = new javax.swing.JPanel();
+        hiddenButton = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -1347,15 +1352,28 @@ public class GUI extends javax.swing.JFrame {
 
         lowerpanel.setBackground(new java.awt.Color(6, 6, 50));
 
+        hiddenButton.setBackground(new java.awt.Color(6, 6, 50));
+        hiddenButton.setForeground(new java.awt.Color(6, 6, 50));
+        hiddenButton.setBorder(null);
+        hiddenButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                hiddenButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout lowerpanelLayout = new javax.swing.GroupLayout(lowerpanel);
         lowerpanel.setLayout(lowerpanelLayout);
         lowerpanelLayout.setHorizontalGroup(
             lowerpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, lowerpanelLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(hiddenButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         lowerpanelLayout.setVerticalGroup(
             lowerpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 91, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, lowerpanelLayout.createSequentialGroup()
+                .addGap(0, 53, Short.MAX_VALUE)
+                .addComponent(hiddenButton, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -1846,6 +1864,16 @@ public class GUI extends javax.swing.JFrame {
         }                // TODO add your handling code here:
     }//GEN-LAST:event_messageFieldKeyPressed
 
+    private void hiddenButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hiddenButtonActionPerformed
+        // a hidden meme for the fun of it.
+        try {
+            URL url = new URL("https://pics.me.me/after-four-years-of-engineering-say-hello-to-my-little-821426.png");
+            openWebpage(url);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Cops! Unexpected Error Occured with User Interface " + e, "Unexpected Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_hiddenButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -2037,6 +2065,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextField firstnamefield;
     private javax.swing.JButton footballLink;
     private javax.swing.JButton healthLink;
+    private javax.swing.JButton hiddenButton;
     private javax.swing.JTextArea incomeChatArea;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel17;
