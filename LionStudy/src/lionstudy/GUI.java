@@ -1911,7 +1911,7 @@ public class GUI extends javax.swing.JFrame {
         String msg;
 
         String server = "halcyon.il.us.dal.net";
-        int port = 6666;
+        int port = 6667;
 
         public IRC_LiveSocket(String channel, String fName, String uName) {
 
@@ -1924,7 +1924,7 @@ public class GUI extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Oops! Unexpected Error Occured with the Chat Server " + e, "Unexpected Error", JOptionPane.ERROR_MESSAGE);
             }
 
-            IRC_nick(fName);
+            IRC_nick(uName);
             IRC_user(uName, "null", "null", "real name");
             IRC_channelJoin(channel);
 
