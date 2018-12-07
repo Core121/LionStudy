@@ -293,8 +293,8 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jScrollPane1" alignment="1" max="32767" attributes="0"/>
-                      <Component id="jScrollPane6" alignment="0" max="32767" attributes="0"/>
+                      <Component id="onlinescrollpane" alignment="1" max="32767" attributes="0"/>
+                      <Component id="offlinescrollpane" alignment="0" max="32767" attributes="0"/>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="onlinelabel" min="-2" pref="89" max="-2" attributes="0"/>
@@ -309,11 +309,11 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="onlinelabel" min="-2" pref="39" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
-                          <Component id="jScrollPane1" min="-2" pref="145" max="-2" attributes="0"/>
+                          <Component id="onlinescrollpane" min="-2" pref="145" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="offlinelabel" min="-2" pref="39" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jScrollPane6" min="-2" pref="145" max="-2" attributes="0"/>
+                          <Component id="offlinescrollpane" min="-2" pref="145" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -333,7 +333,7 @@
                     </Property>
                   </Properties>
                 </Component>
-                <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+                <Container class="javax.swing.JScrollPane" name="onlinescrollpane">
                   <AuxValues>
                     <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
                   </AuxValues>
@@ -366,7 +366,7 @@
                     </Property>
                   </Properties>
                 </Component>
-                <Container class="javax.swing.JScrollPane" name="jScrollPane6">
+                <Container class="javax.swing.JScrollPane" name="offlinescrollpane">
                   <AuxValues>
                     <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
                   </AuxValues>
@@ -490,7 +490,7 @@
                 <Property name="rows" type="int" value="1"/>
               </Layout>
               <SubComponents>
-                <Container class="javax.swing.JScrollPane" name="jScrollPane5">
+                <Container class="javax.swing.JScrollPane" name="chatscrollpane">
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
@@ -503,7 +503,7 @@
                     </Component>
                   </SubComponents>
                 </Container>
-                <Container class="javax.swing.JScrollPane" name="jScrollPane2">
+                <Container class="javax.swing.JScrollPane" name="incomechatscrollpane">
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
@@ -554,7 +554,7 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="courseListPanel" alignment="1" max="32767" attributes="0"/>
-                      <Component id="jScrollPane4" alignment="1" max="32767" attributes="0"/>
+                      <Component id="coursescrollpane" alignment="1" max="32767" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="32767" attributes="0"/>
                           <Component id="removeCourseButton" min="-2" pref="122" max="-2" attributes="0"/>
@@ -567,7 +567,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="courseListPanel" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jScrollPane4" min="-2" pref="355" max="-2" attributes="0"/>
+                          <Component id="coursescrollpane" min="-2" pref="355" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="removeCourseButton" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
@@ -576,7 +576,7 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Container class="javax.swing.JScrollPane" name="jScrollPane4">
+                <Container class="javax.swing.JScrollPane" name="coursescrollpane">
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
@@ -700,7 +700,7 @@
                     <Property name="verticalGap" type="int" value="20"/>
                   </Layout>
                   <SubComponents>
-                    <Container class="javax.swing.JPanel" name="jPanel9">
+                    <Container class="javax.swing.JPanel" name="spacerpanel">
 
                       <Layout>
                         <DimensionLayout dim="0">
@@ -715,7 +715,7 @@
                         </DimensionLayout>
                       </Layout>
                     </Container>
-                    <Container class="javax.swing.JPanel" name="jPanel10">
+                    <Container class="javax.swing.JPanel" name="spacerpanel2">
 
                       <Layout>
                         <DimensionLayout dim="0">
@@ -840,7 +840,7 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
           <SubComponents>
-            <Container class="javax.swing.JScrollPane" name="jScrollPane3">
+            <Container class="javax.swing.JScrollPane" name="contactslistscrollpane">
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
                   <BorderConstraints direction="Center"/>
@@ -886,9 +886,9 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="contactslabel" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jLabel6" min="-2" pref="74" max="-2" attributes="0"/>
+                                  <Component id="lastnamelabel" min="-2" pref="74" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="lnameFilterField" min="-2" pref="171" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
@@ -906,11 +906,11 @@
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Component id="contactsSearchButton" min="-2" max="-2" attributes="0"/>
                               <Group type="102" attributes="0">
-                                  <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                                  <Component id="contactslabel" min="-2" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
-                                          <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lastnamelabel" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -930,7 +930,7 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="lnameFilterFieldActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel6">
+                <Component class="javax.swing.JLabel" name="lastnamelabel">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI Semibold" size="14" style="0"/>
@@ -959,7 +959,7 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="contactsSearchButtonActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel4">
+                <Component class="javax.swing.JLabel" name="contactslabel">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Sylfaen" size="18" style="1"/>
@@ -1018,7 +1018,7 @@
                           </Group>
                       </Group>
                       <EmptySpace pref="86" max="32767" attributes="0"/>
-                      <Component id="jScrollPane7" min="-2" pref="236" max="-2" attributes="0"/>
+                      <Component id="modsscrollpane" min="-2" pref="236" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
                   </Group>
                   <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
@@ -1038,7 +1038,7 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="ContactModLabel" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jScrollPane7" min="-2" pref="241" max="-2" attributes="0"/>
+                              <Component id="modsscrollpane" min="-2" pref="241" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="124" max="-2" attributes="0"/>
@@ -1209,7 +1209,7 @@
                 <Property name="text" type="java.lang.String" value="Contact a Moderator"/>
               </Properties>
             </Component>
-            <Container class="javax.swing.JScrollPane" name="jScrollPane7">
+            <Container class="javax.swing.JScrollPane" name="modsscrollpane">
               <AuxValues>
                 <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
               </AuxValues>
@@ -1504,13 +1504,13 @@
                                       <Group type="102" attributes="0">
                                           <EmptySpace min="-2" pref="209" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="1" attributes="0">
-                                              <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jLabel18" min="-2" max="-2" attributes="0"/>
+                                              <Component id="singuppasswordlabel" min="-2" max="-2" attributes="0"/>
+                                              <Component id="signupusernamelabel" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace min="-2" pref="147" max="-2" attributes="0"/>
-                                          <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
+                                          <Component id="reenterpasslabel" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -1568,16 +1568,16 @@
                           <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="usernamefieldsignup" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel18" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="signupusernamelabel" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel17" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="singuppasswordlabel" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="passwordfieldsignup" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel19" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="reenterpasslabel" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="passwordfieldsignupreenter" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace pref="17" max="32767" attributes="0"/>
@@ -1608,12 +1608,12 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="jLabel17">
+                <Component class="javax.swing.JLabel" name="singuppasswordlabel">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Password:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel18">
+                <Component class="javax.swing.JLabel" name="signupusernamelabel">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Username:"/>
                   </Properties>
@@ -1633,7 +1633,7 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SignUpActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel19">
+                <Component class="javax.swing.JLabel" name="reenterpasslabel">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Re-Enter Password:"/>
                   </Properties>

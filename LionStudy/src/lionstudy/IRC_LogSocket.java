@@ -29,7 +29,7 @@ final class IRC_LogSocket implements Runnable {
             //Sets channelJoined to log
             channelJoined = log;
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Cops! Unexpected Error Occured with the Chat Server " + e, "Unexpected Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Oops! Unexpected Error Occured with the Chat Server " + e, "Unexpected Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -41,7 +41,7 @@ final class IRC_LogSocket implements Runnable {
             lionstudy = new Socket(serv, prt);
             outStream = lionstudy.getOutputStream();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Cops! Unexpected Error Occured with the Chat Server " + e, "Unexpected Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Oops! Unexpected Error Occured with the Chat Server " + e, "Unexpected Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -51,7 +51,7 @@ final class IRC_LogSocket implements Runnable {
         try {
             outStream.write(bytes);
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Cops! Unexpected Error Occured with the Chat Server " + e, "Unexpected Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Oops! Unexpected Error Occured with the Chat Server " + e, "Unexpected Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -111,7 +111,7 @@ final class IRC_LogSocket implements Runnable {
                     break;
                 } while (bytes != -1);
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Cops! Unexpected Error Occured with the Chat Server " + e, "Unexpected Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Oops! Unexpected Error Occured with the Chat Server " + e, "Unexpected Error", JOptionPane.ERROR_MESSAGE);
             }
         } while (!msgReceived);
     }

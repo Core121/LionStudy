@@ -27,7 +27,7 @@ final class IRC_LiveSocket {
             //Sets output stream to out
             outStream = lionsocket.getOutputStream();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Cops! Unexpected Error Occured with the Chat Server " + e, "Unexpected Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Oops! Unexpected Error Occured with the Chat Server " + e, "Unexpected Error", JOptionPane.ERROR_MESSAGE);
         }
 
         IRC_nick(fName);
@@ -103,7 +103,7 @@ final class IRC_LiveSocket {
                 } while (bytes != -1);
 
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Cops! Unexpected Error Occured with the Chat Server " + e, "Unexpected Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Oops! Unexpected Error Occured with the Chat Server " + e, "Unexpected Error", JOptionPane.ERROR_MESSAGE);
             }
         } while (true);
 

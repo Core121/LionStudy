@@ -218,23 +218,23 @@ public class GUI extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         SearchResultListsPanel = new javax.swing.JPanel();
         onlinelabel = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        onlinescrollpane = new javax.swing.JScrollPane();
         onlineJList = new javax.swing.JList<>();
         offlinelabel = new javax.swing.JLabel();
-        jScrollPane6 = new javax.swing.JScrollPane();
+        offlinescrollpane = new javax.swing.JScrollPane();
         offlineJList = new javax.swing.JList<>();
         ChatTab = new javax.swing.JPanel();
         InteractionPanel = new javax.swing.JPanel();
         messageField = new javax.swing.JTextField();
         submitButton = new javax.swing.JButton();
         chatPanel = new javax.swing.JPanel();
-        jScrollPane5 = new javax.swing.JScrollPane();
+        chatscrollpane = new javax.swing.JScrollPane();
         chatTextArea = new javax.swing.JTextArea();
-        jScrollPane2 = new javax.swing.JScrollPane();
+        incomechatscrollpane = new javax.swing.JScrollPane();
         incomeChatArea = new javax.swing.JTextArea();
         ProfileTab = new javax.swing.JPanel();
         ProfileTabCoursePanel = new javax.swing.JPanel();
-        jScrollPane4 = new javax.swing.JScrollPane();
+        coursescrollpane = new javax.swing.JScrollPane();
         courseListProfile = new javax.swing.JList<>();
         removeCourseButton = new javax.swing.JButton();
         courseListPanel = new javax.swing.JPanel();
@@ -243,8 +243,8 @@ public class GUI extends javax.swing.JFrame {
         badgepanel = new javax.swing.JPanel();
         badgeImg = new javax.swing.JLabel();
         profilepanel = new javax.swing.JPanel();
-        jPanel9 = new javax.swing.JPanel();
-        jPanel10 = new javax.swing.JPanel();
+        spacerpanel = new javax.swing.JPanel();
+        spacerpanel2 = new javax.swing.JPanel();
         firstNameLabel = new javax.swing.JLabel();
         firstNameField = new javax.swing.JTextField();
         lastNameLabel = new javax.swing.JLabel();
@@ -254,13 +254,13 @@ public class GUI extends javax.swing.JFrame {
         accountTypeLabel = new javax.swing.JLabel();
         accountTypeField = new javax.swing.JTextField();
         ContactsTab = new javax.swing.JPanel();
-        jScrollPane3 = new javax.swing.JScrollPane();
+        contactslistscrollpane = new javax.swing.JScrollPane();
         contactsList = new javax.swing.JList<>();
         contactspanel = new javax.swing.JPanel();
         lnameFilterField = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
+        lastnamelabel = new javax.swing.JLabel();
         contactsSearchButton = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
+        contactslabel = new javax.swing.JLabel();
         SuperImpTab = new javax.swing.JPanel();
         lionpathLink = new javax.swing.JButton();
         behrendLink = new javax.swing.JButton();
@@ -272,7 +272,7 @@ public class GUI extends javax.swing.JFrame {
         weatherLink = new javax.swing.JButton();
         rapLink = new javax.swing.JButton();
         ContactModLabel = new java.awt.Label();
-        jScrollPane7 = new javax.swing.JScrollPane();
+        modsscrollpane = new javax.swing.JScrollPane();
         modsJList = new javax.swing.JList<>();
         quicklinkslabel = new java.awt.Label();
         ModOptions = new javax.swing.JPanel();
@@ -290,12 +290,12 @@ public class GUI extends javax.swing.JFrame {
         LionStudyLoginText = new javax.swing.JLabel();
         SignUpTab = new javax.swing.JPanel();
         SignUpPanel = new javax.swing.JPanel();
-        jLabel17 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
+        singuppasswordlabel = new javax.swing.JLabel();
+        signupusernamelabel = new javax.swing.JLabel();
         passwordfieldsignup = new javax.swing.JPasswordField();
         usernamefieldsignup = new javax.swing.JTextField();
         SignUp = new javax.swing.JButton();
-        jLabel19 = new javax.swing.JLabel();
+        reenterpasslabel = new javax.swing.JLabel();
         passwordfieldsignupreenter = new javax.swing.JPasswordField();
         LionStudySignUpLabel = new javax.swing.JLabel();
         tutorRB = new javax.swing.JRadioButton();
@@ -472,7 +472,7 @@ public class GUI extends javax.swing.JFrame {
                 onlineJListValueChanged(evt);
             }
         });
-        jScrollPane1.setViewportView(onlineJList);
+        onlinescrollpane.setViewportView(onlineJList);
 
         offlinelabel.setFont(new java.awt.Font("Tw Cen MT Condensed", 1, 24)); // NOI18N
         offlinelabel.setText("Offline");
@@ -484,14 +484,14 @@ public class GUI extends javax.swing.JFrame {
                 offlineJListMouseReleased(evt);
             }
         });
-        jScrollPane6.setViewportView(offlineJList);
+        offlinescrollpane.setViewportView(offlineJList);
 
         javax.swing.GroupLayout SearchResultListsPanelLayout = new javax.swing.GroupLayout(SearchResultListsPanel);
         SearchResultListsPanel.setLayout(SearchResultListsPanelLayout);
         SearchResultListsPanelLayout.setHorizontalGroup(
             SearchResultListsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
-            .addComponent(jScrollPane6)
+            .addComponent(onlinescrollpane, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(offlinescrollpane)
             .addGroup(SearchResultListsPanelLayout.createSequentialGroup()
                 .addGroup(SearchResultListsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(onlinelabel, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -503,11 +503,11 @@ public class GUI extends javax.swing.JFrame {
             .addGroup(SearchResultListsPanelLayout.createSequentialGroup()
                 .addComponent(onlinelabel, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(onlinescrollpane, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(offlinelabel, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(offlinescrollpane, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         SearchTab.add(SearchResultListsPanel, java.awt.BorderLayout.CENTER);
@@ -569,16 +569,16 @@ public class GUI extends javax.swing.JFrame {
         chatTextArea.setEditable(false);
         chatTextArea.setColumns(20);
         chatTextArea.setRows(5);
-        jScrollPane5.setViewportView(chatTextArea);
+        chatscrollpane.setViewportView(chatTextArea);
 
-        chatPanel.add(jScrollPane5);
+        chatPanel.add(chatscrollpane);
 
         incomeChatArea.setEditable(false);
         incomeChatArea.setColumns(20);
         incomeChatArea.setRows(5);
-        jScrollPane2.setViewportView(incomeChatArea);
+        incomechatscrollpane.setViewportView(incomeChatArea);
 
-        chatPanel.add(jScrollPane2);
+        chatPanel.add(incomechatscrollpane);
 
         ChatTab.add(chatPanel, java.awt.BorderLayout.CENTER);
 
@@ -588,7 +588,7 @@ public class GUI extends javax.swing.JFrame {
 
         ProfileTabCoursePanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 102)));
 
-        jScrollPane4.setViewportView(courseListProfile);
+        coursescrollpane.setViewportView(courseListProfile);
 
         removeCourseButton.setText("Remove Course");
         removeCourseButton.addActionListener(new java.awt.event.ActionListener() {
@@ -623,7 +623,7 @@ public class GUI extends javax.swing.JFrame {
         ProfileTabCoursePanelLayout.setHorizontalGroup(
             ProfileTabCoursePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(courseListPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(coursescrollpane, javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(ProfileTabCoursePanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(removeCourseButton, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -634,7 +634,7 @@ public class GUI extends javax.swing.JFrame {
             .addGroup(ProfileTabCoursePanelLayout.createSequentialGroup()
                 .addComponent(courseListPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(coursescrollpane, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(removeCourseButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -668,31 +668,31 @@ public class GUI extends javax.swing.JFrame {
 
         profilepanel.setLayout(new java.awt.GridLayout(8, 3, 0, 20));
 
-        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
-        jPanel9.setLayout(jPanel9Layout);
-        jPanel9Layout.setHorizontalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout spacerpanelLayout = new javax.swing.GroupLayout(spacerpanel);
+        spacerpanel.setLayout(spacerpanelLayout);
+        spacerpanelLayout.setHorizontalGroup(
+            spacerpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 258, Short.MAX_VALUE)
         );
-        jPanel9Layout.setVerticalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        spacerpanelLayout.setVerticalGroup(
+            spacerpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 32, Short.MAX_VALUE)
         );
 
-        profilepanel.add(jPanel9);
+        profilepanel.add(spacerpanel);
 
-        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
-        jPanel10.setLayout(jPanel10Layout);
-        jPanel10Layout.setHorizontalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout spacerpanel2Layout = new javax.swing.GroupLayout(spacerpanel2);
+        spacerpanel2.setLayout(spacerpanel2Layout);
+        spacerpanel2Layout.setHorizontalGroup(
+            spacerpanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 258, Short.MAX_VALUE)
         );
-        jPanel10Layout.setVerticalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        spacerpanel2Layout.setVerticalGroup(
+            spacerpanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 32, Short.MAX_VALUE)
         );
 
-        profilepanel.add(jPanel10);
+        profilepanel.add(spacerpanel2);
 
         firstNameLabel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         firstNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -755,9 +755,9 @@ public class GUI extends javax.swing.JFrame {
                 contactsListMouseReleased(evt);
             }
         });
-        jScrollPane3.setViewportView(contactsList);
+        contactslistscrollpane.setViewportView(contactsList);
 
-        ContactsTab.add(jScrollPane3, java.awt.BorderLayout.CENTER);
+        ContactsTab.add(contactslistscrollpane, java.awt.BorderLayout.CENTER);
 
         contactspanel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 51, 102), 1, true));
 
@@ -767,8 +767,8 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
-        jLabel6.setText("Last Name:");
+        lastnamelabel.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
+        lastnamelabel.setText("Last Name:");
 
         contactsSearchButton.setBackground(new java.awt.Color(255, 255, 255));
         contactsSearchButton.setFont(new java.awt.Font("Segoe UI Semibold", 1, 12)); // NOI18N
@@ -780,8 +780,8 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
-        jLabel4.setText("Contacts");
+        contactslabel.setFont(new java.awt.Font("Sylfaen", 1, 18)); // NOI18N
+        contactslabel.setText("Contacts");
 
         javax.swing.GroupLayout contactspanelLayout = new javax.swing.GroupLayout(contactspanel);
         contactspanel.setLayout(contactspanelLayout);
@@ -790,9 +790,9 @@ public class GUI extends javax.swing.JFrame {
             .addGroup(contactspanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(contactspanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
+                    .addComponent(contactslabel)
                     .addGroup(contactspanelLayout.createSequentialGroup()
-                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lastnamelabel, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lnameFilterField, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -806,11 +806,11 @@ public class GUI extends javax.swing.JFrame {
                 .addGroup(contactspanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(contactsSearchButton)
                     .addGroup(contactspanelLayout.createSequentialGroup()
-                        .addComponent(jLabel4)
+                        .addComponent(contactslabel)
                         .addGroup(contactspanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(contactspanelLayout.createSequentialGroup()
                                 .addGap(17, 17, 17)
-                                .addComponent(jLabel6))
+                                .addComponent(lastnamelabel))
                             .addGroup(contactspanelLayout.createSequentialGroup()
                                 .addGap(18, 18, 18)
                                 .addComponent(lnameFilterField, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))))
@@ -906,7 +906,7 @@ public class GUI extends javax.swing.JFrame {
         ContactModLabel.setName(""); // NOI18N
         ContactModLabel.setText("Contact a Moderator");
 
-        jScrollPane7.setViewportView(modsJList);
+        modsscrollpane.setViewportView(modsJList);
 
         quicklinkslabel.setFont(new java.awt.Font("Cambria Math", 0, 24)); // NOI18N
         quicklinkslabel.setName(""); // NOI18N
@@ -941,7 +941,7 @@ public class GUI extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(weatherLink, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(modsscrollpane, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(56, 56, 56))
             .addGroup(SuperImpTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(SuperImpTabLayout.createSequentialGroup()
@@ -957,7 +957,7 @@ public class GUI extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(ContactModLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(modsscrollpane, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, SuperImpTabLayout.createSequentialGroup()
                         .addGap(124, 124, 124)
                         .addGroup(SuperImpTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1135,9 +1135,9 @@ public class GUI extends javax.swing.JFrame {
 
         LionStudyTabs.addTab("Login", LoginTab);
 
-        jLabel17.setText("Password:");
+        singuppasswordlabel.setText("Password:");
 
-        jLabel18.setText("Username:");
+        signupusernamelabel.setText("Username:");
 
         usernamefieldsignup.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1152,7 +1152,7 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        jLabel19.setText("Re-Enter Password:");
+        reenterpasslabel.setText("Re-Enter Password:");
 
         LionStudySignUpLabel.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
         LionStudySignUpLabel.setText("LionStudy Sign-Up");
@@ -1197,11 +1197,11 @@ public class GUI extends javax.swing.JFrame {
                             .addGroup(SignUpPanelLayout.createSequentialGroup()
                                 .addGap(209, 209, 209)
                                 .addGroup(SignUpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel17)
-                                    .addComponent(jLabel18)))
+                                    .addComponent(singuppasswordlabel)
+                                    .addComponent(signupusernamelabel)))
                             .addGroup(SignUpPanelLayout.createSequentialGroup()
                                 .addGap(147, 147, 147)
-                                .addComponent(jLabel19)))
+                                .addComponent(reenterpasslabel)))
                         .addGroup(SignUpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(SignUpPanelLayout.createSequentialGroup()
                                 .addGap(41, 41, 41)
@@ -1242,14 +1242,14 @@ public class GUI extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addGroup(SignUpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(usernamefieldsignup, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel18))
+                    .addComponent(signupusernamelabel))
                 .addGap(27, 27, 27)
                 .addGroup(SignUpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel17)
+                    .addComponent(singuppasswordlabel)
                     .addComponent(passwordfieldsignup, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(36, 36, 36)
                 .addGroup(SignUpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel19)
+                    .addComponent(reenterpasslabel)
                     .addComponent(passwordfieldsignupreenter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addComponent(whoareyoulabel)
@@ -1272,7 +1272,7 @@ public class GUI extends javax.swing.JFrame {
                 .addGap(50, 50, 50))
         );
 
-        jLabel19.getAccessibleContext().setAccessibleName("Re-EnterPassword:");
+        reenterpasslabel.getAccessibleContext().setAccessibleName("Re-EnterPassword:");
 
         javax.swing.GroupLayout SignUpTabLayout = new javax.swing.GroupLayout(SignUpTab);
         SignUpTab.setLayout(SignUpTabLayout);
@@ -1733,7 +1733,7 @@ public class GUI extends javax.swing.JFrame {
             URL url = new URL("http://canvas.psu.edu");
             openWebpage(url);
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Cops! Unexpected Error Occured with User Interface " + e, "Unexpected Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Oops! Unexpected Error Occured with User Interface " + e, "Unexpected Error", JOptionPane.ERROR_MESSAGE);
         }
 
     }//GEN-LAST:event_canvasLinkActionPerformed
@@ -1744,7 +1744,7 @@ public class GUI extends javax.swing.JFrame {
             URL url = new URL("http://lionpath.psu.edu");
             openWebpage(url);
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Cops! Unexpected Error Occured with User Interface " + e, "Unexpected Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Oops! Unexpected Error Occured with User Interface " + e, "Unexpected Error", JOptionPane.ERROR_MESSAGE);
         }
 
     }//GEN-LAST:event_lionpathLinkActionPerformed
@@ -1756,7 +1756,7 @@ public class GUI extends javax.swing.JFrame {
             URL url = new URL("https://behrend.psu.edu");
             openWebpage(url);
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Cops! Unexpected Error Occured with User Interface " + e, "Unexpected Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Oops! Unexpected Error Occured with User Interface " + e, "Unexpected Error", JOptionPane.ERROR_MESSAGE);
         }
 
     }//GEN-LAST:event_behrendLinkActionPerformed
@@ -1767,7 +1767,7 @@ public class GUI extends javax.swing.JFrame {
             URL url = new URL("https://behrend.psu.edu/student-life/student-services/health");
             openWebpage(url);
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Cops! Unexpected Error Occured with User Interface " + e, "Unexpected Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Oops! Unexpected Error Occured with User Interface " + e, "Unexpected Error", JOptionPane.ERROR_MESSAGE);
         }
 
     }//GEN-LAST:event_healthLinkActionPerformed
@@ -1778,7 +1778,7 @@ public class GUI extends javax.swing.JFrame {
             URL url = new URL("https://gopsusports.com/index.aspx?path=football");
             openWebpage(url);
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Cops! Unexpected Error Occured with User Interface " + e, "Unexpected Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Oops! Unexpected Error Occured with User Interface " + e, "Unexpected Error", JOptionPane.ERROR_MESSAGE);
         }
 
     }//GEN-LAST:event_footballLinkActionPerformed
@@ -1789,7 +1789,7 @@ public class GUI extends javax.swing.JFrame {
             URL url = new URL("http://www.psblions.com/information/intramurals-facilities/Junker_Center");
             openWebpage(url);
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Cops! Unexpected Error Occured with User Interface " + e, "Unexpected Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Oops! Unexpected Error Occured with User Interface " + e, "Unexpected Error", JOptionPane.ERROR_MESSAGE);
         }
 
 
@@ -1801,7 +1801,7 @@ public class GUI extends javax.swing.JFrame {
             URL url = new URL("https://behrend.psu.edu/academics/academic-services/acpc/acpc-services/academic-advising-and-planning/recommended-academic-plans");
             openWebpage(url);
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Cops! Unexpected Error Occured with User Interface " + e, "Unexpected Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Oops! Unexpected Error Occured with User Interface " + e, "Unexpected Error", JOptionPane.ERROR_MESSAGE);
         }
 
     }//GEN-LAST:event_rapLinkActionPerformed
@@ -1812,7 +1812,7 @@ public class GUI extends javax.swing.JFrame {
             URL url = new URL("https://behrend.psu.edu/news");
             openWebpage(url);
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Cops! Unexpected Error Occured with User Interface " + e, "Unexpected Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Oops! Unexpected Error Occured with User Interface " + e, "Unexpected Error", JOptionPane.ERROR_MESSAGE);
         }
 
 
@@ -1824,7 +1824,7 @@ public class GUI extends javax.swing.JFrame {
             URL url = new URL("https://behrend.psu.edu/school-of-science/weather");
             openWebpage(url);
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Cops! Unexpected Error Occured with User Interface " + e, "Unexpected Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Oops! Unexpected Error Occured with User Interface " + e, "Unexpected Error", JOptionPane.ERROR_MESSAGE);
         }
 
     }//GEN-LAST:event_weatherLinkActionPerformed
@@ -1867,10 +1867,10 @@ public class GUI extends javax.swing.JFrame {
     private void hiddenButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hiddenButtonActionPerformed
         // a hidden meme for the fun of it.
         try {
-            URL url = new URL("https://pics.me.me/after-four-years-of-engineering-say-hello-to-my-little-821426.png");
+            URL url = new URL("corgiorgy.com");
             openWebpage(url);
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Cops! Unexpected Error Occured with User Interface " + e, "Unexpected Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Oops! Unexpected Error Occured with User Interface " + e, "Unexpected Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_hiddenButtonActionPerformed
 
@@ -1884,7 +1884,7 @@ public class GUI extends javax.swing.JFrame {
                 desktop.browse(uri);
                 return true;
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Cops! Unexpected Error Occured with User Interface " + e, "Unexpected Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Oops! Unexpected Error Occured with User Interface " + e, "Unexpected Error", JOptionPane.ERROR_MESSAGE);
             }
         }
         return false;
@@ -1894,7 +1894,7 @@ public class GUI extends javax.swing.JFrame {
         try {
             return openWebpage(url.toURI());
         } catch (URISyntaxException e) {
-            JOptionPane.showMessageDialog(null, "Cops! Unexpected Error Occured with User Interface " + e, "Unexpected Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Oops! Unexpected Error Occured with User Interface " + e, "Unexpected Error", JOptionPane.ERROR_MESSAGE);
         }
         return false;
     }
@@ -1921,7 +1921,7 @@ public class GUI extends javax.swing.JFrame {
                 //Sets output stream to out
                 outStream = lionsocket.getOutputStream();
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Cops! Unexpected Error Occured with the Chat Server " + e, "Unexpected Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Oops! Unexpected Error Occured with the Chat Server " + e, "Unexpected Error", JOptionPane.ERROR_MESSAGE);
             }
 
             IRC_nick(fName);
@@ -1936,7 +1936,7 @@ public class GUI extends javax.swing.JFrame {
             try {
                 outStream.write(bytes);
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Cops! Unexpected Error Occured with the Chat Server " + e, "Unexpected Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Oops! Unexpected Error Occured with the Chat Server " + e, "Unexpected Error", JOptionPane.ERROR_MESSAGE);
             }
         }
 
@@ -1997,7 +1997,7 @@ public class GUI extends javax.swing.JFrame {
                     } while (bytes != -1);
 
                 } catch (Exception e) {
-                    JOptionPane.showMessageDialog(null, "Cops! Unexpected Error Occured with the Chat Server " + e, "Unexpected Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Oops! Unexpected Error Occured with the Chat Server " + e, "Unexpected Error", JOptionPane.ERROR_MESSAGE);
                 }
             } while (true);
 
@@ -2051,14 +2051,18 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton canvasLink;
     private javax.swing.JPanel chatPanel;
     private javax.swing.JTextArea chatTextArea;
+    private javax.swing.JScrollPane chatscrollpane;
     private javax.swing.JList<String> contactsList;
     private javax.swing.JPopupMenu contactsMenu;
     private javax.swing.JButton contactsSearchButton;
+    private javax.swing.JLabel contactslabel;
+    private javax.swing.JScrollPane contactslistscrollpane;
     private javax.swing.JPanel contactspanel;
     private javax.swing.JPanel courseListPanel;
     private javax.swing.JList<String> courseListProfile;
     private javax.swing.JLabel courseListText;
     private javax.swing.JComboBox<String> coursesComboBox;
+    private javax.swing.JScrollPane coursescrollpane;
     private javax.swing.JPanel coursespanel;
     private javax.swing.JTextField firstNameField;
     private javax.swing.JLabel firstNameLabel;
@@ -2067,42 +2071,33 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton healthLink;
     private javax.swing.JButton hiddenButton;
     private javax.swing.JTextArea incomeChatArea;
+    private javax.swing.JScrollPane incomechatscrollpane;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel9;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JScrollPane jScrollPane6;
-    private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JButton joinClassButton;
     private javax.swing.JButton junkerLink;
     private javax.swing.JTextField lastNameField;
     private javax.swing.JLabel lastNameLabel;
     private javax.swing.JTextField lastnamefield;
+    private javax.swing.JLabel lastnamelabel;
     private javax.swing.JLabel lastnametext;
     private javax.swing.JButton lionpathLink;
     private javax.swing.JTextField lnameFilterField;
     private javax.swing.JPanel lowerpanel;
     private javax.swing.JTextField messageField;
     private javax.swing.JList<String> modsJList;
+    private javax.swing.JScrollPane modsscrollpane;
     private javax.swing.JButton newsLink;
     private javax.swing.JList<String> offlineJList;
     private javax.swing.JPopupMenu offlineUserMenu;
     private javax.swing.JLabel offlinelabel;
+    private javax.swing.JScrollPane offlinescrollpane;
     private javax.swing.JList<String> onlineJList;
     private javax.swing.JPopupMenu onlineUserMenu;
     private javax.swing.JLabel onlinelabel;
+    private javax.swing.JScrollPane onlinescrollpane;
     private javax.swing.JPasswordField passwordfield;
     private javax.swing.JPasswordField passwordfieldsignup;
     private javax.swing.JPasswordField passwordfieldsignupreenter;
@@ -2111,7 +2106,12 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JPanel profilepanel;
     private java.awt.Label quicklinkslabel;
     private javax.swing.JButton rapLink;
+    private javax.swing.JLabel reenterpasslabel;
     private javax.swing.JButton removeCourseButton;
+    private javax.swing.JLabel signupusernamelabel;
+    private javax.swing.JLabel singuppasswordlabel;
+    private javax.swing.JPanel spacerpanel;
+    private javax.swing.JPanel spacerpanel2;
     private javax.swing.JRadioButton studentRB;
     private javax.swing.JButton submitButton;
     private javax.swing.JRadioButton tutorRB;
