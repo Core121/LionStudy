@@ -1867,7 +1867,7 @@ public class GUI extends javax.swing.JFrame {
     private void hiddenButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hiddenButtonActionPerformed
         // a hidden meme for the fun of it.
         try {
-            URL url = new URL("corgiorgy.com");
+            URL url = new URL("https://corgiorgy.com/");
             openWebpage(url);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Oops! Unexpected Error Occured with User Interface " + e, "Unexpected Error", JOptionPane.ERROR_MESSAGE);
