@@ -9,7 +9,7 @@ package lionstudy;
  *
  * @author Corey
  */
-//WILL NOT RUN WITHOUT MySQL Server
+//WILL NOT RUN WITHOUT MySQL Server being ONLINE
 public class Main {
 
     public static void main(String args[]) {
