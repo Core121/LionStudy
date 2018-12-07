@@ -63,7 +63,7 @@ public class ServiceDispatcher {
             }
             myConn.close();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Cops! Unexpected Error Occured with Server " + e, "Unexpected Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Oops! Unexpected Error Occured with Server " + e, "Unexpected Error", JOptionPane.ERROR_MESSAGE);
         }
         return login;
     }
@@ -238,7 +238,7 @@ public class ServiceDispatcher {
             pstmt.executeUpdate();
             myConn.close();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Cops! Unexpected Error Occured with Server " + e, "Unexpected Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Oops! Unexpected Error Occured with Server " + e, "Unexpected Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -253,7 +253,7 @@ public class ServiceDispatcher {
             pstmt.executeUpdate();
             myConn.close();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Cops! Unexpected Error Occured with Server " + e, "Unexpected Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Oops! Unexpected Error Occured with Server " + e, "Unexpected Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -269,7 +269,7 @@ public class ServiceDispatcher {
             pstmt.executeUpdate();
             myConn.close();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Cops! Unexpected Error Occured with Server " + e, "Unexpected Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Oops! Unexpected Error Occured with Server " + e, "Unexpected Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -285,7 +285,7 @@ public class ServiceDispatcher {
             pstmt.executeUpdate();
             myConn.close();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Cops! Unexpected Error Occured with Server " + e, "Unexpected Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Oops! Unexpected Error Occured with Server " + e, "Unexpected Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -323,7 +323,7 @@ public class ServiceDispatcher {
             }
             myConn.close();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Cops! Unexpected Error Occured with Server " + e, "Unexpected Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Oops! Unexpected Error Occured with Server " + e, "Unexpected Error", JOptionPane.ERROR_MESSAGE);
         }
         return Contacts;
     }
@@ -343,7 +343,7 @@ public class ServiceDispatcher {
             }
             myConn.close();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Cops! Unexpected Error Occured with Server " + e, "Unexpected Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Oops! Unexpected Error Occured with Server " + e, "Unexpected Error", JOptionPane.ERROR_MESSAGE);
         }
         return Classes;
     }
