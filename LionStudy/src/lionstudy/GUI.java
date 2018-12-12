@@ -29,7 +29,8 @@ import javax.swing.JOptionPane;
  */
 public class GUI extends javax.swing.JFrame {
 
-    IRC_LiveSocket listen;
+    IRC_LiveSocket listen= new IRC_LiveSocket();
+        
 
     /**
      * Creates new form GUI
@@ -119,7 +120,6 @@ public class GUI extends javax.swing.JFrame {
 
     //Logs the user in and fills all appropriate fields
     protected void Login() {
-        
         ServiceDispatcher sd = new ServiceDispatcher();
         boolean loginSuccess = false;
         if (usernamefield.getText() == "" || passwordfield.getText() == "") {
@@ -183,6 +183,7 @@ public class GUI extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "The username or password was incorrect, please try again", "Incorrect Username/Password", JOptionPane.INFORMATION_MESSAGE);
             }
         }
+
     }
 
     UserProfile clientUser = new UserProfile();
@@ -1418,26 +1419,36 @@ public class GUI extends javax.swing.JFrame {
         Font f = new Font(Font.SERIF, Font.BOLD, 14);
         String message = "";
         message = messageField.getText();
+        if(listen.isSet && !messageField.getText().equals(""))
+        {
+            /*
+            Displays given text to the outgoing message Text Area
+             */
+            chatTextArea.append("\n---");
+            chatTextArea.setFont(f);
+            chatTextArea.append(CU.getUsername());
+            chatTextArea.append("---\n");
+            chatTextArea.append(message);
+            chatTextArea.append("\n");
 
-        /*
-        Displays given text to the outgoing message Text Area
-         */
-        chatTextArea.append("\n---");
-        chatTextArea.setFont(f);
-        chatTextArea.append(CU.getUsername());
-        chatTextArea.append("---\n");
-        chatTextArea.append(message);
-        chatTextArea.append("\n");
+            /*
+            Formats incoming chat message field to fit the form of a chat dialog
+             */
+            incomeChatArea.setFont(f);
+            incomeChatArea.append("\n\n\n");
 
-        /*
-        Formats incoming chat message field to fit the form of a chat dialog
-         */
-        incomeChatArea.setFont(f);
-        incomeChatArea.append("\n\n\n");
+            messageField.setText("");
 
-        messageField.setText("");
-
-        listen.IRC_privMSG(message);
+            listen.IRC_privMSG(message);
+        }
+        else if(messageField.getText().equals(""))
+        {
+            JOptionPane.showMessageDialog(null, "Please enter a message", "Chat Error!", JOptionPane.ERROR_MESSAGE);
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "You are not chatting with anyone!", "Chat Error!", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_submitButtonActionPerformed
 
     private void coursesComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_coursesComboBoxActionPerformed
@@ -1698,12 +1709,32 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_contactsSearchButtonActionPerformed
 
     private void ConnectMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConnectMenuItemActionPerformed
-
+        Thread chatListen = null;
+        if(listen.isSet)
+        {
+            listen.reset=true;
+            listen.close();
+            this.chatTextArea.setText("");
+            this.incomeChatArea.setText("");
+            this.messageField.setText("");
+        }
+        listen = new IRC_LiveSocket("#LionStudy", CurrentUser.getFirstname(), CurrentUser.getUsername());
+        chatListen = new Thread(listen);
+        chatListen.start();
     }//GEN-LAST:event_ConnectMenuItemActionPerformed
 
     private void ChatMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChatMenuItemActionPerformed
+        Thread chatListen = null;
+        if(listen.isSet)
+        {
+            listen.reset=true;
+            listen.close();
+            this.chatTextArea.setText("");
+            this.incomeChatArea.setText("");
+            this.messageField.setText("");
+        }
         listen = new IRC_LiveSocket("#LionStudy", CurrentUser.getFirstname(), CurrentUser.getUsername());
-        Thread chatListen = new Thread(listen);
+        chatListen = new Thread(listen);
         chatListen.start();
     }//GEN-LAST:event_ChatMenuItemActionPerformed
 
@@ -1912,7 +1943,15 @@ public class GUI extends javax.swing.JFrame {
 
         String server = "halcyon.il.us.dal.net";
         int port = 6667;
+        
+        boolean isSet=false;
+        boolean reset=false;
 
+        public IRC_LiveSocket()
+        {
+            isSet=false;
+            reset=false;
+        }
         public IRC_LiveSocket(String channel, String fName, String uName) {
 
             try {
@@ -1924,9 +1963,11 @@ public class GUI extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Oops! Unexpected Error Occured with the Chat Server " + e, "Unexpected Error", JOptionPane.ERROR_MESSAGE);
             }
 
-            IRC_nick(uName);
             IRC_user(uName, "null", "null", "real name");
+            IRC_nick(uName);
             IRC_channelJoin(channel);
+            isSet=true;
+            reset=false;
 
         }
 
@@ -1976,31 +2017,46 @@ public class GUI extends javax.swing.JFrame {
         }
 
         public void run() {
-            do {
-                //LOOP TO RECIEVE MESSAGES
-                try {
-                    InputStream inStream = lionsocket.getInputStream();
-                    IRC_MessageBuffer msgBuf = new IRC_MessageBuffer();
+            if(!reset)
+            {
+                do {
+                    //LOOP TO RECIEVE MESSAGES
+                    try {
+                        InputStream inStream = lionsocket.getInputStream();
+                        IRC_MessageBuffer msgBuf = new IRC_MessageBuffer();
 
-                    byte[] buffer = new byte[1024];
-                    int bytes;
+                        byte[] buffer = new byte[1024];
+                        int bytes;
 
-                    do {
-                        bytes = inStream.read(buffer);
-                        if (bytes != -1) {
-                            msgBuf.addToBuffer(Arrays.copyOfRange(buffer, 0, bytes));
-                            while (msgBuf.hasMessage()) {
-                                msg = msgBuf.getMessage();
+                        do {
+                            bytes = inStream.read(buffer);
+                            if (bytes != -1) {
+                                msgBuf.addToBuffer(Arrays.copyOfRange(buffer, 0, bytes));
+                                while (msgBuf.hasMessage()) {
+                                    msg = msgBuf.getMessage();
+                                }
+                                IRC_processMessage(msg);
                             }
-                            IRC_processMessage(msg);
-                        }
-                    } while (bytes != -1);
+                        } while (bytes != -1);
 
-                } catch (Exception e) {
-                    JOptionPane.showMessageDialog(null, "Oops! Unexpected Error Occured with the Chat Server " + e, "Unexpected Error", JOptionPane.ERROR_MESSAGE);
-                }
-            } while (true);
+                    } catch (Exception e) {
+                    }
+                } while (!reset);
+            }
 
+        }
+        
+        public void close()
+        {
+            try
+            {
+                lionsocket.close();
+                outStream.close();
+            }
+            catch(Exception e)
+            {
+                JOptionPane.showMessageDialog(null, "Oops! Unexpected Error Occured with the Chat Server " + e, "Unexpected Error", JOptionPane.ERROR_MESSAGE);
+            }
         }
     }
 
